@@ -1,0 +1,10 @@
+#first idea
+numpy
+scikit-learn
+scikit-image
+tensorflow
+torch torchvision torchaudio
+Pillow
+scipy
+ffmpeg-python
+opencv
