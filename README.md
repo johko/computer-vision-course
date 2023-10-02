@@ -1,4 +1,4 @@
-# Computer Vision with transformers
+#Computer Vision with transformers
 
 This is the page for community-led course on Computer Vision with transformers. Below, you can find how you can help us in this effort. 
 
