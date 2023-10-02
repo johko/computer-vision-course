@@ -1,6 +1,6 @@
 tensorflow==2.11.1
 pytorch==1.11.0
-opencv-python==4.5.5
+opencv-python==4.8.1.78
 keras==2.8.0
 transformers==4.30.0
 numpy==1.22.3
