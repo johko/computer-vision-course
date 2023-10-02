@@ -1,4 +1,4 @@
-tensorflow==2.8.0
+tensorflow==2.11.1
 pytorch==1.11.0
 opencv-python==4.5.5
 keras==2.8.0
