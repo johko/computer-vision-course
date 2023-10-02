@@ -6,4 +6,4 @@ transformers==4.30.0
 numpy==1.22.3
 scipy==1.10.0
 matplotlib==3.5.1
-pillow==9.3.0
+pillow==10.0.1
