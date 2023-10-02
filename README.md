@@ -10,4 +10,4 @@ This is the page for community-led course on Computer Vision with transformers. 
    Store the assets in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet.
    Open a pull request to this repository. We will review your pull request.
 
-You can browse this repository, for example if you want to go to the dependencies used in this course you can access [requirements.txt](https://github.com/johko/computer-vision-course/blob /main/requirements .txt)
+You can browse this repository, for example if you want to go to the dependencies used in this course you can access [requirements.txt](https://github.com/johko/computer-vision-course/blob/main/requirements.txt)
