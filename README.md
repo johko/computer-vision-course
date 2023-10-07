@@ -32,15 +32,15 @@ This is the repository for a community-led course on Computer Vision. Below, you
 
 ### Become a Reviewer
 
-All the topics are assigned, but you really want to contribute to the course? No worries, you can still become a reviewer. This will allow you to review the notebooks and READMEs and give feedback to the authors.
+Is everything already assigned, but you still really want to contribute to the course? No worries, you can still become a reviewer! This will allow you to review the notebooks and READMEs and give feedback to the authors.
 
-1. Go to this [spreadsheet](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and at the bottom choose the "Reviewers" tab
-2. Add you first name and GitHub username
-3. You will be added to the repo as contributor and are able to review Pull Requests (PRs)
-4. Assign yourself to any PRs you think make sense for you
-5. While reviewing, ask yourself if you understand everything that the authors explain, after all in a computer vision course the most important part is the knowledge sharing
-6. Give feedback and ideas to the authors on how they can improve. We are aiming for quality, not quantity
-7. Every PR can be merged when it has two approvals from reviewers
+1. Go [here](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and at the bottom choose the "Reviewers" tab,
+2. Add your first name and GitHub username,
+3. You'll be added to the repo as a contributor and will be able to review Pull Requests (PRs)!
+4. Assign yourself to any PRs you think make sense for you,
+5. While reviewing, ask yourself if the changes and additions make sense - After all, the most important part of a course is conveying ideas properly, which makes the learning experience smoother.
+6. Share your feedback and ideas with the authors on how they can improve. In the long term, we're aiming to make a robust, high-quality course accessible to everyone!
+7. Finally, every PR can be merged when it has two approvals from reviewers.
    
 
 ### Tips and Hints
