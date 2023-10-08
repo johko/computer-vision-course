@@ -1,19 +1,19 @@
 # Computer Vision Community Course
 
-This is the repository for a community-led course on Computer Vision. Below, you can find how you can help us in this effort. 
+This is the repository for a community-led course on Computer Vision. Below, you can find how you can help us in this effort.
 
 
 ### How to get started
 
 1. Join us in Discord 👾
 
-   Join [the Hugging Face discord](hf.co/join/discord), take the role open-source and join us at the channel #cv-community-project. 
+   Join [the Hugging Face discord](hf.co/join/discord), take the role open-source and join us at the channel #cv-community-project.
 <img width="491" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/c13d5b34-ed1c-4f12-b044-192484b94f9d">
 <img width="180" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/b3372a47-711f-4b43-bc85-0ba2b6f8b914">
 
 
 
-2. Pick a section from the [table of contents](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and add your first name and discord username there. 
+2. Pick a section from the [table of contents](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and add your first name and discord username there.
 (Please only sign up for two chapters maximum for now.)
 3. Connect with your team members in Discord
 
@@ -41,7 +41,7 @@ Is everything already assigned, but you still really want to contribute to the c
 5. While reviewing, ask yourself if the changes and additions make sense - After all, the most important part of a course is conveying ideas properly, which makes the learning experience smoother.
 6. Share your feedback and ideas with the authors on how they can improve. In the long term, we're aiming to make a robust, high-quality course accessible to everyone!
 7. Finally, every PR can be merged when it has two approvals from reviewers.
-   
+
 
 ### Tips and Hints
 
