@@ -29,6 +29,57 @@ This is the repository for a community-led course on Computer Vision. Below, you
 7. Make sure to update the requirements.txt file in the root of the repository
 8. When you feel like you are ready, create a pull request to this repository
 
+### Syntax and Doc Rules ❗️❗️
+
+These rules are required to render the course on hf.co/learn 😊 
+1. Every chapter should have a main header (h1, e.g. # Introduction) before the content. 
+2. We can use the syntax features in Hugging Face course! This includes 👇 
+
+**Tip Blocks**
+Write tips like so:
+```
+<Tip>
+Write your note here
+</Tip>
+```
+You can write warnings like this: 
+`<Tip warning={true}>`
+
+**Framework Dependent Code**
+To have multiple frameworks in one code snippet with a toggle, you can do:
+```
+<frameworkcontent>
+<pt>
+PyTorch content goes here
+</pt>
+<tf>
+TensorFlow content goes here
+</tf>
+<flax>
+Flax content goes here
+</flax>
+</frameworkcontent>
+```
+
+**Anchor Links for Headers**
+If you want to refer to a section inside the text, you can do it like below 👇 
+```
+## My awesome section[[some-section]]
+// the anchor link is: `some-section`
+```
+
+**Code Blocks**
+You can write codeblocks by wrapping it with three backticks. Please add the associated language code, e.g. `py` or `bash` after top backticks to enable language specific rendering of code blocks. 
+
+**LaTeX**
+You can write LaTeX by writing it like this: `$$...$$``
+For example 👇 
+```
+$$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
+```
+
+
+3. Add your chapter to `_toctree.yml`.
 
 ### Become a Reviewer
 
