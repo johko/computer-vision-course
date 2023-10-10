@@ -11,8 +11,6 @@ This is the repository for a community-led course on Computer Vision. Below, you
 <img width="491" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/c13d5b34-ed1c-4f12-b044-192484b94f9d">
 <img width="180" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/b3372a47-711f-4b43-bc85-0ba2b6f8b914">
 
-
-
 2. Pick a section from the [table of contents](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and add your first name and discord username there.
 (Please only sign up for two chapters maximum for now.)
 3. Connect with your team members in Discord
@@ -78,8 +76,26 @@ For example 👇
 $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
 ```
 
-
 3. Add your chapter to `_toctree.yml`.
+
+- Note that the directory structure is as follows, so when you add a new chapter, make sure to stick to it:
+```
+.
+└── course/
+    └── chapters/
+        ├── chapter0/
+        │   ├── introduction.mdx
+        │   └── getting_started.mdx
+        ├── chapter1/
+        │   └── ...mdx
+        └── _toctree.yml
+```
+
+- If you need advice on the tone of your content, feel free to check out [Hugging Face Audio Course](https://huggingface.co/learn/audio-course/chapter0/introduction) as it's a good example.
+- 
+- Before contributing, please read the general [contribution guide](https://huggingface2.notion.site/Contribution-Guide-19411c29298644df8e9656af45a7686d?pvs=4).
+
+- If you have any **bigger assets like datasets, models, custom demos**, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet.
 
 ### Become a Reviewer
 
@@ -96,9 +112,6 @@ Is everything already assigned, but you still really want to contribute to the c
 
 ### Tips and Hints
 
-- Before contributing, **if it's your first time**, please read the general [contribution guide](https://huggingface2.notion.site/Contribution-Guide-19411c29298644df8e9656af45a7686d?pvs=4).
-
-- If you have any **bigger assets like datasets, models, custom demos**, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet.
 
 - For an easier collaboration when **working on notebooks together**, feel free to use [ReviewNB](https://www.reviewnb.com/), which is free for open-source and educational use cases.
 
