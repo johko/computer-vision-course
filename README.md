@@ -76,11 +76,6 @@ For example 👇
 $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
 ```
 
-**Colab Option**
-You can add the option to open your `.mdx` file as a notebook in Colab by adding
-```
-[[open-in-colab]]
-```
 
 3. Add your chapter to `_toctree.yml`.
 
