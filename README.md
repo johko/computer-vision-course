@@ -21,7 +21,7 @@ This is the repository for a community-led course on Computer Vision. Below, you
 1. One person from your team should create a fork of this repository
 2. Add your team members as collaborators to the fork
 3. Add a branch for your section
-4. Create Jupyter Notebooks for the chapters you want to contribute to
+4. Create `.mdx` files or Jupyter Notebooks for the chapters you want to contribute to
 5. Add the notebooks to the fork
 6. Work on the notebooks in your team and collaborate via standard git functionalities
 7. Make sure to update the requirements.txt file in the root of the repository
@@ -75,6 +75,7 @@ For example 👇
 ```
 $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
 ```
+
 
 3. Add your chapter to `_toctree.yml`.
 
