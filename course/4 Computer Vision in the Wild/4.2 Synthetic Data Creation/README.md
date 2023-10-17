@@ -18,7 +18,7 @@ Synthetic data is artificially generated on a computer to augment or replace rea
 
 - Deep generative models (Transformers/GANs/Diffusion models): allows to expend a dataset, balance it, solve privacy issues... Very conveniant and powerfull but can create datasets with biases, incoherence and repetitiveness which induces an important overtraining risk and produce a restricted set of predictions
 
-- Use cases include [medical image generation](https://rdcu.be/dokei), [efficient plant disease identification](https://www.mdpi.com/2073-4395/12/10/2395), [industrial waste sorting](https://arxiv.org/abs/2303.14828), [traffic sign recognition](https://arxiv.org/abs/2101.04927), and [de- tection of emergency vehicles for an autonomous driving car application](https://computer-vision-in-the-wild.github.io/eccv-2022/static/eccv2022/camera_ready/ECCV_2022_cvinw_Domain_Compatible_Synthetic_Data_Generation.pdf).
+- Use cases include [medical image generation](https://rdcu.be/dokei), [efficient plant disease identification](https://www.mdpi.com/2073-4395/12/10/2395), [industrial waste sorting](https://arxiv.org/abs/2303.14828), [traffic sign recognition](https://arxiv.org/abs/2101.04927), and [detection of emergency vehicles for an autonomous driving car application](https://computer-vision-in-the-wild.github.io/eccv-2022/static/eccv2022/camera_ready/ECCV_2022_cvinw_Domain_Compatible_Synthetic_Data_Generation.pdf).
 
 ### Possible notebook ideas
 
@@ -28,7 +28,7 @@ Synthetic data is artificially generated on a computer to augment or replace rea
 
 Synthetic Faces
 
-[Blog]https://huggingface.co/blog/train-your-controlnet
+[Blog](https://huggingface.co/blog/train-your-controlnet)
 [FaceSynthetics](https://github.com/microsoft/FaceSynthetics)
 [face_synthetics_spiga dataset](https://huggingface.co/datasets/pcuenq/face_synthetics_spiga)
 [SPIGA repo](https://github.com/andresprados/SPIGA#spiga-shape-preserving-facial-landmarks-with-graph-attention-networks)
