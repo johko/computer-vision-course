@@ -58,6 +58,16 @@ Flax content goes here
 </flax>
 </frameworkcontent>
 ```
+**Embedding Gradio Demos**
+You can embed any Gradio demo that is hosted on Hugging Face Spaces like below 👇 Just provide the `src` the url `{{username}}-{{space_id}}.hf.space`.
+```
+<iframe
+	src="https://openai-whisper.hf.space"
+	frameborder="0"
+	width="850"
+	height="450">
+</iframe>
+```
 
 **Anchor Links for Headers**
 If you want to refer to a section inside the text, you can do it like below 👇 
