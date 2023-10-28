@@ -21,7 +21,7 @@ This is the repository for a community-led course on Computer Vision. Below, you
 1. One person from your team should create a fork of this repository
 2. Add your team members as collaborators to the fork
 3. Add a branch for your section
-4. Create Jupyter Notebooks for the chapters you want to contribute to
+4. Create `.mdx` files or Jupyter Notebooks for the chapters you want to contribute to
 5. Add the notebooks to the fork
 6. Work on the notebooks in your team and collaborate via standard git functionalities
 7. Make sure to update the requirements.txt file in the root of the repository
@@ -58,6 +58,16 @@ Flax content goes here
 </flax>
 </frameworkcontent>
 ```
+**Embedding Gradio Demos**
+You can embed any Gradio demo that is hosted on Hugging Face Spaces like below 👇 Just provide the `src` the url `{{username}}-{{space_id}}.hf.space`.
+```
+<iframe
+	src="https://openai-whisper.hf.space"
+	frameborder="0"
+	width="850"
+	height="450">
+</iframe>
+```
 
 **Anchor Links for Headers**
 If you want to refer to a section inside the text, you can do it like below 👇 
@@ -76,6 +86,7 @@ For example 👇
 $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
 ```
 
+
 3. Add your chapter to `_toctree.yml`.
 
 - Note that the directory structure is as follows, so when you add a new chapter, make sure to stick to it:
@@ -92,10 +103,14 @@ $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
 ```
 
 - If you need advice on the tone of your content, feel free to check out [Hugging Face Audio Course](https://huggingface.co/learn/audio-course/chapter0/introduction) as it's a good example.
-- 
+  
 - Before contributing, please read the general [contribution guide](https://huggingface2.notion.site/Contribution-Guide-19411c29298644df8e9656af45a7686d?pvs=4).
 
 - If you have any images, videos and more in your PRs, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet.
+
+### Notebooks
+
+Thanks to Hugging Face's documentation builder, when we add `[[open-in-colab]]` on top of `.mdx` files, it creates a button that you can automatically open a notebook containing the notebook version of your markdown file. If you still want to create a notebook that is separate from markdown (and the markdown is complete by means of context you're providing in the notebook), you can do so, in the notebooks folder. Make sure to add it to the associated chapter's folder under notebooks (and if it doesn't exist, feel free to create it).
 
 ### Become a Reviewer
 
