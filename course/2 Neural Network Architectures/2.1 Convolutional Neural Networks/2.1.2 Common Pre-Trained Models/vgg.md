@@ -12,10 +12,36 @@ VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserman fr
    
 - Input is 224X224 image. 
 - 3X3 convolution kernels with 2X2 max pooling layers.
-- Maxpooling with stride = 1 and padding = 0.
 - Number of channels for each convolutional layer 64 -> 128 -> 256 -> 512 -> 512. 
 - VGG16 has 16 hidden layers (13 convolutional layers and 3 fully connected layers).
 - VGG19 has 19 hidden layers (16 convolutional layers and 3 fully connected layers).
+
+Below is network structure of VGG16, The activation and dropout layers were omitted for brevity. MaxPooling layers were included to display change in output tensor size at each layer. 
+
+|Layer Type |Filter Size|Output Size|No. Params|
+|-----------|------------|----------|----------|
+|Input Image|0|3X224X224|0|
+|Conv2D|3X3|64X224X224|1,792|
+|Conv2D|3X3|64X224X224|39,628|
+|MaxPool2D|2X2|64X112X112|0|
+|Conv2D|3X3|128X112X112|73,856|
+|Conv2D|3X3|128X112X112|147,584|
+|MaxPool2D|2X2|128X56X56|0|
+|Conv2D|3X3|256X56X56|295,168|
+|Conv2D|3X3|256X56X56|590,080|
+|Conv2D|3X3|256X56X56|590,080|
+|MaxPool2D|2X2|256X28X28|0|
+|Conv2D|3X3|512X28X28|1,180,160|
+|Conv2D|3X3|512X28X28|2,359,808|
+|Conv2D|3X3|512X28X28|2,359,808|
+|MaxPool2D|2X2|512X14X14|0|
+|Conv2D|3X3|512X14X14|2,359,808|
+|Conv2D|3X3|512X14X14|2,359,808|
+|Conv2D|3X3|512X14X14|2,359,808|
+|MaxPool2D|2X2|0|
+|Linear|N/A|4096|102,764,544|
+|Linear|N/A|4096|16,781,312|
+|Linear|N/A|1000|4,096,000|
 
 
 
