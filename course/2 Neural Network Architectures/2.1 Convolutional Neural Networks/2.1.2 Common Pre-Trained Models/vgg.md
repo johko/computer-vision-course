@@ -38,7 +38,7 @@ Below is the network structure of VGG16, The activation and dropout layers were 
 |Conv2D|3X3|512X14X14|2,359,808|
 |Conv2D|3X3|512X14X14|2,359,808|
 |Conv2D|3X3|512X14X14|2,359,808|
-|MaxPool2D|2X2|512X7X7|
+|MaxPool2D|2X2|512X7X7|0|
 |Linear|N/A|4096|102,764,544|
 |Linear|N/A|4096|16,781,312|
 |Linear|N/A|1000|4,096,000|
