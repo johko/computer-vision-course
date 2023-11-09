@@ -8,7 +8,7 @@ The VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserma
 
 
 
-2. VGG Network Architechture 
+## VGG Network Architechture 
    
 - Inputs are 224X224 images. 
 - Convolution kernel shape is (3,3) and max pooling window shape is (2,2).
