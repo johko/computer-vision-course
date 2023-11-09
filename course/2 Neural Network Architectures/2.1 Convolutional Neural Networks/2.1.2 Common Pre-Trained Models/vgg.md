@@ -11,7 +11,7 @@ The VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserma
 2. VGG Network Architechture 
    
 - Inputs are 224X224 images. 
-- 3X3 convolution kernels with 2X2 max pooling layers.
+- Convolution kernel shape is (3,3) and max pooling window shape is (2,2).
 - Number of channels for each convolutional layer 64 -> 128 -> 256 -> 512 -> 512. 
 - VGG16 has 16 hidden layers (13 convolutional layers and 3 fully connected layers).
 - VGG19 has 19 hidden layers (16 convolutional layers and 3 fully connected layers).
