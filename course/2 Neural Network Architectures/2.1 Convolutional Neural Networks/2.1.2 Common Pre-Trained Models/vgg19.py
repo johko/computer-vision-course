@@ -55,3 +55,4 @@ class VGG19(nn.Module):
         x = x.view(x.size(0), -1)  # Flatten the output for the fully connected layers
         x = self.classifier(x)  # Pass flattened output through the classifier layers
         return x
+ 
