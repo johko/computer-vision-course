@@ -4,7 +4,7 @@
 
 1. Introduction
 
-The VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserman from the Visual Geometry Group at Oxford University. The authors detailed key advancements in convolutional neural networks for the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). VGG demonstrated significant improvements with increased depth and repeated small (3X3) convolutional filters. It was a research project to systematically evaluate prior art configurations and identify key structural designs. 
+The VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserman from the Visual Geometry Group -and hence named VGG- at Oxford University. The model demonstrated significant improvements over the past models at that time- to be specific 2014 Imagenet challange.
 
 
 
