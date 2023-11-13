@@ -4,12 +4,12 @@
 
 1. Introduction
 
-The VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserman from the Visual Geometry Group -and hence named VGG- at Oxford University. The model demonstrated significant improvements over the past models at that time- to be specific 2014 Imagenet challange.
+The VGG architecture was developed in 2014 by Karen Simonyan and Andrew Zisserman from the Visual Geometry Group -and hence named VGG- at Oxford University. The model demonstrated significant improvements over the past models at that time- to be specific 2014 Imagenet challange also known as ILSVRC.
 
 
 
-## VGG Network Architechture 
-   
+## VGG Network Architechture
+  
 - Inputs are 224X224 images. 
 - Convolution kernel shape is (3,3) and max pooling window shape is (2,2).
 - Number of channels for each convolutional layer 64 -> 128 -> 256 -> 512 -> 512. 
@@ -47,13 +47,13 @@ Below is the network structure of VGG16, The activation and dropout layers were 
 
 3. Key Comparisons 
 
-- VGG (16 or 19 layers) is relatively deeper than other SOTA networks at the time. AlexNet, winning model for ILSVRC 2012 only has 8 layers.    
-- Multiple small (3X3) receptive field filters with ReLU activation instead of one large (7X7 or 11X11) filter lead to better learning of complex features. Smaller filters also mean fewer parameters per layer, with additional nonlinearity introduced in between.   
+- VGG (16 or 19 layers) was relatively deeper than other SOTA networks at the time. AlexNet, the winning model for ILSVRC 2012 only has 8 layers.
+- Multiple small (3X3) receptive field filters with ReLU activation instead of one large (7X7 or 11X11) filter lead to better learning of complex features. Smaller filters also mean fewer parameters per layer, with additional nonlinearity introduced in between.
 - Multiscale training and inference. Each image was trained in multiple rounds with varying scales to ensure similar characteristics were captured at different sizes.  
-- Consistency and simplicity of the VGG network make it easier to scale or modify for future improvements. 
+- Consistency and simplicity of the VGG network make it easier to scale or modify for future improvements.
 
 
-4. Pytorch Example 
+4. Pytorch Example
 
 ```
 
