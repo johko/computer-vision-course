@@ -7,7 +7,7 @@ When generating synthetic data, ideally we want it to be as close as possible to
 We are going to use [BlenderProc](https://arxiv.org/abs/1911.01911) to generate our synthetic data. BlenderProc is a procedural Blender pipeline which helps in generating real looking images for the training of convolutional neural networks.
 Note: I will add more info about BlenderProc here.
 
-Lucky for us, we can run BlenderProc in a Google Colab notebook. The first step is to clone the offical [BlenderProc](https://github.com/DLR-RM/BlenderProc) repo.
+We will render our synthetic data in Google Colab. The first step is to clone the offical [BlenderProc](https://github.com/DLR-RM/BlenderProc) repository.
 
 ```bash
 !git clone https://github.com/DLR-RM/BlenderProc.git
@@ -41,7 +41,7 @@ To be able to use matplotlib inside BlenderProc, we have to install ipykernel in
 </Tip>
 
 <Tip warning={true}>
-  Installing Blender can take a while. Please be patient--it is worth it!
+  Installing Blender can take a while. Please be patient!
 </Tip>
 
 ```python
