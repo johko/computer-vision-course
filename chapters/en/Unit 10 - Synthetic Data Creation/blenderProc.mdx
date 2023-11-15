@@ -9,20 +9,20 @@ Note: I will add more info about BlenderProc here.
 
 Lucky for us, we can run BlenderProc in a Google Colab notebook. The first step is to clone the offical [BlenderProc](https://github.com/DLR-RM/BlenderProc) repo.
 
-```python
+```bash
 !git clone https://github.com/DLR-RM/BlenderProc.git
 %cd "BlenderProc"
 ```
 
 We then install it using pip.
 
-```python
+```bash
 !pip install -e .
 ```
 
 The next code cell is a little bit of "house-keeping" to enable us to run BlenderProc inside of Google Colab.
 
-```python
+```bash
 import os
 
 os.environ["LD_PRELOAD"] = ""
