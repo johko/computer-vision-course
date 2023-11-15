@@ -1,0 +1,76 @@
+# Using a 3D renderer to Generate Synthetic Data
+
+When generating synthetic data, ideally we want it to be as close as possible to real data. Physically Based Renderers (PBR) such as Blender Cycles or Unity help to improve photorealism by modeling lighting and surfaces in a phyically accurate manner. Advantages of PBR include the ability to control parameters and compute metrics by comparing to the ground truth (generation parameters).
+
+## BlenderProc
+
+We are going to use [BlenderProc](https://arxiv.org/abs/1911.01911) to generate our synthetic data. BlenderProc is a procedural Blender pipeline which helps in generating real looking images for the training of convolutional neural networks.
+Note: I will add more info about BlenderProc here.
+
+Lucky for us, we can run BlenderProc in a Google Colab notebook. The first step is to clone the offical [BlenderProc](https://github.com/DLR-RM/BlenderProc) repo.
+
+```python
+!git clone https://github.com/DLR-RM/BlenderProc.git
+%cd "BlenderProc"
+```
+
+We then install it using pip.
+
+```python
+!pip install -e .
+```
+
+The next code cell is a little bit of "house-keeping" to enable us to run BlenderProc inside of Google Colab.
+
+```python
+import os
+
+os.environ["LD_PRELOAD"] = ""
+
+!apt remove libtcmalloc-minimal4
+!apt install libtcmalloc-minimal4
+
+os.environ["LD_PRELOAD"] = "/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.9"
+```
+
+To be able to use matplotlib inside BlenderProc, we have to install ipykernel inside blender's python environment. As this is the first blenderproc command, it will also install Blender.
+
+<Tip>
+  Instead of running the script with the usual python interpreter, the command
+  line interface of BlenderProc has to be used!
+</Tip>
+
+<Tip warning={true}>
+  Installing Blender can take a while. Please be patient--it is worth it!
+</Tip>
+
+```python
+!blenderproc pip install ipykernel --blender-install-path ./
+```
+
+We are all set now to render our data. We are going to demo the basic example provided by the BlenderProc library. When we run this command, BlenderProc will renders rgb, normals and depth.
+
+```python
+!blenderproc run examples/basics/basic/main.py examples/resources/camera_positions examples/resources/scene.obj examples/basics/basic/output --blender-install-path
+```
+
+- `examples/basics/basic/main.py` is the path to the python file with pipeline configuration
+
+The main.py script takes three arguments:
+
+- `examples/resources/camera_positions` is a text file with the parameters of the camera camera_positions
+- `examples/resources/scene.obj` is the path to the object file with the basic scene
+- `examples/basics/basic/output` is the path to the output directory
+
+<Tip>
+  We need to add `--blender-install-path` when we are running inside of Google
+  Colab
+</Tip>
+
+## Visualize the Data
+
+Now we can visualize our data:
+
+```python
+%run "-m" "blenderproc" "vis" "hdf5" "examples/basics/basic/output/0.hdf5"
+```
