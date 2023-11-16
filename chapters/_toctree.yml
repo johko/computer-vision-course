@@ -5,13 +5,15 @@
 
 - title: Unit 10. Synthetic Data Creation
   sections:
-    - local: chapter10/introduction-to-synthetic-data
+    - local: chapter10/10
       title: Introduction
+    - local: chapter10/practical-applications
+      title: Real World Applications
     - local: chapter10/blenderProc
       title: Generating Synthetic Data with BlenderProc
     - local: chapter10/point_clouds
       title: Generating Synthetic Data with Point Clouds
-    - local: chapter10/practical-applications-and-challenges
-      title: Practical Applications and Challenges
+    - local: chapter10/deep-generative-models
+      title: Generating Synthetic Data Using Deep Generative Models
     - local: chapter10/supplemental_reading
       title: Supplemental reading and resources
