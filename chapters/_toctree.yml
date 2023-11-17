@@ -3,6 +3,11 @@
     - local: chapter0/1
       title: Introduction
 
+- title: 0. Getting Started
+  sections:
+    - local: chapter0/1
+      title: Introduction
+
 - title: Unit 10. Synthetic Data Creation
   sections:
     - local: chapter10/10
@@ -15,5 +20,7 @@
       title: Generating Synthetic Data with Point Clouds
     - local: chapter10/deep-generative-models
       title: Generating Synthetic Data Using Deep Generative Models
+    - local: chapter10/evaluating-the-data
+      title: Final Thoughts
     - local: chapter10/supplemental_reading
       title: Supplemental reading and resources
