@@ -22,5 +22,5 @@
       title: Generating Synthetic Data Using Deep Generative Models
     - local: chapter10/evaluating-the-data
       title: Final Thoughts
-    - local: chapter10/supplemental_reading
+    - local: chapter10/supplemental_materials
       title: Supplemental reading and resources

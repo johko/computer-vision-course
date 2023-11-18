@@ -7,3 +7,15 @@ We will add a survey of research related to synthetic data creation here.
 ## Point Clouds
 
 ## Deep Generative Models
+
+We learned in the introduction that one of the motivations for synthetic data generation is the difficulty of obtaining large amounts of annotated data that can be used to train models.
+One domain where this is a particular issue is medical research. For this reason, medical researchers have used both classic augmentation techniques as well as GANs to generate medical imaging data that can be used to train models to diagnose disease.
+Using synthetic data to augment the real data has generally increased the classification accuracy, opening the door to 
+
+- Brain imaging (tumors / Alzheimers): DCGAN [GAN-based synthetic brain PET image generation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7105582/)
+
+- Liver imaging (tumors): DCGAN [GAN-based Synthetic Medical Image Augmentation for increased CNN Performance in Liver Lesion Classification](https://www.sciencedirect.com/science/article/abs/pii/S0925231218310749), researchers found an increase in classification accuracy when they augmented the dataset of liver lesion images using DCGAN.
+
+- Lung imaging (pneumonia): StyleGAN2 [You Don’t Have to Be Perfect to Be Amazing: Unveil the Utility of Synthetic Images](https://arxiv.org/abs/2305.18337)
+
+- Retinal imaging (glaucoma): ProGANs [Assessment of Deep Generative Models for High-Resolution Synthetic Retinal Image Generation of Age-Related Macular Degeneration](https://jamanetwork.com/journals/jamaophthalmology/fullarticle/2720489)
