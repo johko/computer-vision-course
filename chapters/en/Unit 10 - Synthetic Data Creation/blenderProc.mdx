@@ -1,76 +1,101 @@
-# Using a 3D renderer to Generate Synthetic Data
+# Using a 3D Renderer to Generate Synthetic Data
 
-When generating synthetic data, ideally we want it to be as close as possible to real data. Physically Based Renderers (PBR) such as Blender Cycles or Unity help to improve photorealism by modeling lighting and surfaces in a phyically accurate manner. Advantages of PBR include the ability to control parameters and compute metrics by comparing to the ground truth (generation parameters).
+When creating computer-generated images to use as a synthetic training data, ideally we want the images to look as realistic as possible.
+Physically Based Renderers (PBR) such as Blender Cycles(https://www.blender.org)
+or [Unity](https://unity.com) help to improve photorealism by modeling lighting and surfaces in a phyically accurate manner.
+
+Think about how an object appears in different lighting conditions. PBR ensures that the appearance of an object remains consistent
+across various environments and lighting setups. This is important because in real life, objects don't change their fundamental look
+just because you moved them to a different room or changed the time of day.
+
+PBR also simplifies the workflow. Instead of manually tweaking many parameters to get the right look,
+you can use a set of standardized materials and lighting models.
+This makes the process more intuitive and user-friendly.
+
+Now, think about training artificial intelligence models like those used in computer vision.
+If you're teaching a computer to recognize objects in images, it's beneficial to have a diverse set of
+images that closely mimic real-world scenarios. PBR helps in generating synthetic data that looks so real that it can be used
+to train computer vision models effectively.
+
+## Blender
+
+[Blender](https://www.blender.org) is an open source 3D renderer that can be used to generate synthetic data. Say you wanted to create a synthetic
+dataset of elephant images because you wanted to train a model to monitor elephants in the wild. You could use the python python environment [bpy](https://docs.blender.org/api/current/info_advanced_blender_as_bpy.html) to generate
+a large number of images with the location, rotation, and background of the elephant randomized.
+In addition, it can also help with segmentation, depth, and normal and pose estimation.
+
+Great! How do we get started? Unfortunately, there is a pretty steep learning curve associated with Blender.
+Here is an elephant image generated in Blender.
+
+![elephant image](URL)
+
+The elephant image is not bad, but it took quite a few steps:
+
+- Create the elephant model using Photogrammetry.
+- Create the background - this was a multi-step process!
+- Tinker with the lighting and camera positions.
+- Fix the location and rotation of the elephant so that it fit within the frame (or camera view).
+
+None of this is too complicated, but wouldn't it be nice if we could render the dataset without trying to figure all of this out?
+Luckily for us, there is a library called BlenderProc that has all the scripts we need to render realistic synthetic data and annotations and it is built on top of Blender.
 
 ## BlenderProc
 
-We are going to use [BlenderProc](https://arxiv.org/abs/1911.01911) to generate our synthetic data. BlenderProc is a procedural Blender pipeline which helps in generating real looking images for the training of convolutional neural networks.
-Note: I will add more info about BlenderProc here.
+The BlenderProc pipeline was introducted in [BlenderProc (Denninger, Sundermeyer, Winkelbauer, Zidan, Olefir, Elbadrawy, Lodhi & Katam, 2019)](https://arxiv.org/abs/1911.01911).
+It is specifically created to help in the generation of realistic looking images for the training of convolutional neural networks.  
+ It has the following properties which make it a great choice for synthetic data generation:
 
-We will render our synthetic data in Google Colab. The first step is to clone the offical [BlenderProc](https://github.com/DLR-RM/BlenderProc) repository.
+- Procedural Generation: Enables the automated creation of complex 3D scenes with variations using procedural techniques.
+- Simulation: Supports the integration of simulations, including physics simulations, to enhance realism.
+- Large-Scale Generation: Designed to handle large-scale scene generation efficiently, making it suitable for diverse applications.
+- Automation and Scalability:
+  - Scripting: Allows users to automate the generation process by employing python scripts to tailor BlenderProc to their specific needs and configure parameters.
+  - Parallel Processing: Supports parallel processing for scalability, making it efficient for generating a large number of scenes.
 
-```bash
-!git clone https://github.com/DLR-RM/BlenderProc.git
-%cd "BlenderProc"
-```
+You can install BlenderProc via pip:
 
-We then install it using pip.
+`pip install blenderProc`
 
-```bash
-!pip install -e .
-```
+Alternately, you can install BlenderProc with git:
 
-The next code cell is a little bit of "house-keeping" to enable us to run BlenderProc inside of Google Colab.
+`git clone https://github.com/DLR-RM/BlenderProc`
 
-```bash
-import os
+BlenderProc must be run inside the blender python environment (bpy), as this is the only way to access the blender API.
 
-os.environ["LD_PRELOAD"] = ""
+`blenderproc run <your_python_script>`
 
-!apt remove libtcmalloc-minimal4
-!apt install libtcmalloc-minimal4
+Check out this notebook to try BlenderProc in Google Colab.
 
-os.environ["LD_PRELOAD"] = "/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.9"
-```
+## Blender Resources
 
-To be able to use matplotlib inside BlenderProc, we have to install ipykernel inside blender's python environment. As this is the first blenderproc command, it will also install Blender.
+- [User Manual](https://docs.blender.org/manual/en/latest/0)
+- [Awesome-blender -- Extensive list of resources](https://awesome-blender.netlify.app)
+- [Blender Youtube Channel](https://www.youtube.com/@BlenderOfficial)
 
-<Tip>
-  Instead of running the script with the usual python interpreter, the command
-  line interface of BlenderProc has to be used!
-</Tip>
+### The following video explains how to render a 3D syntehtic dataset in Blender:
 
-<Tip warning={true}>
-  Installing Blender can take a while. Please be patient!
-</Tip>
+<Youtube id="E1Pqpfg5kSo" />
 
-```python
-!blenderproc pip install ipykernel --blender-install-path ./
-```
+### The following video explains how to create a 3D object using Photogrammetry:
 
-We are all set now to render our data. We are going to demo the basic example provided by the BlenderProc library. When we run this command, BlenderProc will render rgb, normals and depth.
+<Youtube id="Pcqokf3PG_4" />
 
-```python
-!blenderproc run examples/basics/basic/main.py examples/resources/camera_positions examples/resources/scene.obj examples/basics/basic/output --blender-install-path
-```
+## Papers / Blogs
 
-- `examples/basics/basic/main.py` is the path to the python file with pipeline configuration
+- [Developing digital twins of multi-camera metrology systems in Blender](https://iopscience.iop.org/article/10.1088/1361-6501/acc59e/pdf_)
+- [Generate Depth and Normal Maps with Blender](https://www.saifkhichi.com/blog/blender-depth-map-surface-normals)
+- [Object detection with synthetic training data](https://medium.com/rowden/object-detection-with-synthetic-training-data-f6735a5a34bc)
 
-The main.py script takes three arguments:
+## BlenderProc Resources
 
-- `examples/resources/camera_positions` is a text file with the parameters of the camera camera_positions
-- `examples/resources/scene.obj` is the path to the object file with the basic scene
-- `examples/basics/basic/output` is the path to the output directory
+- [BlenderProc Github Repo](https://github.com/DLR-RM/BlenderProc)
+- [Documentation](https://dlr-rm.github.io/BlenderProc/)
 
-<Tip>
-  We need to add `--blender-install-path` when we are running inside of Google
-  Colab
-</Tip>
+### The following video provides an overview of the BlenderProc pipeline:
 
-## Visualize the Data
+<Youtube id="1AvY_iS6xQA" />
 
-Now we can visualize our data:
+## Papers
 
-```python
-%run "-m" "blenderproc" "vis" "hdf5" "examples/basics/basic/output/0.hdf5"
-```
+- [BlenderProc: Reducing the Reality Gap with Photorealistic Rendering](https://elib.dlr.de/139317/1/denninger.pdf)
+- [OBJECT DETECTION AND AUTOENCODER-BASED 6D POSE ESTIMATION FOR HIGHLY CLUTTERED BIN PICKING](https://arxiv.org/pdf/2106.08045.pdf)
