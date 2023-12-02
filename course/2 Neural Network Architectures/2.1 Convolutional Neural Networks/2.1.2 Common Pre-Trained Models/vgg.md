@@ -45,7 +45,7 @@ Below is the network structure of VGG16, The activation and dropout layers were 
 
 
 
-3. Key Comparisons 
+## Key Comparisons 
 
 - VGG (16 or 19 layers) was relatively deeper than other SOTA networks at the time. AlexNet, the winning model for ILSVRC 2012 only has 8 layers.
 - Multiple small (3X3) receptive field filters with ReLU activation instead of one large (7X7 or 11X11) filter lead to better learning of complex features. Smaller filters also mean fewer parameters per layer, with additional nonlinearity introduced in between.
