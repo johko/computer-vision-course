@@ -53,7 +53,7 @@ Below is the network structure of VGG16, The activation and dropout layers were 
 - Consistency and simplicity of the VGG network make it easier to scale or modify for future improvements.
 
 
-4. Pytorch Example
+## PyTorch Example
 
 ```
 
