@@ -30,15 +30,48 @@ This is the repository for a community-led course on Computer Vision. Once finis
 
 ### 🤝 How to contribute to the course
 Important Note: If you’ve never contributed to open-source projects on GitHub, kindly read [this document](https://www.notion.so/19411c29298644df8e9656af45a7686d?pvs=25) to learn how to do so.
-1. One person from your team should create a fork of this repository
-2. Add your team members as collaborators to the fork
-3. Add a branch for your section
-4. Create `.mdx` files or Jupyter Notebooks for the chapters you want to contribute to
-5. Add the notebooks to the fork
-6. Work on the notebooks in your team and collaborate via standard git functionalities
-7. Make sure to update the requirements.txt file in the root of the repository
-8. When you feel like you are ready, create a pull request to this repository
+
+Before you, start reading more on the contribution guidelines, this is how our course outline looks like:
+
+```
+.
+└── course/
+    └── chapters/
+        ├── chapter0/
+        │   ├── introduction.mdx
+        │   └── getting_started.mdx
+        ├── chapter1/
+        │   └── ...mdx
+        └── _toctree.yml
+```
+
+1. For each main chapter (example: chapter: 0), you are requested to raise an issue.
+ 
+2. Now any one or group of contributors can discuss and should come up with a granular structure of table of contents. For example, consider the Chapter 3: Vision Transformers.
+   1. So, we create an issue for Vision Transformers.
+   2. Under this, we can create three issues on main topics each (Transformers Architecture, Common ViTs, Transfer Learning and Fine-tuning ViTs)
+   3. In the last level of granularity, under each topics there can be some bunch of sub-topics, [here is an example](https://github.com/johko/computer-vision-course/issues/53#issuecomment-1837081001).
+   4. Now not going through this recursive loop, each sub-topics should be an atomic issue, assigned to some one. That atomic issue, should also reference the topic issue and the chapter issue. An example:
+      1. Suppose someone wants to contribute on how fine-tuning is done on object detection. So the contributor creates an issue on "Fine-tuning ViTs for object detection"
+      2. Inside that issue, the contributor must reference the topic issue i.e. `Transfer Learning and Fine-tuning ViTs` and the chapter issue: `Vision Transformers`, so that we can tag those accordingly.
+   
+3. **🚧 For this part, I am not sure.** Each contributor should work on a sub-topic level. Each topic should follow a branch naming convention. For example: `vit/tl-ft/object-detection`. The contributor forks the repo and makes a branch and simply works on that sub-topic. Once done, in the PR, it should not be merged to `main`. Rather that PR should be a part of a sub-branch. Example: `main:vit/tl-ft` < - `merveenoyan:vit/tf-ft/object-detection`. (Where `tl-ft` is transfer-learning and fine-tuning). Once, every sub-topics are merged, then the maintainers will merge `main:vit/tl-ft` to main.
+   
+    **Note:** The contributors, simply needs to work on their PR under their fork. They are not required to put additional headaches on understanding and maintaining branch structures necessarily 😊. That can be handled by course maintainers. (if this structure get's approved, we can make a small video on how to easily get started to contributing through a video 🤗)
+
+4. Create `.mdx` files or Jupyter Notebooks for the sub-topics you want to contribute to
+5. Make sure to update the requirements.txt file in the root of the repository
+6. You can also make teams with your fellow mates. Where your team-mates can act as reviewers under your forked repo, before merging to main repo. That way, it's more collaborative fun and less overwhelming for main course maintainers and reviewers to review. Also, for each contributions, there should be a limited number of reviewers (example: 3-4). 
+7. When you feel like you are ready, create a pull request to this repository 
+
+   
 **Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
+
+The reason, we are doing trying to keep this structure of contribution guidelines, is because of the following reasons:
+
+1. We are seeing a lot of folks are interested in contributing this public course.
+2. Maintainers can track easily the status of each parts of the course.
+3. Also, interested contributors can easily work with teams (where each team-member can be reviewer for the other) and totally async as well. We totally respect your time, and it might be hard to sync up and work togather everytime 😊.
 
 ## 📆 Deadlines
 
