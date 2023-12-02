@@ -1,0 +1,84 @@
+# Introduction
+
+What is a point cloud?
+
+A point cloud refers to a collection of individual points, each representing a sample of a surface within a three-dimensional space denoted by [x, y, z] 
+coordinates. Beyond their spatial coordinates, these points often carry additional attributes like normals, RGB color, albedo, and Bidirectional Reflectance Distribution Function (BRDF). 
+These attributes serve crucial roles in various applications such as modeling, rendering, and scene comprehension.
+
+While the concept of point cloud data isn't new and has been integral in fields like graphics and physics simulation for many years, its significance has notably surged due to two key trends. 
+Firstly, the widespread availability of cost-effective and user-friendly point cloud acquisition devices has significantly increased accessibility. 
+Secondly, the rise of applications leveraging point clouds, including cultural heritage modeling and rendering, 
+Augmented Reality, and autonomous vehicles, has further underscored their relevance in today's technological landscape.
+
+
+Ok, so now we know what a Point Cloud is, what can we do with them??
+
+The application of 3D Point Data is mainly into autonomous vehicles but now other computer visions related AI models 
+like drones and robots are also using LiDAR for better visual perception.
+
+# Generation and Data Representation :
+
+We will be using the python library point-cloud-utils, and open-3d which can be installed by
+
+``` pip install point-cloud-utils ```
+
+
+We will be also using the python library open-3d, which can be installed by
+
+``` pip install open3d   ``` 
+
+OR 
+
+``` pip install open3d-cpu ```
+
+
+
+Now, the first thing that we need to understand the formats in which these PointClouds are stored in, and for that, we need to look at MeshCloud
+
+## Why?
+
+- Point-cloud-utils supports reading many common mesh formats (PLY, STL, OFF, OBJ, 3DS, VRML 2.0, X3D, COLLADA). 
+- If it can be imported into MeshLab, we can read it! (from their readme)
+
+## The type of file is inferred from its file extension.Some of the extensions supported are :-
+
+- PLY  (Polygon File Format)
+    - A simple PLY object consists of collection of elements for representation of the object. It consists of a list of (x,y,z) triples of a vertices and a list of faces that are actually indices into the list of vertices. 
+    - Vertices and faces are two examples of elements and majority of the PLY file consists of these two elements. 
+    - New properties can also be created and attached to the elements of an object, but these should be added in such a way that old programs do not break when these new properties are encountered
+- STL  (Standard Tessellation Language)
+    - This format approximates the surfaces of a solid model with triangles.
+    - These triangles are also known as facets, where each facet is described by a perpendicular direction and three points representing the vertices of the triangle. 
+    - However, these files have no description of Color and Texture
+
+- OFF  (Object File Format)
+    - Object File Format (.OFF) files are used to represent the geometry of a model by specifying the polygons of the model's surface. The polygons can have any number of vertices. 
+    - It supports ASCII text versions of objects for the purpose of interchange, and binary versions for efficiency of reading and writing
+
+- OBJ  ()
+    - The OBJ file format is an open data-format that represents 3D geometry alone — namely, the position of each vertex, the position of each vertex in a coordinate system. 
+    - OBJ coordinates have no units, but OBJ files can contain scale information in a readable comment line.
+
+- 3DS  (3D Sudio)
+    - A file with .3ds extension represents 3D Sudio mesh file format used by Autodesk 3D Studio.
+    - The 3DS format utilizes a binary file structure, enabling faster and smaller file sizes compared to text-based formats, with data organized into chunks within the file. 
+    - These Chunks store the shapes, lighting, and viewing information that together represent the three-dimensional scene.
+
+- VRML (Virtual Reality Modeling Language) 
+
+- X3D   (Extensible 3D Graphics)
+    - X3D is an XML based 3D graphics file format for presentation of 3D information. It is a modular standard and is defined through several ISO specifications. 
+    - The format supports vector and raster graphics, transparency, lighting effects, and animation settings including rotations, fades, and swings.
+    - X3D has the advantage of encoding colour information (unlike STL) that is used during printing the model on a colour 3D printer
+
+- DAE (Digital Asset Exchange)
+    - This is an XML schema which is an open standard XML schema, from which DAE files are built.
+    - This file format is based on the COLLADA (COLLAborative Design Activity) XML schema which is an open standard XML schema for the exchange of digital assets among graphics software applications
+    - The format's biggest selling point is its compatibility across multiple platforms. 
+    - COLLADA files aren't restricted to one program or manufacturer. Instead, they offer a standard way to store 3D assets.
+
+
+ ## Now we'll learn on how to generate these point clouds
+
+ 
