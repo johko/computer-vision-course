@@ -1,9 +1,19 @@
-# Computer Vision Community Course
+![Header](https://github.com/johko/computer-vision-course/assets/53175384/afabfd9d-7e2f-451c-a13c-f751f2adbafb)
 
-This is the repository for a community-led course on Computer Vision. Below, you can find how you can help us in this effort.
+# Hugging Face Computer Vision Community Course
 
+This is the repository for a community-led course on Computer Vision. Once finished, the course will be released in huggingface.co/learn. Below, you can find how you can help us in this effort.
 
-### How to get started
+### Table of Contents
+
+- 🏃‍♂️ **How to get started**
+- 🤝 **How to contribute to course**
+- 📆 **Deadlines**
+- 💝 **Prizes**
+- 📝 **Content guidelines (Syntax, Notebooks, Becoming a Reviewer)**
+- 🫂 **Asking for Help**
+
+### 🏃‍♂️ How to get started
 
 1. Join us in Discord 👾
 
@@ -15,9 +25,11 @@ This is the repository for a community-led course on Computer Vision. Below, you
 (Please only sign up for two chapters maximum for now.)
 3. Connect with your team members in Discord
 
+   
 
-### How to contribute to the course
 
+### 🤝 How to contribute to the course
+Important Note: If you’ve never contributed to open-source projects on GitHub, kindly read [this document](https://www.notion.so/19411c29298644df8e9656af45a7686d?pvs=25) to learn how to do so.
 1. One person from your team should create a fork of this repository
 2. Add your team members as collaborators to the fork
 3. Add a branch for your section
@@ -26,8 +38,34 @@ This is the repository for a community-led course on Computer Vision. Below, you
 6. Work on the notebooks in your team and collaborate via standard git functionalities
 7. Make sure to update the requirements.txt file in the root of the repository
 8. When you feel like you are ready, create a pull request to this repository
+**Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
 
-### Syntax and Doc Rules ❗️❗️
+## 📆 Deadlines
+
+We are aiming to have the version 1 of the course with this sprint. 
+
+**Sprint Beginning:** Dec 3rd
+
+**Submission for Pull Request Reviews Deadline:** Dec 13th
+
+**Iterating over Pull Reviews until:** Dec 27th
+
+First version will be complete before December 29th.
+
+## 💝 Prizes
+
+We will have prizes for those who contribute to the course 🤗 
+Moreover, each contributor will have their name added to credits section of the associated chapter.
+
+- We will provide one month of Hugging Face PRO subscription or GPU grant.
+- You can earn the special merch made for this sprint (with the logo of this sprint). 👕👚
+
+The amount of contribution required to earn the prizes will be announced. Stay tuned!
+
+  
+### 📝 Content Guidelines
+
+**Syntax and Doc Rules ❗️❗️**
 
 These rules are required to render the course on hf.co/learn 😊 
 1. Every chapter should have a main header (h1, e.g. # Introduction) before the content. 
@@ -114,7 +152,7 @@ Thanks to Hugging Face's documentation builder, when we add `[[open-in-colab]]` 
 
 ### Become a Reviewer
 
-Is everything already assigned, but you still really want to contribute to the course? No worries, you can still become a reviewer! This will allow you to review the notebooks and READMEs and give feedback to the authors.
+Is everything already assigned, but do you want to contribute to the course? No worries, you can still become a reviewer! This will allow you to review the notebooks and READMEs and give feedback to the authors.
 
 1. Go [here](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and at the bottom choose the "Reviewers" tab,
 2. Add your first name and GitHub username,
@@ -124,6 +162,9 @@ Is everything already assigned, but you still really want to contribute to the c
 6. Share your feedback and ideas with the authors on how they can improve. In the long term, we're aiming to make a robust, high-quality course accessible to everyone!
 7. Finally, every PR can be merged when it has two approvals from reviewers.
 
+### 🗣 Asking for Help
+
+Do not hesitate to ask for help in #cv-community-project channel. 🫂 
 
 ### Tips and Hints
 
