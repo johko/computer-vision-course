@@ -50,12 +50,14 @@ Before you, start reading more on the contribution guidelines, this is how our c
 3. Each chapter can contain multiple topics and sub-topics. All of that should be defined in the chapter outline. Also, for each sub-topics, a single contributor should be assigned to work on that. See more in this [example](https://github.com/johko/computer-vision-course/discussions/80).
 4. Interested contributors motivated to work in a common chapter can come along togather to form a team. Where each contributor can directly contribute to a sub-topic and other fellow teammates can act as reviewers.
 5. One contributor from each team should fork the repository and other contributors should mutually agree on working collaboratively under that forked repo. 
-6. After each sub-topics is finished by a team member, other members will review and approve it. And then they can push it the actual main repo. 
-7. When contributor works on a subtopic, then they should follow the below instructions:
+6. Under the forked repo, contributors should create an issue (i.e. the sub-topic name) and that issue link should be referenced in that corresponding sub-topic section in the main chapter outline. So, that the main admins can also get updated on status of each chapters and topics. 
+7. After each sub-topics is finished by a team member, other members will review and approve it. And then they can push it the actual main repo. 
+8. When contributor works on a subtopic, then they should follow the below instructions:
    1. Create `.mdx` files or Jupyter Notebooks for the sub-topics you want to contribute to
    2. Make sure to update the requirements.txt file in the root of the repository
    3.  When you feel like you are ready, create a pull request to this repository. 
-   4.  Your teammates will review your PR under that forked repo and then if things get approve, you can create the PR to merge it our main branch 🤗
+   4.  Once a PR is ready, let one the contributor (who will be in-charge of the forked repo) know about this. The contributor should after that update the status of outline by referencing that sub-topic with that PR. So that the admin can also be notified and updated on progress. So finally each sub-topic inside the chapter outline should look like this `sub-topic name | issue-link | PR-link`. Example: `Fine-tuning Vision Transformer for object detection | issue #x PR #y`
+   5.  Your teammates will review your PR under that forked repo and then if things get approve, you can create the PR to merge it our main branch 🤗
 
    
 **Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
