@@ -1,13 +1,13 @@
 # Using a 3D Renderer to Generate Synthetic Data
 
-When creating computer-generated images to use as synthetic training data, ideally, we want the images to look as realistic as possible.
+When creating computer-generated images to use as synthetic training data, ideally we want the images to look as realistic as possible.
 Physically Based Renderers (PBR) such as Blender Cycles(https://www.blender.org)
 or [Unity](https://unity.com) help to create images that are super realistic and look and feel just like they do in the real world.
 
 Imagine you're creating an image of a shiny apple. Now, when you color that apple, you want it to look realistic, right?
 That's where something called PBR comes in.
 Okay, let's break it down:
-Colors and Light:
+_Colors and Light:_
 
 - When light shines on objects, it interacts with them in different ways. PBR tries to understand and simulate this interaction.
   • Think about how light hits the apple. Some parts may be brighter where the light directly hits, and some parts might be darker where the light is blocked or doesn't reach as much.
@@ -21,8 +21,8 @@ _Textures:_
 
 _Realism:_
 • PBR aims to make things look as close to real life as possible. It does this by considering how light behaves in reality, how different materials interact with light, and how surfaces have small imperfections.
-Layers of Light:
-• Imagine you're looking at a glass of water. PBR thinks about how the light passes through the water and how it might distort what you see.
+_Layers of Light:_
+• Imagine you're looking at a glass of water. PBR will try to simulate the way light passes through the water and how it might distort what you see.
 • It considers multiple layers of how light interacts with different parts of an object, making your drawing more realistic.
 
 PBR also simplifies the workflow. Instead of manually tweaking many parameters to get the right look,
@@ -46,7 +46,9 @@ walking through a basic example of rendering a synthetic image of an elephant.
 
 Here are the essential steps:
 
-- Create the elephant model (the one shown below was created with the Metascan app using Photogrammetry).
+- Create the elephant model. The one shown below was created with the [Metascan](https://metascan.ai) app using Photogrammetry.
+  Photogrammetry is a way of turning regular photos into a 3D model. It's like taking a bunch of pictures of your toy from different angles
+  and then using those pictures to make a computer version of it.
 - Create the background - this was a multi-step process. See [here](https://github.com/kfahn22/Synthetic-Data-Creation-in-Blender/tree/main/BACKGROUND)
   for a more detailed explanation.
 - Adjust the lighting and camera positions.
