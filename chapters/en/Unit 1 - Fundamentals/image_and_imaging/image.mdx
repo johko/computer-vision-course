@@ -12,7 +12,24 @@ Matrices are commonly used to represent images, often as a 2-D numerical array. 
 Alternatively, images might be represented as graphs where each edge is a coordinate and the edges are the neighboring coordinates. Take a moment to let that sink in, this means that the algorithms and models that are used for graphs can also be used for images. The inverse can also be true, you might be able to transform a graph into an image and analyze it as if it were a picture.
 
 ## Difference between Image and Video
-#TODO
+In computer vision, images and videos are two forms of visual data, but they differ in how they store temporal information.
+An image is a static representation of a scene captured at a single point in time. While a video is a
+sequence of images played back at a rate that creates an illusion of motion.
+
+### Key Differences
+
+|   | Feature                | Image                                           | Video                                               |
+|---|------------------------|-------------------------------------------------|-----------------------------------------------------|
+| 1 | Type                   | Single moment in time                           | Sequence of images over time                        |
+| 2 | Data Representation    | 2D array of pixels                              | 3D array of frames                                  |
+| 3 | File types             | JPEG,PNG,RAW, etc.                              | MP4,AVI, MOV, etc.                                  |
+| 4 | Data Augmentation	     | Flipping, rotating, cropping	                   | Temporal jittering, speed variations, occlusion     |
+| 5 | Feature Extraction	    | Edges, textures, colors	                        | Edges, textures, colors, optical flow, trajectories |
+| 6 | Learning Models	       | CNNs                                            | RNNs, 3D CNNs                                       |
+| 7 | Machine Learning Tasks | Image classification, segmentation              | Video action recognition, temporal modeling         |
+| 8 | Computational Cost	    | Less expensive	                                 | More expensive                                      |
+| 9 | Applications           | Facial recognition for security access control	 | Sign language interpretation for live communication |
+
 
 ## Images vs other forms of data
 
