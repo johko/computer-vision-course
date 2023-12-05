@@ -35,9 +35,9 @@ Before you, start reading more on the contribution guidelines, this is how our c
 
 ```
 .
-└── course/
-    └── chapters/
-        ├── chapter0/
+
+└── chapters/
+	├── chapter0/
         │   ├── introduction.mdx
         │   └── getting_started.mdx
         ├── chapter1/
