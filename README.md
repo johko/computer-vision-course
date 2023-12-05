@@ -57,7 +57,7 @@ Before you, start reading more on the contribution guidelines, this is how our c
    2. Make sure to update the requirements.txt file in the root of the repository
    3.  When you feel like you are ready, create a pull request to this repository. 
    4.  Once a PR is ready, let one the contributor (who will be in-charge of the forked repo) know about this. The contributor should after that update the status of outline by referencing that sub-topic with that PR. So that the admin can also be notified and updated on progress. So finally each sub-topic inside the chapter outline should look like this `sub-topic name | issue-link | PR-link`. Example: `Fine-tuning Vision Transformer for object detection | issue #x PR #y`
-   5.  Your teammates will review your PR under that forked repo and then if things get approve, you can create the PR to merge it our main branch 🤗
+   5.  Your teammates will review your PR under that forked repo and then if things get approved, you can create the PR to merge it in our main branch 🤗
 
    
 **Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
