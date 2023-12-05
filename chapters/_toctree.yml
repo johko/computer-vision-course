@@ -2,3 +2,7 @@
   sections:
   - local: chapter0/1
     title: Introduction
+- title: Unit 12. Ethics and Bias
+  sections:
+  - local: chapters/en/Unit 12 - Ethics and Biases/pre-intro
+    title: What you'll learn
