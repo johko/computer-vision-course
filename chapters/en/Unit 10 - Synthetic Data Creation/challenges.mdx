@@ -1,15 +1,15 @@
 # Challenges With Using Synthetic Data
 
 You have learned how to generate synethic data using several different methods.
-Unfortunately, there are some
+Before using synthetic data to train a model, there are some questions that need to be answered.
 
-## The Dataset does not Represent Adequately Reflect Real World Data
+## Does the Dataset Adequately Represent Reflect Real World Data?
 
 One of the challenges is that synthetic data might not perfectly represent the complexity
 and diversity of the real-world data. It's like trying to paint a picture of a forest using only
 a few colors – you might capture some aspects, but it won't be as rich as the real thing.
 
-## Overfitting
+## Is there Overfitting?
 
 Overfitting occurs when a machine learning model learns
 the training data so well that it doesn't perform well on new, unseen data.
@@ -33,7 +33,7 @@ If your synthetic data contains noise that isn't present in real data, the model
 Your model might get really good at recognizing patterns in the synthetic data, but those patterns might not exist
 or may be different in the real world.
 
-## Biases in Synthetic Data Generation
+## Are there Biases in the Synthetic Data?
 
 If the process of generating synthetic data has biases or inaccuracies, your model may unintentionally
 learn and perpetuate those biases. Beware of the following pitfalls:
@@ -47,17 +47,8 @@ If the data you used to create the synthetic images already had biases, your com
 learn and replicate those biases. It's like copying a friend's notes without realizing they made a mistake
 – your computer might end up with the same misunderstandings.
 
-_Favoring Overrepresented Groups:_
-If certain groups or objects are overrepresented in your synthetic data,
-your computer might become better at recognizing them and not as good at handling underrepresented groups. It's similar to practicing a sport with only one type of opponent – you might struggle when facing different challenges.
-Ignoring Less Prominent Features:
-Your computer might focus on the features that stand out the most in your synthetic data and ignore the less prominent ones. It's like drawing a picture where the brightest colors grab your attention, but you forget about the subtle details.
-Unintended Stereotypes:
-If your synthetic data includes unintentional stereotypes, your computer might start making decisions based on those stereotypes. It's like reading a book that unintentionally portrays certain characters in a biased way – your computer might adopt those biases.
-Not Capturing Real-World Complexity:
-The real world is complex, with various factors influencing how things look and interact. If your synthetic data oversimplifies things, your computer might struggle to handle the complexities of real-world scenarios. It's like learning about science from a simplified children's book and then facing complex experiments in a high school lab.
-Missing Out on Cultural Sensitivity:
-If your synthetic data doesn't consider cultural differences, your computer might not understand or respond appropriately to various cultural contexts. It's like learning a language without understanding the cultural nuances – you might miss the meaning behind certain expressions.
+## Does the Dataset Reflect the Real World Diversity?
+
 _Transferability Issues:_
 Your model might struggle to transfer its knowledge from the synthetic environment to the real world.
 It's like being really good at playing a video game but finding it challenging to apply those skills
