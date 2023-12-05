@@ -52,7 +52,7 @@ Before you, start reading more on the contribution guidelines, this is how our c
 5. One contributor from each team should fork the repository and other contributors should mutually agree on working collaboratively under that forked repo. 
 6. Under the forked repo, contributors should create an issue (i.e. the sub-topic name) and that issue link should be referenced in that corresponding sub-topic section in the main chapter outline. So, that the main admins can also get updated on status of each chapters and topics. 
 7. After each sub-topics is finished by a team member, other members will review and approve it. And then they can push it the actual main repo. 
-8. When contributor works on a subtopic, then they should follow the below instructions:
+8. When contributors work on a subtopic, they should follow the below instructions:
    1. Create `.mdx` files or Jupyter Notebooks for the sub-topics you want to contribute to
    2. Make sure to update the requirements.txt file in the root of the repository
    3.  When you feel like you are ready, create a pull request to this repository. 
