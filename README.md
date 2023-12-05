@@ -46,7 +46,7 @@ Before you, start reading more on the contribution guidelines, this is how our c
 ```
 
 1. First go to the [discussion section](https://github.com/johko/computer-vision-course/discussions/).
-2. Each new chapter outline should be put up under a pined dicussion. As shown as in this [example](https://github.com/johko/computer-vision-course/discussions/80). 
+2. Each new chapter outline should be put up under a pinned discussion. As shown in this [example](https://github.com/johko/computer-vision-course/discussions/80). 
 3. Each chapter can contain multiple topics and sub-topics. All of that should be defined in the chapter outline. Also, for each sub-topics, a single contributor should be assigned to work on that. See more in this [example](https://github.com/johko/computer-vision-course/discussions/80).
 4. Interested contributors motivated to work in a common chapter can come along togather to form a team. Where each contributor can directly contribute to a sub-topic and other fellow teammates can act as reviewers.
 5. One contributor from each team should fork the repository and other contributors should mutually agree on working collaboratively under that forked repo. 
