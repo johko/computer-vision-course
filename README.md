@@ -30,15 +30,36 @@ This is the repository for a community-led course on Computer Vision. Once finis
 
 ### 🤝 How to contribute to the course
 Important Note: If you’ve never contributed to open-source projects on GitHub, kindly read [this document](https://www.notion.so/19411c29298644df8e9656af45a7686d?pvs=25) to learn how to do so.
-1. One person from your team should create a fork of this repository
-2. Add your team members as collaborators to the fork
-3. Add a branch for your section
-4. Create `.mdx` files or Jupyter Notebooks for the chapters you want to contribute to
-5. Add the notebooks to the fork
-6. Work on the notebooks in your team and collaborate via standard git functionalities
-7. Make sure to update the requirements.txt file in the root of the repository
-8. When you feel like you are ready, create a pull request to this repository
+
+Before you, start reading more on the contribution guidelines, this is how our course outline looks like:
+
+```
+.
+└── course/
+    └── chapters/
+        ├── chapter0/
+        │   ├── introduction.mdx
+        │   └── getting_started.mdx
+        ├── chapter1/
+        │   └── ...mdx
+        └── _toctree.yml
+```
+
+1. First go to the [discussion section](https://github.com/johko/computer-vision-course/discussions/).
+2. Each new chapter outline should be put up under a pinned discussion. As shown in this [example](https://github.com/johko/computer-vision-course/discussions/80). 
+3. Each chapter can contain multiple topics and sub-topics. All of that should be defined in the chapter outline. Also, for each sub-topic, a single contributor should be assigned to work on that. See more in this [example](https://github.com/johko/computer-vision-course/discussions/80).
+4. Interested contributors motivated to work in a common chapter can come together to form a team. Where each contributor can directly contribute to a sub-topic and other fellow teammates can act as reviewers.
+5. One contributor from each team should fork the repository and other contributors should mutually agree on working collaboratively under that forked repo. 
+6. Under the forked repo, contributors should create issues (that will be the sub-topic name) and start working on that issue. 
+7. When contributors work on a subtopic, they should follow the below instructions:
+   1. Create `.mdx` files or Jupyter Notebooks for the sub-topics you want to contribute to
+   2. Make sure to update the requirements.txt file in the root of the repository
+   3.  When you feel like you are ready, create a pull request to this repository. 
+   4.  Your teammates will review your PR under that forked repo and then if things get approved, you can create the PR to merge it in our main branch 🤗
+
+   
 **Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
+
 
 ## 📆 Deadlines
 
