@@ -29,7 +29,7 @@ A good descriptor in the context of image processing or computer vision is a set
 5. **Repeatability:** Descriptors should be consistent and reproducible across multiple instances of the same object or scene, even in the presence of noise or minor variations.
 6. **Compatibility with Matching Algorithms:**  Descriptors are often used with matching algorithms to find correspondences between different images. A good descriptor should be suitable for the matching algorithm, whether based on distance metrics, machine learning models, or other techniques.
 7. **Computational Efficiency:** Efficiency is crucial to a descriptor, especially in real-time applications. Descriptors should be computationally feasible for quick processing, particularly in scenarios where speed is crucial, such as robotics or autonomous vehicles.
-1. **Adaptability:** Descriptors that can adapt or learn from the data they are processing can be highly effective, especially in situations where the characteristics of the objects or scenes may change over time. This can increase the useability of the descriptor.
+8. **Adaptability:** Descriptors that can adapt or learn from the data they are processing can be highly effective, especially in situations where the characteristics of the objects or scenes may change over time. This can increase the useability of the descriptor.
 1. **Noise Robustness:** Descriptors should be able to handle noise in the image data without significantly compromising their ability to accurately represent the underlying features.
 
 ## **Some of the Techniques used in feature descriptors**
