@@ -32,7 +32,7 @@ A good descriptor in the context of image processing or computer vision is a set
 8. **Adaptability:** Descriptors that can adapt or learn from the data they are processing can be highly effective, especially in situations where the characteristics of the objects or scenes may change over time. This can increase the useability of the descriptor.
 1. **Noise Robustness:** Descriptors should be able to handle noise in the image data without significantly compromising their ability to accurately represent the underlying features.
 
-## **Some of the Techniques used in feature descriptors**
+## Some Techniques used in Feature Descriptors
 
 1. **SIFT :**  It stands for scale invariant feature transform. It is widely used algorithm in computer vision and image processing for detecting and describing local features in images.
 
