@@ -1,6 +1,6 @@
-![Header](https://github.com/johko/computer-vision-course/assets/53175384/afabfd9d-7e2f-451c-a13c-f751f2adbafb)
+![course](https://github.com/johko/computer-vision-course/assets/53175384/21590a24-d664-4c18-b5e9-6d37fd832141)
 
-# Hugging Face Computer Vision Community Course
+# Community-led Computer Vision Community Course Sprint 🤗
 
 This is the repository for a community-led course on Computer Vision. Once finished, the course will be released in huggingface.co/learn. Below, you can find how you can help us in this effort.
 
