@@ -29,13 +29,6 @@ _Overly Consistent Background_
 _Overly Consistent Location_
 ![](URL)
 
-<Tip>
-  Try to make sure your dataset reflects the variety found in the real world!
-</Tip>
-
-_Nice Variety_
-![](URL)
-
 ## Are there biases in the synthetic data?
 
 If the process of generating synthetic data has biases or inaccuracies, your model may unintentionally
@@ -44,11 +37,18 @@ learn and perpetuate those biases. Beware of the following pitfalls:
 _Limited Diversity:_
 
 One challenge is that synthetic data fail to adequately represent the complexity
-and diversity of the real data. The circle example might have seemed trivial, but there are lots of situations where failing
+and diversity of the real data. The circle example might seem trivial, but there are lots of situations where failing
 to account for the wide variety of people, places, animals, or objects will result in a model that doesn't perform well. For
 example, suppose you wanted to train a model to monitor the population of an endangered species, such as aye-aye lemurs.  
 If your synthetic dataset only contains images of ring-tailed lemurs, the model might struggle to accurately identify aye-aye lemurs in the wild.
 This limitation could lead to errors in population assessments.
+
+<Tip>
+  Try to make sure your dataset reflects the variety found in the real world!
+</Tip>
+
+_Nice Variety_
+![](URL)
 
 _Copying Existing Biases:_
 
@@ -65,7 +65,7 @@ only makes sense if it ultimately saves resources (money, time, etc.).
 ## What is the perceived quality of the synthetic images?
 
 Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
-so good. A model trained with the low-quality images might fail to detect pneumonia because they contain noise that isn't present in the real images.
+so good. A model trained with the low-quality images might fail to detect pneumonia because the they contained noise that isn't present in the real images.
 It is also possible that your model might also get really good at recognizing patterns in the synthetic data, but those patterns might not exist
 or may be different in the real world.
 
