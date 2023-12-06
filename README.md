@@ -1,4 +1,4 @@
-![course](https://github.com/johko/computer-vision-course/assets/53175384/21590a24-d664-4c18-b5e9-6d37fd832141)
+![Course](https://github.com/johko/computer-vision-course/assets/53175384/58e39903-5a3a-4d48-8f3c-5811f31b93b5)
 
 # Community-led Computer Vision Community Course Sprint 🤗
 
