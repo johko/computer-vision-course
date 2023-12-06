@@ -20,12 +20,12 @@ Sometime people will refer to different image channels. Fear not! Image channels
 
 The most common color models is the RGB (Red, Green, Blue). Three colors, the channels, three F(X, Y). In this model, the true color of a coordinate (x, y) is given by the combination of the three different F(x,y) at that same location. Combined these three colors describe a wide spectrum of colors.
 
-If you only looking at the F(x, y) for one color, we called the gray level or the intensity.  The intensity values for each channel typically range from 0 to 255, where 0 represents no intensity and 255 represents maximum intensity. If you are in a different color system, these values might change so it is important to understand where your data come from. 
+If you're only looking at the F(x, y) for one color, we called the gray level or the intensity.  The intensity values for each channel typically range from 0 to 255, where 0 represents no intensity and 255 represents maximum intensity. If you are in a different color system, these values might change so it is important to understand where your data come from.
 
 On occasion, it is also possible to hear that people are working on 4D or 5D images/ this terminology is mostly used by people in the biomedical field and microscopists. Again fear not! This naming came to be from people that image volumetric data in time, different channels, or different imaging modalities (i.e. photo and an x-ray). The idea is that each new source of information becomes an extra dimension. 
 
 
-But how are they represented in the computer? Most commoly by matrices. It is easy to picture an image as a 2-D numerical array. This is an advantage because arrays are easy to deal with in computers. Apart from different performances in memory and reading, most different image formats end up in your script as a numpy array. Seeing matrices as images helps to understand some of the processes in convolution neural networks and an a image preprocessing, which we will see in latter chapters. For instace, aligning an image might be decompose into a mix of rotation and shearing operations much like the tipical linear algebra problem. 
+But how are they represented in the computer? Most commonly by matrices. It is easy to picture an image as a 2-D numerical array. This is an advantage because arrays are easy to deal with in computers. Apart from different performances in memory and reading, most different image formats end up in your script as a numpy array. Seeing matrices as images helps to understand some of the processes in convolution neural networks and an a image preprocessing, which we will see in latter chapters. For instace, aligning an image might be decompose into a mix of rotation and shearing operations much like the tipical linear algebra problem.
 
 Alternatively, images might be represented as graphs where each edge is a coordinate and the edges are the neighboring coordinates. Take a moment to let that sink in, this means that the algorithms and models that are used for graphs can also be used for images. The inverse can also be true, you might be able to transform a graph into an image and analyze it as if it were a picture.
 
@@ -48,17 +48,17 @@ sequence of images played at a rate that creates an illusion of motion. This rat
 
 ### Key Differences
 
-|   | Feature                | Image                                           | Video                                               |
-|---|------------------------|-------------------------------------------------|-----------------------------------------------------|
-| 1 | Type                   | Single moment in time                           | Sequence of images over time                        |
-| 2 | Data Representation    | Tipically a 2D array of pixels                              | Tipically a 3D array of frames                                  |
-| 3 | File types             | JPEG,PNG,RAW, etc.                              | MP4,AVI, MOV, etc.                                  |
-| 4 | Data Augmentation	     | Flipping, rotating, cropping	                   | Temporal jittering, speed variations, occlusion     |
-| 5 | Feature Extraction	    | Edges, textures, colors	                        | Edges, textures, colors, optical flow, trajectories |
-| 6 | Learning Models	       | CNNs                                            | RNNs, 3D CNNs                                       |
-| 7 | Machine Learning Tasks | Image classification, Segmentation, Object Detection              | Video action recognition, temporal modeling, tracking      |
-| 8 | Computational Cost	    | Less expensive	                                 | More expensive                                      |
-| 9 | Applications           | Facial recognition for security access control	 | Sign language interpretation for live communication |
+|   | Feature                | Image                                                | Video                                                 | Audio                                                                     | Tabular Data                                                         |
+|---|------------------------|------------------------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------------|----------------------------------------------------------------------|
+| 1 | Type                   | Single moment in time                                | Sequence of images over time                          | Single moment in time                                                     | Structured data organized in rows and columns                        |
+| 2 | Data Representation    | Typically a 2D array of pixels                       | Typically a 3D array of frames                        | Typically a 1D array of audio samples                                     | Spreadsheet, Database tables                                         |
+| 3 | File types             | JPEG,PNG,RAW, etc.                                   | MP4,AVI, MOV, etc.                                    | WAV, MP3, FLAC, etc.                                                      | CSV, Excel (.xlsx, .xls), Database formats, etc.                     |
+| 4 | Data Augmentation	     | Flipping, rotating, cropping	                        | Temporal jittering, speed variations, occlusion       | Background noise addition, reverberation, spectral manipulation           | Imputation, One-hot encoding, scaling                                |
+| 5 | Feature Extraction	    | Edges, textures, colors	                             | Edges, textures, colors, optical flow, trajectories   | Spectrogram, Mel-Frequency Cepstral Coefficients (MFCCs), Chroma features | Statistical analysis, Feature engineering, Data aggregation          |
+| 6 | Learning Models	       | CNNs                                                 | RNNs, 3D CNNs                                         | CNNs, RNNs                                                                | Linear Regression, Decision Trees, Random Forests, Gradient Boosting |
+| 7 | Machine Learning Tasks | Image classification, Segmentation, Object Detection | Video action recognition, temporal modeling, tracking | Speech recognition, speaker identification, music genre classification    | Regression, Classification, Clustering                               |
+| 8 | Computational Cost	    | Less expensive	                                      | More expensive                                        | Moderate to high                                                          | Generally less expensive compared to others                          |
+| 9 | Applications           | Facial recognition for security access control	      | Sign language interpretation for live communication   | Voice assistants, Speech-to-text, Music genre classification              | Predictive modeling, Fraud detection, Weather forecasting            |
 
 We will discuss more about video specific tasks at the Video Chapter. 
 
@@ -74,5 +74,5 @@ this part could be improved i.e. compare image to audio and more tabular data po
 ## Images vs other forms of data
 
 In tabular data, dimensionality is usually defined by the number of features (columns) describing one data point. In data, dimensionality usually refer to the cardinality of your combined dimensions. Due to the spatial relation in the data each pixel contributes to add more dimensions to the data. Features that describe your image are usually generated by traditional preprocessing or learned throught deep learning methods. Thus feature extraction in an image involves different algorithms discussed in detail in the next chapter of this unit.
-Moreover, tabular data often require the handlign of missing values, encodning categorical variables and re-scaling numerical features. The analogous process for image data is image resizing, normalization or data augmentation. We call these processes pre-processing and we will discuss them in greater detail in the chapter "pre-processing for computer vision".
+Moreover, tabular data often require the handling of missing values, encoding categorical variables and re-scaling numerical features. The analogous process for image data is image resizing, normalization or data augmentation. We call these processes pre-processing and we will discuss them in greater detail in the chapter "pre-processing for computer vision".
 
