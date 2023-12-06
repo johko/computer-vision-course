@@ -1,7 +1,7 @@
 # Challenges and Pitfalls Associated With Using Synthetic Data
 
 In this unit, we have learned how to generate synthetic data using several different methods.
-Before using synthetic data to train a model, however, there are several important things you should consider.
+Before using synthetic data to train a model, however, there are several important things that should be considered.
 
 ## Does the Dataset Adequately Reflect Real World Data?
 
@@ -13,16 +13,18 @@ a few colors – you might capture some aspects, but it won't be as rich as the 
 
 Overfitting occurs when a machine learning model learns the training data so well that it doesn't perform well on new, unseen data.
 It's akin to learning a specific way to solve a math problem but realizing that it doesn't work for all types of problems.
-If the process of generating synthetic data is too simple or their are overly consistent patterns, your model might overfit to the limited variations
+If the process of generating synthetic data is too simple or there are are overly consistent patterns, your model might overfit to the limited variations
 present in the synthetic data. For example, if you trained a model on the following synthetic
 dataset of 25 circles and 25 squares it will probably learn to associate circles with the color red and squares with the color blue. If you
-trained an object classifier using this dataset it would likely fail if presented with a red square.
+trained an shape classifier using this dataset it would likely fail if presented with a red square.
 
 ![](URL)
 
-## Are there problems data quality?
+## What is the perceived quality of synthetic images?
 
-Let's consider our the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
+FID / IS / CAS
+
+Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
 so good. A model trained with the low-quality images might fail to detect pneumonia because they contain noise that isn't present in the real images.
 Your model might also get really good at recognizing patterns in the synthetic data, but those patterns might not exist
 or may be different in the real world.
@@ -47,9 +49,17 @@ learn and replicate those biases. It's like copying a friend's notes without rea
 Generating high-quality synthetic data can be computationally expensive. This may pose challenges in terms
 of both time and resources, especially for complex models or large datasets.
 
-## Concluding Remarks
+## Classification Accuracy Score
+
+## Conclusion
 
 Even after training your model, it's crucial to continuously monitor its performance in real-world scenarios.
 If your model encounters new situations or trends that weren't present in the synthetic data, it might struggle to adapt.
 Addressing these challenges involves thoughtful design of the synthetic data generation process, careful evaluation
 of the model's performance on real data, and ongoing efforts to enhance the model's robustness and fairness.
+
+## Resources
+
+- [Analyzing Effects of Fake Training Data on the Performance of Deep Learning Systems](https://arxiv.org/pdf/2303.01268.pdf)
+- [Bridging the Gap: Enhancing the Utility of Synthetic Data Via Post-Processing Techniques](https://arxiv.org/pdf/2305.10118.pdf)
+- [Classification Accuracy Score for Conditional Generative Models](https://arxiv.org/abs/1905.10887)
