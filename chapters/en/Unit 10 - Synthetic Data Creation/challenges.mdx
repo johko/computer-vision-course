@@ -6,7 +6,7 @@ Before using synthetic data to train a model, however, there are several importa
 ## Does the Dataset Adequately Reflect Real World Data?
 
 One challenge is that synthetic data might not adequately represent the complexity
-and diversity of the real-world data. It's like trying to paint a picture of a forest using only
+and diversity of the real-world data. It's like trying to paint a picture of a flower garden using only
 a few colors – you might capture some aspects, but it won't be as rich as the real thing.
 
 ## Is there overfitting?
@@ -14,20 +14,34 @@ a few colors – you might capture some aspects, but it won't be as rich as the 
 Overfitting occurs when a machine learning model learns the training data so well that it doesn't perform well on new, unseen data.
 It's akin to learning a specific way to solve a math problem but realizing that it doesn't work for all types of problems.
 If the process of generating synthetic data is too simple or there are are overly consistent patterns, your model might overfit to the limited variations
-present in the synthetic data. For example, if you trained a model on the following synthetic
-dataset of 25 circles and 25 squares it will probably learn to associate circles with the color red and squares with the color blue. If you
-trained an shape classifier using this dataset it would likely fail if presented with a red square.
+present in the synthetic data. As a very simple example, if you trained a model using a synthetic
+dataset of 25 red circles and 25 blue squares it will probably learn to associate circles with the color red and squares with the color blue. If you
+then trained an shape classifier using this dataset it would likely fail if presented with a red square.
 
+<Tip warning="true">
+  Be sure the double check that your dataset doesn't have the following types of
+  patterns!
+</Tip>
+
+_Overly Consistent Color_
 ![](URL)
 
-## What is the perceived quality of synthetic images?
+_Overly Consistent Size_
+![](URL)
 
-FID / IS / CAS
+_Overly Consistent Background_
+![](URL)
 
-Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
-so good. A model trained with the low-quality images might fail to detect pneumonia because they contain noise that isn't present in the real images.
-Your model might also get really good at recognizing patterns in the synthetic data, but those patterns might not exist
-or may be different in the real world.
+_Overly Consistent Location_
+![](URL)
+
+<Tip">
+Try to make sure your dataset reflects the variety found in the real world!
+
+</Tip>
+ 
+_Nice Variety_
+![](URL)
 
 ## Are there biases in the synthetic data?
 
@@ -35,11 +49,15 @@ If the process of generating synthetic data has biases or inaccuracies, your mod
 learn and perpetuate those biases. Beware of the following pitfalls:
 
 _Limited Diversity:_
-If your synthetic data doesn't include a wide variety of people, places, or objects, your computer might
-not fully grasp the diversity of the real world. It's like studying only one chapter of a history book and missing
-out on the richness of different cultures and experiences.
+
+The circle example might have seemed trivial, but there are lots of real world situations where failing
+to account for the wide variety of people, places, animals, or objects will result in a model that doesn't perform well. For
+example, suppose you wanted to train a model to monitor the population of an endangered species, such as aye-aye lemurs.  
+If your synthetic dataset only contains images of ring-tailed lemurs, the model might struggle to accurately identify aye-aye lemurs in the wild.
+This limitation could lead to errors in population assessments.
 
 _Copying Existing Biases:_
+
 If the data you used to create the synthetic images already had biases, your the model might unintentionally
 learn and replicate those biases. It's like copying a friend's notes without realizing they made a mistake
 – your computer might end up with the same misunderstandings.
@@ -47,9 +65,25 @@ learn and replicate those biases. It's like copying a friend's notes without rea
 ## Does the benefits of using synthetic data outweight the computational cost?
 
 Generating high-quality synthetic data can be computationally expensive. This may pose challenges in terms
-of both time and resources, especially for complex models or large datasets.
+of both time and resources, especially for complex models or large datasets. As a general rule, generating and using a synthetic data
+only makes sense if it ultimately saves resources (money, time, etc.).
 
-## Classification Accuracy Score
+## What is the perceived quality of synthetic images?
+
+Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
+so good. A model trained with the low-quality images might fail to detect pneumonia because they contain noise that isn't present in the real images.
+Your model might also get really good at recognizing patterns in the synthetic data, but those patterns might not exist
+or may be different in the real world. A good practice is to evaluate your dataset using a measure such as FID, IS, or CAS.
+
+_Classification Accuracy Score (CAS):_
+
+$$\text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}$$
+
+The primary purpose of creating a synthetic image dataset is likely to train a machine learning model. Classification accuracy provides a straightforward and easily interpretable metric to evaluate how well your model is performing on the synthetic data. Going back to our lemur example,
+CAS helps evaluate how well the model is learning from the synthetic dataset, with a higher accuracy indicates that the model is effectively
+capturing the features and patterns of lemurs. Low accuracy scores for certain classes may indicate issues with the synthetic data generation process.
+This could include problems such as unrealistic backgrounds, incorrect textures, or inconsistent lighting conditions.
+By analyzing class-specific accuracy, you can identify and address these issues to improve the overall quality of the synthetic dataset.
 
 ## Conclusion
 
