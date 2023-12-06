@@ -35,11 +35,10 @@ _Overly Consistent Background_
 _Overly Consistent Location_
 ![](URL)
 
-<Tip">
-Try to make sure your dataset reflects the variety found in the real world!
-
+<Tip>
+  Try to make sure your dataset reflects the variety found in the real world!
 </Tip>
- 
+
 _Nice Variety_
 ![](URL)
 
@@ -73,9 +72,31 @@ only makes sense if it ultimately saves resources (money, time, etc.).
 Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
 so good. A model trained with the low-quality images might fail to detect pneumonia because they contain noise that isn't present in the real images.
 Your model might also get really good at recognizing patterns in the synthetic data, but those patterns might not exist
-or may be different in the real world. A good practice is to evaluate your dataset using a measure such as FID, IS, or CAS.
+or may be different in the real world. A good practice is to evaluate your dataset using a measure such as Frechet Inception Distance (FID), IS, or the Classification
+Accuracy Score (CAS).
 
-_Classification Accuracy Score (CAS):_
+_FID:_
+
+FID uses a pre-trained neural network model, often Inception, which is good at recognizing objects in images.
+The model is used to extract features from both the real and generated images.
+FID calculates the Frechet distance between the feature distributions of real and generated images.
+The Frechet distance is a measure of how "far" one distribution is from another,
+taking into account both the mean and covariance of the distributions.
+
+A low FID suggests that the feature distributions of real and generated images are similar and the generated images are statistically
+close to the real images in terms of features, making them more realistic and harder to distinguish.
+
+FID$$(\mu_1, \Sigma_1, \mu_2, \Sigma_2) = \|\mu_1 - \mu_2\|^2 + \text{Tr}(\Sigma_1 + \Sigma_2 - 2(\Sigma_1^{1/2}\Sigma_2\Sigma_1^{1/2})^{1/2})$$
+
+Here:
+
+- $$\mu_1$$ and $$\mu_2$$ are the mean vectors of the two distributions
+- $$\Sigma_1$$ are $$\Sigma_2$$ the covariance matrices of the two distributions
+- $$\| * \|$$ denotes the Euclidean or L2 norm
+- $$\text{Tr}$$ represents the trace of a matrix
+- The notation $$\Sigma^{1/2}$$ denotes the square root of the covariance matrix
+
+_CAS:_
 
 $$\text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}$$
 
@@ -92,8 +113,9 @@ If your model encounters new situations or trends that weren't present in the sy
 Addressing these challenges involves thoughtful design of the synthetic data generation process, careful evaluation
 of the model's performance on real data, and ongoing efforts to enhance the model's robustness and fairness.
 
-## Resources
+## Resources and Further Reading
 
 - [Analyzing Effects of Fake Training Data on the Performance of Deep Learning Systems](https://arxiv.org/pdf/2303.01268.pdf)
 - [Bridging the Gap: Enhancing the Utility of Synthetic Data Via Post-Processing Techniques](https://arxiv.org/pdf/2305.10118.pdf)
+- [CIFAKE: Image Classification and Explanable Identification of AI-Generated Synthetic Images](https://arxiv.org/pdf/2303.14126.pdf)
 - [Classification Accuracy Score for Conditional Generative Models](https://arxiv.org/abs/1905.10887)
