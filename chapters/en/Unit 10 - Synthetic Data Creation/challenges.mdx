@@ -1,7 +1,7 @@
 # Challenges and Pitfalls Associated With Using Synthetic Data
 
 In this unit, we have learned how to generate synthetic data using several different methods.
-Before using synthetic data to train a model, however, there are several important things that should be considered.
+Before using synthetic data to train a model, however, there are several important things that need to be considered.
 
 ## Does the Dataset Adequately Reflect Real World Data?
 
@@ -72,7 +72,7 @@ only makes sense if it ultimately saves resources (money, time, etc.).
 Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
 so good. A model trained with the low-quality images might fail to detect pneumonia because they contain noise that isn't present in the real images.
 Your model might also get really good at recognizing patterns in the synthetic data, but those patterns might not exist
-or may be different in the real world. A good practice is to evaluate your dataset using a measure such as Frechet Inception Distance (FID), IS, or the Classification
+or may be different in the real world. A good practice is to evaluate your dataset using a measure such as Frechet Inception Distance (FID), Inception Score (IS), or the Classification
 Accuracy Score (CAS).
 
 _FID:_
@@ -95,6 +95,14 @@ Here:
 - $$\| * \|$$ denotes the Euclidean or L2 norm
 - $$\text{Tr}$$ represents the trace of a matrix
 - The notation $$\Sigma^{1/2}$$ denotes the square root of the covariance matrix
+
+_IS:_
+
+IS uses a pre-trained Inception model to evaluate the quality of generated images produced by generative models, particularly GANs.
+For each generated image, the Inception model assigns a score based on its confidence in recognizing objects within that image.
+High scores indicate that the Inception model is confident and certain about the content of the image. It also takes into account the diversity of the generated images.
+It's important to note that the Inception Score has been criticized for not always correlating with human judgment
+of image quality. While it provides insights into the performance of a generative model, it might not capture all aspects of visual fidelity and creativity.
 
 _CAS:_
 
@@ -119,3 +127,7 @@ of the model's performance on real data, and ongoing efforts to enhance the mode
 - [Bridging the Gap: Enhancing the Utility of Synthetic Data Via Post-Processing Techniques](https://arxiv.org/pdf/2305.10118.pdf)
 - [CIFAKE: Image Classification and Explanable Identification of AI-Generated Synthetic Images](https://arxiv.org/pdf/2303.14126.pdf)
 - [Classification Accuracy Score for Conditional Generative Models](https://arxiv.org/abs/1905.10887)
+- [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500)
+- [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498)
+  [Metrics](https://github.com/huggingface/community-events/tree/main/huggan/pytorch/metrics)
+- [pytorch-fid](https://github.com/mseitzer/pytorch-fid)
