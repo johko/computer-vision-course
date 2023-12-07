@@ -1,8 +1,8 @@
 ﻿# **Feature Description**
 
-## **How can we represent features in data structures?**
+## **How can we represent features in Images?**
 
-Representing features in data structures is crucial for organizing and manipulating data effectively. Features, also known as attributes or variables, can be diverse, ranging from numerical values and categories to more complex structures like images or text. Here are some ways to represent features in data structures:
+Representing features in images is crucial for organizing and manipulating image effectively. Features, also known as attributes or variables, can be diverse, ranging from numerical values and categories to more complex structures like images or text. Here are some ways to represent features in image:
 
 1. **Numerical features**
 2. **Arrays/Lists:** Simplest form to store numerical values. Each element in the array corresponds to a feature.
@@ -34,7 +34,8 @@ A good descriptor in the context of image processing or computer vision is a set
 
 ## Some Techniques used in Feature Descriptors
 
-1. **SIFT :**  It stands for scale invariant feature transform. It is widely used algorithm in computer vision and image processing for detecting and describing local features in images.
+ ### SIFT :
+  It stands for scale invariant feature transform. It is widely used algorithm in computer vision and image processing for detecting and describing local features in images.
 
 The working of SIFT is given below:
 1. **Scale Space Extrema detection:** It starts by detecting potential interest points in an image across multiple scales. It looks for locations in the image where the difference of Gaussian function reaches a maximum or minimum over space and scale. These keypoint locations are considered stable under various scale changes.
@@ -45,7 +46,8 @@ The working of SIFT is given below:
 
 SIFT's robustness to various image transformations and its ability to find distinctive features in an image make it valuable in applications like object recognition, image stitching, and 3D reconstruction.
 
-**2. SURF:** It stands for Speeded Up Robust features. It is another popular algorithm in computer vision and image processing. It is particularly known for its speed and robustness in detecting and describing local image features.
+### SURF :
+It stands for Speeded Up Robust features. It is another popular algorithm in computer vision and image processing. It is particularly known for its speed and robustness in detecting and describing local image features.
 
 The basic workflow of SURF is given below:
 
