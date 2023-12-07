@@ -1,6 +1,7 @@
-# Challenges and Pitfalls Associated With Using Synthetic Data
+# Challenges and Opportunities Associated With Using Synthetic Data
 
-In this unit, we have learned how to generate synthetic data using several different methods.
+Training machine learning models requires vast amounts of data. In this unit, we have learned that synthetic data can help
+address privacy issues, augment limited data, and address imbalances in real data. We have learned how to generate synthetic data using several different methods.
 Before using synthetic data to train a model, however, there are several important things that need to be considered.
 
 ## Is there overfitting?
@@ -36,12 +37,13 @@ learn and perpetuate those biases. Beware of the following pitfalls:
 
 _Limited Diversity:_
 
-One challenge is that synthetic data fail to adequately represent the complexity
+One challenge is that synthetic data may fail to adequately represent the complexity
 and diversity of the real data. The circle example might seem trivial, but there are lots of situations where failing
 to account for the wide variety of people, places, animals, or objects will result in a model that doesn't perform well. For
 example, suppose you wanted to train a model to monitor the population of an endangered species, such as aye-aye lemurs.  
-If your synthetic dataset only contains images of ring-tailed lemurs, the model might struggle to accurately identify aye-aye lemurs in the wild.
-This limitation could lead to errors in population assessments.
+If your dataset only contains images of ring-tailed lemurs, the model might struggle to accurately identify aye-aye lemurs in the wild.
+This limitation could lead to errors in population assessments. The great thing is that if you are mindful of any imbalances in the underlying dataset,
+you can potentially use synthetic data to de-bias the real data by augmenting with synthetic data from the under-represented class.
 
 <Tip>
   Try to make sure your dataset reflects the variety found in the real world!
@@ -102,7 +104,8 @@ By analyzing class-specific accuracy, you can identify and address these issues 
 Even after training your model, it's crucial to continuously monitor its performance in real-world scenarios.
 If your model encounters new situations or trends that weren't present in the synthetic data, it might struggle to adapt.
 Addressing these challenges involves thoughtful design of the synthetic data generation process, careful evaluation
-of the model's performance on real data, and ongoing efforts to enhance the model's robustness and fairness.
+of the model's performance on real data, and ongoing efforts to enhance the model's robustness and fairness. Applying these
+principles will help to unlock the potential of synthetic data!
 
 ## Resources and Further Reading
 
