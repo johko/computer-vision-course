@@ -6,11 +6,11 @@ There are several approaches to how you can use a multimodal model for your task
 
 1. **Zero\few-shot learning**. Zero\few-shot learning involves leveraging large pretrained models capable of solving problems not present in the training data. These approaches can be useful when there is little labeled data for a task (5-10 examples). or there is none at all. [Unit 11](https://) will delve deeper into this topic.
 
-2. **Training the model from scratch**. When pretrained model weights are unavailable or the pre-trained model's dataset substantially differs from your own, this method becomes necessary. Here, we initialize model weights randomly (or via more sophisticated methods like He initialization) and proceed with usual training. However, this approach demands substantial amounts of training data.
+2. **Training the model from scratch**. When pretrained model weights are unavailable or the pre-trained model's dataset substantially differs from your own, this method becomes necessary. Here, we initialize model weights randomly (or via more sophisticated methods like [He initialization](https://arxiv.org/abs/1502.01852)) and proceed with usual training. However, this approach demands substantial amounts of training data.
 
 3. **Transfer learning**. Transfer learning, unlike training from scratch, uses the weights of the pretrained model as initial weights.
 
-This chapter primarily focuses on the transfer learning aspect within multimodal models. It will recap what transfer learning entails, elucidate its advantages, and provide practical examples illustrating how you can apply transfer learning to your tasks.
+This chapter primarily focuses on the transfer learning aspect within multimodal models. It will recap what transfer learning entails, elucidate its advantages, and provide practical examples illustrating how you can apply transfer learning to your tasks!
 
 ## Transfer learning
 

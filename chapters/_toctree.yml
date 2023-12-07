@@ -2,3 +2,8 @@
   sections:
   - local: chapter0/1
     title: Introduction
+
+- title: Unit 4. Multimodal Models
+  sections:
+  - local: chapters/en/Unit 4 - Mulitmodal Models/tranfer_learning
+    title: Transfer learning
