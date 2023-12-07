@@ -1,0 +1,113 @@
+# Synthetic Data Generation Using DCGAN
+
+We learned in Unit 5 that a GAN is a framework in machine learning where two neural networks, a Generator and a Discriminator, are in a constant duel.
+The Generator creates synthetic data (like images), and the Discriminator tries to distinguish between real and fake data.
+They keep improving through this adversarial process, with the Generator getting better at creating realistic data,
+and the Discriminator getting better at telling what's real.
+
+We now will look at how we can use a GAN to generate medical images, a domain that is
+is challenged with small datasets, privacy concerns, and a limited amount of annotated samples. Researchers have used GANs to generate synthetic images such as lung X-ray images, retina images,
+brain scans, and liver images. In [GAN-based synthetic brain PET image generation](https://braininformatics.springeropen.com/counter/pdf/10.1186/s40708-020-00104-2.pdf), the authors
+created brain PET images for three different stages of Alzheimer’s disease. [GAN-based Synthetic Medical Image Augmentation for increased CNN Performance in Liver Lesion Classification](https://arxiv.org/abs/1803.01229)
+generated synthetic liver images. [BrainGAN: Brain MRI Image Generation and Classification Framework Using GAN Architectures and CNN Models](https://www.mdpi.com/1424-8220/22/11/4297) developed a
+framework for generating brain MRI images using multiple GAN architectures, and [A Novel COVID-19 Detection Model Based on DCGAN and Deep Transfer Learning](https://www.sciencedirect.com/science/article/pii/S1877050922007463) used DCGAN to generate synthetic lung X-ray images to aid in COVID-19 detection.
+
+## DCGAN (Deep Convolutional Generative Adversarial Network):
+
+DCGAN was proposed in [Unsupervised Representation Learning With Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434) by Radford, et al. and is the model
+most often used for medical imaging. We are going to use it to generate synthetic lung
+images.
+
+Here are the basic steps:
+
+_Data Collection:_
+
+First, We need to obtain a dataset of real lung images.
+We will be downloading the [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) dataset from [Kaggle](https://www.kaggle.com).
+You can learn more about the dataset by looking at the Datacard on Kaggle.
+
+_Data Preprocessing:_
+
+We will preprocess the lung images by resizing and normalizing the pixel values.
+
+_DCGAN Architecture:_
+
+The generator network takes random noise as input and generates synthetic lung images, while the discriminator network tries to distinguish between real and synthetic images.
+Use convolutional layers in both the generator and discriminator to capture spatial features effectively.
+
+We will use the following model architecture:
+
+Generator(
+(main): Sequential(
+(0): ConvTranspose2d(100, 512, kernel_size=(4, 4), stride=(1, 1), bias=False)
+(1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(2): ReLU(inplace=True)
+(3): ConvTranspose2d(512, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(5): ReLU(inplace=True)
+(6): ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(8): ReLU(inplace=True)
+(9): ConvTranspose2d(128, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(11): ReLU(inplace=True)
+(12): ConvTranspose2d(64, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(13): Tanh()
+)
+)
+
+Discriminator(
+(main): Sequential(
+(0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(1): LeakyReLU(negative_slope=0.2, inplace=True)
+(2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(4): LeakyReLU(negative_slope=0.2, inplace=True)
+(5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(7): LeakyReLU(negative_slope=0.2, inplace=True)
+(8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+(9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+(10): LeakyReLU(negative_slope=0.2, inplace=True)
+(11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), bias=False)
+(12): Sigmoid()
+)
+)
+
+## Training:
+
+Train the DCGAN on the prepared lung image dataset.
+The generator aims to produce synthetic lung images that are indistinguishable from real images,
+while the discriminator learns to correctly classify the images as real or synthetic.
+We start by initializing the generator with random noise and will train for 100 epochs.
+Let's visualize the progress:
+
+![]()
+
+## How did we do?
+
+We can see that some of the synthetic lung images look good, but some are hazy. Researchers generating synthetic medical images typically
+employee a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with
+with the real data to train the model.
+
+![]()
+
+[[Link to Notebook]]
+
+## Resources and Further Reading
+
+[A Novel COVID-19 Detection Model Based on DCGAN and Deep Transfer Learning](https://www.sciencedirect.com/science/article/pii/S1877050922007463)
+[Augmentation_Gan](https://github.com/rossettisimone/AUGMENTATION_GAN)
+[BrainGAN: Brain MRI Image Generation and Classification Framework Using GAN Architectures and CNN Models](https://www.mdpi.com/1424-8220/22/11/4297)
+[DCGAN_faces_tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
+[DR-DCGAN: A Deep Convolutional Generative Adversarial Network (DC-GAN) for Diabetic Retinopathy Image Synthesis](<https://www.webology.org/data-cms/articles/20220204053948pmwebology%2019%20(2)%20-%2077%20.pdf>)
+[Deepfake Image Generation for Improved Brain Tumor Segmentation](https://aps.arxiv.org/abs/2307.14273)
+[GANs for Medical Image Synthesis: An Empirical Study](https://arxiv.org/abs/2105.05318)
+[guided-diffusion](https://github.com/openai/guided-diffusion)
+[Medical image editing in the latent space of Generative Adversarial Networks](https://pdf.sciencedirectassets.com/777072/1-s2.0-S2666521221X00026/1-s2.0-S2666521221000168/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBUaCXVzLWVhc3QtMSJGMEQCIBa2IzG%2BGD7Hjv%2FP20jDKyseswGT785LUQTMmFQjT9ntAiAt%2ByfhQJqJAI2NCOKnVzH%2BxMlTWf2x2uIw2i2OLFOz8yqzBQh%2BEAUaDDA1OTAwMzU0Njg2NSIM9ECuDI1xe%2FlWShlYKpAFeTDTJvita0xvKNmqULElNZxagyOdEwqClxL95y0AJuzQy0JT%2B0LhTDbjmKoo5Ogc5UMO9m2jGU6lz%2BT5Yzt2l90D23PG2J%2BJaJl9ZMJ5KNTYmhfPg4s9gagUsawY7tauMY33wX%2FsgUbWTDQE2Mz7PS0x2YlxGnb%2BebDWUpBiLf%2BoO2%2BGmjA6oV7SltJ1pdF31j3JLngHd12sojW4quFyWSfDBdaj4wCtB%2BVE9CpLBUEnKsHP2DKjzShYc7gCnAYFG1UPNK01u01M4B6%2FAdRi2R9ncY5%2FWybIWZvfncuUv7qbApeKpDbqFvtLb5DovYdVuwp6saKqWWcE%2FGGZdEXioyY%2BLq592cxszrsj72cZ62LKq4mjEt7zoSLPqoVw81BgvsN9VPuBgdlLW0naZA1AD3nYi6Wy%2BUWBjdW6aJ8N5BvY%2B%2BbklAyHIxluEFldW%2BI0sumf7sOdXElgo0j5AumRZdqD9wqDj61YDt%2B86jj6WUkbAbp2kFK2jfaW%2FP6K8yNlCPlGAKee%2FuhOmSPyDidFzwl1du5clnwuIc4CoP3H%2FWLbwKyX1yqXLkvuLeDsIPpjVP8TtOIqLecOWh8RUAntXZ1CNGDI9RZ5ZxT2fBR%2BAih3nYrSnK4G6IQd74QHUi1OFBBjeleDxIkRZcQd6%2BxRV%2FwXvxSMkNSqDiarQxDUSye642M0vDKvDUvdkkIGfh66HwcLabMUyPa3dIRXOVpiPnLKURgrBdEIXsnriMjx2QtEcNDjGZ8S79530EBKvbrOXb3IpDmznAHdIev1wiFenFj1bxsZamn0HSnAUyd7D6d%2Fh%2FB7WeQX5LPFBX2PWKp7aRUaKs7loUT33jcM0PM8gm4aa3qKzPOJdfUDNBAnh0sw45C%2BqwY6sgGhtXuoYqWJBG7SH%2FCkul2joDgNZnUrz0LGR8clMLjdkdIWCb7nc1e0uwXvsNr83g4DPGkfAy%2F1pDKVYAkiTVbtarpBim4E9Thb0nLZTC5wfGQEnanfSSg4qaOaRJqA71bb5E6lYHhWegnp8QCd8YFhYdzr3zu7ob62jm0a1qgVbV1vVLQb05KtZKmFALk0mHVtr9TY7TRO4LuhhAaudJ5NAMejYX5hDniK6gLciipYntn9&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231205T213802Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYW2PFS26D%2F20231205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=8977d4b5fb2b4de6557b6ea514c4dd5619738cb8b40bd4b065a0fd0336ba0c26&hash=8db4b852cee5cfe8a167405a15a1356e6963505c298b057892e52f08718b3a03&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2666521221000168&tid=spdf-617c5bac-a956-4354-813c-b5a5dd6f023c&sid=76355fc83e9a45429678a98306d31967ba09gxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=0f17565253015501520e&rr=830f6f0a4ca66fd4&cc=us)
+[Medical Image Synthesis with Context-Aware Generative Adversarial Networks](https://arxiv.org/abs/1612.05362)
+[MedSynAnalyzer](https://github.com/ayanglab/MedSynAnalyzer)[dcgan_faces_tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
+[pytorch-fid](https://github.com/mseitzer/pytorch-fid/blob/master/src/pytorch_fid/fid_score.py)
+[StudioGAN: A Taxonomy and Benchmark of GANs for Image Synthesis](https://arxiv.org/abs/2206.09479)
+[PyTorch-StudioGAN](https://github.com/POSTECH-CVLab/PyTorch-StudioGAN)
+[Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434)
