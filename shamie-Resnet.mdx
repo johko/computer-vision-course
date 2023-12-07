@@ -1,0 +1,20 @@
+Resnet Paper Summary:
+
+Introduction:
+Observed Problem: Degradation Problem
+As the depth of the neural network deepens, the accuracy starts to saturate.
+
+The pre-existing perspectives of deeper layers were always thought of as effective because the perfomance of neural networks improved a lot by deepening the layers,
+since as the layers deepened, the level of extracted features could be further enrinched such as was seen with VGG16 and VGG19.
+A question arised: "Is learning networks as easy as stacking more layers"?
+The obstacle to answering this question, "gradient vanishing problem", was adressed by Normalised initializations and intermediate normalization layers.
+However, the degradation problem was observed, as the depth of the neural network deepened, the accuracy gets saturated and degrades rapidly. An experiment to explore the problem
+was conducted, comparing a shalloww model and a deep model. The training error and the test error of the Deeper model increased than with the shallow model. This was not because of overfitting but because the training error increased when the network deepened.
+
+Experiments with Resnet Showed that when used, even extremly deep neural networks, were easy to optimize with Resnet and the deeper the network, the higher the accuracy,compared to Plain-net which showed increased training error when the networks deepened.
+
+TODO:
+Resnet Architecture
+
+TODO:
+Resnet Code
