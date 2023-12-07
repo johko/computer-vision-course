@@ -1,13 +1,23 @@
-# Computer Vision Community Course
+![Course](https://github.com/johko/computer-vision-course/assets/53175384/58e39903-5a3a-4d48-8f3c-5811f31b93b5)
 
-This is the repository for a community-led course on Computer Vision. Below, you can find how you can help us in this effort.
+# Community-led Computer Vision Community Course Sprint 🤗
 
+This is the repository for a community-led course on Computer Vision. Once finished, the course will be released in huggingface.co/learn. Below, you can find how you can help us in this effort.
 
-### How to get started
+### Table of Contents
+
+- 🏃‍♂️ **How to get started**
+- 🤝 **How to contribute to course**
+- 📆 **Deadlines**
+- 💝 **Prizes**
+- 📝 **Content guidelines (Syntax, Notebooks, Becoming a Reviewer)**
+- 🫂 **Asking for Help**
+
+### 🏃‍♂️ How to get started
 
 1. Join us in Discord 👾
 
-   Join [the Hugging Face discord](hf.co/join/discord), take the role open-source and join us at the channel #cv-community-project.
+   Join [the Hugging Face discord](https://huggingface.co/join/discord), take the role open-source and join us at the channel #cv-community-project.
 <img width="491" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/c13d5b34-ed1c-4f12-b044-192484b94f9d">
 <img width="180" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/b3372a47-711f-4b43-bc85-0ba2b6f8b914">
 
@@ -15,19 +25,68 @@ This is the repository for a community-led course on Computer Vision. Below, you
 (Please only sign up for two chapters maximum for now.)
 3. Connect with your team members in Discord
 
+   
 
-### How to contribute to the course
 
-1. One person from your team should create a fork of this repository
-2. Add your team members as collaborators to the fork
-3. Add a branch for your section
-4. Create `.mdx` files or Jupyter Notebooks for the chapters you want to contribute to
-5. Add the notebooks to the fork
-6. Work on the notebooks in your team and collaborate via standard git functionalities
-7. Make sure to update the requirements.txt file in the root of the repository
-8. When you feel like you are ready, create a pull request to this repository
+### 🤝 How to contribute to the course
+Important Note: If you’ve never contributed to open-source projects on GitHub, kindly read [this document](https://www.notion.so/19411c29298644df8e9656af45a7686d?pvs=25) to learn how to do so.
 
-### Syntax and Doc Rules ❗️❗️
+Before you, start reading more on the contribution guidelines, this is how our course outline looks like:
+
+```
+.
+
+└── chapters/
+	├── chapter0/
+        │   ├── introduction.mdx
+        │   └── getting_started.mdx
+        ├── chapter1/
+        │   └── ...mdx
+        └── _toctree.yml
+```
+
+1. First go to the [discussion section](https://github.com/johko/computer-vision-course/discussions/).
+2. Each new chapter outline should be put up under a pinned discussion. As shown in this [example](https://github.com/johko/computer-vision-course/discussions/80). 
+3. Each chapter can contain multiple topics and sub-topics. All of that should be defined in the chapter outline. Also, for each sub-topic, a single contributor should be assigned to work on that. See more in this [example](https://github.com/johko/computer-vision-course/discussions/80).
+4. Interested contributors motivated to work in a common chapter can come together to form a team. Where each contributor can directly contribute to a sub-topic and other fellow teammates can act as reviewers.
+5. One contributor from each team should fork the repository and other contributors should mutually agree on working collaboratively under that forked repo. 
+6. Under the forked repo, contributors should create issues (that will be the sub-topic name) and start working on that issue. 
+7. When contributors work on a subtopic, they should follow the below instructions:
+   1. Create `.mdx` files or Jupyter Notebooks for the sub-topics you want to contribute to
+   2. Make sure to update the requirements.txt file in the root of the repository
+   3.  When you feel like you are ready, create a pull request to this repository. 
+   4.  Your teammates will review your PR under that forked repo and then if things get approved, you can create the PR to merge it in our main branch 🤗
+
+   
+**Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
+
+
+## 📆 Deadlines
+
+We are aiming to have the version 1 of the course with this sprint. 
+
+**Sprint Beginning:** Dec 3rd
+
+**Submission for Pull Request Reviews Deadline:** Dec 13th
+
+**Iterating over Pull Reviews until:** Dec 27th
+
+First version will be complete before December 29th.
+
+## 💝 Prizes
+
+We will have prizes for those who contribute to the course 🤗 
+Moreover, each contributor will have their name added to credits section of the associated chapter.
+
+- We will provide one month of Hugging Face PRO subscription or GPU grant.
+- You can earn the special merch made for this sprint (with the logo of this sprint). 👕👚
+
+The amount of contribution required to earn the prizes will be announced. Stay tuned!
+
+  
+### 📝 Content Guidelines
+
+**Syntax and Doc Rules ❗️❗️**
 
 These rules are required to render the course on hf.co/learn 😊 
 1. Every chapter should have a main header (h1, e.g. # Introduction) before the content. 
@@ -114,7 +173,7 @@ Thanks to Hugging Face's documentation builder, when we add `[[open-in-colab]]` 
 
 ### Become a Reviewer
 
-Is everything already assigned, but you still really want to contribute to the course? No worries, you can still become a reviewer! This will allow you to review the notebooks and READMEs and give feedback to the authors.
+Is everything already assigned, but do you want to contribute to the course? No worries, you can still become a reviewer! This will allow you to review the notebooks and READMEs and give feedback to the authors.
 
 1. Go [here](https://docs.google.com/spreadsheets/d/1fjmbsdGwe7IUMBv74LDC7IpoJy8ijiFdzGdnDlBv6eA/edit#gid=0) and at the bottom choose the "Reviewers" tab,
 2. Add your first name and GitHub username,
@@ -124,6 +183,9 @@ Is everything already assigned, but you still really want to contribute to the c
 6. Share your feedback and ideas with the authors on how they can improve. In the long term, we're aiming to make a robust, high-quality course accessible to everyone!
 7. Finally, every PR can be merged when it has two approvals from reviewers.
 
+### 🗣 Asking for Help
+
+Do not hesitate to ask for help in #cv-community-project channel. 🫂 
 
 ### Tips and Hints
 
