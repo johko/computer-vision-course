@@ -14,7 +14,51 @@ in another to see if they match. It's exhaustive and it might take a lot of time
 
 OK, now that we have an intuitive idea of how brute force matches are found, let's dive into the algorithms.
 
-_Brute Force with ORB descriptors_
+_Brute Force with SIFT_
+
+1.  Load Images
+
+```python
+img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
+img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
+```
+
+2. Initiate SIFT detector
+
+```python
+sift = cv.SIFT_create()
+```
+
+3. Find the keypoints and descriptors with SIFT
+
+```python
+kp1, des1 = sift.detectAndCompute(img1,None)
+kp2, des2 = sift.detectAndCompute(img2,None)
+```
+
+4. Find matches using k nearest neighbors
+
+```python
+bf = cv.BFMatcher()
+matches = bf.knnMatch(des1,des2,k=2)
+```
+
+5. Apply ratio test to threshold the best matches
+
+```python
+good = []
+for m,n in matches:
+    if m.distance < 0.75*n.distance:
+        good.append([m])
+```
+
+5. Draw the matches
+
+```python
+img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
+```
+
+_Brute Force with ORB (binary) descriptors_
 
 1.  Load images
 
@@ -59,50 +103,6 @@ matches = sorted(matches, key = lambda x:x.distance)
 
 ```python
 img3 = cv.drawMatches(img1,kp1,img2,kp2,matches[:n],None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
-```
-
-_Brute Force with SIFT_
-
-1.  Load Images
-
-```python
-img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
-img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
-```
-
-2. Initiate SIFT detector
-
-```python
-sift = cv.SIFT_create()
-```
-
-3. Find the keypoints and descriptors with SIFT
-
-```python
-kp1, des1 = sift.detectAndCompute(img1,None)
-kp2, des2 = sift.detectAndCompute(img2,None)
-```
-
-4. Find matches using k nearest neighbors
-
-```python
-bf = cv.BFMatcher()
-matches = bf.knnMatch(des1,des2,k=2)
-```
-
-5. Apply ratio test to threshold the best matches
-
-```python
-good = []
-for m,n in matches:
-    if m.distance < 0.75*n.distance:
-        good.append([m])
-```
-
-5. Draw the matches
-
-```python
-img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
 
 ![](URL)
