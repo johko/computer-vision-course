@@ -205,6 +205,86 @@ LoFTR's ability to robustly match features makes it valuable for tasks like imag
 
 We can use [Kornia](https://github.com/kornia/kornia) to find matching features in two images using LoFTR.
 
+```bash
+!pip install kornia  kornia-rs  kornia_moons opencv-python --upgrade
+```
+1.  Import the libraries
+```python
+import cv2
+import kornia as K
+import kornia.feature as KF
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+from kornia_moons.viz import draw_LAF_matches
+```
+
+2. Load and resize the images
+
+```python
+from kornia.feature import LoFTR
+
+img1 = K.io.load_image(image1.jpg, K.io.ImageLoadType.RGB32)[None, ...]
+img2 = K.io.load_image(image2.jpg, K.io.ImageLoadType.RGB32)[None, ...]
+
+img1 = K.geometry.resize(img1, (512, 512), antialias=True)
+img2 = K.geometry.resize(img2, (512, 512), antialias=True)
+```
+
+3.  Indicate whether the image is an "indoor" or "outdoor" image
+
+```python
+matcher = LoFTR(pretrained="indoor")
+```
+
+4.  LoFTR only works on grayscale images, so convert to grayscale
+
+```python
+input_dict = {
+    "image0": K.color.rgb_to_grayscale(img1),
+    "image1": K.color.rgb_to_grayscale(img2),
+}
+```
+
+5. Perform Inference
+
+```python
+with torch.inference_mode():
+    correspondences = matcher(input_dict)
+```
+6. Clean up the correspondences using Random Sample Consensus (RANSAC),which helps us
+to deal with noise or outliers in the data.
+
+```python
+mkpts0 = correspondences["keypoints0"].cpu().numpy()
+mkpts1 = correspondences["keypoints1"].cpu().numpy()
+Fm, inliers = cv2.findFundamentalMat(mkpts0, mkpts1, cv2.USAC_MAGSAC, 0.5, 0.999, 100000)
+inliers = inliers > 0
+```
+7. Finally, we visualize the matches
+
+```python
+draw_LAF_matches(
+    KF.laf_from_center_scale_ori(
+        torch.from_numpy(mkpts0).view(1, -1, 2),
+        torch.ones(mkpts0.shape[0]).view(1, -1, 1, 1),
+        torch.ones(mkpts0.shape[0]).view(1, -1, 1),
+    ),
+    KF.laf_from_center_scale_ori(
+        torch.from_numpy(mkpts1).view(1, -1, 2),
+        torch.ones(mkpts1.shape[0]).view(1, -1, 1, 1),
+        torch.ones(mkpts1.shape[0]).view(1, -1, 1),
+    ),
+    torch.arange(mkpts0.shape[0]).view(-1, 1).repeat(1, 2),
+    K.tensor_to_image(img1),
+    K.tensor_to_image(img2),
+    inliers,
+    draw_dict={"inlier_color": (0.2, 1, 0.2), "tentative_color": None, "feature_color": (0.2, 0.5, 1), "vertical": False},
+)
+```
+
+Corrrect matches are visualized in green, while impressize matches are in blue.
+
 ![](URL)
 
 ## Resources and Further Reading
