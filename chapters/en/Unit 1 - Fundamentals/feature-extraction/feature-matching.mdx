@@ -51,11 +51,12 @@ matches = bf.match(des1,des2)
 
 5. Sort them in the order of their distance.
 
-````python
+```python
 matches = sorted(matches, key = lambda x:x.distance)
 ```
 
 6. Draw first n matches.
+
 ```python
 img3 = cv.drawMatches(img1,kp1,img2,kp2,matches[:n],None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
@@ -63,29 +64,34 @@ img3 = cv.drawMatches(img1,kp1,img2,kp2,matches[:n],None,flags=cv.DrawMatchesFla
 _Brute Force with SIFT_
 
 1.  Load Images
+
 ```python
 img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
 img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
 ```
 
 2. Initiate SIFT detector
+
 ```python
 sift = cv.SIFT_create()
 ```
 
 3. Find the keypoints and descriptors with SIFT
+
 ```python
 kp1, des1 = sift.detectAndCompute(img1,None)
 kp2, des2 = sift.detectAndCompute(img2,None)
 ```
 
 4. Find matches using k nearest neighbors
+
 ```python
 bf = cv.BFMatcher()
 matches = bf.knnMatch(des1,des2,k=2)
 ```
 
 5. Apply ratio test to threshold the best matches
+
 ```python
 good = []
 for m,n in matches:
@@ -94,6 +100,7 @@ for m,n in matches:
 ```
 
 5. Draw the matches
+
 ```python
 img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
@@ -118,12 +125,14 @@ By balancing speed and accuracy when finding matching features, FLANN substantia
 _First we create a dictionary to specify the algorithm we will use:_
 
 - For SIFT or SURF
+
 ```python
 FLANN_INDEX_KDTREE = 1
 index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
 ```
 
 - For ORB
+
 ```python
 FLANN_INDEX_LSH = 6
 index_params= dict(algorithm = FLANN_INDEX_LSH,
@@ -139,22 +148,24 @@ search_params = dict(checks=50)
 ```
 
 1.  Load images
-```python
+
+````python
 img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
 img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
 
 2. Initiate SIFT detector
 ```python
 sift = cv.SIFT_create()
-```
+````
 
 3. Find the keypoints and descriptors with SIFT
+
 ```python
 kp1, des1 = sift.detectAndCompute(img1,None)
 kp2, des2 = sift.detectAndCompute(img2,None)
 ```
 
-3. Define the FLANN parameters.  Trees is the numbers of bins you want.
+3. Define the FLANN parameters. Trees is the numbers of bins you want.
 
 ```python
 FLANN_INDEX_KDTREE = 1
@@ -172,6 +183,7 @@ matchesMask = [[0,0] for i in range(len(matches))]
 ```
 
 5. We perform a ratio test to determine good matches
+
 ```python
 for i,(m,n) in enumerate(matches):
     if m.distance < 0.7*n.distance:
@@ -179,6 +191,7 @@ for i,(m,n) in enumerate(matches):
 ```
 
 6. Now we visualize the matches
+
 ```python
 draw_params = dict(matchColor = (0,255,0),
                    singlePointColor = (255,0,0),
@@ -208,7 +221,9 @@ We can use [Kornia](https://github.com/kornia/kornia) to find matching features 
 ```bash
 !pip install kornia  kornia-rs  kornia_moons opencv-python --upgrade
 ```
+
 1.  Import the libraries
+
 ```python
 import cv2
 import kornia as K
@@ -252,8 +267,9 @@ input_dict = {
 with torch.inference_mode():
     correspondences = matcher(input_dict)
 ```
-6. Clean up the correspondences using Random Sample Consensus (RANSAC),which helps us
-to deal with noise or outliers in the data.
+
+6. We can clean up the correspondences using Random Sample Consensus (RANSAC), which help
+   deal with noise or outliers in the data.
 
 ```python
 mkpts0 = correspondences["keypoints0"].cpu().numpy()
@@ -261,6 +277,7 @@ mkpts1 = correspondences["keypoints1"].cpu().numpy()
 Fm, inliers = cv2.findFundamentalMat(mkpts0, mkpts1, cv2.USAC_MAGSAC, 0.5, 0.999, 100000)
 inliers = inliers > 0
 ```
+
 7. Finally, we visualize the matches
 
 ```python
@@ -283,7 +300,7 @@ draw_LAF_matches(
 )
 ```
 
-Corrrect matches are visualized in green, while impressize matches are in blue.
+Correct matches are visualized in green, while impressize matches are in blue.
 
 ![](URL)
 
@@ -297,5 +314,5 @@ ORB: Performance Comparison for Distorted Images](https://arxiv.org/pdf/1710.027
 [Kornia tutorial on Image Matching](https://kornia.github.io/tutorials/nbs/image_matching.html)
 [LoFTR Github](https://github.com/zju3dv/LoFTR)
 [OpenCV Github](https://github.com/opencv/opencv-python)
+[OpenCV Feature Matching Tutorial](https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html)
 [OpenGlue: Open Source Graph Neural Net Based Pipeline for Image Matching](https://arxiv.org/abs/2204.08870)
-````
