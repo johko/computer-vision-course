@@ -69,6 +69,8 @@ for m,n in matches:
 img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
 
+![SIFT](URL)
+
 _Brute Force with ORB (binary) descriptors_
 
 1.  Load images
@@ -115,8 +117,6 @@ matches = sorted(matches, key = lambda x:x.distance)
 ```python
 img3 = cv.drawMatches(img1,kp1,img2,kp2,matches[:n],None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
-
-![](URL)
 
 ## Fast Library for Approximate Nearest Neighbors (FLANN)
 
@@ -212,7 +212,7 @@ draw_params = dict(matchColor = (0,255,0),
 img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
 ```
 
-![](URL)
+![FLANN](URL)
 
 ## Local Feature Matching with Transformers (LoFTR)
 
@@ -312,7 +312,7 @@ draw_LAF_matches(
 
 The best matches are visualized in green, while less certain matches are in blue.
 
-![](URL)
+![LoFTR](URL)
 
 ## Resources and Further Reading
 
