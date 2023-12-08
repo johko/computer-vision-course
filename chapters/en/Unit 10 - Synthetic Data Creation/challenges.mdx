@@ -1,14 +1,14 @@
 # Challenges and Opportunities Associated With Using Synthetic Data
 
 Training machine learning models requires vast amounts of data. Synthetic data can help by addressing privacy issues,
-augmenting limited data, and correcting imbalances in real data. We have learned how to generate synthetic data using several different methods.
+augmenting limited data, and correcting imbalances in the real data. We have learned how to generate synthetic data using several different methods.
 Before using synthetic data to train a model, however, there are several important things that need to be considered.
 
 ## Is there overfitting?
 
 Overfitting occurs when a machine learning model learns the training data so well that it doesn't perform well on new, unseen data.
 It's akin to learning a specific way to solve a problem but then encountering a new situation where the strategy doesn't work.
-If the process of generating synthetic data is too simple or there are are overly consistent patterns, your model might overfit to the limited variations
+If the process of generating synthetic data is too simple or there are are overly-consistent patterns, your model might overfit to the limited variations
 present in the synthetic data. As a very simple example, suppose you trained a model using a synthetic
 dataset of 25 red circles and 25 blue squares. The model will probably learn to associate circles with the color red and squares with the color blue. This model
 would likely fail if presented with a red square.
@@ -38,7 +38,7 @@ learn and perpetuate those biases. Beware of the following pitfalls:
 _Limited Diversity:_
 
 One challenge is that synthetic data may fail to adequately represent the complexity
-and diversity of the real data. The circle example might seem trivial, but there are lots of situations where failing
+and diversity of the real data. The shape example might seem trivial, but there are lots of situations where failing
 to account for the wide variety of people, places, animals, or objects will result in a model that doesn't perform well. For
 example, suppose you wanted to train a model to monitor the population of an endangered species, such as aye-aye lemurs.  
 If your dataset only contains images of ring-tailed lemurs, the model might struggle to accurately identify aye-aye lemurs in the wild.
@@ -61,7 +61,7 @@ learn and replicate those biases. It's like copying a friend's notes without rea
 ## Does the benefit of using synthetic data outweight the computational cost?
 
 Generating high-quality synthetic data can be computationally expensive. This may pose challenges in terms
-of both time and resources, especially for complex models or large datasets. As a general rule, generating and using a synthetic data
+of both time and resources, especially for complex models or large datasets. As a general rule, generating and using a synthetic dataset
 only makes sense if it ultimately saves resources (money, time, etc.).
 
 ## What is the perceived quality of the synthetic images?
@@ -71,7 +71,7 @@ so good. A model trained with the low-quality images might fail to detect pneumo
 It is also possible that your model might get really good at recognizing patterns in the synthetic data, but those patterns might not exist
 or may be different in the real world.
 
-A good practice is to evaluate your dataset using a measure such as Frechet Inception Distance (FID), Inception Score (IS), or the Classification
+A good practice is to evaluate your dataset using a metric such as Frechet Inception Distance (FID), Inception Score (IS), or the Classification
 Accuracy Score (CAS).
 
 _FID:_
