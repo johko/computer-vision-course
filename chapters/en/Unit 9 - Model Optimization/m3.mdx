@@ -1,0 +1,40 @@
+# Model Deployment Considerations
+
+## Different Deployment Platforms -yet to
+- **Clouds**: Understanding how to deploy models on cloud platforms like AWS, Google Cloud, or Azure, which offer scalable infrastructure and services for AI model deployment.
+- **Edge**: Exploring deployment on edge devices like IoT, edge servers, or embedded systems, allowing models to run locally without relying on cloud services.
+- **Mobile**: Discussing techniques to deploy models on mobile devices, optimizing them for performance and resource constraints.
+    - **Core ML:** Core ML is a framework provided by Apple for deploying machine learning models on iOS devices. The official documentation provides information on converting and integrating models into iOS apps: https://developer.apple.com/documentation/coreml
+    - **TensorFlow Mobile:** TensorFlow Mobile is a framework for deploying TensorFlow models on mobile devices. The official documentation offers guidance on converting and deploying models on Android and iOS: https://www.tensorflow.org/mobile
+## Model Serialization and Packaging
+
+- **Serialization:** Serialization is the process of converting a complex object, such as a machine learning model, into a format that can be easily stored or transmitted. It's like taking a three-dimensional puzzle and flattening it into a two-dimensional image. This serialized representation can be saved to disk, sent over a network, or stored in a database.
+
+    Imagine you have a custom machine learning model that you've trained on your computer. It's a complex structure with many interconnected parts. However, if you want to share this model with someone else or deploy it on a different system, you can't simply copy and paste the entire model. Instead, you need to serialize it into a format that can be easily transported.
+    
+    - **ONNX (Open Neural Network Exchange):** ONNX is like a universal translator for machine learning models. It's a format that allows different frameworks, like TensorFlow, PyTorch, and scikit-learn, to understand and work with each other's models. It's like having a common language that all frameworks can speak.
+
+    Imagine you have a model trained in TensorFlow, but you want to use it with a different framework, like PyTorch. Instead of retraining the model from scratch, you can convert the TensorFlow model into the ONNX format. This allows you to easily use the model in PyTorch without losing any of its functionality or performance.
+     
+    - TensorFlow's SavedModel
+    - PyTorch's JIT
+
+- **Packaging:** Packaging, on the other hand, involves bundling all the necessary components and dependencies of a machine learning model together. It's like putting all the pieces of a puzzle into a box, along with the instructions on how to assemble it. Packaging ensures that everything needed to run the model is included, such as the serialized model file, any pre-processing or post-processing code, and any required libraries or dependencies.
+
+## Model Serving and Inference -yet to
+
+- **Model Serving:** Exploring frameworks and tools (e.g., TensorFlow Serving, TorchServe) to serve models for prediction requests.
+    - **TensorFlow Serving:**TensorFlow Serving is a flexible serving system for TensorFlow models. The official documentation provides guidance on serving models in production using TensorFlow Serving: https://www.tensorflow.org/tfx/guide/serving
+    - TorchServe
+    - **FastAPI:**FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. It can be used for serving machine learning models and provides an efficient way to handle inference requests. You can find more information and examples in the official documentation: https://fastapi.tiangolo.com/
+- **Inference:** Understanding the process of feeding input data into a deployed model to obtain predictions or Inferences.
+- **Kubernetes Documentation**: Kubernetes is an open-source container orchestration platform that is widely used for deploying and managing applications. Understanding Kubernetes can be helpful for deploying models in a scalable and reliable manner. You can find the official documentation here: https://kubernetes.io/docs/home/
+## Best Practices for Deployment in Production -yet to
+- **MLOps:** MLOps is an emerging practice that focuses on applying DevOps principles to machine learning projects. It encompasses various best practices for deploying models in production, such as version control, continuous integration and deployment, monitoring, and automation.
+
+
+- **Scalability and Performance:** Ensuring models can handle varying workloads efficiently and maintain performance.
+- **Monitoring and Logging:** Implementing systems to monitor model performance, track usage, and log errors for debugging and improvement.
+- **Security and Privacy:** Addressing security concerns related to model deployment, data protection, and user privacy.
+- **Versioning and Rollback:** Implementing strategies for versioning models and handling rollbacks in case of issues with new deployments.
+
