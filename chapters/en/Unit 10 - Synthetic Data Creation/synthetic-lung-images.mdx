@@ -1,9 +1,9 @@
 # Synthetic Data Generation Using DCGAN
 
 We learned in Unit 5 that a GAN is a framework in machine learning where two neural networks, a Generator and a Discriminator, are in a constant duel.
-The Generator creates synthetic data (like images), and the Discriminator tries to distinguish between real and fake data.
-They keep improving through this adversarial process, with the Generator getting better at creating realistic data,
-and the Discriminator getting better at telling what's real.
+The Generator creates synthetic images, and the Discriminator tries to distinguish between real and fake images.
+They keep improving through this adversarial process, with the Generator getting better at creating realistic images,
+and the Discriminator getting better at distinguishing between fake and real images.
 
 We now will look at how we can use a GAN to generate medical images, a domain that is
 is challenged with small datasets, privacy concerns, and a limited amount of annotated samples. Researchers have used GANs to generate synthetic images such as lung X-ray images, retina images,
@@ -79,7 +79,7 @@ while the discriminator learns to correctly classify the images as real or synth
 We start by initializing the generator with random noise and will train for 100 epochs.
 Let's visualize the progress:
 
-![]()
+![trainig-gif]()
 
 ## How did we do?
 
@@ -87,7 +87,7 @@ We can see that some of the synthetic lung images look good, but some are hazy. 
 employee a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with
 with the real data to train the model.
 
-![]()
+![lung-images]()
 
 [[Link to Notebook]]
 
