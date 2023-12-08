@@ -14,6 +14,17 @@ in another to see if they match. It's exhaustive and it might take a lot of time
 
 OK, now that we have an intuitive idea of how brute force matches are found, let's dive into the algorithms.
 
+_First install and load libraries_
+
+```bash
+!pip install opencv-python
+```
+
+```python
+import cv2
+import numpy as np
+```
+
 _Brute Force with SIFT_
 
 1.  Load Images
@@ -206,12 +217,11 @@ img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
 ## Local Feature Matching with Transformers (LoFTR)
 
 LoFTR was proposed in [LoFTR: Detector-Free Local Feature Matching with Transformers](https://arxiv.org/pdf/2104.00680.pdf) by Sun, et. al.
-Instead of using feature detectors, LoFTR uses learning-based approach to feature matching.
+Instead of using feature detectors, LoFTR uses a learning-based approach to feature matching.
 
-Let's keep it simple and use our puzzle example once again. As before, each piece is analogous to unique features in the images-such as corners, edges, or distinct patterns.
-Instead of simply comparing images pixel by pixel, LoFTR looks for specific key points, or features, in each image. It's like identifying the corners and edges of each puzzle piece.
-Just as someone really good a putting together a puzzle might focus on distinctive marks, LoFTR identifies these unique points in one image. These could be key landmarks or structures that stand out.
-What makes LoFTR advanced is its ability to handle challenges like rotation and scaling. If a puzzle piece is turned or resized, LoFTR can still recognize it. It's like solving puzzles where pieces may be flipped or adjusted.
+Let's keep it simple and use our puzzle example once again. Instead of simply comparing images pixel by pixel, LoFTR looks for specific key points, or features, in each image. It's like identifying the corners and edges of each puzzle piece.
+And just as someone really good a putting together a puzzle might focus on distinctive marks, LoFTR identifies these unique points in one image. These could be key landmarks or structures that stand out.
+As we have already learned, it is important that the matching algorithm handles changes in rotation or scale. If a feature is turned or resized, LoFTR would still recognize it. It's like solving puzzles where pieces may be flipped or adjusted.
 As LoFTR matches features, it assigns a similarity score to indicate how well the features align. Higher scores mean better matches. It's like giving a grade to how well one puzzle piece fits with another.
 LoFTR is also invariant to certain transformations, meaning it can handle variations in lighting, angle, or perspective. This is crucial when dealing with images that might be photographed under different conditions.
 LoFTR's ability to robustly match features makes it valuable for tasks like image stitching, where you combine multiple images seamlessly by identifying and connecting common features.
