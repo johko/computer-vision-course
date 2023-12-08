@@ -60,8 +60,6 @@ matches = sorted(matches, key = lambda x:x.distance)
 img3 = cv.drawMatches(img1,kp1,img2,kp2,matches[:n],None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
 
-![](URL)
-
 _Brute Force with SIFT_
 
 1.  Load Images
@@ -100,6 +98,7 @@ for m,n in matches:
 img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
 
+![](URL)
 
 ## Fast Library for Approximate Nearest Neighbors (FLANN)
 
@@ -110,13 +109,13 @@ FLANN uses some clever tricks to quickly figure out which pieces are most likely
 Instead of trying every piece against every other piece, FLANN streamlines the process by finding pieces that are approximately similar.
 This means it can make educated guesses about which pieces might fit well together, even if they're not an exact match. Under the hood, FLANN is uses something called k-D trees.
 Think of it as organizing the puzzle pieces in a special way. Instead of checking every piece against every other piece, FLANN arranges them in a tree-like structure that makes finding matches faster.
-In each node of the k-D tree, FLANN puts pieces with similar features together. It's like putting pieces with similar shapes or colors into buckets.
-This way, when you're looking for a match, you can quickly check the bucket that's most likely to have similar pieces. Let's say you're looking for a "sky" piece. You won't have to search through all the puzzple pieces.
-Instead, FLANN guides you to the right bucket in the k-D tree where the sky-colored pieces are. FLANN is also adjusts its strategy based on the features of the puzzle pieces.
+In each node of the k-D tree, FLANN puts pieces with similar features together. It's like sorting puzzle pieces with similar shapes or colors into piles.
+This way, when you're looking for a match, you can quickly check the pile that's most likely to have similar pieces. Let's say you're looking for a "sky" piece.
+Instead of searching through all the pieces, FLANN guides you to the right spot in the k-D tree where the sky-colored pieces are sotred. FLANN also adjusts its strategy based on the features of the puzzle pieces.
 If you have a puzzle with lots of colors, it will focus on color features. Alternately, if it's a puzzle with intricate shapes, it pays attention to those shapes.
-In a nut-shell, FLANN tries to balance spped and accuracy when finding matching features.
+By balancing speed and accuracy when finding matching features, FLANN substantially improves query time.
 
-_First we create a dictionary to specify the algorithm:_
+_First we create a dictionary to specify the algorithm we will use:_
 
 - For SIFT or SURF
 ```python
@@ -133,7 +132,7 @@ index_params= dict(algorithm = FLANN_INDEX_LSH,
                    multi_probe_level = 2)
 ```
 
-_We also create a disctionary to specify the number of specifies the maximum leafs to visit:_
+_We also create a dictionary to specify the maximum leafs to visit:_
 
 ```python
 search_params = dict(checks=50)
@@ -141,21 +140,21 @@ search_params = dict(checks=50)
 
 1.  Load images
 ```python
-img1 = cv.imread('box.png',cv.IMREAD_GRAYSCALE)          # queryImage
-img2 = cv.imread('box_in_scene.png',cv.IMREAD_GRAYSCALE) # trainImage
-```
+img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
+img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
+
+2. Initiate SIFT detector
 ```python
-# Initiate SIFT detector
 sift = cv.SIFT_create()
 ```
 
-2. Find the keypoints and descriptors with SIFT
+3. Find the keypoints and descriptors with SIFT
 ```python
 kp1, des1 = sift.detectAndCompute(img1,None)
 kp2, des2 = sift.detectAndCompute(img2,None)
 ```
 
-3. Define the FLANN parameters.  Trees is the bins you want to sort into.
+3. Define the FLANN parameters.  Trees is the numbers of bins you want.
 
 ```python
 FLANN_INDEX_KDTREE = 1
@@ -166,7 +165,7 @@ flann = cv.FlannBasedMatcher(index_params,search_params)
 matches = flann.knnMatch(des1,des2,k=2)
 ```
 
-4. Need to draw only good matches, so create a mask
+4. We will only draw only good matches, so create a mask
 
 ```python
 matchesMask = [[0,0] for i in range(len(matches))]
@@ -188,6 +187,8 @@ draw_params = dict(matchColor = (0,255,0),
 
 img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
 ```
+
+![](URL)
 
 ## Local Feature Matching with Transformers (LoFTR)
 
@@ -217,5 +218,4 @@ ORB: Performance Comparison for Distorted Images](https://arxiv.org/pdf/1710.027
 [LoFTR Github](https://github.com/zju3dv/LoFTR)
 [OpenCV Github](https://github.com/opencv/opencv-python)
 [OpenGlue: Open Source Graph Neural Net Based Pipeline for Image Matching](https://arxiv.org/abs/2204.08870)
-
 ````
