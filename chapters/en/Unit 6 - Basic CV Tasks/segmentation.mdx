@@ -1,0 +1,52 @@
+## What is image segmentation ?
+
+Image segmentation is slicing up an image into different parts. It's all about creating masks that spotlight each object in the picture. 
+The intuition behind this task is *that it can be viewed as a classification for each pixel of the image*. Segmentation models are the 
+core models in various industries. They can be found in agriculture and autonomous driving. In the farming world, these models are used 
+for identifying different land sections and assessing the growth stage of crops. They're also key players for self-driving cars, where 
+they are used to identify lanes, sidewalks, and other road users.
+
+{/* Image of image segmentation */}
+
+Different types of segmentations can be applied depending on the context and the intended goal.
+The most commonly defined segmentations are:
+- **Semantic Segmentation** consists of assigning the most probable class to each pixel.
+- **Instance Segmentation** consists of defining a different mask for each instance of an object. It can be achieved through 
+combination of object detection and segmentation.
+- **Panoptic Segmentation** is a combination of both where a class and an instance is defined for each pixel of the image.
+
+{/* Comparaison Instance vs Semantic segmentation */}
+
+### Modern approach: ViT based
+
+Computer vision was once dominated by convolutional models, but it has recently shifted towards the vision transformer approach. 
+An example is *[Segment anything model (SAM)](https://arxiv.org/abs/2304.02643)* that its popular prompt based model introduced 
+in April 2023 by *Meta AI Research, FAIR*. The model is based on Vision Transformer (ViT) model focuses on creating a promptable 
+(It simply means that you can provide words to describe what you would like to segment in the image) segmentation model capable of 
+zero-shot transfer on new images. The strength of the model comes from its training on the largest dataset available, which includes over 
+1 billion masks on 11 million images. I recommend you play with [Meta's demo](https://segment-anything.com/) on a few images and even 
+better you can play with the [model](https://huggingface.co/ybelkada/segment-anything) in transformers. 
+
+Here is an example of how to use the model in transformers:
+```python
+from transformers import pipeline
+pipe = pipeline("mask-generation", model="facebook/sam-vit-huge", device=0)
+ 
+raw_image = Image.open("path/to/image").convert("RGB")
+
+masks = pipe(raw_image)
+```
+
+More details on how to use the model can be found in the [documentation](https://huggingface.co/docs/transformers/main/en/model_doc/sam).
+
+### How to evaluate a segmentation model ?
+
+You have now seen how to use a segmentation model, but how can you evaluate it ? Segmentation as show in the previous section in mainly 
+supervised learning tasks. Therefore, the dataset is composed of images and their corresponding masks that are your ground truth. A few metrics
+can be used to evaluate your model. The most common ones are:
+- **IoU (Intersection over Union)** or Jaccard index: It's the ratio between the intersection and the union of the predicted mask and the ground truth.
+- **mIoU (mean Intersection over Union)**: It's the mean of IoU over all the images in the dataset.
+- **Pixel accuracy**: It's the ratio between the number of correctly classified pixels and the total number of pixels.
+- **Dice coefficient**: It's the ratio between the double of the intersection and the sum of the predicted mask and the ground truth.
+
+The most commonly used metrics are IoU. It's a simple metric let you understand how well your model is performing.
