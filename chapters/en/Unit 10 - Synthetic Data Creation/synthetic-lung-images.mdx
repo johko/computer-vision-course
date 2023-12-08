@@ -21,17 +21,14 @@ images.
 Here are the basic steps:
 
 _Data Collection:_
-
 First, We need to obtain a dataset of real lung images.
 We will be downloading the [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) dataset from [Kaggle](https://www.kaggle.com).
 You can learn more about the dataset by looking at the Datacard on Kaggle.
 
 _Data Preprocessing:_
-
 We will preprocess the lung images by resizing and normalizing the pixel values.
 
 _DCGAN Architecture:_
-
 The generator network takes random noise as input and generates synthetic lung images, while the discriminator network tries to distinguish between real and synthetic images.
 Use convolutional layers in both the generator and discriminator to capture spatial features effectively.
 
@@ -94,16 +91,21 @@ with the real data to train the model.
 
 [[Link to Notebook]]
 
+Given the known challenges associated with employing GANs to train high-quality medical images, some researchers have explored the use of diffusion
+models to generate lung images. Medfusion, a conditional latent DDPM for medical images, was proposed in [Diffusion Probabilistic Models Beat GAN On Medical 2D Images](https://arxiv.org/pdf/2212.07501.pdf).
+[Synthetically Enhanced: Unveiling Synthetic Data's Potential In Medical Imaging Research](https://arxiv.org/pdf/2311.09402.pdf), Khosravi et. al finds that
+using a mix of real images and synthetic generated using a diffusion process improved model performance.
+
 ## Resources and Further Reading
 
 [A Novel COVID-19 Detection Model Based on DCGAN and Deep Transfer Learning](https://www.sciencedirect.com/science/article/pii/S1877050922007463)
 [Augmentation_Gan](https://github.com/rossettisimone/AUGMENTATION_GAN)
 [BrainGAN: Brain MRI Image Generation and Classification Framework Using GAN Architectures and CNN Models](https://www.mdpi.com/1424-8220/22/11/4297)
-[DCGAN_faces_tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
+[Diffusion Probabilistic Models beat GANs on Medical Images](https://arxiv.org/abs/2212.07501)
 [DR-DCGAN: A Deep Convolutional Generative Adversarial Network (DC-GAN) for Diabetic Retinopathy Image Synthesis](<https://www.webology.org/data-cms/articles/20220204053948pmwebology%2019%20(2)%20-%2077%20.pdf>)
 [Deepfake Image Generation for Improved Brain Tumor Segmentation](https://aps.arxiv.org/abs/2307.14273)
 [GANs for Medical Image Synthesis: An Empirical Study](https://arxiv.org/abs/2105.05318)
-[guided-diffusion](https://github.com/openai/guided-diffusion)
+[Medfusion Github repo](https://github.com/mueller-franzes/medfusion)
 [Medical image editing in the latent space of Generative Adversarial Networks](https://pdf.sciencedirectassets.com/777072/1-s2.0-S2666521221X00026/1-s2.0-S2666521221000168/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBUaCXVzLWVhc3QtMSJGMEQCIBa2IzG%2BGD7Hjv%2FP20jDKyseswGT785LUQTMmFQjT9ntAiAt%2ByfhQJqJAI2NCOKnVzH%2BxMlTWf2x2uIw2i2OLFOz8yqzBQh%2BEAUaDDA1OTAwMzU0Njg2NSIM9ECuDI1xe%2FlWShlYKpAFeTDTJvita0xvKNmqULElNZxagyOdEwqClxL95y0AJuzQy0JT%2B0LhTDbjmKoo5Ogc5UMO9m2jGU6lz%2BT5Yzt2l90D23PG2J%2BJaJl9ZMJ5KNTYmhfPg4s9gagUsawY7tauMY33wX%2FsgUbWTDQE2Mz7PS0x2YlxGnb%2BebDWUpBiLf%2BoO2%2BGmjA6oV7SltJ1pdF31j3JLngHd12sojW4quFyWSfDBdaj4wCtB%2BVE9CpLBUEnKsHP2DKjzShYc7gCnAYFG1UPNK01u01M4B6%2FAdRi2R9ncY5%2FWybIWZvfncuUv7qbApeKpDbqFvtLb5DovYdVuwp6saKqWWcE%2FGGZdEXioyY%2BLq592cxszrsj72cZ62LKq4mjEt7zoSLPqoVw81BgvsN9VPuBgdlLW0naZA1AD3nYi6Wy%2BUWBjdW6aJ8N5BvY%2B%2BbklAyHIxluEFldW%2BI0sumf7sOdXElgo0j5AumRZdqD9wqDj61YDt%2B86jj6WUkbAbp2kFK2jfaW%2FP6K8yNlCPlGAKee%2FuhOmSPyDidFzwl1du5clnwuIc4CoP3H%2FWLbwKyX1yqXLkvuLeDsIPpjVP8TtOIqLecOWh8RUAntXZ1CNGDI9RZ5ZxT2fBR%2BAih3nYrSnK4G6IQd74QHUi1OFBBjeleDxIkRZcQd6%2BxRV%2FwXvxSMkNSqDiarQxDUSye642M0vDKvDUvdkkIGfh66HwcLabMUyPa3dIRXOVpiPnLKURgrBdEIXsnriMjx2QtEcNDjGZ8S79530EBKvbrOXb3IpDmznAHdIev1wiFenFj1bxsZamn0HSnAUyd7D6d%2Fh%2FB7WeQX5LPFBX2PWKp7aRUaKs7loUT33jcM0PM8gm4aa3qKzPOJdfUDNBAnh0sw45C%2BqwY6sgGhtXuoYqWJBG7SH%2FCkul2joDgNZnUrz0LGR8clMLjdkdIWCb7nc1e0uwXvsNr83g4DPGkfAy%2F1pDKVYAkiTVbtarpBim4E9Thb0nLZTC5wfGQEnanfSSg4qaOaRJqA71bb5E6lYHhWegnp8QCd8YFhYdzr3zu7ob62jm0a1qgVbV1vVLQb05KtZKmFALk0mHVtr9TY7TRO4LuhhAaudJ5NAMejYX5hDniK6gLciipYntn9&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231205T213802Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYW2PFS26D%2F20231205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=8977d4b5fb2b4de6557b6ea514c4dd5619738cb8b40bd4b065a0fd0336ba0c26&hash=8db4b852cee5cfe8a167405a15a1356e6963505c298b057892e52f08718b3a03&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2666521221000168&tid=spdf-617c5bac-a956-4354-813c-b5a5dd6f023c&sid=76355fc83e9a45429678a98306d31967ba09gxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=0f17565253015501520e&rr=830f6f0a4ca66fd4&cc=us)
 [Medical Image Synthesis with Context-Aware Generative Adversarial Networks](https://arxiv.org/abs/1612.05362)
 [MedSynAnalyzer](https://github.com/ayanglab/MedSynAnalyzer)[dcgan_faces_tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
