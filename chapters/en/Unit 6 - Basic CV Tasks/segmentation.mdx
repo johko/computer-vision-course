@@ -41,9 +41,9 @@ More details on how to use the model can be found in the [documentation](https:/
 
 ### How to evaluate a segmentation model ?
 
-You have now seen how to use a segmentation model, but how can you evaluate it ? Segmentation as show in the previous section in mainly 
-supervised learning tasks. Therefore, the dataset is composed of images and their corresponding masks that are your ground truth. A few metrics
-can be used to evaluate your model. The most common ones are:
+You have now seen how to use a segmentation model, but how can you evaluate it ? As demonstrated in the previous section, segmentation is primarily a supervised learning task. 
+This means that the dataset is composed of images and their corresponding masks, which serve as the ground truth. A few metrics cann be used to evaluate your model. 
+The most common ones are:
 - **IoU (Intersection over Union)** or Jaccard index: It's the ratio between the intersection and the union of the predicted mask and the ground truth.
 - **mIoU (mean Intersection over Union)**: It's the mean of IoU over all the images in the dataset.
 - **Pixel accuracy**: It's the ratio between the number of correctly classified pixels and the total number of pixels.
