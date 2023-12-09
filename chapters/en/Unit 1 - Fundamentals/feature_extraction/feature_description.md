@@ -46,7 +46,7 @@ The working of SIFT is given below:
 
 SIFT's robustness to various image transformations and its ability to find distinctive features in an image make it valuable in applications like object recognition, image stitching, and 3D reconstruction.
 
-### SURF :
+### SURF
 It stands for Speeded Up Robust features. It is another popular algorithm in computer vision and image processing. It is particularly known for its speed and robustness in detecting and describing local image features.
 
 The basic workflow of SURF is given below:
