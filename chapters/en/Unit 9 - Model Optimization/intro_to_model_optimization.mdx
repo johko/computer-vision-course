@@ -15,10 +15,26 @@ As we already know, the optimization model is important in the pre-deployment st
 ## Different types of model optimization techniques
 There are several techniques in the model optimization, which will be explained later in the next section. However, this section will briefly describe several types:
 1. Pruning: Pruning is the process of eliminating redundant or unimportant connections in the model. This aims to reduce model size and complexity.
+![Pruning](URL)
 2. Quantization: Quantization means converting model weights from high-precision formats (e.g., 32-bit floating-point) to lower-precision formats (e.g., 16-bit floating-point or 8-bit integers) to reduce memory footprint and increase inference speed.
 3. Knowledge Distillation: Knowledge distillation aims to transfer knowledge from a complex and larger model (teacher model) to a smaller model (student model) by mimicking the behavior of the teacher model.
+![Knowledge Distillation](URL)
 4. Low-rank approximation: Approximates large matrices with small ones, reducing memory consumption and computational costs.
 5. Model compression with hardware accelerators: This process is like pruning and quantization, specifically on specific hardware such as NVIDIA GPUs and Intel Hardware.
 
 ## Trade-offs between accuracy, performance, and resource usage
 A trade-off exists between accuracy, performance, and resource usage when deploying a model. That's when we have to decide which part to prioritize so that the model can be maximized in the case at hand.
+1. Accuracy is the model's ability to predict correctly. High accuracy is needed in all applications, which also causes higher performance and resource usage. Complex models with high accuracy usually require a lot of memory, so there will be limitations if they are deployed on resource-constrained devices. Complex models with high accuracy usually require a lot of memory, so there will be limitations if they are deployed on resource-constrained devices.
+2. Performance is a model of speed and efficiency (latency). This is important so the model can make predictions quickly, even in real time. However, optimizing performance will usually result in decreasing accuracy.
+3. Resource usage is the computational resources needed to perform inference on the model, such as CPU, memory, and storage. Efficient resource usage is crucial if we want to deploy models on devices with certain limitations, such as smartphones or IoT devices.
+
+Image below shows a common computer vision model in terms of model size, accuracy, and latency. Bigger model has high accuracy, but needs more time for inference and big size.
+
+![Model Size VS Accuracy](URL)
+
+![Accuracy VS Latency](URL)
+
+These are the three things we must consider: where will the model we create focus be? For example, focusing on high accuracy will result in a slower model during inference or require extensive resources. To overcome this, we apply one of the optimization methods as explained so that the model we get can maximize or balance the three trade-offs above (accuracy, performance, resource usage)
+
+
+
