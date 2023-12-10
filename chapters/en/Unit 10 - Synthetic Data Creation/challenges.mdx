@@ -4,7 +4,7 @@ Training machine learning models requires vast amounts of data. Synthetic data c
 augmenting limited data, and correcting imbalances in the real data. We have learned how to generate synthetic data using several different methods.
 Before using synthetic data to train a model, however, there are several important things that need to be considered.
 
-## Is there overfitting?
+## Overfitting the Model
 
 Overfitting occurs when a machine learning model learns the training data so well that it doesn't perform well on new, unseen data.
 It's akin to learning a specific way to solve a problem but then encountering a new situation where the strategy doesn't work.
@@ -35,7 +35,7 @@ _Overly Consistent Location_
 If the process of generating synthetic data has biases or inaccuracies, your model may unintentionally
 learn and perpetuate those biases. Beware of the following pitfalls:
 
-_Limited Diversity:_
+**Limited Diversity**
 
 One challenge is that synthetic data may fail to adequately represent the complexity
 and diversity of the real data. The shape example might seem trivial, but there are lots of situations where failing
@@ -49,22 +49,22 @@ you can potentially use synthetic data to de-bias the real data by augmenting wi
   Try to make sure your dataset reflects the variety found in the real world!
 </Tip>
 
-_Nice Variety_
+**Nice Variety**
 ![nice-variety](URL)
 
-_Copying Existing Biases:_
+**Copying Existing Biases:**
 
 If the data you used to create the synthetic images already had biases, your the model might unintentionally
 learn and replicate those biases. It's like copying a friend's notes without realizing they made a mistake
 – your computer might end up with the same errors.
 
-## Does the benefit of using synthetic data outweight the computational cost?
+## Does the benefit of using synthetic data outweigh the computational cost?
 
 Generating high-quality synthetic data can be computationally expensive. This may pose challenges in terms
 of both time and resources, especially for complex models or large datasets. As a general rule, generating and using a synthetic dataset
 only makes sense if it ultimately saves resources (money, time, etc.).
 
-## What is the perceived quality of the synthetic images?
+### What is the perceived quality of the synthetic images?
 
 Let's consider the lung images we generated using DCGAN. While some of the images looked pretty realistic, others were not
 so good. A model trained with the low-quality images might fail to detect pneumonia because the they contained noise that isn't present in the real images.
@@ -76,7 +76,7 @@ Accuracy Score (CAS).
 
 _FID:_
 
-FID uses a pre-trained neural network model, often Inception, which is good at recognizing objects in images.
+FID uses a pre-trained neural network model, often [Inception](https://huggingface.co/docs/timm/models/inception-v4), which is good at recognizing objects in images.
 The model is used to extract features from both the real and generated images.
 FID is a measure of how "far" one distribution is from another,
 taking into account both the mean and covariance of the distributions.
@@ -111,5 +111,6 @@ principles will help to unlock the potential of synthetic data!
 - [Classification Accuracy Score for Conditional Generative Models](https://arxiv.org/abs/1905.10887)
 - [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500)
 - [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498)
-  [Metrics](https://github.com/huggingface/community-events/tree/main/huggan/pytorch/metrics)
+- [Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/pdf/1512.00567v3.pdf)
+- [Metrics](https://github.com/huggingface/community-events/tree/main/huggan/pytorch/metrics)
 - [pytorch-fid](https://github.com/mseitzer/pytorch-fid)
