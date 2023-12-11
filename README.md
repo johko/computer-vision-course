@@ -1,6 +1,6 @@
-![Header](https://github.com/johko/computer-vision-course/assets/53175384/afabfd9d-7e2f-451c-a13c-f751f2adbafb)
+![Course](https://github.com/johko/computer-vision-course/assets/53175384/58e39903-5a3a-4d48-8f3c-5811f31b93b5)
 
-# Hugging Face Computer Vision Community Course
+# Community-led Computer Vision Community Course Sprint 🤗
 
 This is the repository for a community-led course on Computer Vision. Once finished, the course will be released in huggingface.co/learn. Below, you can find how you can help us in this effort.
 
@@ -165,7 +165,11 @@ $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
   
 - Before contributing, please read the general [contribution guide](https://huggingface2.notion.site/Contribution-Guide-19411c29298644df8e9656af45a7686d?pvs=4).
 
-- If you have any images, videos and more in your PRs, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet.
+- If you have any images, videos and more in your PRs, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet. The steps to do so are below 👇
+1. Request to join the https://huggingface.co/hf-vision organization. 
+2. Upload an image to https://huggingface.co/datasets/hf-vision/course-assets, e.g. via the web UI.
+3. Get the URL (e.g. https://huggingface.co/datasets/huggingface-course/audio-course-images/blob/main/all_models.png) right click to "Download" button and copy the link.
+4. Use that in standard markdown like ![image](link-to-image)
 
 ### Notebooks
 
