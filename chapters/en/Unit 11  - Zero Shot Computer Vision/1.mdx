@@ -12,6 +12,16 @@ So, we’ve gone from generalization, recognizing the unseen Alice’s and Ted�
 
 Well, now we’re in the turf of Zero-shot Learning. Also known as, ZSL.
 
+[comment]: # (TODO: Illustration showing the difference between generalization, domain adaptation, and ZSL)
 
-## History of ZSL
+## What is Zero-shot Learning?
 
+Let’s warm up with a definition
+
+Zero-shot learning is a setup in which the model is presented with images belonging to **only** classes that it was not exposed to during training, at test time. 
+
+Just a heads-up: in the classic ZSL setup, the test set only has pictures of classes the model hasn't seen before, not a single one from its training days. This may seem a little bit unrealistic, it's  like asking a student to ace an exam on only materials they've never studied. 
+
+Luckily, there's a more pragmatic version of ZSL that doesn't have this strict rule and is called generalized zero-shot learning, or GZSL. This more flexible approach allows the test set to include both seen and unseen classes. It's a more realistic scenario, reflecting how things work in the real world.
+
+[comment]: # (TODO: Illustration showing the difference between ZSL and GZSL)
