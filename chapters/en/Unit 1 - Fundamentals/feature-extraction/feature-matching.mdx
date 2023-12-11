@@ -29,34 +29,34 @@ import numpy as np
 
 **Brute Force with SIFT**
 
-### We will now load our images to have their features matched.
+**We will now load our images to have their features matched.**
 
 ```python
 img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
 img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
 ```
 
-### Initiatize SIFT detector
+**Initiatize SIFT detector**
 
 ```python
 sift = cv.SIFT_create()
 ```
 
-### Find the keypoints and descriptors with SIFT
+**Find the keypoints and descriptors with SIFT**
 
 ```python
 kp1, des1 = sift.detectAndCompute(img1,None)
 kp2, des2 = sift.detectAndCompute(img2,None)
 ```
 
-### Find matches using k nearest neighbors
+**Find matches using k nearest neighbors**
 
 ```python
 bf = cv.BFMatcher()
 matches = bf.knnMatch(des1,des2,k=2)
 ```
 
-### Apply ratio test to threshold the best matches
+**Apply ratio test to threshold the best matches**
 
 ```python
 good = []
@@ -65,7 +65,7 @@ for m,n in matches:
         good.append([m])
 ```
 
-### Draw the matches
+**Draw the matches**
 
 ```python
 img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
@@ -75,53 +75,52 @@ img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_N
 
 **Brute Force with ORB (binary) descriptors**
 
-### Load images
+**Load images**
 
 ```python
     img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
     img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
 ```
 
-### Intialize the ORB descriptor:
+**Initialize the ORB descriptor**
 
 ```python
 orb = cv.ORB_create()
 ```
 
-### Find key points and descriptors:
+**Find keypoints and descriptors**
 
 ```python
 kp1, des1 = orb.detectAndCompute(img1,None)
 kp2, des2 = orb.detectAndCompute(img2,None)
 ```
 
-### Because ORB is a binary descriptor, we find matches using [Hamming Distance](https://www.geeksforgeeks.org/hamming-distance-two-strings/), which is a measure of the difference between
-
-two strings of equal length
+Because ORB is a binary descriptor, we find matches using [Hamming Distance](https://www.geeksforgeeks.org/hamming-distance-two-strings/),
+which is a measure of the difference between two strings of equal length
 
 ```python
 bf = cv.BFMatcher(cv.NORM_HAMMING, crossCheck=True)
 ```
 
-### Find the matches
+**Find the matches**
 
 ```python
 matches = bf.match(des1,des2)
 ```
 
-### Sort them in the order of their distance.
+**Sort them in the order of their distance**
 
 ```python
 matches = sorted(matches, key = lambda x:x.distance)
 ```
 
-### Draw first n matches.
+**Draw first n matches**
 
 ```python
 img3 = cv.drawMatches(img1,kp1,img2,kp2,matches[:n],None,flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 ```
 
-## Fast Library for Approximate Nearest Neighbors (FLANN)
+**Fast Library for Approximate Nearest Neighbors (FLANN)**
 
 FLANN was proposed in [Fast Approximate Nearest Neighbors With Automatic Algorithm Configuration](https://www.cs.ubc.ca/research/flann/uploads/FLANN/flann_visapp09.pdf) by Muja and Lowe.
 To explain FLANN, we will continue with our puzzle solving example. Visualize a giant puzzle with hundreds of pieces scattered around.
@@ -136,7 +135,7 @@ Instead of searching through all the pieces, FLANN guides you to the right spot 
 If you have a puzzle with lots of colors, it will focus on color features. Alternately, if it's a puzzle with intricate shapes, it pays attention to those shapes.
 By balancing speed and accuracy when finding matching features, FLANN substantially improves query time.
 
-### First we create a dictionary to specify the algorithm we will use.
+**First we create a dictionary to specify the algorithm we will use**
 
 **For SIFT or SURF**
 
@@ -157,33 +156,35 @@ index_params= dict(algorithm = FLANN_INDEX_LSH,
                    multi_probe_level = 2)
 ```
 
-_We also create a dictionary to specify the maximum leafs to visit:_
+We also create a dictionary to specify the maximum leafs to visit:
 
 ```python
 search_params = dict(checks=50)
 ```
 
-Load images
+**Load images**
 
 ```python
 img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
 img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
 ```
 
-Initiate SIFT detector
+**Initiate SIFT detector**
 
 ```python
 sift = cv.SIFT_create()
 ```
 
-### Find the keypoints and descriptors with SIFT.
+**Find the keypoints and descriptors with SIFT**
 
 ```python
 kp1, des1 = sift.detectAndCompute(img1,None)
 kp2, des2 = sift.detectAndCompute(img2,None)
 ```
 
-### Define the FLANN parameters. Trees is the numbers of bins you want.
+**Define the FLANN parameters**
+
+- Trees is the numbers of bins you want.
 
 ```python
 FLANN_INDEX_KDTREE = 1
@@ -194,13 +195,13 @@ flann = cv.FlannBasedMatcher(index_params,search_params)
 matches = flann.knnMatch(des1,des2,k=2)
 ```
 
-### We will only draw only good matches, so create a mask
+**We will only draw good matches, so create a mask**
 
 ```python
 matchesMask = [[0,0] for i in range(len(matches))]
 ```
 
-### We perform a ratio test to determine good matches
+**We perform a ratio test to determine good matches**
 
 ```python
 for i,(m,n) in enumerate(matches):
@@ -208,7 +209,7 @@ for i,(m,n) in enumerate(matches):
         matchesMask[i]=[1,0]
 ```
 
-### Now we visualize the matches
+**Now we visualize the matches**
 
 ```python
 draw_params = dict(matchColor = (0,255,0),
@@ -239,7 +240,7 @@ We can use [Kornia](https://github.com/kornia/kornia) to find matching features 
 !pip install kornia  kornia-rs  kornia_moons opencv-python --upgrade
 ```
 
-### Import the libraries
+**Import the libraries**
 
 ```python
 import cv2
@@ -251,7 +252,7 @@ import torch
 from kornia_moons.viz import draw_LAF_matches
 ```
 
-### Load and resize the images
+**Load and resize the images**
 
 ```python
 from kornia.feature import LoFTR
@@ -263,13 +264,13 @@ img1 = K.geometry.resize(img1, (512, 512), antialias=True)
 img2 = K.geometry.resize(img2, (512, 512), antialias=True)
 ```
 
-### Indicate whether the image is an "indoor" or "outdoor" image.
+**Indicate whether the image is an "indoor" or "outdoor" image**
 
 ```python
 matcher = LoFTR(pretrained="outdoor")
 ```
 
-### LoFTR only works on grayscale images, so convert to images to grayscale.
+**LoFTR only works on grayscale images, so convert to images to grayscale**
 
 ```python
 input_dict = {
@@ -278,16 +279,16 @@ input_dict = {
 }
 ```
 
-### Perform Inference.
+**Perform Inference**
 
 ```python
 with torch.inference_mode():
     correspondences = matcher(input_dict)
 ```
 
-### We can clean up the correspondences using Random Sample Consensus (RANSAC), which helps to
+\*\* Clean up the correspondences using Random Sample Consensus ([RANSAC](https://en.wikipedia.org/wiki/Random_sample_consensus))
 
-deal with noise or outliers in the data.
+- This helps to deal with noise or outliers in the data.
 
 ```python
 mkpts0 = correspondences["keypoints0"].cpu().numpy()
@@ -296,7 +297,7 @@ Fm, inliers = cv2.findFundamentalMat(mkpts0, mkpts1, cv2.USAC_MAGSAC, 0.5, 0.999
 inliers = inliers > 0
 ```
 
-### Finally, we can visualize the matches.
+**Finally, we can visualize the matches**
 
 ```python
 draw_LAF_matches(
