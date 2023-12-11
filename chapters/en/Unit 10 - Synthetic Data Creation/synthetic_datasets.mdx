@@ -1,0 +1,127 @@
+# MAJOR SYNTHETIC DATASETS
+
+In this section we will cover the most popular synthetic dataset in computer vision.
+Being it a very wide topic we'll try to categorize the datasets into use cases as much as possible and provide real case usage examples.
+
+
+[Repository "Synthetic Data for Computer Vision"](https://github.com/unrealcv/synthetic-computer-vision)
+
+
+### Synthetic Image Datasets
+
+- SunCG (Princeton)
+    - Semantic Scene
+    - [currently not available](https://paperswithcode.com/dataset/suncg)
+    - [Paper: Semantic Scene Completion from a Single Depth Image](https://sscnet.cs.princeton.edu/)
+- Minos
+    - Multimodal Indoor Simulator
+    - MINOS is a simulator designed to suppor the development of multisensory models for goal-directed navigation in complex indoor environments. MINOS leverages large datasets of compelx 3D environments and supports flexible configuration of multimodal sensor suites.
+    - [GitHub Repository](https://github.com/minosworld/minos)
+- House3D
+    - Archived on August 28, 2021
+    - A Rich and R3ealistic 3D Environment
+    - [GitHub Repository](https://github.com/facebookresearch/House3D)
+    - House3D is a virtual 3D environment which consists of thousands of indoor scenes equipped with a diverse set of scene types, layouts and objects sourced from the SUNCG dataset. It consists of over 45k indoor 3D scenes, ranging from studios to two-storied houses with swimming pools and fitness rooms. All 3D objects are fully annotated with category labels. Agents in the environment have access to observations of multiple modalities, including RGB images, depth, segmentation masks and top-down 2D map views. The renderer runs at thousands frames per second, making it suitable for large-scale RL training.
+- PHAV (Procedural Human Action Videos)
+    - Synthetic dataset of procedurally generated human action recognition videos
+    - [Project](http://adas.cvc.uab.es/phav/)
+    - [Paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/de_Souza_Procedural_Generation_of_CVPR_2017_paper.pdf)
+- Surreal
+    -  a new large-scale dataset with synthetically-generated but realistic images of people rendered from 3D sequences of human motion capture data. We generate more than 6 million frames together with ground truth pose, depth maps, and segmentation masks. We show that CNNs trained on our synthetic dataset allow for accurate human depth estimation and human part segmentation in real RGB images.
+    - [Code](https://github.com/gulvarol/surreal)
+    - [Paper](https://arxiv.org/abs/1701.01370)
+    - [Project](https://www.di.ens.fr/willow/research/surreal/)
+    - in the last link there are also poster and presentation pdfs.
+    - it's from 2017
+- Virtual KITTI
+    - Virtual Worlds as Proxy for Multi-Object Tracking Analysis
+    - we instead leverage the recent progress in computer graphics to generate fully labeled, dynamic, and photo-realistic proxy virtual worlds. We propose an efficient real-to-virtual world cloning method, and validate our approach by building and publicly releasing a new video dataset, called Virtual KITTI (see this http URL), automatically labeled with accurate ground truth for object detection, tracking, scene and instance segmentation, depth, and optical flow.
+- Synthia
+    - A large collection of synthetic images for semantic segmentation of urban scenes. 2016
+    - [Paper](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Ros_The_SYNTHIA_Dataset_CVPR_2016_paper.html)
+    - SYNTHIA, The  SYNTHetic collection of Imagery and Annotations, is a dataset that has been generated with the purpose of aiding semantic segmentation and related scene understanding problems in the context of driving scenarios. SYNTHIA consists of a collection of photo-realistic frames rendered from a virtual city and comes with precise pixel-level semantic annotations for 13 classes: misc, sky, building, road, sidewalk, fence, vegetation, pole, car, sign, pedestrian, cyclist, lane-marking.
+    - [Project](https://synthia-dataset.net/)
+- Sintel
+    - A synthetic dataset for optical flow
+    - [Paper: A naturalistic Open Source Movie for Optical Flow Evaluation](https://link.springer.com/chapter/10.1007/978-3-642-33783-3_44)
+    - 551 citations
+    - 2012
+    - [Project](http://sintel.is.tue.mpg.de/)
+- SceneFlow
+    - [This project is no longer active](https://www.ri.cmu.edu/project/scene-flow/)
+- 4D Light Field Dataset
+    - [GitHub Project](https://github.com/lightfield-analysis)
+    - [Paper: A Dataset and Evaluation Methodology for Depth Estimation on 4D Light Fields](https://lightfield-analysis.net/benchmark/paper/lightfield_benchmark_accv_2016.pdf)
+    - [Project](https://lightfield-analysis.uni-konstanz.de/)
+    - Per scene, we provide:
+        - 9x9x512x512x3 light fields as individual PNGs
+        - Config files with camera settings and disparity ranges
+        - Per center view (except for the 4 test scenes):
+            - 512x512 and 5120x5120 depth and disparity maps as PFMs
+            - 512x512 and 5120x5120 evaluation masks as PNGs
+    - We further provide depth and disparity maps for all 81 views of the additional scenes.
+    - For file format descriptions and read/write utilities, see our Matlab and Python scripts.
+- ICL-NUIM Dataset
+    - The ICL-NUIM dataset aims at benchmarking RGB-D, Visual Odometry and SLAM algorithms. Two different scenes (the living room and the office room scene) are provided with ground truth. Living room has 3D surface ground truth together with the depth-maps as well as camera poses and as a result pefectly suits not just for bechmarking camera trajectory but also reconstruction. Office room scene comes with only trajectory data and does not have any explicit 3D model with it. Below we provide data for four different handheld trajectories that are obtained by running Kintinuous on real image data, and finally used in synthetic framework for obtaining ground truth.
+    - [Project](https://www.doc.ic.ac.uk/~ahanda/VaFRIC/iclnuim.html)
+- Driving in the matrix
+    - [GitHub Repository](https://github.com/umautobots/driving-in-the-matrix)
+    - 104 Stars
+    - [Paper: Driving in the Matrix: Can Virtual Worlds Replace Human-Generated Annotations for Real World tasks?](https://arxiv.org/pdf/1610.01983.pdf)
+    - 2017
+    - [Project](https://fcav.engin.umich.edu/projects/driving-in-the-matrix)
+    - By training machine learning algorithms on a rich virtual world, we can illustrate that real objects in real scenes can be learned and classified using synthetic data. This approach offers the possibility of accelerating deep learning’s application to sensor based classification problems like those that appear in self-driving cars.
+- Playing for benchmarks
+    - We present a benchmark suite for visual perception. The benchmark is based on more than 250K high-resolution video frames, all annotated with ground-truth data for both low-level and high-level vision tasks, including optical flow, semantic instance segmentation, object detection and tracking, object-level 3D scene layout, and visual odometry. Ground-truth data for all tasks is available for every frame. The data was collected while driving, riding, and walking a total of 184 kilometers in diverse ambient conditions in a realistic virtual world. To create the benchmark, we have developed a new approach to collecting ground-truth data from simulated worlds without access to their source code or content. We conduct statistical analyses that show that the composition of the scenes in the benchmark closely matches the composition of corresponding physical environments. The realism of the collected data is further validated via perceptual experiments. We analyze the performance of state-of-the-art methods for multiple tasks, providing reference baselines and highlighting challenges for future research.
+    - [Project](https://playing-for-benchmarks.org/overview/)
+    - [Paper: Playing for benchmark](https://vladlen.info/papers/playing-for-benchmarks.pdf)
+    - 2017
+    
+    
+### 3D Model Repository
+Realistic 3D models are critical for creating realistic and diverse virtual worlds. Here are research efforts for creating 3D model repositories.
+    
+
+- ShapeNet
+    - [Paper: An information-rich 3D Model Repository](https://arxiv.org/abs/1512.03012)
+    - 2015
+    - [Project](https://shapenet.org/)
+    - ShapeNet consists of several subsets:
+        - ShapeNetCore: ShapeNetCore is a subset of the full ShapeNet dataset with single clean 3D models and manually verified category and alignment annotations. It covers 55 common object categories with about 51,300 unique 3D models. The 12 object categories of PASCAL 3D+, a popular computer vision 3D benchmark dataset, are all covered by ShapeNetCore.
+        - ShapeNetSem: ShapeNetSem is a smaller, more densely annotated subset consisting of 12,000 models spread over a broader set of 270 categories. In addition to manually verified category labels and consistent alignments, these models are annotated with real-world dimensions, estimates of their material composition at the category level, and estimates of their total volume and weight.
+    
+
+    
+- 3DScan
+    - a large dataset of object scans
+    - paper: https://arxiv.org/abs/1602.02481
+    - 2016
+    - project: http://redwood-data.org/3dscan/
+    
+    
+- seeing3Dchairs
+
+
+
+### Other datasets 
+Pix3D
+FaceSynthetics
+ABO
+cifake
+
+### Object Detection and Recognition
+YCB-Video
+
+### Semantic Segmentation:
+ApolloScape
+
+### Autonomous Driving:
+GTA5
+CARLA
+
+### Face Recognition:
+FFHQ
+Craniofacial Datasets
+
+### Image Super-Resolution:
+NTIRE
