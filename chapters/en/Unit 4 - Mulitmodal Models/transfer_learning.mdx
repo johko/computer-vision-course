@@ -20,11 +20,17 @@ In the context of deep learning, in transfer learning, when training a model for
 
 This approach has several advantages:
 
-* **Resource Efficiency**. Since the pretrained model was trained on a huge amount of data over a long period, transfer learning requires much less computing resources for model convergence
+* **Resource Efficiency.** Since the pretrained model was trained on a huge amount of data over a long period, transfer learning requires much less computing resources for model convergence.
 
-* **Reducing the size of labeled data**. For the same reason, less data is required to achieve decent quality on the test sample
+* **Reducing the size of labeled data.** For the same reason, less data is required to achieve decent quality on the test sample.
 
-* **Knowledge Transfer**. During fine-tuning, the model leverages the pre-trained model's knowledge, leading to enhanced performance.
+* **Knowledge Transfer.** During fine-tuning to the new task, the model capitalizes on the pre-existing knowledge encoded within the pre-trained model's weights. This integration of prior knowledge often leads to enhanced performance on the new task.
+
+However, despite its advantages, transfer learning has some challenges that should also be taken into account:
+
+* **Domain Shift.** Adapting knowledge from the source domain to the target domain can be challenging if the data distributions differ substantially.
+
+* **Catastrophic forgetting.** During fine-tuning process, the model adjusts its parameters to adapt to the new task, often causing it to lose the previously learned knowledge or representations related to the initial task.
 
 ## Transfer Learning Applications
 
