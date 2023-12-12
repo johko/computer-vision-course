@@ -1,0 +1,46 @@
+
+# ConvNext - A ConvNet for the 2020s (2022)
+
+
+## Introduction
+
+The ConvNext architecture was developed in 2022 by researchers from Facebook AI Research (Zhuang Liu, Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell, and Saining Xie). 
+Recently, with the breakthrough of Visual Transformers (ViTs), it quickly superceded pure ConvNet models as the new state-of-the-art for Image Recognition.
+ConvNext represents a notable advancement in pure convolution models, achieved by incorporating training techniques inspired by ViTs, achieving results on par with ViTs.
+
+
+## Key Improvements
+ConvNext starts from a regular ResNet (ResNet-50/200) and gradually modernize and modify the architecture to closely imitate the hierarchical structure of Vision Transformers.
+The key improvements are:
+- Training Techniques
+- Macro Design
+- ResNeXt-ify
+- Inverted Bottleneck
+- Large Kernel Sizes
+- Micro Design
+We will go through each of the key improvements briefly.
+
+## Training Techniques
+Before changing the design of the architecture, having a good training procedure will significantly affect the performance.
+ConvNext applies training techniques close to DeiT and Swin Transformers which are:
+- Extended epochs from the original 90 epochs to 300 epochs
+- AdamW optimizer
+- Data augmentation techniques such as Mixup, Cutmix, RandAugment, Random Erasing
+- Regularization schemes including Stochastic Depth and Label Smoothing
+This alone increased ResNet-50 performance from 76.1% to 78.8%.
+
+## Macro Design
+TODO
+## ResNeXt-ify
+TODO
+## Inverted Bottleneck
+TODO
+## Large Kernel Sizes
+TODO
+## Micro Design
+TODO
+
+## PyTorch Example
+
+(insert code here)
+ 
