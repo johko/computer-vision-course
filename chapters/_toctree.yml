@@ -1,4 +1,14 @@
 - title: 0. Getting Started
   sections:
-  - local: chapter0/1
-    title: Introduction
+    - local: chapter0/1
+      title: Introduction
+
+- title: 0. Getting Started
+  sections:
+    - local: chapter0/1
+      title: Introduction
+
+- title: Unit 10. Synthetic Data Creation
+  sections:
+    - local: chapter10/blenderProc
+      title: Using a 3D Renderer to Generate Synthetic Data
