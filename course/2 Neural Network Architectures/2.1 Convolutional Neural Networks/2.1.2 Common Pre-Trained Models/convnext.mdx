@@ -1,13 +1,12 @@
 
 # ConvNext - A ConvNet for the 2020s (2022)
 
-
 ## Introduction
-
 The paper "A ConvNet for the 2020s" proposed the ConvNext architecture in 2022 by a team of researchers from Facebook AI Research, including Zhuang Liu, Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell, and Saining Xie.
 Recently, the breakthrough of Vision Transformers (ViTs) quickly superseded pure ConvNet models as the new state-of-the-art for image recognition.
 Intriguingly, a significant portion of the design choices in Vision Transformers can be mapped to ConvNet.
 ConvNext represents a significant improvement to pure convolution models by incorporating techniques inspired by ViTs and achieving results comparable to ViTs in terms of accuracy and scalability.
+
 
 ## Key Improvements
 ConvNext starts with a regular ResNet (ResNet-50) and gradually modernizes and modifies the architecture to closely imitate the hierarchical structure of Vision Transformers.
@@ -19,6 +18,7 @@ The key improvements are:
 - Large Kernel Sizes
 - Micro Design
 We will go through each of the key improvements briefly.
+These designs are not novel in itself, however you can learn how researchers adapt and modify designs systematically to improve existing models.
 
 ## Training Techniques
 Before changing the design of the architecture, having a good training procedure will significantly affect the performance.
@@ -29,8 +29,9 @@ ConvNext applies training techniques close to DeiT and Swin Transformers which a
 - Regularization schemes including Stochastic Depth and Label Smoothing
 This improves ResNet-50's accuracy from 76.1% to 78.8%.
 
+
 ## Macro Design
-Analyzing Swin Transformers' macro network, there are two interesting design considerations that is used in ConvNext: 
+Analyzing Swin Transformers' macro network, there are two interesting design considerations that is used in ConvNext.
 
 ### The stage compute ratio
 The stage compute ratio refers to how the computational load is distributed among the stages of a neural network model.
@@ -42,16 +43,19 @@ Typically, on the start of ResNet's architecture, the input is fed to a stem a 7
 However, it turns out to be substitutable to a simpler but more effective 4×4 convolutional layer with stride 4, making it a non-overlapping convolution.
 This improves the model accuracy from 79.4% to 79.5%.
 
+
 ## ResNeXt-ify
 ConvNext adopts the idea of ResNeXt, which has been explored in the previous page. 
 In short, ResNeXt has a better FLOPs (number of floating point operations) over accuracy trade-off than a vanilla ResNet by having grouped convolution for the 3×3 conv layer in the bottleneck block.
 Specifically, ConvNext increases the network width to 96 channels, following Swin Transformer's strategy.
 This improves the model accuracy from 79.5% to 80.5%.
 
+
 ## Inverted Bottleneck
 An important idea in every Transformer block is usage of inverted bottleneck, where the hidden layers are bigger (by a ratio of 4 for ConvNext) than the input dimension. 
 This idea has also been used and popularized in Computer Vision by MobileNetV2.
 This improves the model accuracy from 80.5% to 80.6%.
+
 
 ## Large Kernel Sizes
 One of the reasons Vision Transformer do so well has to do with its non-local self-attention which enables a more global receptive field of image features.
@@ -59,6 +63,7 @@ Swin Transformers' attention block window size is at least 7×7, bigger than Res
 - Moving up the position of the depthwise convolution layer is a prerequisite to increasing the kernel size. By doing this, we can let the 1x1 layers do the heavy lifting while the depthwise convolution layer focus as a more non-local receptor. This step reduces the number of FLOPS, although with the cost of a small degradation in accuracy.
 - With the prerequisite set up, we can get the benefit of adopting larger kernel-sized convolutions. 
 By using kernel size 7x7 similar to Swin Transformers, the network regains the accuracy degraded in the prerequisite step, while reducing the model's overall FLOPs.
+
 
 ## Micro Design
 In addition to the modifications stated, ConvNext also considers micro network, focusing more on the minor details in the layer level.
@@ -69,6 +74,7 @@ The changes are as follows:
 - Substituting Batch Normalization with Layer Normalization (LN improves the model after doing the previous modifications)
 - Separate downsampling layers (add a separate downsample layer in between ResNet stages, adding LN layers before each downsampling layer)
 With these final modifications, this improves the final model accuracy from 80.6% to 82.0%, exceeding Swin Transformer's accuracy (81.3%).
+
 
 ## Model Code
 You can go to this [HuggingFace documentation](https://huggingface.co/docs/transformers/model_doc/convnext) to learn more about how to use ConvNext.
