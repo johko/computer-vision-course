@@ -20,7 +20,7 @@ Representing features in images is crucial for organizing and manipulating image
 
 ## **What Makes a good descriptor**
 
-A good descriptor in the context of image processing or computer vision is a set of characteristics or features that effectively represent key information about an object or scene in an image. Here are some aspects that contribute to making a good descriptor:
+A good descriptor in the context of computer vision is a set of features that effectively represent key information about an object or scene in an image. Here are some aspects that contribute to making a good descriptor:
 
 1. **Invariant to transformation:** Descriptors should ideally be robust to variations like rotation, translation, scaling and changes in illumination. This means that regardless of how an object is positioned or how the image is altered, the descriptor should remain relatively unchanged and contain the same description as the original one.
 2. **Distinctiveness:** A good descriptor captures unique information about the object. It should be able to discriminate between different objects or parts of the image and be distinct enough to differentiate them from similar elements.
