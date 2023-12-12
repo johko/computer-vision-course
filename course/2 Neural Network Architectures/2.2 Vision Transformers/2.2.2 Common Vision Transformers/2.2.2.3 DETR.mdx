@@ -71,7 +71,7 @@ class DETR(nn.Module):
 ```
 ### Going line by line in the `forward` function: <br/>
 **Backbone**<br/>
-The input image is first put through a resnet backbone and then a convolution layer, which reduces the dimension to the `hidden_dim`
+The input image is first put through a ResNet backbone and then a convolution layer, which reduces the dimension to the `hidden_dim`
 ```python
 x = self.backbone(inputs)
 h = self.conv(x)
