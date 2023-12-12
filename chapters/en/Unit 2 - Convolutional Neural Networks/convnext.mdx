@@ -19,6 +19,7 @@ The key improvements are:
 - Micro Design
 We will go through each of the key improvements briefly.
 These designs are not novel in itself, however you can learn how researchers adapt and modify designs systematically to improve existing models.
+[Block Comparison](./block_comparison.png)
 
 ## Training Techniques
 Before changing the design of the architecture, having a good training procedure will significantly affect the performance.
@@ -40,34 +41,35 @@ This improves the model accuracy from 78.8% to 79.4%.
 
 ### Changing stem to Patchify
 Typically, on the start of ResNet's architecture, the input is fed to a stem a 7×7 convolution layer with stride 2, followed by a max pool, which is used to downsample the image by a factor of 4.
-However, it turns out to be substitutable to a simpler but more effective 4×4 convolutional layer with stride 4, making it a non-overlapping convolution.
+However, it turns out to be substitutable to a simpler but more effective 4×4 non-overlapping convolutional layer with stride 4.
 This improves the model accuracy from 79.4% to 79.5%.
 
 
 ## ResNeXt-ify
 ConvNext adopts the idea of ResNeXt, which has been explored in the previous page. 
 In short, ResNeXt has a better FLOPs (number of floating point operations) over accuracy trade-off than a vanilla ResNet by having grouped convolution for the 3×3 conv layer in the bottleneck block.
-Specifically, ConvNext increases the network width to 96 channels, following Swin Transformer's strategy.
+Specifically, ConvNext increases the network width to 96 channels.
 This improves the model accuracy from 79.5% to 80.5%.
 
 
 ## Inverted Bottleneck
 An important idea in every Transformer block is usage of inverted bottleneck, where the hidden layers are bigger (by a ratio of 4 for ConvNext) than the input dimension. 
 This idea has also been used and popularized in Computer Vision by MobileNetV2.
-This improves the model accuracy from 80.5% to 80.6%.
+By using this technique, it improves the model accuracy from 80.5% to 80.6%.
+[Inverted Bottleneck Comparison](./inverted_bottleneck.png)
 
 
 ## Large Kernel Sizes
 One of the reasons Vision Transformer do so well has to do with its non-local self-attention which enables a more global receptive field of image features.
 Swin Transformers' attention block window size is at least 7×7, bigger than ResNext's 3x3 kernel size. ConvNext changes ResNext's original kernel size as follows.
-- Moving up the position of the depthwise convolution layer is a prerequisite to increasing the kernel size. By doing this, we can let the 1x1 layers do the heavy lifting while the depthwise convolution layer focus as a more non-local receptor. This step reduces the number of FLOPS, although with the cost of a small degradation in accuracy.
+- Moving up the position of the depthwise convolution layer is a prerequisite to increasing the kernel size. By doing this, we can let the 1x1 layers do the efficient heavy lifting while the depthwise convolution layer focus as a more non-local receptor.
 - With the prerequisite set up, we can get the benefit of adopting larger kernel-sized convolutions. 
-By using kernel size 7x7 similar to Swin Transformers, the network regains the accuracy degraded in the prerequisite step, while reducing the model's overall FLOPs.
-
+By using kernel size 7x7, the network retains the accuracy while improving the model's overall FLOPs.
+[Moving up the Depth Conv Layer](./depthwise_moveup.png)
 
 ## Micro Design
-In addition to the modifications stated, ConvNext also considers micro network, focusing more on the minor details in the layer level.
-The changes are as follows:
+In addition to the modifications stated, ConvNext also considers micro design, focusing on layer level details.
+The changes are:
 - Replacing ReLU activation with GELU (Gaussian Error Linear Unit) (optional, accuracy stays unchanged) 
 - Fewer activation functions (eliminate all GELU layers from the residual block except for one between two 1×1 layers, replicating the style of a Transformer block)
 - Fewer normalization layers (remove two BatchNorm layers, leaving only one BN layerbefore the conv 1 × 1 layers)
@@ -77,4 +79,4 @@ With these final modifications, this improves the final model accuracy from 80.6
 
 
 ## Model Code
-You can go to this [HuggingFace documentation](https://huggingface.co/docs/transformers/model_doc/convnext) to learn more about how to use ConvNext.
+You can go to [this HuggingFace documentation](https://huggingface.co/docs/transformers/model_doc/convnext) to learn more about how to use ConvNext in your code.
