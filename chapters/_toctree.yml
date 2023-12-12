@@ -7,3 +7,13 @@
   sections:
   - local: chapters/en/Unit 4 - Mulitmodal Models/tranfer_learning
     title: Transfer learning
+ 
+- title: Unit 10. Synthetic Data Creation
+  sections:
+  - local: chapter10/blenderProc
+    title: Using a 3D Renderer to Generate Synthetic Data
+
+- title: Unit 12. Ethics and Bias
+  sections:
+  - local: chapters/en/Unit 12 - Ethics and Biases/pre-intro
+    title: What you'll learn
