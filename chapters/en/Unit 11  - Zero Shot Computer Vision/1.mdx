@@ -39,3 +39,36 @@ Let’s have a nice outline for the most important moments in ZSL below
 | 2020 | OpenAI’s GPT3 achieves an impressive performance on zero-shot NLP  |
 | 2021 | OpenAI’s CLIP takes zero-shot computer vision to a whole new level |
 
+## How Does Zero-shot Learning Work In Computer Vision?
+
+Now that we know what zero-shot learning is, it would be nice to know how it is applied to computer vision, right? This part will be addressed in more detail in the coming chapters, but let’s paint a broad picture here to break the ice.
+
+In NLP, zero-shot learning is (although it wasn’t always the case) pretty straight-forward. Many language models are trained on massive datasets of text, learning to predict the next word in a given sequence. This ability to capture the underlying patterns and semantic relationships within language allows these models to perform surprisingly well on tasks they weren’t explicitly trained on. A really nice example is GPT2 being able to summarize a passage when TL;DR is appended to the prompt. Zero-shot computer vision is another story.
+
+Let’s begin by answering a simple question, *how can we humans do it? How can we recognize objects that we have not seen before?*
+
+Yes, you’re totally right! We need some **other information** about that object. We can easily identify a tiger, even if we haven’t seen one before, given that we have a knowledge of what a lion looks like. A tiger is a lion with stripes and minus the mane. A zebra is a black and white striped version of a horse. Deadpool is a red-black version of Spiderman.
+
+As we can see, zero-shot computer vision is essentially multi-modal. If generalization is like learning a language by reading books and talking to people. Zero-shot computer vision is like learning a language by reading a dictionary and listening to someone describe what it sounds like.
+
+### What Other Information?
+
+It is called **Semantic or Auxiliary Information**. Semantic information embeds both seen and unseen classes in high dimensional vectors, and it comes in many different forms:
+
+1. **Attribute vectors**: Thinks of attributes as a tabular representation of the different features for the object. 
+2. **Textual Descriptions**: A text describing the object contained in the image similar to image captions.
+3. **Class label vectors**: Simply using the embeddings of class labels.
+
+[comment]: # (TODO: Illustration showing the different forms of semantic information)
+
+And using this semantic information, you train a model to learn a mapping function between the image features and the semantic features. At inference time, the model predicts the class label by looking for the closest label in the semantic space by using, for example, k-nearest neighbor. We can say that we are transferring knowledge obtained from seen classes with the help of semantic information.
+
+Different zero-shot computer vision methods differ in what **semantic information** they use and which **embedding space** they utilize at inference.
+
+[comment]: # (TODO: Illustration showing the pipeline of zero-shot learning)
+
+### How Is This Different from Transfer Learning?
+
+Good question! Zero-shot learning (ZSL) falls within the broader category of transfer learning, specifically under the umbrella of **heterogeneous transfer learning**. This means that ZSL relies on transferring knowledge gained from a **source domain** (seen classes) to a *distinct* **target domain** (unseen classes). 
+
+Due to the disparity between the source and target domains, ZSL faces specific challenges in transfer learning. These include overcoming domain shift, where the data distributions differ significantly, and handling the lack of labeled data in the target domain. But we’re going to talk about these challenges in detail later, so don’t worry about it now. For now, let’s talk a little about the different methods of zero-shot computer vision.
