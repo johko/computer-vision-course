@@ -81,8 +81,8 @@ Due to the disparity between the source and target domains, ZSL faces specific c
 
 The landscape of zero-shot computer vision methods is vast and diverse, with numerous proposed approaches and multiple frameworks for categorization. But one framework that I find appealing is one in which these methods can be broadly categorized into **Embedding-based methods** and **Generative-based methods**. This framework offers a useful lens through which to understand and compare different zero-shot computer vision approaches.
 
-- **Embedding-based methods**: The model learns a common embedding space where both images and their semantic features/representations are projected. New unseen classes are then predicted using a similarity measure in that space. 
-- **Generative-based methods**: These methods utilize generative models to create synthetic images or visual features for the unseen classes based on the samples of seen classes and semantic representations of both classes. This allows for training models on these unseen classes even without real data. This way, we’ve cheated a little bit and converted the zero-shot problem into a supervised learning problem.
+- **Embedding-based methods**: The model learns a common embedding space where both images and their semantic features/representations are projected. New unseen classes are then predicted using a similarity measure in that space. For example, CLIP.
+- **Generative-based methods**: These methods utilize generative models to create synthetic images or visual features for the unseen classes based on the samples of seen classes and semantic representations of both classes. This allows for training models on these unseen classes even without real data. This way, we’ve cheated a little bit and converted the zero-shot problem into a supervised learning problem. For example, CVAE.
 
 [comment]: # (TODO: Diagram showing the categories of ZSL methods and the sub-categories)
 
