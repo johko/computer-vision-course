@@ -75,3 +75,16 @@ Good question! Zero-shot learning (ZSL) falls within the broader category of tra
 
 Due to the disparity between the source and target domains, ZSL faces specific challenges in transfer learning. These include overcoming domain shift, where the data distributions differ significantly, and handling the lack of labeled data in the target domain. But we’re going to talk about these challenges in detail later, so don’t worry about it now. For now, let’s talk a little about the different methods of zero-shot computer vision.
 
+## Methods of Zero-shot Computer Vision
+
+The landscape of zero-shot computer vision methods is vast and diverse, with numerous proposed approaches and multiple frameworks for categorization. But one framework that I find appealing is one in which these methods can be broadly categorized into **Embedding-based methods** and **Generative-based methods**. This framework offers a useful lens through which to understand and compare different zero-shot computer vision approaches.
+
+- **Embedding-based methods**: The model learns a common embedding space where both images and their semantic features/representations are projected. New unseen classes are then predicted using a similarity measure in that space. 
+- **Generative-based methods**: These methods utilize generative models to create synthetic images or visual features for the unseen classes based on the samples of seen classes and semantic representations of both classes. This allows for training models on these unseen classes even without real data. This way, we’ve cheated a little bit and converted the zero-shot problem into a supervised learning problem.
+
+[comment]: # (TODO: Diagram showing the categories of ZSL methods and the sub-categories)
+
+The choice between embedding-based and generative-based approaches, like every other choice that you have to make in machine learning, *depends* on the specifics of the task at hand and the available resources. Embedding-based methods are often preferred for their efficiency and scalability, while generative-based methods offer greater flexibility and potential for handling complex data.
+
+But Anyway, In this unit we are going to address *only* embedding-based methods, and to be more specific **attention-based embedding-based methods**. Zero-shot learning is a big topic and a comprehensive coverage may require a course of its own. Interested readers may check the provided additional readings and have fun.
+
