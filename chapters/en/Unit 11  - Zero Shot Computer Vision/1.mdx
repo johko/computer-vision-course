@@ -88,3 +88,11 @@ The choice between embedding-based and generative-based approaches, like every o
 
 But Anyway, In this unit we are going to address *only* embedding-based methods, and to be more specific **attention-based embedding-based methods**. Zero-shot learning is a big topic and a comprehensive coverage may require a course of its own. Interested readers may check the provided additional readings and have fun.
 
+## Attack Of The Clones: How ZSL Is Different From X?
+
+We’ve gone a long way! We now have a decent idea of zero-shot learning, its history, its application in computer vision, and how it generally works. To round out this introduction, we are going to compare ZSL to other different methods that may initially appear similar.
+
+- **Domain Adaptation (DA)**: This should be familiar by now. We can think of Zero-shot Learning as an extreme case of Domain Adaptation (greedy, greedy), dealing with the problem of learning to recognize unseen classes with no data at all. Domain Adaptation focuses on bridging the gap between two related domains (datasets) with different distributions and it requires labeled data.
+- **Open Set Recognition (OSR)**: Think of it as a Boolean Zero-shot Learning. Like ZSL, in OSR problem the model handles both seen and unseen classes. But unlike ZSL, the model only need to classify, at test time, whether the instance belongs to the seen classes or not. That’s it, no fancy labels.Still, this is a significant challenge.
+- **Out of Distribution (OOD) Detection**: Think of this problem as a continuous variant of open set recognition. Here we don’t want to detect any instances that weren’t included in the training process, but rather just instances that deviate significantly from the training data distribution distribution. By recognizing and handling unexpected data effectively, OOD detection can pave the way for more trustworthy and robust AI systems that can adapt to unpredictable environments.
+- **Open Vocabulary Learning (OVL)**: This is what zero-shot learning aspires to be. Like, ZSL on steroids. Overall, OVL can be considered an extension of ZSL, encompassing the ability to learn from limited data for unseen classes while also extending to handle seen classes and potentially infinite new classes and tasks. 
