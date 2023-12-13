@@ -2,9 +2,9 @@
 
 In the preceding sections, we've delved into the fundamental concepts of multimodal models such as CLIP and its related counterparts. In this chapter, we will try to find out how you can use different types of multimodal models for your tasks.
 
-There are several approaches to how you can use a multimodal model for your task:
+There are several approaches to how you can adapt multimodal models to your use case:
 
-1. **Zero\few-shot learning**. Zero\few-shot learning involves leveraging large pretrained models capable of solving problems not present in the training data. These approaches can be useful when there is little labeled data for a task (5-10 examples). or there is none at all. [Unit 11](https://) will delve deeper into this topic.
+1. **Zero\few-shot learning**. Zero\few-shot learning involves leveraging large pretrained models capable of solving problems not present in the training data. These approaches can be useful when there is little labeled data for a task (5-10 examples) or there is none at all. [Unit 11](https://) will delve deeper into this topic.
 
 2. **Training the model from scratch**. When pretrained model weights are unavailable or the pre-trained model's dataset substantially differs from your own, this method becomes necessary. Here, we initialize model weights randomly (or via more sophisticated methods like [He initialization](https://arxiv.org/abs/1502.01852)) and proceed with usual training. However, this approach demands substantial amounts of training data.
 
