@@ -1,22 +1,143 @@
-# MAJOR SYNTHETIC DATASETS
-
-In this section we will cover the most popular synthetic dataset in computer vision.
-Being it a very wide topic we'll try to categorize the datasets into use cases as much as possible and provide real case usage examples.
 
 
-[Repository "Synthetic Data for Computer Vision"](https://github.com/unrealcv/synthetic-computer-vision)
+# **MAJOR SYNTHETIC DATASETS**
+
+In this section, we will cover the most popular synthetic datasets in computer vision, categorized into specific use cases and providing real-case usage examples.
+
+[TOC]
 
 
-### Synthetic Image Datasets
+
+## Low Level Computer Vision Problems
+
+### **Optical Flow and Motion Analysis**
+
+Estimating the distribution of apparent velocities of movement along the image.
+
+ Optical flow is important for motion estimation and video compression.
+
+| Dataset Name | Year                  | Description                                                  | Paper                                                        | Code | Additional Links                                             |
+| ------------ | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| Middlebury   | 2021 (latest release) | The **Middlebury** Stereo dataset consists of high-resolution stereo sequences with complex geometry and pixel-accurate ground-truth disparity data. The ground-truth disparities are acquired using a technique that employs structured lighting and does not require the calibration of the light projectors. | [A database and  evaluation method for Optical Flow](https://vision.middlebury.edu/flow/floweval-ijcv2011.pdf) (Cited by 3192 at the time of writing) |      | [Papers with Code](https://paperswithcode.com/dataset/middlebury) - [Project](https://vision.middlebury.edu/stereo/data/) |
+| MPI-Sintel   | 2012                  | A synthetic dataset for optical flow. The main characteristic feature of MPI-Sintel is that it contains the same scenes with different render settings, varying quality and complexity; this approach can provide a deeper understanding of where different optical flow algorithms break down. (paper quote) |                                                              |      | [Paper](https://link.springer.com/chapter/10.1007/978-3-642-33783-3_44), [Project](http://sintel.is.tue.mpg.de/) |
+| SceneFlow    | N/A                   | N/A                                                          |                                                              |      | [Project (Inactive)](https://www.ri.cmu.edu/project/scene-flow/) |
+| MPI-Sintel   |                       |                                                              |                                                              |      |                                                              |
+
+---
+
+
+
+### Stereo Image Matching
+
+Finding the correspondence between the points of two images of the same scene from different viewpoints
+
+| Dataset Name              | Year | Description                                                  | Paper | Code | Additional Links |
+| ------------------------- | ---- | ------------------------------------------------------------ | ----- | ---- | ---------------- |
+| Tsukuba CG Stereo Dataset |      | This dataset includes 1800 stereo pairs accompanied by ground truth disparity maps, occlusion maps, and discontinuity maps, all of which are crucial for developing and evaluating stereo matching algorithms' performance. |       |      |                  |
+
+
+
+
+
+
+
+## High Level Computer Vision Problems
+
+
+
+### **Autonomous Driving**
+
+| Name        | Year | Description | Paper |  | Code | Additional Links |
+|---------------------|--------------|-------------|----------------|---------------------|---------------------|---------------------|
+| Virtual KITTI 2      | 2020          | Virtual Worlds as Proxy for Multi-Object Tracking Analysis |  [Project](https://europe.naverlabs.com/Research/Computer-Vision/Proxy-Virtual-Worlds/) |  |  | [Papers With Code](https://paperswithcode.com/dataset/virtual-kitti-2) |
+| Driving in the Matrix | 2017       | The core idea behind "Driving in the Matrix" is to use photo-realistic computer-generated images from a simulation engine to quickly produce annotated data.  | [Paper](https://arxiv.org/pdf/1610.01983.pdf) |  | [GitHub](https://github.com/umautobots/driving-in-the-matrix) | [Project](https://fcav.engin.umich.edu/projects/driving-in-the-matrix), [Papers With Code](https://paperswithcode.com/paper/driving-in-the-matrix-can-virtual-worlds) |
+| Synthia             | 2016         | A large collection of synthetic images for semantic segmentation of urban scenes. SYNTHIA consists of a collection of photo-realistic frames rendered from a virtual city and comes with precise pixel-level semantic annotations for 13 classes: misc, sky, building, road, sidewalk, fence, vegetation, pole, car, sign, pedestrian, cyclist, lane-marking. | [Paper](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Ros_The_SYNTHIA_Dataset_CVPR_2016_paper.html) |  |  | [Project](https://synthia-dataset.net/) |
+| GTA5 | 2016 | The **GTA5** dataset contains 24966 synthetic images with pixel level semantic annotation. The images have been rendered using the open-world video game **Grand Theft Auto 5** and are all from the car perspective in the streets of American-style virtual cities. There are 19 semantic classes which are compatible with the ones of Cityscapes dataset. | [Playing for Data: Ground Truth from Computer Games](https://arxiv.org/abs/1608.02192v1) |  | [Code](https://bitbucket.org/visinf/projects-2016-playing-for-data/src/master/) | [Project](https://download.visinf.tu-darmstadt.de/data/from_games/index.html) - [Papers with code](https://paperswithcode.com/dataset/gta5) |
+
+---
+
+### **Indoor Simulation and Navigation**
+
+| Dataset Name | Release Year | Description | External Links |
+|--------------|--------------|-------------|----------------|
+| Minos        | 2017          | Multimodal Indoor Simulator | [GitHub](https://github.com/minosworld/minos) |
+| House3D      | Archived 2021-08-28 | A Rich and Realistic 3D Environment | [GitHub](https://github.com/facebookresearch/House3D) |
+
+---
+
+### **Human Action Recognition and Simulation**
+
+| Dataset Name | Release Year | Description | External Links |
+|--------------|--------------|-------------|----------------|
+| PHAV         | N/A          | Synthetic dataset of procedurally generated human action recognition videos | [Project](http://adas.cvc.uab.es/phav/), [Paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/de_Souza_Procedural_Generation_of_CVPR_2017_paper.pdf) |
+| Surreal      | 2017         | Large-scale dataset with synthetically-generated but realistic images of people | [Code](https://github.com/gulvarol/surreal), [Paper](https://arxiv.org/abs/1701.01370), [Project](https://www.di.ens.fr/willow/research/surreal/) |
+
+---
+
+
+
+---
+
+### **Scene Understanding and Semantic Segmentation**
+
+| Dataset Name | Release Year | Description | External Links |
+|--------------|--------------|-------------|----------------|
+| SunCG (Princeton) | 2017      | Semantic Scene | [Paper](https://sscnet.cs.princeton.edu/), [Papers With Code](https://paperswithcode.com/dataset/suncg) |
+
+---
+
+### **Diverse Applications**
+
+| Dataset Name          | Release Year | Description | External Links |
+|-----------------------|--------------|-------------|----------------|
+| 4D Light Field Dataset| N/A          | N/A | [GitHub](https://github.com/lightfield-analysis), [Paper](https://lightfield-analysis.net/benchmark/paper/lightfield_benchmark_accv_2016.pdf), [Project](https://lightfield-analysis.uni-konstanz.de/) |
+| ICL-NUIM Dataset      | N/A          | The
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----
+
+## Other synthetic datasets to categorise 
+
+| Dataset Name             | Application | External Links |
+|--------------------------|--------------|----------------|
+| ProcSy                 |              |                                                              |
+| Playing for benchmarks (2017) |          | [Project](https://playing-for-benchmarks.org/overview/), [Paper](https://vladlen.info/papers/playing-for-benchmarks.pdf) |
+| Pix3D |  |  |
+| FaceSynthetics | Face Recognition |  |
+| FFHQ | Face Recognition |  |
+| Carionfacial Datasets | Face Recognition |  |
+| ABO |  |  |
+| CIFAKE |  |  |
+| YCB-Video | Object detection and recognition |  |
+| ApolloScape | Semantic Segmentation |  |
+| CARLA | Autonomous Driving |  |
+| NTIRE | Image Super resolution |  |
+|  |  |  |
+
+
+
+
+
+### Additional information on already listed datasets (some of them have already been integrated in the tables above)
+
+This section contains some additional information that might be interesting to report (example: github stars and paper citations)
 
 - SunCG (Princeton)
     - Semantic Scene
     - [currently not available](https://paperswithcode.com/dataset/suncg)
     - [Paper: Semantic Scene Completion from a Single Depth Image](https://sscnet.cs.princeton.edu/)
-- Minos
-    - Multimodal Indoor Simulator
-    - MINOS is a simulator designed to suppor the development of multisensory models for goal-directed navigation in complex indoor environments. MINOS leverages large datasets of compelx 3D environments and supports flexible configuration of multimodal sensor suites.
-    - [GitHub Repository](https://github.com/minosworld/minos)
+- 
 - House3D
     - Archived on August 28, 2021
     - A Rich and R3ealistic 3D Environment
@@ -33,9 +154,7 @@ Being it a very wide topic we'll try to categorize the datasets into use cases a
     - [Project](https://www.di.ens.fr/willow/research/surreal/)
     - in the last link there are also poster and presentation pdfs.
     - it's from 2017
-- Virtual KITTI
-    - Virtual Worlds as Proxy for Multi-Object Tracking Analysis
-    - we instead leverage the recent progress in computer graphics to generate fully labeled, dynamic, and photo-realistic proxy virtual worlds. We propose an efficient real-to-virtual world cloning method, and validate our approach by building and publicly releasing a new video dataset, called Virtual KITTI (see this http URL), automatically labeled with accurate ground truth for object detection, tracking, scene and instance segmentation, depth, and optical flow.
+- - .
 - Synthia
     - A large collection of synthetic images for semantic segmentation of urban scenes. 2016
     - [Paper](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Ros_The_SYNTHIA_Dataset_CVPR_2016_paper.html)
@@ -78,7 +197,7 @@ Being it a very wide topic we'll try to categorize the datasets into use cases a
     - 2017
     
     
-### 3D Model Repository
+### 3D Model Repository - Do you want to keep this section?
 Realistic 3D models are critical for creating realistic and diverse virtual worlds. Here are research efforts for creating 3D model repositories.
     
 
@@ -90,38 +209,24 @@ Realistic 3D models are critical for creating realistic and diverse virtual worl
         - ShapeNetCore: ShapeNetCore is a subset of the full ShapeNet dataset with single clean 3D models and manually verified category and alignment annotations. It covers 55 common object categories with about 51,300 unique 3D models. The 12 object categories of PASCAL 3D+, a popular computer vision 3D benchmark dataset, are all covered by ShapeNetCore.
         - ShapeNetSem: ShapeNetSem is a smaller, more densely annotated subset consisting of 12,000 models spread over a broader set of 270 categories. In addition to manually verified category labels and consistent alignments, these models are annotated with real-world dimensions, estimates of their material composition at the category level, and estimates of their total volume and weight.
     
-
+    
     
 - 3DScan
+
     - a large dataset of object scans
     - paper: https://arxiv.org/abs/1602.02481
     - 2016
     - project: http://redwood-data.org/3dscan/
     
-    
 - seeing3Dchairs
 
 
 
-### Other datasets 
-Pix3D
-FaceSynthetics
-ABO
-cifake
 
-### Object Detection and Recognition
-YCB-Video
 
-### Semantic Segmentation:
-ApolloScape
 
-### Autonomous Driving:
-GTA5
-CARLA
+# References 
 
-### Face Recognition:
-FFHQ
-Craniofacial Datasets
+[Repository "Synthetic Data for Computer Vision"](https://github.com/unrealcv/synthetic-computer-vision)
 
-### Image Super-Resolution:
-NTIRE
+https://arxiv.org/pdf/1909.11512.pdf - overview synthetic data generation
