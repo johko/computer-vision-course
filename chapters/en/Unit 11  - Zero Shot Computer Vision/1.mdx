@@ -82,7 +82,7 @@ Due to the disparity between the source and target domains, ZSL faces specific c
 The landscape of zero-shot computer vision methods is vast and diverse, with numerous proposed approaches and multiple frameworks for categorization. But one framework that I find appealing is one in which these methods can be broadly categorized into **Embedding-based methods** and **Generative-based methods**. This framework offers a useful lens through which to understand and compare different zero-shot computer vision approaches.
 
 - **Embedding-based methods**: The model learns a common embedding space where both images and their semantic features/representations are projected. New unseen classes are then predicted using a similarity measure in that space. For example, CLIP.
-- **Generative-based methods**: These methods utilize generative models to create synthetic images or visual features for the unseen classes based on the samples of seen classes and semantic representations of both classes. This allows for training models on these unseen classes even without real data. This way, we’ve cheated a little bit and converted the zero-shot problem into a supervised learning problem. For example, CVAE.
+- **Generative-based methods**: These methods utilize generative models to create synthetic images or visual features for the unseen classes based on the samples of seen classes and semantic representations of both classes. This allows for training models on these unseen classes even without real data. This way, we’ve cheated a little bit and converted the zero-shot problem into a supervised learning problem. For example, CVAE[^6].
 
 [comment]: # (TODO: Diagram showing the categories of ZSL methods and the sub-categories)
 
@@ -105,3 +105,4 @@ We’ve gone a long way! We now have a decent idea of zero-shot learning, its hi
 [^3]: Semantic Autoencoder for Zero-Shot Learning, https://arxiv.org/abs/1704.08345
 [^4]: Language Models are Few-Shot Learners, https://arxiv.org/abs/2005.14165
 [^5]: Learning Transferable Visual Models From Natural Language Supervision, https://arxiv.org/abs/2103.00020
+[^6]: Learning Structured Output Representation using Deep Conditional Generative Models, https://papers.nips.cc/paper_files/paper/2015/hash/8d55a249e6baa5c06772297520da2051-Abstract.html
