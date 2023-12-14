@@ -2,7 +2,7 @@
 ## Overview of architecture
 A traditional object detection model like YOLOv3 consists of feature extraction backbones, followed by a detector that uses hand-crafted features and post-processing to detect objects. Hand-crafted features like anchor box priors require initial guesses of object locations and shapes, which influence downstream training. Post-processing steps like non-max suppression are then used to remove overlapping bounding boxes, which require careful selection of its filtering heuristics. <br/><br/>
 DEtection TRansformer, DETR for short, simplifies the detector head by using an encoder-decoder transformer after the feature extraction backbone to directly predict bounding boxes in parallel. <br/><br/>
-<img src="./DETR.png" alt="Architecture Diagram of DETR" width="100%"><br/>
+<img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/DETR.png" alt="Architecture Diagram of DETR" width="100%"><br/>
 The model architecture of DETR begins with a CNN backbone, similar to other image-based networks, the output of which is processed and fed into a transformer encoder, resulting in N embeddings. The encoder embeddings are added to learned positional embeddings (called object queries) and used in a transformer decoder, generating another N embeddings. As a final step, each of the N embeddings are put through individual feed forward layers to predict the width, height, coordinates of the bounding box, as well as the object class (or whether there is an object). 
 
 ## Key Features
@@ -30,7 +30,7 @@ The second problem is resolved similarly to YOLOv3, in which multi-scale feature
 
 ### Conditional DETR
 Conditional DETR also sets out to resolve the problem of slow training convergence in the original DETR, resulting in convergence that is over 6.7 times faster. The authors found that the object queries are general and are not specific to the input image. Using **Conditional Cross-Attention** in the decoder, the queries can better localize the areas for bounding box regression.<br/><br/>
-<img src="./DETR_DecoderLayer.png" alt="A decoder layer for Deformable DETR" width="100%">
+<img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/DETR_DecoderLayer.png" alt="A decoder layer for Deformable DETR" width="100%">
 _Left: DETR Decoder Layer. Right: Deformable DETR Decoder Layer_ <br/><br/>
 The original DETR and Deformable DETR decoder layers are compared in the figure above, with the main difference being the query input of the cross-attention block. The authors make a distinction between content query c<sub>q</sub> (decoder self attention output) and spatial query p<sub>q</sub>. The original DETR simply adds them together. In Deformable DETR, they are concatenated, with c<sub>q</sub> focusing on the content of the object and p<sub>q</sub> focusing on the bounding box regions. <br/><br/>
 The spatial query p<sub>q</sub> is the result of both the decoder embeddings and object queries projecting to the same space (to become T and p<sub>s</sub> respectively) and multiplied together. The previous layers' decoder embeddings contain information for the bounding box regions, and the object queries contains information of learned reference points for each bounding box. Thus, their projections combine into a representation that allows for cross-attention to measure their similarities with the encoder input and sinusoidal positional embedding. This is more effective than DETR which only uses object queries and fixed reference points.
