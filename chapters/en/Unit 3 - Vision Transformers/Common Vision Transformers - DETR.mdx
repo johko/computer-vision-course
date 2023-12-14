@@ -1,13 +1,17 @@
 # DEtection TRansformer (DETR)
 ## Overview of architecture
-A traditional object detection model like YOLOv3 consists of feature extraction backbones, followed by a detector that uses hand-crafted features and post-processing to detect objects. Hand-crafted features like anchor box priors require initial guesses of object locations and shapes, which influence downstream training. Post-processing steps like non-max suppression are then used to remove overlapping bounding boxes, which require careful selection of its filtering heuristics. <br/><br/>
-DEtection TRansformer, DETR for short, simplifies the detector head by using an encoder-decoder transformer after the feature extraction backbone to directly predict bounding boxes in parallel. <br/><br/>
+DETR is mainly used for object detection tasks, which is the process of detecting objects in an image. For example, the input of the model would be an image of a road, and the output of the model could be `[('car',X1,Y1,W1,H1),('pedestrian',X2,Y2,W2,H2)]`, in which X, Y, W, H represent the x, y positions, width and height respectively. <br/><br/>
+A traditional object detection model like YOLO consists of hand-crafted features like anchor box priors, which requires initial guesses of object locations and shapes, affecting downstream training. Post-processing steps are then used to remove overlapping bounding boxes, which require careful selection of its filtering heuristics. <br/><br/>
+DEtection TRansformer, DETR for short, simplifies the detector by using an encoder-decoder transformer after the feature extraction backbone to directly predict bounding boxes in parallel, requiring minimal post-processing. <br/><br/>
 <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/DETR.png" alt="Architecture Diagram of DETR" width="100%"><br/>
 The model architecture of DETR begins with a CNN backbone, similar to other image-based networks, the output of which is processed and fed into a transformer encoder, resulting in N embeddings. The encoder embeddings are added to learned positional embeddings (called object queries) and used in a transformer decoder, generating another N embeddings. As a final step, each of the N embeddings are put through individual feed forward layers to predict the width, height, coordinates of the bounding box, as well as the object class (or whether there is an object). 
 
 ## Key Features
+
 ### Encoder-Decoder
 As with other transformers, it expects the output to be a sequence. Thus, the feature map of size DxHxW is flattened to DxHW.
+<br/><br/><img src="./DETR_FeatureMaps.png" alt="Feature Maps of Encoder" width="100%"><br/>
+_**Left**: 12 out of 256 Dimensions in the Feature Map Visualized. Each dimension extract some features of the original cat image, while downsizing the original image. Some dimensions have higher focus on the patterns on the cat, some have a higher focus on the bed sheets. <br>**Right**: Keeping the original feature dimensions, the width and height are further downsized and flattened into size 850._<br/><br/>
 Since transformers are permutation invariant, positional embeddings are added to both the encoder and decoder to remind the model where on the image the embeddings come from. In the encoder, fixed positional encodings are used, while in the decoder, learned positional encodings (object queries) are used. 
 
 ### Set-based Global Loss Function
