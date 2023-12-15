@@ -34,7 +34,7 @@ A good descriptor in the context of computer vision is a set of features that ef
 
 ## Some Techniques used in Feature Descriptors
 
- ### SIFT :
+### SIFT
   It stands for Scale Invariant Feature Transform. It is a widely used algorithm in computer vision and image processing for detecting and describing local features in images.
 
 The working of SIFT is given below:
