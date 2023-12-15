@@ -10,7 +10,7 @@ Now that we have trained our model like a student cramming all epochs for a test
 
 Actually, I wasn’t totally accurate when I said that the model is expected to generalize to all cat pictures that it has not seen. It is expected to generalize to all cat pictures that come from the same distribution as the image data it was trained on. Simply, if you trained your model on cat selfies and then presented it with a cartoon picture of a cat, it probably won’t be able to recognize it. These two pictures come from totally different distributions or domains. Making your cat selfie model able to recognize cartoon cats is referred to as **domain adaptation** (we’ll briefly talk about it later). It's like taking all the knowledge your model learned about real cats and teaching it to recognize their animated cousins.
 
-So, we’ve gone from generalization, recognizing the unseen Alice’s and Ted’s cat pictures, to domain adaptation, recognizing animated cat pictures. But we’re much Greedier than that. You don’t want your model to be able to only recognize your cat pictures, or Alice’s and Ted’s, or not even cartoon cats! Having a model trained on cat pictures, you also want it to recognize pictures of llamas and falcons.
+So, we’ve gone from generalization, recognizing the unseen Alice’s and Ted’s cat pictures, to domain adaptation, recognizing animated cat pictures. But we’re much greedier than that. You don’t want your model to be able to only recognize your cat pictures, or Alice’s and Ted’s, or not even cartoon cats! Having a model trained on cat pictures, you also want it to recognize pictures of llamas and falcons.
 
 Well, now we’re on the turf of Zero-shot Learning. Also known as, ZSL.
 
@@ -65,9 +65,9 @@ Can we think of zero-shot learning as an unsupervised learning problem? No, this
 
 It is called **Semantic or Auxiliary Information**. This auxiliary information provides a semantic bridge between the visual features and the unseen classes. By incorporating this multi-modal information (Text & Image), zero-shot computer vision models can learn to recognize objects even if they have never seen them before visually. In other words, semantic information embeds **both** seen and unseen classes in high-dimensional vectors, and it comes in many different forms:
 
-1. **Attribute vectors**: Thinks of attributes as a tabular representation of the different features of the object. 
+1. **Attribute vectors**: Think of attributes as a tabular representation of the different features of the object. 
 2. **Textual Descriptions**: A text describing the object contained in the image similar to image captions.
-3. **Class label vectors**: Simply by using the embeddings of class labels.
+3. **Class label vectors**: Those are the embeddings of the class labels themselves.
 
 [comment]: # (TODO: Illustration showing the different forms of semantic information)
 
