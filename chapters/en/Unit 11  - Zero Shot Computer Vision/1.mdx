@@ -28,7 +28,7 @@ Luckily, there's a more pragmatic version of ZSL that doesn't have this strict r
 
 ## History of Zero-shot Learning 
 
-The question of whether we can make models that perform well on tasks which they were not explicitly trained on, came soon after deep learning started to seem feasible[^1]. In 2008, the seeds of ZSL were sowed with two independent papers presented at the Association for the Advancement of Artificial Intelligence (AAAI) conference. The first paper, titled **Dataless Classification**, explored the concept of zero-shot learning in the context of natural language processing (NLP). The second one, titled **Zero-Data Learning**, focused on applying ZSL to computer vision tasks. The term zero-shot learning itself first appeared in 2009 at NeurIPS in a paper co-authored by, wait for it….**Geoff Hinton**.
+The question of whether we can make models that perform well on tasks that they were not explicitly trained on, came soon after deep learning started to seem feasible[^1]. In 2008, the seeds of ZSL were sowed with two independent papers presented at the Association for the Advancement of Artificial Intelligence (AAAI) conference. The first paper, titled **Dataless Classification**, explored the concept of zero-shot learning in the context of natural language processing (NLP). The second one, titled **Zero-Data Learning**, focused on applying ZSL to computer vision tasks. The term zero-shot learning itself first appeared in 2009 at NeurIPS in a paper co-authored by, wait for it….**Geoff Hinton**.
 
 Let’s have a nice outline for the most important moments in ZSL below
 
@@ -47,11 +47,11 @@ The impact of CLIP has been profound, ushering in a new era of zero-shot compute
 
 Now that we know what zero-shot learning is, it would be nice to know how it is applied to computer vision, right? This part will be addressed in more detail in the coming chapters, but let’s paint a broad picture here to break the ice.
 
-In NLP, zero-shot learning is (although it wasn’t always the case) pretty straight-forward. Many language models are trained on massive datasets of text, learning to predict the next word in a given sequence. This ability to capture the underlying patterns and semantic relationships within language allows these models to perform surprisingly well on tasks they weren’t explicitly trained on. A really nice example is GPT-2 being able to summarize a passage when TL;DR is appended to the prompt. Zero-shot computer vision is another story.
+In NLP, zero-shot learning is (although it wasn’t always the case) pretty straightforward. Many language models are trained on massive datasets of text, learning to predict the next word in a given sequence. This ability to capture the underlying patterns and semantic relationships within language allows these models to perform surprisingly well on tasks they weren’t explicitly trained on. A nice example is GPT-2 being able to summarize a passage when TL;DR is appended to the prompt. Zero-shot computer vision is another story.
 
 Let’s begin by answering a simple question, *how can we humans do it? How can we recognize objects that we have not seen before?*
 
-Yes, you’re totally right! We need some **other information** about that object. We can easily identify a tiger, even if we haven’t seen one before, given that we have a knowledge of what a lion looks like. A tiger is a lion with stripes and minus the mane. A zebra is a black and white striped version of a horse. Deadpool is a red-black version of Spiderman.
+Yes, you’re absolutely right! We need some **other information** about that object. We can easily identify a tiger, even if we haven’t seen one before, given that we know what a lion looks like. A tiger is a lion with stripes and minus the mane. A zebra is a black-and-white striped version of a horse. Deadpool is a red-black version of Spiderman.
 
 As we can see, zero-shot computer vision is essentially multi-modal. If generalization is like learning a language by reading books and talking to people. Zero-shot computer vision is like learning a language by reading a dictionary and listening to someone describe what it sounds like.
 
@@ -59,15 +59,15 @@ Can we think of zero-shot learning as an unsupervised learning problem? No, this
 
 ### What Other Information?
 
-It is called **Semantic or Auxiliary Information**. This auxiliary information provides a semantic bridge between the visual features and the unseen classes. By incorporating this multi-modal information (Text & Image), zero-shot computer vision models can learn to recognize objects even if they have never seen them before visually. In other words, semantic information embeds **both** seen and unseen classes in high dimensional vectors, and it comes in many different forms:
+It is called **Semantic or Auxiliary Information**. This auxiliary information provides a semantic bridge between the visual features and the unseen classes. By incorporating this multi-modal information (Text & Image), zero-shot computer vision models can learn to recognize objects even if they have never seen them before visually. In other words, semantic information embeds **both** seen and unseen classes in high-dimensional vectors, and it comes in many different forms:
 
-1. **Attribute vectors**: Thinks of attributes as a tabular representation of the different features for the object. 
+1. **Attribute vectors**: Thinks of attributes as a tabular representation of the different features of the object. 
 2. **Textual Descriptions**: A text describing the object contained in the image similar to image captions.
-3. **Class label vectors**: Simply using the embeddings of class labels.
+3. **Class label vectors**: Simply by using the embeddings of class labels.
 
 [comment]: # (TODO: Illustration showing the different forms of semantic information)
 
-And using this semantic information, you train a model to learn a mapping function between the image features and the semantic features. At inference time, the model predicts the class label by looking for the closest label in the semantic space by using, for example, k-nearest neighbor. We can say that we are transferring knowledge obtained from seen classes with the help of semantic information.
+Using this semantic information, you train a model to learn a mapping function between the image features and the semantic features. At inference time, the model predicts the class label by looking for the closest label in the semantic space by using, for example, k-nearest neighbor. We can say that we are transferring knowledge obtained from seen classes with the help of semantic information.
 
 Different zero-shot computer vision methods differ in what **semantic information** they use and which **embedding space** they utilize at inference.
 
@@ -90,14 +90,14 @@ The landscape of zero-shot computer vision methods is vast and diverse, with num
 
 The choice between embedding-based and generative-based approaches, like every other choice that you have to make in machine learning, *depends* on the specifics of the task at hand and the available resources. Embedding-based methods are often preferred for their efficiency and scalability, while generative-based methods offer greater flexibility and potential for handling complex data.
 
-But Anyway, In this unit we are going to address *only* embedding-based methods, including **attention-based embedding-based methods**. Zero-shot learning is a big topic and a comprehensive coverage may require a course of its own. Interested readers may check the provided additional readings and have fun.
+But Anyway, In this unit we are going to address *only* embedding-based methods, including **attention-based embedding-based methods**. Zero-shot learning is a big topic and comprehensive coverage may require a course of its own. Interested readers may check the provided additional readings and have fun.
 
 ## Attack Of The Clones: How ZSL Is Different From X?
 
 We’ve gone a long way! We now have a decent idea of zero-shot learning, its history, its application in computer vision, and how it generally works. To round out this introduction, we are going to compare ZSL to other different methods that may initially appear similar.
 
 - **Domain Adaptation (DA)**: This should be familiar by now. We can think of Zero-shot Learning as an extreme case of Domain Adaptation (greedy, greedy), dealing with the problem of learning to recognize unseen classes with no data at all. Domain Adaptation focuses on bridging the gap between two related domains (datasets) with different distributions and it requires labeled data.
-- **Open Set Recognition (OSR)**: Think of it as a Boolean Zero-shot Learning. Like ZSL, in OSR problem the model handles both seen and unseen classes. But unlike ZSL, the model only need to classify, at test time, whether the instance belongs to the seen classes or not. That’s it, no fancy labels.Still, this is a significant challenge.
+- **Open Set Recognition (OSR)**: Think of it as a Boolean Zero-shot Learning. Like ZSL, in the OSR problem, the model handles both seen and unseen classes. But unlike ZSL, the model only needs to classify, at test time, whether the instance belongs to the seen classes or not. That’s it, no fancy labels. Still, this is a significant challenge.
 - **Out of Distribution (OOD) Detection**: Think of this problem as a continuous variant of open set recognition. Here we don’t want to detect any instances that weren’t included in the training process, but rather just instances that deviate significantly from the training data distribution distribution. By recognizing and handling unexpected data effectively, OOD detection can pave the way for more trustworthy and robust AI systems that can adapt to unpredictable environments.
 - **Open Vocabulary Learning (OVL)**: This is what zero-shot learning aspires to be. Like, ZSL on steroids. Overall, OVL can be considered an extension of ZSL, encompassing the ability to learn from limited data for unseen classes while also extending to handle seen classes and potentially infinite new classes and tasks. 
 
