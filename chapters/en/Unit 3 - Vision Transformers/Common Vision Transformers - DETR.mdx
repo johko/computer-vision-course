@@ -86,7 +86,9 @@ they are declared in the `__init__` function
 self.backbone = nn.Sequential(*list(resnet50(pretrained=True).children())[:-2])
 self.conv = nn.Conv2d(2048, hidden_dim, 1)
 ```
-**Positional Embeddings**<br/>
+
+**Positional Embeddings**
+
 While in the paper fixed and trained embeddings are used in the encoder and decoder respectively, the authors used trained embeddings for both in the implementation for simplicity.    
 ```python
 pos = torch.cat([
