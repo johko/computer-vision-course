@@ -1,0 +1,109 @@
+# MobileVit v2 
+
+The previously discussed Vision Transformer architectures are quite computationally intensive and would be hard to run on mobile devices. The previous State of the Art architecture used CNNs for mobile vision tasks. However as CNNs cannot learn global representations and as a result they preform worse than transformer counterparts.
+
+The MobileVit architectures aims to solve the required problems for a vision mobile tasks such as low-latency and a lightweight architecture while providing the advantages of transformers and CNNs. The mobileVit Architecture was developed by Apple and builds MobileNet from Google's research team. The MobileVit architecture builds upon the previous MobileNet architecture with the addition of the MobileVit Block and self-seperable attention. These two features allow for lightning fast latency, reduction of parameters, computational complexity and deployment of vision ML models on resource constrained devices.
+
+# MobileVit Architecture
+
+
+The architecture of MobileVit presenting in their paper "MOBILEVIT: LIGHT-WEIGHT, GENERAL-PURPOSE, AND MOBILE-FRIENDLY VISION TRANSFORMER" by Sachin Mehta and Mohammad Rastegari is as follows:
+
+
+![](MobileVit-Architecture.png)
+
+
+Some of this should look quite similar from the previous chapter. The mobileNet blocks, the n by n convolutions, downsampling, global pool and the ending linear layer.
+
+As seen by the global pooling layer and the linear layer, the model that is shown is for classification however these same blocks introduced in this paper can be used for a variety of vision applications.
+
+This block is the crux of the model.
+
+# Mobile Vit Block
+
+The mobileVit block aims to combine both CNN's local processing and global processing as seen in transformers. It uses a combination of convolutions and a transformer layer which allows it to capture both spatially local information and global dependencies in the data. 
+
+
+A digram of the MobileVit Block is shown below:
+
+
+![](MobileVit-MobileVitBlock.png)
+
+Okay, that's a lot to take in. Let's break that down.
+
+- The block takes in a channeled image. Let's say for an RGB image 3 channels, so the block takes in a three channeled image. 
+- It then preforms a N by N convulsion on the channels appending them to the existing channels(LOOOK OVER TERMINOLOGY)
+- The block then creates a linear combination of the these channels and adds them to the existing stack of channels.
+- For each channels these images are unfolded into flattened patches.
+- Then these flattened patches are passed through a transformer to project them into new patches. 
+- These patches are then folded back together to create an image with d dimensions. 
+- Afterwards a pointwise convolution is overlayed on the stitched image. 
+- And then the stitched image is then recombined with the original RGB images.
+
+
+
+This approach allows for a receptive field of H x W (the entire input size) while modeling non-local dependencies and local dependencies through retaining patch locational information. This can be seen in the unfolding and refolding of the patches.
+
+<Note>
+A receptive feild is the size of a region in an input space that affects the features of a particular layer.
+</Note>
+
+This compound approach allows MobileVit to have less parameters than traditional CNNs and even better accuracy!
+
+
+![](MobileVit-CNNPreformance.png)
+
+  
+
+
+
+The main efficiency bottleneck in the original MobileVit architecture is the multi-head self-attention in Transformers, which requires O(k^2) time complexity with regard to the input tokens.
+
+Multi-head self-attention also requires costly operations like batch-wise matrix multiplications which can impact latency on resource constrained devices.
+
+These same authors wrote another paper on exactly how to make attention operate faster. They've called it self-separable attention.
+
+# Self Separable Attention
+
+In traditional multihead attention, the big O with respect to input tokens is quadratic (O(k^2)). Self Separable Attention introduced in this paper has big O of O(k) with regards to input tokens.
+
+Not, only that the attention method also does not use any batch wise matrix multiplications which helps reduce latency on resource constrained devices like mobile phones.
+
+Which is a massive improvement!
+
+<Note>
+There have been many other forms of Attention such that complexity has ranged from O(k), O(k*sqrt(k)), O(k*log(k)).
+<br><br>
+Self-Seperable Attension was also not the first paper to have O(k) complexity. In Linformer,
+<br><br>
+O(k) complexity for Attension was also achived in Linformer (ADD PAPER LINK HERE) before self seperable attention.
+<br><br>
+However, it still used costly operations like batch-wise matrix multiplications
+</Note>
+
+
+A comparison between the attention mechanisms in Transformer, Linformer, and MobileVit is shown below:
+
+
+
+![](MobileVit-Attension.png)
+
+  
+
+Looking at the image above gives a comparison of each of the individual types of Attention between the Transformer, Linformer, and MobileVit v2 architectures.
+
+In both the the Transformer and Linformer, both of Attention computations preform two batch wise matrix multiplications.  
+
+However in the case of self separable attention, these two batchwise multiplications are replaced by that of two separate linear computations. This allows for even further boosted inference speed. 
+
+# Conclusion
+
+MobileVit blocks allow for the retaining spatially local information while developing global representations combining the best strengths of Transformers and CNNs together. All while providing a receptive field of the entire image.
+
+The introduction of Self separable attention into this existing architecture even further boosted both accuracy and inference speed.
+
+![](MobileVitAndInference.png)
+
+They tested different architectures on iPhone 12s showing a large jump in performance with the introduction of separable Attention as shown above!
+
+Overall, the MobileVit Architecture is an extraordinarily powerful architecture for resource limited vision tasks that provides fast inference and high accuracy.
