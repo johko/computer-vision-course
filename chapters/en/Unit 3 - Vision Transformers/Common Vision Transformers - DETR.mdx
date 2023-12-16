@@ -1,6 +1,6 @@
 # DEtection TRansformer (DETR)
 ## Overview of architecture
-DETR is mainly used for object detection tasks, which is the process of detecting objects in an image. For example, the input of the model would be an image of a road, and the output of the model could be `[('car',X1,Y1,W1,H1),('pedestrian',X2,Y2,W2,H2)]`, in which X, Y, W, H represent the x, y positions, width and height respectively. \
+DETR is mainly used for object detection tasks, which is the process of detecting objects in an image. For example, the input of the model would be an image of a road, and the output of the model could be `[('car',X1,Y1,W1,H1),('pedestrian',X2,Y2,W2,H2)]`, in which X, Y, W, H represent the x, y coordinates denoting the location of the bounding box, as well as the width and height of the box. \
 A traditional object detection model like YOLO consists of hand-crafted features like anchor box priors, which requires initial guesses of object locations and shapes, affecting downstream training. Post-processing steps are then used to remove overlapping bounding boxes, which require careful selection of its filtering heuristics. \
 DEtection TRansformer, DETR for short, simplifies the detector by using an encoder-decoder transformer after the feature extraction backbone to directly predict bounding boxes in parallel, requiring minimal post-processing. 
 
@@ -10,7 +10,7 @@ The model architecture of DETR begins with a CNN backbone, similar to other imag
 ## Key Features
 
 ### Encoder-Decoder
-As with other transformers, it expects the output to be a sequence. Thus, the feature map of size DxHxW is flattened to DxHW.
+As with other transformers, the transformer encoder expects the output of the CNN backbone to be a sequence. Thus, the feature map of size `[dimension, height, width]` is downsized and then flattened to `[dimension, less than height x width]`.
 ![Feature Maps of Encoder](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/DETR_FeatureMaps.png)
 _**Left**: 12 out of 256 dimensions in the feature maps are visualized. Each dimension extracts some features of the original cat image while downsizing the original image. Some dimensions have a higher focus on the patterns on the cat; some have a higher focus on the bed sheets._ \
 _**Right**: Keeping the original feature dimension of size 256, the width and height are further downsized and flattened into size 850._ \
