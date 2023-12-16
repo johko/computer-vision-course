@@ -4,14 +4,14 @@
 
 Although diffusion models and GANs are able to create many new unique items, they aren't always able to create the specifc thing you need. Hence, you're left with having to fine tune a model, which usually requires a lot of data and compute. However, there are some techniques that can be used to personalise a model with just a few examples.
 
-One such example is Dreambooth by Google research, which is a training technique that updates the entire diffusion model by training on just a few images of a subject or style. It works by associating a special word in the prompt with the example images. The detials on Dreambooth can be found [here](https://dreambooth.github.io/) and the hugging face Dreambooth training documentation can be found [here](https://huggingface.co/docs/diffusers/training/dreambooth).
+One such example is Dreambooth by Google research, which is a training technique that updates the entire diffusion model by training on just a few images of a subject or style. It works by associating a special word in the prompt with the example images. The details on Dreambooth can be found [on the papers page](https://dreambooth.github.io/) and the [hugging face Dreambooth training documentation](https://huggingface.co/docs/diffusers/training/dreambooth).
 
-Below is an example of Dreambooth being used to train on 4 images of a dog and some inference examples.
-![dog](https://dreambooth.github.io/DreamBooth_files/teaser_static.jpg)
+Below you can see the results of Dreambooth being used to train on 4 images of a dog and some inference examples.
+![dog](https://dreambooth.github.io/DreamBooth_files/teaser_static.jpg). You can recreate the results following the above hugging face documentation.
 
 From this example it's clear that the model has learnt that specific dog and is able to generate new images of that dog in diverse poses and backgrounds. Although the compute, data and time are an improvment, others have found more efficient ways to personalise a model.
 
-This is where the current most popular method for this comes in which is Low Rank Adaption (LoRA). This method was initially developed to efficiently fine-tune Large Language models by Microsoft in this [paper](https://arxiv.org/abs/2106.09685). The main idea is factorise the weight update matrix into a 2 low rank matricies, which are optimised during training whilst the rest of the model is frozen. [Here](https://huggingface.co/docs/peft/conceptual_guides/lora) you can find a conceptual guide on how LoRA works. 
+This is where the current most popular method for this comes in which is Low Rank Adaption (LoRA). This method was initially developed to efficiently fine-tune Large Language models by Microsoft in this [paper](https://arxiv.org/abs/2106.09685). The main idea is factorise the weight update matrix into a 2 low rank matricies, which are optimised during training whilst the rest of the model is frozen. [Hugging face documentation](https://huggingface.co/docs/peft/conceptual_guides/lora) has a good conceptual guide on how LoRA works.
 
 Now if we put those ideas together we can use LoRA to efficiently fine-tune a diffusion model on a few examples using Dreambooth. A tutorial Google Colab notebook on how to do this can be found [here](https://colab.research.google.com/github/huggingface/notebooks/blob/main/diffusers/SDXL_DreamBooth_LoRA_.ipynb).
 
@@ -34,14 +34,10 @@ ControlNet can be used in both text to image and image to image. Below is a text
 Here we can see how all of the generated images have a very similar shape but with different colours. This is because the ControlNet is guiding the diffusion model to create images with the same shape as the input image.
  ![bird](https://github.com/lllyasviel/ControlNet/raw/main/github_page/p1.png)
 
-For code to run ContrloNet with Stable diffusion XL refer to the official documentation (here)[https://huggingface.co/docs/diffusers/api/pipelines/controlnet_sdxl#diffusers.StableDiffusionXLControlNetPipeline] but if you just want to test out some examples take a look at this Spaces demo (here)[https://huggingface.co/spaces/hysts/ControlNet-v1-1] which lets you try many types of ControlNets.
-
-
-
-
-
-
-
-
-
-
+For code to run ContrloNet with Stable diffusion XL refer to the official documentation [here](https://huggingface.co/docs/diffusers/api/pipelines/controlnet_sdxl#diffusers.StableDiffusionXLControlNetPipeline) but if you just want to test out some examples take a look at this Gradio demo that lets you try different types of ControlNet:
+<iframe
+	src="https://hysts-ControlNet-v1-1.hf.space"
+	frameborder="0"
+	width="850"
+	height="450">
+</iframe>
