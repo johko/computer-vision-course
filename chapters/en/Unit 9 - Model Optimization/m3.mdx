@@ -41,12 +41,16 @@ Bring your model closer to where it will be used for prediction, so typical use 
 
 
 - **Kubernetes Documentation**: [Kubernetes](https://kubernetes.io/docs/home/) is an open-source container orchestration platform that is widely used for deploying and managing applications. Understanding Kubernetes can be helpful for deploying models in a scalable and reliable manner.
-## Best Practices for Deployment in Production -yet to
-- **MLOps:** MLOps is an emerging practice that focuses on applying DevOps principles to machine learning projects. It encompasses various best practices for deploying models in production, such as version control, continuous integration and deployment, monitoring, and automation.
+## Best Practices for Deployment in Production
+- **MLOps** an emerging practice that focuses on applying DevOps principles to machine learning projects. <br />It encompasses various best practices for deploying models in production, such as version control, continuous integration and deployment, monitoring, and automation.
 
+- **Load Testing**: Simulate varying workloads to ensure the model's responsiveness under different conditions.
 
-- **Scalability and Performance:** Ensuring models can handle varying workloads efficiently and maintain performance.
-- **Monitoring and Logging:** Implementing systems to monitor model performance, track usage, and log errors for debugging and improvement.
-- **Security and Privacy:** Addressing security concerns related to model deployment, data protection, and user privacy.
-- **Versioning and Rollback:** Implementing strategies for versioning models and handling rollbacks in case of issues with new deployments.
+- **Anomaly Detection**: Implement systems to detect deviations in model behavior and performance.
+- **Real-time Monitoring**: Utilize tools for immediate identification of issues in deployed models.
 
+- **Security and Privacy:** Employ encryption methods for securing data during inference and transmission. Establish strict access controls to restrict model access and ensure data privacy.
+
+- **A/B Testing**: Evaluate new model versions against the existing one through A/B testing before full deployment.
+- **Continuous Evaluation**: Continuously assess model performance post-deployment and prepare for rapid rollback if issues arise.
+- Maintain detailed records covering model architecture, dependencies, and performance metrics.
