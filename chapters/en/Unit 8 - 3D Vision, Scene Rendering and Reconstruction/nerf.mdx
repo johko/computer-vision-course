@@ -35,7 +35,7 @@ Multi-Layer Perceptron (MLP) $F_{\mathrm{\Theta}} : (\mathbf{x}, \boldsymbol{\th
 
 A simple NeRF pipeline can be summarized with the following picture:
 
-INPUT NERF IMAGE
+![nerf_pipeline](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/nerf_pipeline.png)
 
 Image from: [Mildenhall et al.](https://www.matthewtancik.com/nerf)
 
@@ -70,7 +70,7 @@ $$\boldsymbol{\hat{C}}(\mathbf{r})=\sum_{i=1}^{N}T_i (1-\exp(-\sigma_i \delta_i)
 
 Below, you can see a schematic visualisation of a discretized camera ray in order to get a better sense of the variables from above:
 
-INPUT RAY IMAGE
+![ray_image](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/nerf_ray_visualisation.png)
 
 **Loss formulation**
 
@@ -144,7 +144,7 @@ visualize_grid(grid, encoded_grid, resolution)
 
 The output should look something like the image below:
 
-INPUT ENCODING IMAGE
+![encoding](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/nerf_encodings.png)
 
 The second trick worth mentioning is that most approaches use smart approaches to sample points in space. Essentially, we want to avoid sampling in regions where 
 the scene is empty. There are various approaches to concentrate samples in regions that contribute most to the final image, but the most prominent one is to use 
