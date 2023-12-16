@@ -77,13 +77,15 @@ During training, the generator aims to produce synthetic lung images that are in
 
 Let's visualize the progress:
 
-![trainig-gif]()
+![trainig-gif](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/dcgan-lung_images/dcgan_training_animation.gif)
 
 ## How did we do?
 
-We can see that some of the synthetic lung images look good, but some are hazy. Researchers generating synthetic medical images typically employee a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with the real data to train the model.
+Here are 64 "verified" synthetic images, defined as receiving a "real" label from the discriminator with a 70% probability.
 
-![lung-images]()
+![lung-images](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/dcgan-lung_images/verified.png)
+
+We can see that most of the synthetic lung images look good, but a couple are hazy. There are some important things to mention. First, researchers generating synthetic medical images typically employee a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with the real data to train the model. Second, even though the generated images appear to look OK (at least to an amateur), they do appear to be very similar. This is another known issue with GANS - they suffer from "mode collapse." Essentially, this happens when the generator starts producing the same type of output. Think of it as someone who has gotten a lot of praise for making chocolate chip cookies and therefore gets _really, really_ good at making those cookies but can't make other types of cookies.
 
 [[Link to Notebook]]
 
