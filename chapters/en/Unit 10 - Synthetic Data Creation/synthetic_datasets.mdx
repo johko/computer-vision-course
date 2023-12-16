@@ -4,6 +4,8 @@
 
 In this section, we will cover the most popular synthetic datasets in computer vision, categorized into specific use cases and providing real-case usage examples.
 
+As the field moved from classical unsupervised approaches to deep learning, state of the art models began to require large datasets that could not be pro- duced in real life, and after the transition to deep learning synthetic datasets started to dominate. 
+
 [TOC]
 
 
@@ -21,7 +23,6 @@ Estimating the distribution of apparent velocities of movement along the image.
 | Middlebury   | 2021 (latest release) | The **Middlebury** Stereo dataset consists of high-resolution stereo sequences with complex geometry and pixel-accurate ground-truth disparity data. The ground-truth disparities are acquired using a technique that employs structured lighting and does not require the calibration of the light projectors. | [A database and  evaluation method for Optical Flow](https://vision.middlebury.edu/flow/floweval-ijcv2011.pdf) (Cited by 3192 at the time of writing) |      | [Papers with Code](https://paperswithcode.com/dataset/middlebury) - [Project](https://vision.middlebury.edu/stereo/data/) |
 | MPI-Sintel   | 2012                  | A synthetic dataset for optical flow. The main characteristic feature of MPI-Sintel is that it contains the same scenes with different render settings, varying quality and complexity; this approach can provide a deeper understanding of where different optical flow algorithms break down. (paper quote) |                                                              |      | [Paper](https://link.springer.com/chapter/10.1007/978-3-642-33783-3_44), [Project](http://sintel.is.tue.mpg.de/) |
 | SceneFlow    | N/A                   | N/A                                                          |                                                              |      | [Project (Inactive)](https://www.ri.cmu.edu/project/scene-flow/) |
-| MPI-Sintel   |                       |                                                              |                                                              |      |                                                              |
 
 ---
 
@@ -31,13 +32,39 @@ Estimating the distribution of apparent velocities of movement along the image.
 
 Finding the correspondence between the points of two images of the same scene from different viewpoints
 
-| Dataset Name              | Year | Description                                                  | Paper | Code | Additional Links |
-| ------------------------- | ---- | ------------------------------------------------------------ | ----- | ---- | ---------------- |
-| Tsukuba CG Stereo Dataset |      | This dataset includes 1800 stereo pairs accompanied by ground truth disparity maps, occlusion maps, and discontinuity maps, all of which are crucial for developing and evaluating stereo matching algorithms' performance. |       |      |                  |
+| Dataset Name     | Year | Description                                                  | Paper                                                        | Code | Additional Links                                       |
+| ---------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| Tsukuba Stereo   | 2012 | This dataset includes 1800 stereo pairs accompanied by ground truth disparity maps, occlusion maps, and discontinuity maps. |                                                              |      | [Project](https://home.cvlab.cs.tsukuba.ac.jp/dataset) |
+| Middlebury 2014  | 2014 | 33 high-res stereo datasets                                  | [High-resolution stereo datasets with subpixel-accurate ground truth](https://link.springer.com/chapter/10.1007/978-3-319-11752-2_3) |      |                                                        |
+| Flying Chairs    | 2015 | 22k frame pairs with ground truth flow                       |                                                              |      |                                                        |
+| Flying Chairs 3D | 2015 | 22k stereo frames                                            |                                                              |      |                                                        |
+| Monkaa           | 2015 | 8591 stereo frames                                           |                                                              |      |                                                        |
+| Driving          | 2015 | 4392 stereo frames.                                          |                                                              |      |                                                        |
+|                  |      |                                                              |                                                              |      |                                                        |
 
 
 
 
+
+## 3D Objects datasets
+
+Basic high-level computer vision problems, such as object detection or segmen- tation, fully enjoy the benefits of perfect labeling provided by synthetic data, and there is plenty of effort devoted to making synthetic data work for these problems. Since making synthetic data requires the development of 3D mod- els, datasets usually also feature 3D-related labeling such as the depth map, labeled 3D parts of a shape, volumetric 3D data, and so on.
+
+| Dataset        | Year | Description                                         | Paper                                                        | Additional Links                |
+| -------------- | ---- | --------------------------------------------------- | ------------------------------------------------------------ | ------------------------------- |
+| YCB            | 2015 | 77 objects in 5 categories                          | Unrealcv: Virtual worlds for com- puter vision.              |                                 |
+| ShapeNet       | 2015 | >3M models, 3135 categories, rich annotations       | Shapenet: An information-rich 3d model repository.           |                                 |
+| ShapeNetCore   | 2017 | 51K manually verified models from 55 categories     | Large-scale 3d shape reconstruction and segmentation from shapenet core55. |                                 |
+| UnrealCV       | 2017 | Plugin for UE4 to generate synthetic data           | Unrealcv: Virtual worlds for com- puter vision.              |                                 |
+| VANDAL         | 2017 | 4.1M depth images, >9K objects in 319 categories    | [63†87]                                                      |                                 |
+| SceneNet       | 2015 | Automated indoor synthetic data generator           | [64†232]                                                     |                                 |
+| SceneNet RGB-D | 2017 | 5M RGB-D images from 16K 3D trajectories            | [65†401]                                                     |                                 |
+| DepthSynth     | 2017 | Framework for realistic simulation of depth sensors | [66†455]                                                     |                                 |
+| PartNet        | 2018 | 26671 models, 573535 annotated part instances       | [67†415]                                                     |                                 |
+| Falling Things | 2018 | 61.5K images of YCB objects in virtual envs         | [68†594]                                                     |                                 |
+| ADORESet       | 2019 | Hybrid dataset for object recognition testing       | [69†42]                                                      |                                 |
+| 3DScan         | 2016 | a large dataset of object scans                     | https://arxiv.org/abs/1602.02481                             | http://redwood-data.org/3dscan/ |
+| seeing3DChairs |      |                                                     |                                                              |                                 |
 
 
 
@@ -50,7 +77,7 @@ Finding the correspondence between the points of two images of the same scene fr
 | Name        | Year | Description | Paper |  | Code | Additional Links |
 |---------------------|--------------|-------------|----------------|---------------------|---------------------|---------------------|
 | Virtual KITTI 2      | 2020          | Virtual Worlds as Proxy for Multi-Object Tracking Analysis |  [Project](https://europe.naverlabs.com/Research/Computer-Vision/Proxy-Virtual-Worlds/) |  |  | [Papers With Code](https://paperswithcode.com/dataset/virtual-kitti-2) |
-| Driving in the Matrix | 2017       | The core idea behind "Driving in the Matrix" is to use photo-realistic computer-generated images from a simulation engine to quickly produce annotated data.  | [Paper](https://arxiv.org/pdf/1610.01983.pdf) |  | [GitHub](https://github.com/umautobots/driving-in-the-matrix) | [Project](https://fcav.engin.umich.edu/projects/driving-in-the-matrix), [Papers With Code](https://paperswithcode.com/paper/driving-in-the-matrix-can-virtual-worlds) |
+| Driving in the Matrix | 2017       | The core idea behind "Driving in the Matrix" is to use photo-realistic computer-generated images from a simulation engine to quickly produce annotated data.  | [Paper](https://arxiv.org/pdf/1610.01983.pdf) |  | [GitHub](https://github.com/umautobots/driving-in-the-matrix) (104 stars at the time of writing) | [Project](https://fcav.engin.umich.edu/projects/driving-in-the-matrix), [Papers With Code](https://paperswithcode.com/paper/driving-in-the-matrix-can-virtual-worlds) |
 | Synthia             | 2016         | A large collection of synthetic images for semantic segmentation of urban scenes. SYNTHIA consists of a collection of photo-realistic frames rendered from a virtual city and comes with precise pixel-level semantic annotations for 13 classes: misc, sky, building, road, sidewalk, fence, vegetation, pole, car, sign, pedestrian, cyclist, lane-marking. | [Paper](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Ros_The_SYNTHIA_Dataset_CVPR_2016_paper.html) |  |  | [Project](https://synthia-dataset.net/) |
 | GTA5 | 2016 | The **GTA5** dataset contains 24966 synthetic images with pixel level semantic annotation. The images have been rendered using the open-world video game **Grand Theft Auto 5** and are all from the car perspective in the streets of American-style virtual cities. There are 19 semantic classes which are compatible with the ones of Cityscapes dataset. | [Playing for Data: Ground Truth from Computer Games](https://arxiv.org/abs/1608.02192v1) |  | [Code](https://bitbucket.org/visinf/projects-2016-playing-for-data/src/master/) | [Project](https://download.visinf.tu-darmstadt.de/data/from_games/index.html) - [Papers with code](https://paperswithcode.com/dataset/gta5) |
 
@@ -67,10 +94,10 @@ Finding the correspondence between the points of two images of the same scene fr
 
 ### **Human Action Recognition and Simulation**
 
-| Dataset Name | Release Year | Description | External Links |
-|--------------|--------------|-------------|----------------|
+| Dataset Name | Release Year | Description                                                  | External Links                                               |
+| ------------ | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | PHAV         | N/A          | Synthetic dataset of procedurally generated human action recognition videos | [Project](http://adas.cvc.uab.es/phav/), [Paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/de_Souza_Procedural_Generation_of_CVPR_2017_paper.pdf) |
-| Surreal      | 2017         | Large-scale dataset with synthetically-generated but realistic images of people | [Code](https://github.com/gulvarol/surreal), [Paper](https://arxiv.org/abs/1701.01370), [Project](https://www.di.ens.fr/willow/research/surreal/) |
+| Surreal      | 2017         | (change description - this is for human depth estimation and human part segmentation) Large-scale dataset with synthetically-generated but realistic images of people  rendered from 3D sequences of human motion capture data. We generate more than 6 million frames together with ground truth pose, depth maps, and segmentation masks. We show that CNNs trained on our synthetic dataset allow for accurate human depth estimation and human part segmentation in real RGB images. | [Code](https://github.com/gulvarol/surreal), [Paper](https://arxiv.org/abs/1701.01370), [Project](https://www.di.ens.fr/willow/research/surreal/) |
 
 ---
 
@@ -137,37 +164,32 @@ This section contains some additional information that might be interesting to r
     - Semantic Scene
     - [currently not available](https://paperswithcode.com/dataset/suncg)
     - [Paper: Semantic Scene Completion from a Single Depth Image](https://sscnet.cs.princeton.edu/)
+    
 - 
+
 - House3D
     - Archived on August 28, 2021
     - A Rich and R3ealistic 3D Environment
     - [GitHub Repository](https://github.com/facebookresearch/House3D)
     - House3D is a virtual 3D environment which consists of thousands of indoor scenes equipped with a diverse set of scene types, layouts and objects sourced from the SUNCG dataset. It consists of over 45k indoor 3D scenes, ranging from studios to two-storied houses with swimming pools and fitness rooms. All 3D objects are fully annotated with category labels. Agents in the environment have access to observations of multiple modalities, including RGB images, depth, segmentation masks and top-down 2D map views. The renderer runs at thousands frames per second, making it suitable for large-scale RL training.
+    
 - PHAV (Procedural Human Action Videos)
     - Synthetic dataset of procedurally generated human action recognition videos
     - [Project](http://adas.cvc.uab.es/phav/)
     - [Paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/de_Souza_Procedural_Generation_of_CVPR_2017_paper.pdf)
-- Surreal
-    -  a new large-scale dataset with synthetically-generated but realistic images of people rendered from 3D sequences of human motion capture data. We generate more than 6 million frames together with ground truth pose, depth maps, and segmentation masks. We show that CNNs trained on our synthetic dataset allow for accurate human depth estimation and human part segmentation in real RGB images.
-    - [Code](https://github.com/gulvarol/surreal)
-    - [Paper](https://arxiv.org/abs/1701.01370)
-    - [Project](https://www.di.ens.fr/willow/research/surreal/)
-    - in the last link there are also poster and presentation pdfs.
-    - it's from 2017
-- - .
-- Synthia
-    - A large collection of synthetic images for semantic segmentation of urban scenes. 2016
-    - [Paper](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Ros_The_SYNTHIA_Dataset_CVPR_2016_paper.html)
-    - SYNTHIA, The  SYNTHetic collection of Imagery and Annotations, is a dataset that has been generated with the purpose of aiding semantic segmentation and related scene understanding problems in the context of driving scenarios. SYNTHIA consists of a collection of photo-realistic frames rendered from a virtual city and comes with precise pixel-level semantic annotations for 13 classes: misc, sky, building, road, sidewalk, fence, vegetation, pole, car, sign, pedestrian, cyclist, lane-marking.
-    - [Project](https://synthia-dataset.net/)
+    
+    
+    
 - Sintel
     - A synthetic dataset for optical flow
     - [Paper: A naturalistic Open Source Movie for Optical Flow Evaluation](https://link.springer.com/chapter/10.1007/978-3-642-33783-3_44)
     - 551 citations
     - 2012
     - [Project](http://sintel.is.tue.mpg.de/)
+    
 - SceneFlow
     - [This project is no longer active](https://www.ri.cmu.edu/project/scene-flow/)
+    
 - 4D Light Field Dataset
     - [GitHub Project](https://github.com/lightfield-analysis)
     - [Paper: A Dataset and Evaluation Methodology for Depth Estimation on 4D Light Fields](https://lightfield-analysis.net/benchmark/paper/lightfield_benchmark_accv_2016.pdf)
@@ -180,47 +202,22 @@ This section contains some additional information that might be interesting to r
             - 512x512 and 5120x5120 evaluation masks as PNGs
     - We further provide depth and disparity maps for all 81 views of the additional scenes.
     - For file format descriptions and read/write utilities, see our Matlab and Python scripts.
+    
 - ICL-NUIM Dataset
     - The ICL-NUIM dataset aims at benchmarking RGB-D, Visual Odometry and SLAM algorithms. Two different scenes (the living room and the office room scene) are provided with ground truth. Living room has 3D surface ground truth together with the depth-maps as well as camera poses and as a result pefectly suits not just for bechmarking camera trajectory but also reconstruction. Office room scene comes with only trajectory data and does not have any explicit 3D model with it. Below we provide data for four different handheld trajectories that are obtained by running Kintinuous on real image data, and finally used in synthetic framework for obtaining ground truth.
     - [Project](https://www.doc.ic.ac.uk/~ahanda/VaFRIC/iclnuim.html)
-- Driving in the matrix
-    - [GitHub Repository](https://github.com/umautobots/driving-in-the-matrix)
-    - 104 Stars
-    - [Paper: Driving in the Matrix: Can Virtual Worlds Replace Human-Generated Annotations for Real World tasks?](https://arxiv.org/pdf/1610.01983.pdf)
-    - 2017
-    - [Project](https://fcav.engin.umich.edu/projects/driving-in-the-matrix)
-    - By training machine learning algorithms on a rich virtual world, we can illustrate that real objects in real scenes can be learned and classified using synthetic data. This approach offers the possibility of accelerating deep learning’s application to sensor based classification problems like those that appear in self-driving cars.
-- Playing for benchmarks
+    
+- Playing for benchmarks (this one is for both high level and low level tasks.)
     - We present a benchmark suite for visual perception. The benchmark is based on more than 250K high-resolution video frames, all annotated with ground-truth data for both low-level and high-level vision tasks, including optical flow, semantic instance segmentation, object detection and tracking, object-level 3D scene layout, and visual odometry. Ground-truth data for all tasks is available for every frame. The data was collected while driving, riding, and walking a total of 184 kilometers in diverse ambient conditions in a realistic virtual world. To create the benchmark, we have developed a new approach to collecting ground-truth data from simulated worlds without access to their source code or content. We conduct statistical analyses that show that the composition of the scenes in the benchmark closely matches the composition of corresponding physical environments. The realism of the collected data is further validated via perceptual experiments. We analyze the performance of state-of-the-art methods for multiple tasks, providing reference baselines and highlighting challenges for future research.
     - [Project](https://playing-for-benchmarks.org/overview/)
     - [Paper: Playing for benchmark](https://vladlen.info/papers/playing-for-benchmarks.pdf)
     - 2017
     
     
-### 3D Model Repository - Do you want to keep this section?
-Realistic 3D models are critical for creating realistic and diverse virtual worlds. Here are research efforts for creating 3D model repositories.
-    
-
-- ShapeNet
-    - [Paper: An information-rich 3D Model Repository](https://arxiv.org/abs/1512.03012)
-    - 2015
-    - [Project](https://shapenet.org/)
-    - ShapeNet consists of several subsets:
-        - ShapeNetCore: ShapeNetCore is a subset of the full ShapeNet dataset with single clean 3D models and manually verified category and alignment annotations. It covers 55 common object categories with about 51,300 unique 3D models. The 12 object categories of PASCAL 3D+, a popular computer vision 3D benchmark dataset, are all covered by ShapeNetCore.
-        - ShapeNetSem: ShapeNetSem is a smaller, more densely annotated subset consisting of 12,000 models spread over a broader set of 270 categories. In addition to manually verified category labels and consistent alignments, these models are annotated with real-world dimensions, estimates of their material composition at the category level, and estimates of their total volume and weight.
-    
-    
-    
-- 3DScan
-
-    - a large dataset of object scans
-    - paper: https://arxiv.org/abs/1602.02481
-    - 2016
-    - project: http://redwood-data.org/3dscan/
-    
-- seeing3Dchairs
 
 
+
+We could add a subsection on synthetic data generators. 
 
 
 
