@@ -21,7 +21,7 @@ Before answering this question, let's talk a little bit about why real data is n
 - It can be biased.
 - Expensive data collection and annotation.
 
-Most of the above mentioned problems can be easily solved by synthetic data:
+Most of the above mentioned problems can be potentially be solved by synthetic data:
 - Synthetic data are generated in a structured form and hence they are easy to deal with.
 - Companies can train synthetic data generation models which learn the distribution of the original data but doesn't reveal 
 anything about the original data and hence maintains the privacy. Similar approach can be taken for medical data.
@@ -38,7 +38,24 @@ Here, we mention some of the ways to generate synthetic data:
 - Deep generative models (Transformers/GANs/Diffusion models): allows expanding a dataset, tackle data imbalance, and solve privacy issues. Very convenient and powerful but can create datasets with biases, incoherence, and repetitiveness, which induces an important overtraining risk and produces a restricted set of predictions. Use cases include [medical image generation](https://rdcu.be/dokei), [efficient plant disease identification](https://www.mdpi.com/2073-4395/12/10/2395), [industrial waste sorting](https://arxiv.org/abs/2303.14828), [traffic sign recognition](https://arxiv.org/abs/2101.04927), and
   [detection of emergency vehicles for an autonomous driving car application](https://computer-vision-in-the-wild.github.io/eccv-2022/static/eccv2022/camera_ready/ECCV_2022_cvinw_Domain_Compatible_Synthetic_Data_Generation.pdf).
 
-### Resources
+In this Unit, we will introduce the following methods to generate synthetic data:  physically based rendering, point clouds,  and GANs.
+
+
+## Challenges
+
+Now that we have seen the power and uses of synthetic data, let's take some time out to discuss it's challenges:
+- Synthetic data in not automatically private: Synthetic data is also capable of leaking information about the data it was derived from and is vulnerable to privacy attacks. Significant care is required to generate private synthetic data.
+- Outliers can be hard to capture privately: Outliers and low probability events, as are often found in real data, are particularly difficult to capture
+and include in a synthetic dataset in a private way. 
+- Empirically evaluating the privacy of a single dataset can be problematic: Rigorous notions of privacy (e.g differential privacy) are a requirement
+on the mechanism that generated a synthetic dataset, rather than on the dataset itself.
+- Black box models can be particularly opaque when it comes to generating synthetic data: Overparametrised generative models excel in producing high-dimensional synthetic data, but the levels of accuracy and privacy of
+these datasets are hard to estimate and can vary significantly across produced data points.
+
+
+## Resources
 
 - [Machine Learning for Synthetic Data Generation: A Review](https://arxiv.org/abs/2302.04062)
 - [Synthetic Data -- what, why and how?](https://arxiv.org/abs/2205.03257)
+
+P.S: One very interesting application of synthetic data -> [this person does not exist](https://www.thispersondoesnotexist.com/)
