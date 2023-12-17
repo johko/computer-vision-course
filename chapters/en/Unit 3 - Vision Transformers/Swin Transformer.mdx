@@ -5,6 +5,18 @@ Introduced in the 2021 paper, [Swin Transformer: Hierarchical Vision Transformer
 A **backbone**, in terms of deep learning, is a part of a neural network that does feature extraction. Additional layers can be added to the backbone to do a variety of vision tasks. **Hierarchical backbones** have tiered structures, sometimes with varying resolutions. This is in contrast to the non-hierarchical **plain backbone** in [VitDet](https://arxiv.org/abs/2203.16527)
 </Tip>
 
+## Key elements
+### Hierarchical, shifted windows
+In the original ViT, attention is done between each patch and all other patches, which gets computationally intensive. Swin optimizes this process by reducing the normally quadratic complexity ViT into linear complexity (with respect to image size). Swin achieves this using a technique similar to CNN, where patches only attend to other patches in the same window, as opposed to all other patches, and then are gradually merged with neighboring patches. This is what makes Swin a hierarchical model.
+
+
+## Advantages
+### Computational complexity
+Swin is more performant than completely patch-based approaches like ViT.
+### Large datasets
+As training size goes up, Swin outperforms CNN.
+
+
 ## Swin Transformer V2 [(paper)](https://arxiv.org/abs/2111.09883)
 Swin Transformer V2 is a large vision model that can support up to 3B parameters and capable of training with high resolution images. It improves upon the original Swin Transformer by stabilizing training, transfer models pre-trained with low-resolution images to high-resolution tasks, and using [SimMIM](https://arxiv.org/abs/2111.09886), a self-supervised training approach that reduces the number of labeled images required for training.
 
