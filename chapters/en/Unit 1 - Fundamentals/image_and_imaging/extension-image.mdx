@@ -1,6 +1,34 @@
+
 <!--
 
-#Overview
+To the HF reviewers,
+
+For context, there is a chapter before this one that adress how images are obtained from photographs and a chapter afterwards of how images are preprocessed for cv.
+
+Based on our original discussions, I tried to go from a more intuitive approach without it being too technical.
+
+I also tried to incorporate this comment "For the "Imagine everything" feel free (if you'd like) to link an example that we have in the Audio course on audio classification using spectrograms to encourage learners to think out of the box on what else can be viewed as an image." from @MKhalusova.
+
+
+Now, where we part from the original discussion are the results adressing the feedback from @ATaylorAerospace and @johko which asked for:
+ "(introduce the concept with a simple example and then add different examples and go into more depth as we discuss other imaging technique)"
+
+and 
+
+"I would say don't go too deep into actual methods, but of course it is good for the course participants to have an intuition for what edge detection does, as that is fundamental for feature extraction and is a good connection to the next chapter". (@johko).
+
+These were moved to a 4th section called "Preprocessing for Computer Vision" because there was too much information within the same section.
+
+I also did PR for the images/videos of this chapter on the hub. At the time, I am writing it, it has not been approved yet (which is pretty normal since it is is sunday and I did the PR last night). For the sake of meeting the deadline, I will do the PR of this chapter image-free. I know, sad. 
+
+I left the sources of the image in the comments when they were obtained from the articles. 
+
+
+-->
+
+<!--
+
+#Outline of this section chapter
  Challenges in imaging real-life
  Imaging everything (how we extend sensors to make images from things that are not usually thought of as images)
  Perspective on what we obtained from this and its impact on us (i.e. we have imaged outer space and electrons; we have an MRI machine capable of imaging inside of us without ever touching 🤯)
@@ -8,48 +36,183 @@
 
 -->
 
-## Challenges in imaging real-life
+
+##  Challenges in imaging real-life
+
+Have you ever tried to take a picture of a litter of kittens? If were not privileged with this experience, you are missing out on the most beautiful chaotic mess.  Kittens are adorable creatures that move around in the most deranged ways. They will do the cutest thing possible, but it will only last half a second before they top it off with an even cuter event. Before you know it, you are bending yourself backward to get that one kitten in the frame while changing the zoom, and the angle of the camera meanwhile you have another kitten climbing your leg. You get so immersed in their fluffiness that you do not have the time to check the photos. When you sit down to check on them. They. are. all. just. a. blur. There is only one or two pictures worth keeping on your phone. You are just left there thinking, I thought kittens were more photogenic. 
+
+The litter of kittens is a simple story, but it reflects why it is so hard to imagine things in real life. The samples (the scenario containing the kittens) often change faster than the camera can adjust to it. A steady position camera that does not try to track the kitten is also a difficult task since our object (the kitten) moves in space in ways that change the focus of the camera. Changing the lenses to capture a white field might also cause distortions depending on the distance of the object to the camera (see the adorable example below). The event of interest (that one adorable pose of the kitten) is lost in hundreds of other rather uninteresting pictures. Our kitten's example is a silly one, but these difficulties also happen in a variety of other scenarios. Imaging is hard. Yet, the internet is flooded with adorable cat pictures.
+
+
+![Cat kisses showing distortion based on the distance from the object](https://media1.giphy.com/media/3oz8xsaLjLVqVXr3tS/giphy.gif?cid=ecf05e47oqfdrtpov8xxrnvt422k1pestop4xb2rd29ag3iq&ep=v1_gifs_search&rid=giphy.gif&ct=g)
+
+It is tempting to think that if we just had a better camera, one that responds more rapidly with a high resolution all would be solved. We would get the adorable pictures we want. Moreover, we will use the knowledge in this course to do more than just capture all of the adorable kittens, we will want to build a model on a nanny cam that checks if the kittens are still together with their mommy so we know they are all safe and sound. Sounds perfect, right? 
+
+Before we go out to buy the newest flashiest new camera in the market thinking we will have better data. It will be super easy to train. We will have a super-accurate model. Out-of-this-world performance on the kitten tracking market. This paragraph is here to guide you in a more productive direction and possibly save you a lot of time and money. A higher resolution is not the answer to all your problems. For starters, a typical neural network model for dealing with images is a convolution neural network (CNN). CNNs expect an image of a given size.  A large image needs a large model. Training will take a longer time. Chances are that your computers are also limited in RAM. A larger image size will mean fewer images to train on because the RAM will be limited for each iteration.
+
+ I know that the evident solution is to say that we just get a computer with more GPU and more RAM. This also means that besides buying the camera, you will have to pay more for whatever service you will use to train the kitten model. More generally, this does not reflect real-world scenarios. Sometimes, the real application of a computer model is a GPU and memory-poor application. Wait, isn't that our case in the first place? How are we going to fit our model into the hardware of the nanny can? 
+ 
+I got an idea, we will try a smaller model to have the same behavior as the big model! By the way,  this is an actual thing you can do. But even doing so, collecting the highest quality possible might not be a great idea simply because it usually takes longer to acquire and transmit it. A 50Gb of kitten pictures is still a 50Gb of data. No matter how adorable its contents are. Another argument is that computer resources are usually either paid for or shared. This might not be a good use of money resources in the first case. And as for the second, taking up an entire server is rarely a good way to make friends.
+
+There is even a better reason to not go for the highest resolution possible. The higher resolution might have more noise compared to a low one. Resolution amplifies not only your capability to capture the signal you are interested in but also your capability to pick up noise.  Thus, it might be easier to learn something on a lower-resolution image. Lower resolutions might help to have faster training, higher accuracy, and a cheaper model, computationally and monetaryally speaking. All of that being said, the takeaway here is to go for the highest resolution possible given the noise characteristics of the image and the infrastructure required both to train and deploy the model. And lastly, why are we using a high-quality camera in the first place? If we want to build a model on a nanny cam, we might as well get the pictures from the nanny cam.
 
 
 ## Imaging everything 
 
-As seen in the first chapter, we rely on vision to make decisions. It is not surprising that, as a species, we have developed new ways of seeing beyond the range of what our eyes could capture.  We directed our colossal lenses toward the sky, using them to envision what was once unseen and unknown.  Additionally, we have delved into the microscopic realm, capturing images of the DNA structure and individual atoms. We will discuss here briefly the technology behind imaging these things, its impact on society and how this is relevant in the model building process. 
+One thing that is quite impressive about imaging technique is how much we push for it. We never know when to stop. This is not only true for the kitten picture, it is something we have been doing for a while. We are curious by nature. As seen in the first chapter, we rely on vision to make decisions. When it is a difficult decision, we want to have a clear vision of it (no pun intended). 
 
- As a species, we only see a fraction of the spectrum. We call that the visible spectrum. The image below shows us just how narrow it is: 
+It is not surprising that, as a species, we have developed new ways of seeing beyond the range of what our eyes could capture. We want to see what nature did not allow us to see in the first place. I can almost guarantee that if there is something out there that we are not sure of what it looks like, there is someone there trying to image it.
 
-![Image showing the visible spectrum compared to the Electromagnetic Spectrum](image-1.png)
+As a species, we only see a fraction of the spectrum. We call that the visible spectrum. The image below shows us just how narrow it is: 
+
+![Image showing the visible spectrum compared to the Electromagnetic Spectrum](https://open.lib.umn.edu/app/uploads/sites/2/2015/01/b4eaddac5823123ca0aa5e6abe24da3d.jpg)
+
 <!--
 
-image https://open.lib.umn.edu/app/uploads/sites/2/2015/01/b4eaddac5823123ca0aa5e6abe24da3d.jpg 
-from https://open.lib.umn.edu/intropsyc/chapter/4-2-seeing/ 
+https://open.lib.umn.edu/intropsyc/chapter/4-2-seeing/
 
 -->
-We develop new ways to see beyond the visible spectrum by creating detectors that are capable of producing images in these domains.  Infrared (IR) is used in night vision devices and some astronomical observations.
 
- Magnetic resonance uses strong magnetic fields and radio waves to image soft human tissues. 
+To see more than what Mother Nature has given us, we need sensor capturing beyond that spectrum. In other words, we need to detect things at different wavelengths.  Infrared (IR) is used in night vision devices and some astronomical observations. Magnetic resonance uses strong magnetic fields and radio waves to image soft human tissues. We created ways to see things that do not rely on light. For instance, electron microscopy uses electrons to zoom in at much higher resolution than traditional light.  Ultrasound is another great example. Ultrasound imaging harnesses sound waves to create detailed, real-time images of internal organs and tissues, offering a non-invasive and dynamic perspective that goes beyond what is achievable with standard light-based imaging methods.
 
-We created ways to see things that are not imaged by light. For instance, electron microscopy uses electrons to zoom in at much higher resolution than traditional light 
-The goal of this chapter is not to make you an expert in all techniques, but to emphasize that different approaches are required for different imaging techniques. Each presents its own set of challenges, necessitating custom methods or a tailored set of techniques to address them.
+We then directed our colossal lenses toward the sky, using them to envision what was once unseen and unknown.  We also pointed them out to the minuscule realm by building images of the DNA structure and individual atoms. Both of these instruments operate on the idea of manipulating light. We use different types of mirrors or lenses, bend and focus light in the specific ways we are interested in.
+
+We are so obsessive about seeing things that scientists have even changed the DNA sequence of certain animals so they can tag proteins of interest with a special type of protein, called green fluorescence protein. As the name suggests, when a green wavelength of light illuminates the sample, the GFP emits a fluorescent signal back.  Now, it is easier to know where the protein of interest is being expressed because scientists can image it.
+
+After that, it was a matter of improving this system to get more channels in place, in a longer timescale, in a better resolution. A great example of this is how microscopes now generate terabytes of data overnight. 
+
+
+A great example of this combined effort is the video below. In it, you see the time lapse of the projection of the 3D image of a developping embryo of a fished tagged a fluorescent protein. Each colored dot you see on the image represent an individual cell.
+
+
+![embryo image](https://zebrahub.ds.czbiohub.org/_next/image?url=https%3A%2F%2Fassets.tina.io%2Fde8b9dfa-7259-49df-b261-f689580b14b7%2Fdorado_zfish_inverted.gif&w=256&q=75)
+
 <!--
+Image above is a placeholder 
 
-#TODO add examples
 
+https://www.biorxiv.org/content/10.1101/2023.03.06.531398v2.supplementary-material
 
 -->
+
+This diversity in imaging is quite phenomenal. These optical tools have become the eyes through which we perceive the universe. They provide us with insights that have revolutionized our understanding of the universe and life itself.  We use it on a daily basis to send pictures of our loved ones when they are away. We get an x-ray when the doctors need a closer look. Pregnant people have ultrasounds to check on their babies. It might sound a bit magical, even whimsical, that we managed to image things as massive as black holes and as small as electrons. And well, it kind of is. 
+
+
 ## Perspective on Imaging
 
+
+
+As we have seen previously, we grew accustomed to different ways to image things. It is just a routine thing now, but it took a lot of time and effort.  It does not look like we are slowing it down. We are continuously finding new ways to see. New ways to image. As we continue to construct new instruments to see better, new stories and mysteries will be reviewed. In this part, we will illustrate some mysteries that were already reviewed to us in the past.
+
+
+### Picture 51
+
+![Picture 51](
+https://upload.wikimedia.org/wikipedia/en/b/b2/Photo_51_x-ray_diffraction_image.jpg?20121230185027)
+
+
 <!--
 
-#TODO 
-Iconic pictures:
-DNA Double Helix
-The First Photo of a Black Hole
-The Pale Blue Dot 
-Brain Scans
-Embryo development 
-CRISPR Gene (gif in dna)
-
+By Raymond Gosling/King&#039;s College London - http://www-project.slac.stanford.edu/wis/images/photo_51.jpg, Fair use, https://en.wikipedia.org/w/index.php?curid=38068629
 
 -->
 
-## Image characteristics depend on acquisition
+ The first picture of the DNA is also known as Photo 51. To image it, they use a technology based on fiber diffraction image of a crystal gel composed of DNA fiber. It was taken by Raymond Gosling, a graduate student working under the supervision of Rosalind Franklin in May 1952. It was a key piece of the double helix model constructed by Watson and Crick in 1953. There is a lot of controversy surrounding this photo. Part of it comes from the unrecognized contribution made by Rosalind Franklin's early work and the circumstances under which the photo was shared with Watson and Crick. Nevertheless, it has significantly contributed to our understanding of DNA's structure and the technologies that were developed thereafter. 
+
+### The pale blue dot
+
+
+![The Pale Blue Dot](
+https://upload.wikimedia.org/wikipedia/commons/7/73/Pale_Blue_Dot.png)
+
+
+<!--
+
+By Voyager 1 - http://visibleearth.nasa.gov/view.php?id=52392, Public Domain, https://commons.wikimedia.org/w/index.php?curid=4400327
+-->
+
+The pale blue dot is a picture taken in 1990 by a space probe. Earth's size is so small that is less than a pixel. The picture received a lot of notoriety by showing how tiny and short Earth is relative to the vast majority of the space. It inspired Carl Sagan to write the book "The Pale Blue Dot". This picture was taken by the 1500mm high-resolution narrow-angle camera on the Voyager 1. The space probe is also responsible for taking the "Family portrait of the solar system seen below. 
+
+
+
+### Black hole
+
+
+
+![M87](
+https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/1024px-Black_hole_-_Messier_87_crop_max_res.jpg)
+
+<!--
+
+Event Horizon Telescope, 
+-->
+
+Another astronomically important event occurred in 2017 when researchers took the first picture of a black hole. It was the portrait of the mammoth black hole at the heart of the M87 galaxy. The image combined observations from multiple telescopes into one image. By combining their information, scientists can reconstruct the data from different sensors into one image. The data alone was more than a petabyte! Scientists had to physically transport the data around the world because transmitting it over the web was not feasible. They needed to combine data coming from near-infrared, x-ray, millimeter wavelengths, and radio observations. It is an effort that spans years of efforts from the Event Horizon Telescope Collaboration.
+
+
+
+![Sag A](https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Sag_A%2A.jpg/1024px-Sag_A%2A.jpg)
+
+
+<!--
+
+Event Horizon Telescope, 
+-->
+
+Now with that know-how, they aimed to image the supermassive black hole in the center of our galaxy, Sagittarius A*. Imaging Sagittarius A* was trickier compared to its counterpart. It is surrounded by a lot of dust and gas. Thus its environment makes it more difficult to get a clear photo. Researchers were worried that the environment would change too quickly to get a clear picture of what was going on. Just like our kitten example! From these images, they compared their measurements to the ones predicted by Einstein's theory of relativity more precisely than any other method created.
+
+
+### Images, images, images
+
+
+
+![gif dna](https://cdn.technologyreview.com/i/images/horsegif_0.gif)
+
+
+This one is a bit of a twist. It does not involve a new way to image, but rather a new way to read and archive images. The GIF you see above is an image that was stored in the DNA of a living bacteria. This was first made in 2017 by a group of scientists to show as a proof-of-concept that a living organism is an excellent way to archive data. To do this, the first translated the image values into nucleotides code (the famous ATCG). Then, they put this sequence into the DNA by using a system called CRISPR which is capable of editing the DNA. Then, they resequenced the DNA and reconstructed the gif you see below.
+
+<!--
+Shipman, S., Nivala, J., Macklis, J. et al. CRISPR–Cas encoding of a digital movie into the genomes of a population of living bacteria. Nature 547, 345–349 (2017). https://doi.org/10.1038/nature23017
+
+-->
+
+
+That is already quite impressive, but buckle up.  We can also see this in action! Well, not this precise example, but another group of scientists used high-speed atomic force microscopy to show how this works. This type of microscopy uses a sharp tip mechanically attached to the scan. The tip's interaction with the surface generates a topological description of a sample. All of this is at the nanoscale. The video below shows the CRIPR-cas-9 system, the DNA editor, doing its first step by chewing up the DNA. Yummy!
+
+![gif dna](https://cdn.mos.cms.futurecdn.net/5wLUjSudkAGw7mxKLbSxs8-1200-80.jpg)
+
+
+<!--
+
+This is a place holder for the video 
+
+Shibata, M., Nishimasu, H., Kodera, N. et al. Real-space and real-time dynamics of CRISPR-Cas9 visualized by high-speed atomic force microscopy. Nat Commun 8, 1430 (2017). https://doi.org/10.1038/s41467-017-01466-8
+
+-->
+
+
+
+There is more. Have you ever wondered how scientists image DNA? Believe it or not, that process also involves imaging. To know a DNA sequence, scientists need to make a copy of it first. These copies are created by labeling the nucleotides (the things we refer to as ATCG) with different fluorescent dyes. Each nucleotide is matched to sequence one at a time. While they are added, a camera captures an image. The color that fluorescences gives which nucleotide was added. By tracking individual locations, we can reconstruct the sequence of a DNA molecule. This sequencing technology goes beyond reconstructing images. It is used to understand different biological processes and it has a lot of application in clinical settings. Doctors can do all sorts of things from these sequences. For instance, a sample of the tumor can be sequenced and used to classify it as aggressive or not. This generates highly dimensional data. Making any conclusion in that high dimensional setting is difficult, so they often reduce them into 2D images. These 2D images can be processed just like any image. That means you can classify it using CNN. Mind-boggling, right?
+
+
+
+## Image characteristics depend on the acquisition
+
+Regardless of the image type, all images share the same fundamental characteristics. They represent spatial components and are typically represented by matrices. However, it's crucial to recognize that images are not created equally. The distinct characteristics of an image come from both the subject matter and the method of image acquisition. In other words, we do not expect black holes and DNA to look alike. However, we do not expect a photograph and x-ray to look the same either. We can see this in the example below where we have three different methods to image the profile of a person. We can see that although they are in the same pose, the images all look a little different. 
+
+<!--
+
+ai generated/other from canvas (not sure if citation is needed)
+--->
+
+Understanding image characteristics is a really good first step in building a computer vision model. Not only because it will influence the performance of the computer vision model, but because it will dictate what models are more suitable for your problem. Notably, not every image type requires the development of a new neural network architecture. Sometimes, you can adapt a pre-existing model by fine-tuning it or manipulating the last layer to do a different task. Sometimes this manipulation is not needed; instead, preprocessing is employed to make your image more similar to the input that the network was trained on. Do not worry too much about the details of this right now, they will be addressed in the latter chapter of this course. They are mentioned here to help you understand why the context in which an image acquisition is relevant.
+
+For images acquired in different wavelengths but in the same coordinates system, it can be as easy as seeing each acquisition as a different color channel. For instance, in an image acquired by both an X-ray and a near-infrared, you can treat them as if they were different color channels. In that way, each image is in its own grayscale. 
+
+It is not always that simple. Technologies such as grid and ultrasound, are imaged under you have a polar grid. This grid forms the center where the signal is emitted. As the distance from the center gets bigger, so do the coordinates of that system. That means that the larger the distance, the larger the pixels are. There are two different approaches.  The first one changes the coordinate system into one where the pixels are the same size. This will lead to a lot of missing information which might not be very interesting and it might result in a suboptimal storage system. The alternative approach is to leave it as it is but to add the distance from the center as another input for the model.
+
+That is not the only scenario where the coordinates system comes into play. Another one is for satellite imaging. When there are multiple wavelengths captured under the same coordinates, you can treat them as different color channels,  as we have seen before. However, it is more complicated when the data are under different coordinate systems. Such as satellite images and an earth image being combined for a given task. In that case, the coordinates will need to be remapped into each other.
+
+Lastly, image acquisition comes with its own set of biases. We can loosely define bias here as an undesired characteristic of the dataset, either because it is noise or because it changes the model behavior. There are many sources of bias, but a relevant one in image acquisition is measurement bias. Measurement bias happens when the dataset used to train your model varies too much from the dataset that your model actually sees, like our previous example of a high-resolution kitten image and the nanny cam. There can be other sources of measurement bias, such as the measurement coming from the labelers themselves (i.e different groups and different people label images differently), or from the context of the image (i.e. in trying to classify dogs and cats, if all the pictures of cats are on the sofa, the model might learn to distinguish sofa from non-sofa instead of cats and dogs). 
+
+All of that is to say that recognizing and addressing the characteristics of images originating from different instruments is a good first step into building a computer vision model. Preprocessing techniques and strategies to address the problems we identify in this case can be used to mitigate its impact on the model. The next chapter will delve deeper into specific preprocessing methods used to enhance model performance.
