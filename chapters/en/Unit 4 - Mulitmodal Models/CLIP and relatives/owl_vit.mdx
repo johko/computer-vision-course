@@ -32,7 +32,7 @@ model = OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")
 
 url = "http://images.cocodataset.org/val2017/000000039769.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
-texts = [["a photo of a cat", "a photo of a dog", "remote control"]]
+texts = [["a photo of a cat", "a photo of a dog", "remote control", "cat tail"]]
 inputs = processor(text=texts, images=image, return_tensors="pt")
 outputs = model(**inputs)
 
@@ -55,7 +55,9 @@ for box, score, label in zip(boxes, scores, labels):
 # Display the image
 image
 ```
-
+The image should look like this:
+![OWL-ViT Example](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/OWL_ViT_example.jpg)
+This example shows a simple use case of OWL-ViT, where we specify objects likely in the dataset like cat and more abstract objects like cat tail which most likely aren't in any object detection dataset. This shows the powerfullness of OWL-ViT in open-vocabulary object detection.
 
 Feel free to use the code to try more complex examples or this Gradio app:
 
