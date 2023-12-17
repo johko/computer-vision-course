@@ -1,0 +1,74 @@
+# Convolutional Vision Transformer (CvT)
+In this section, we will be doing a deep dive into Convolutional Vision Transformer (CvT) which is a variant of Vision Transformer ([ViT](https://arxiv.org/abs/2010.11929)) and extensively used for the Image Classification task in Computer Vision.
+
+## Recap
+Before going into CvT, Lets have a small recap on ViT architecture which was covered in the previous sections to better appreciate the CvT architecture. ViT decomposes each image into a sequence of tokens (i.e non-overlapping patches) with fixed length, and then applies multiple standard Transformer layers, consisting of Multi-head Self Attention and Position-wise Feed-forward module (FFN) to model global relations for classification.
+
+## Overview
+Convolutional Vision Transformer (CvT) model was proposed in [CvT: Introducing Convolutions to Vision Transformers](https://arxiv.org/abs/2103.15808) by Haiping Wu, Bin Xiao, Noel Codella, Mengchen Liu, Xiyang Dai, Lu Yuan and Lei Zhang. CvT employs all the benefits of CNNs: *local receptive fields*, *shared weights*, and *spatial subsampling* along with *shift*, *scale*, *distortion invariance* while keeping merits of Transformers: *dynamic attention*, *global context fusion*, and *better generalization*. CvT achieves superior performance while maintaining computational efficiency compared to ViT. Futhermore, due to built-in local context structure introduced by convolutions, CvT no longer requires a position embedding, giving it a potential advantage for adaption to a wide range of vision tasks requiring variable input resolution.
+
+
+## Architecture
+
+![CvT Architecture](https://cdn-lfs.huggingface.co/repos/bf/2a/bf2a50c0acddc20a4963bc4c9bfd57f4a0a887faf272014a120b3c17331f0aa6/1c1e3deefaf65959baaf90ed6684777241e820d281cae968cceb707f2a517693?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27cvt_architecture.png%3B+filename%3D%22cvt_architecture.png%22%3B&response-content-type=image%2Fpng&Expires=1703099279&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcwMzA5OTI3OX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5odWdnaW5nZmFjZS5jby9yZXBvcy9iZi8yYS9iZjJhNTBjMGFjZGRjMjBhNDk2M2JjNGM5YmZkNTdmNGEwYTg4N2ZhZjI3MjAxNGExMjBiM2MxNzMzMWYwYWE2LzFjMWUzZGVlZmFmNjU5NTliYWFmOTBlZDY2ODQ3NzcyNDFlODIwZDI4MWNhZTk2OGNjZWI3MDdmMmE1MTc2OTM%7EcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj0qJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT0qIn1dfQ__&Signature=0WU2y-h40vzfbOyI8CpC0TMQ630OQ-hDMhN0O9TlycHV-znA9Ehv7BY5yAZpFBn5cpUgyec74RPntCNq6rk1SNkSDPtiWk09fmn1oC13h-rhDxQIvN2r5znUwkd6ua-YVqdR-WuY76qDjhqCEQ-XI2x7oX0BgPFx32bIk6295wyvwEmoi%7EunO1czlWbIJJnnlpfaZu74puTb4mEkkCc-40gZSxp3STP-mmTy5N9wVOq%7EgaPCxaCUHKmxLcNwbjZ3FoZ1CaG7whJHrvymE8gg5jPn22D5ZalMdACnPVamSSmnrF8w79aQk7T7YeeV2RAsXLXaDS%7Et0-vRIJ%7EJfYBj6w__&Key-Pair-Id=KVTP0A1DKRTAX)
+*(a) Overall architecture, showing the hierarchical multi-stage structure facilitated by the Convolutional Token Embedding layer. (b) Details of the Convolutional Transformer Block, which contains the convolutional projection as the first layer.*
+
+The above image of CvT architecture illustrates the main steps of 3-stage pipeline. At its core, CvT blends two convolution-based operations into the Vision Transformer architecture:
+
+- **Convolutional Token Embedding**: Imagine splitting the input image into overlapping patches, reshaping them into tokens, and then feeding them to a convolution layer. This reduces the number of tokens (like pixels in a downsampled image) while boosting their feature richness, similar to traditional CNNs. Unlike other Transformers, we skip adding pre-defined position information to the tokens, relying solely on convolutional operations to capture spatial relationships.
+
+![Projection Layer](https://cdn-lfs.huggingface.co/repos/bf/2a/bf2a50c0acddc20a4963bc4c9bfd57f4a0a887faf272014a120b3c17331f0aa6/95a1f84956a90d7db29aeb5496203e8b81a498a769f538be0dd8df0ab3e1ebda?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27cvt_conv_proj.png%3B+filename%3D%22cvt_conv_proj.png%22%3B&response-content-type=image%2Fpng&Expires=1703098836&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcwMzA5ODgzNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5odWdnaW5nZmFjZS5jby9yZXBvcy9iZi8yYS9iZjJhNTBjMGFjZGRjMjBhNDk2M2JjNGM5YmZkNTdmNGEwYTg4N2ZhZjI3MjAxNGExMjBiM2MxNzMzMWYwYWE2Lzk1YTFmODQ5NTZhOTBkN2RiMjlhZWI1NDk2MjAzZThiODFhNDk4YTc2OWY1MzhiZTBkZDhkZjBhYjNlMWViZGE%7EcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj0qJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT0qIn1dfQ__&Signature=r1aLLQpK4WHOWkK2tvZOc6mjkAaDUSS3U3dtN6qqX2u1UlZ4B%7ExvNRqRcVKN%7Ed-TiQpZASTBUoYIp4EIVY3TGBKnUiuHMx3F6OfIx037N9HWDNPZpWXbm%7EXuAL6FslBDGRgRGcP5n583KZmpw6B3rAFzmI5s26jVvfv1v6kDmqaEj--rdMxOBUFwDLel2XPv4RYUe%7EqLYWZzVlVC2ep6tX7opGK3Zly2jXEN4KbT2oCQbBsOjJCFeKWY2mP4WZS6%7Ee79ZwTBJ8eYbTgrjqydupNvjPEu6dADEJPb2G5eZtGmOLVRByeJThxcHMxIa6BiRBO9JTtKaPQk8u65GCK7Hg__&Key-Pair-Id=KVTP0A1DKRTAX)
+*(a) Linear Projection in ViT. (b) Convolutional Projection. (c) Squeezed Convolutional Projection (Default in CvT)*
+
+- **Convolutional Transformer Blocks**: Each stage in CvT contains a stack of these blocks. Here, instead of the usual linear projections in ViT, we use depth-wise separable convolutions (Convolutional Projection) to process the "query," "key," and "value" components of the self-attention module as shown in the above image. This maintains the benefits of Transformers while improving efficiency. Note that the "classification token" (used for final prediction) is only added in the last stage. Finally, a standard fully-connected layer analyzes the final classification token to predict the image class.
+
+
+### Comparision of CvT Architecture with other Vision Transformers 
+The below table shows the key differences in terms of neccessity of positional encodings, type of token embedding, type of projection, and Transformer structure in the backbone, between the above representative concurrent works and CvT.
+
+| Model | Needs Position Encoding (PE) | Token Embedding | Projection for Attention | Hierarchical Transformers |
+| ------| -----------------------------| ----------------| -------------------------| --------------------------|
+| [ViT](https://arxiv.org/abs/2010.11929), [DeiT](https://arxiv.org/abs/2012.12877) | Yes | Non-overlapping | Linear| No|
+| [CPVT](https://arxiv.org/abs/2102.10882) | No (w/PE Generator) | Non-Overlapping | Linear | No|
+| [TNT](https://arxiv.org/abs/2103.00112v3) | Yes | Non-overlapping (Patch + Pixel) | Linear | No|
+| [T2T](https://arxiv.org/abs/2101.11986) | Yes | Overlapping (Concatenate)| Linear | Partial (Tokenization) |
+| [PVT](https://arxiv.org/abs/2102.12122) | Yes | Non-overlapping | Spatial Reduction | Yes |
+|*CvT*| *No* | *Overlapping (Convolution)* | *Convolution* | *Yes*|
+
+### Main Highlights
+The four main highlights of CvT that helped achieve superior performance and computational efficiency are the following:
+- **Hierarchy of Transformers** containing a new convolutional token embedding.
+- Convolutional Transformer block levaraging a **Convolutional Projection**.
+- **Removal of Positional Encoding** due to built-in local context structure introduced by convolutions.
+- Fewer **Parameters** and lower **FLOPs** (Floating Point Operations per second) compared to other vision transformer architectures.
+
+## Try it out
+
+You can implement CvT for your own usecase by installing HuggingFace `transformers` library as follows:
+```bash
+pip install transformers
+```
+
+You can find the documentation for CvT model [here](https://huggingface.co/docs/transformers/model_doc/cvt#overview).
+
+### Usage
+Here is how to use CvT model to classify an image of the COCO 2017 dataset into one of the 1,000 ImageNet classes:
+
+```py
+from transformers import AutoFeatureExtractor, CvtForImageClassification
+from PIL import Image
+import requests
+
+url = 'http://images.cocodataset.org/val2017/000000039769.jpg'
+image = Image.open(requests.get(url, stream=True).raw)
+
+feature_extractor = AutoFeatureExtractor.from_pretrained('microsoft/cvt-13')
+model = CvtForImageClassification.from_pretrained('microsoft/cvt-13')
+
+inputs = feature_extractor(images=image, return_tensors="pt")
+outputs = model(**inputs)
+logits = outputs.logits
+# model predicts one of the 1000 ImageNet classes
+predicted_class_idx = logits.argmax(-1).item()
+print("Predicted class:", model.config.id2label[predicted_class_idx])
+```
