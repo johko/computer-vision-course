@@ -1,4 +1,4 @@
-# Inception Networks (GoogLeNet)
+# GoogLeNet
 
 ### 1. Introduction 
 
@@ -8,7 +8,7 @@ Inception is a convolution neural network (CNN) architecture, used for computer 
 
 Before Inception, successful network architectures such as AlexNet or VGG have shown the importance of increasing network depth. However, increasing network depth also increases computation steps, and problems such as overfitting and vanishing gradient may occur. Inception network introduced a method to efficiently train complex CNNs wih less floating parameters.   
 
-To design a CNN network, one typically selects each layer to be a pooling layer or a convolution layer, including the choice of convolution filter size. Stacking convolution filters of different sizes on top of one another is useful for various tasks, but the total number of parameters can grow very quickly. In Inception networks, convolution filters of different sizes (1X1, 3X3, 5X5) are connected in parallel, and combined with maxpooling into a single module, called the Inception module. Inception network is constructed by connecting 22 Inception module in series. With this structure, the network can be flexible and learn complex tasks without much incease in depth.  
+To design a CNN network, one typically selects each layer to be a pooling layer or a convolution layer, including the choice of convolution filter size. Stacking convolution filters of different sizes on top of one another is useful for various tasks, but the total number of parameters can grow very quickly. In Inception networks, convolution filters of different sizes (1X1, 3X3, 5X5) are connected in parallel, and combined with maxpooling into a single module, called the Inception module. GoogLeNet network is constructed by connecting 9 Inception module in series. With this structure, the network can be flexible and learn complex tasks without much incease in depth.  
 
 
 ### 3. Code 
