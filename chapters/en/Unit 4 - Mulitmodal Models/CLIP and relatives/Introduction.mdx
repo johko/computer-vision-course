@@ -1,0 +1,36 @@
+# Introduction
+
+## Pre-CLIP
+
+In this chapter, we delve into the fascinating world of multimodal models in AI, exploring the pivotal developments that have shaped this domain before the advent of CLIP. Multimodal AI represents a significant leap in artificial intelligence, as it involves systems that can process and interpret data from multiple sources, such as text, images, and audio, simultaneously. This capability mirrors human cognitive processes more closely than unimodal systems, offering a more nuanced and comprehensive understanding of complex data. The journey to such advanced multimodal systems has been marked by several groundbreaking studies, each contributing unique insights and methodologies. Let's explore some of these key contributions that have laid the foundation for today's sophisticated multimodal AI models.
+
+1. **"Multimodal Deep Learning" by Ngiam et al. (2011)**
+   - Contribution: This paper was instrumental in showing how deep learning techniques could be applied to multimodal inputs, paving the way for future innovations in the field. The concept of learning shared representations from audio and visual data highlighted the potential of neural networks in integrating different types of data within a unified framework.
+   - [Multimodal Deep Learning](https://people.csail.mit.edu/khosla/papers/icml2011_ngiam.pdf)
+
+2. **"Deep Visual-Semantic Alignments for Generating Image Descriptions" by Karpathy and Fei-Fei (2015)**
+   - Contribution: This study brought a novel perspective by aligning textual data with specific image regions, enhancing the interpretability of multimodal AI systems. It bridged the gap between visual perception and language, demonstrating a more contextually aware approach to image-captioning.
+   - [Deep Visual-Semantic Alignments for Generating Image Descriptions](https://cs.stanford.edu/people/karpathy/cvpr2015.pdf)
+
+3. **"Show and Tell: A Neural Image Caption Generator" by Vinyals et al. (2015)**
+   - Contribution: By introducing a system that could generate coherent narratives from visual data, this paper showcased the practical applications of deep learning in multimodal AI. It demonstrated how CNNs and RNNs could be synergistically used to translate visual information into descriptive language.
+   - [Show and Tell: A Neural Image Caption Generator](https://arxiv.org/abs/1411.4555)
+
+The evolution of multimodal AI, as evidenced by these studies, reflects a growing understanding of how to effectively combine and process diverse types of data. This progression has been crucial in advancing AI towards more versatile and human-like cognitive abilities, setting the stage for transformative models like CLIP.
+
+## Post-CLIP
+
+### CLIP
+CLIP (Contrastive Language–Image Pre-training) by OpenAI marked a paradigm shift in how models handle multimodal data. Unlike pre-CLIP models that often relied on labeled datasets for training, CLIP learns from an extensive range of unfiltered, noisy internet text–image pairs, significantly reducing reliance on costly labeled datasets. It also deviates from traditional models that are confined to their training categories by enabling zero-shot learning, where the model can accurately classify images in categories it has never seen during training. This generalization is achieved through its unique training methodology, where it learns to predict the pairing of images and text snippets from a vast dataset, enhancing its ability to handle diverse real-world scenarios ([Radford et al. 2021](https://openai.com/blog/clip/)).
+
+### GroupViT
+GroupViT presents an innovative approach to segmentation, a task not directly addressed by CLIP. This model utilizes transformer-based architectures to segment images into groups based on visual and semantic similarities. It represents an advancement over pre-CLIP models by combining segmentation with semantic understanding, a task traditionally handled separately. GroupViT demonstrates how the integration of language and vision modalities can lead to more nuanced interpretations and processing of visual data, moving beyond mere classification to understanding complex visual relationships ([Xu et al. 2022](https://arxiv.org/abs/2202.11094)).
+
+### BLIP
+BLIP (Vision Language with Text Generation) introduces the concept of bidirectional learning between vision and language tasks. While CLIP and other pre-CLIP models focused primarily on understanding and classifying images based on textual descriptions, BLIP extends this by generating descriptive texts based on visual inputs. This model reflects a deeper, two-way integration between the visual and textual domains, enabling applications like more sophisticated image captioning and visual question answering, which require a deeper understanding of both modalities ([Li et al. 2022](https://arxiv.org/abs/2201.12086)).
+
+### OWL-VIT
+OWL-VIT (Vision Language Object) extends the capabilities of multimodal learning to include object-centric representations. This model differs from pre-CLIP architectures by focusing not just on image-wide classification or text-image pairing but on identifying and understanding objects within images in the context of associated text. OWL-VIT represents a significant leap in the ability of models to understand and interact with individual objects within images, integrating this understanding with relevant textual information, thus enabling more detailed and context-aware analysis of visual content ([Minderer et al. 2022](https://arxiv.org/abs/2205.06230)).
+
+### Conclusion
+The post-CLIP era in multimodal models is characterized by a deeper, more nuanced integration of visual and textual data. Innovations brought forth by models like CLIP, GroupViT, BLIP, and OWL-VIT showcase a significant evolution from the pre-CLIP focus on zero-shot learning and natural language supervision. These advancements reflect a trend towards models that are not only more adept at generalizing beyond their training data but also capable of understanding and interacting with complex visual and textual relationships in ways previously unachievable. The synergy between these two modalities is now leveraged for tasks ranging from advanced segmentation to bidirectional learning and object-centric analysis, marking a new frontier in the capabilities of multimodal models.
