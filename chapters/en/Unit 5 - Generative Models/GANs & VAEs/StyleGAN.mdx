@@ -17,7 +17,7 @@ TL DR; StyleGAN is a special modification made to the archtiectural style of Gen
 
 ## StyleGAN1 components and benifits
 
-![Architecture](files/stylegan_arch.png)
+![Architecture](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/stylegan_arch.png)
 
 Let us just dive into the special components introduced in StyleGAN that gives StyleGAN the power which I described above. Don't get intimidated by the figure above, trust me it is one of the simplest yet powerful idea which you can easily understand. 
 
@@ -36,7 +36,7 @@ Instead of passing the latent code (a.k.a noise vector) z directly to the genera
 
 ### Adaptive instance normalisation (AdaIN)
 
-![Adaptive instance normalisation](files/AdaIN.png)
+![Adaptive instance normalisation](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/AdaIN.png)
 
 AdaIN introduces a modification to the Instance Normalization by allowing the normalization parameters (mean and standard deviation) to be dynamically adjusted based on the style information from a separate source. This style information is often derived from the latent code w. 
 
@@ -51,7 +51,7 @@ In traditional GAN, the generator has to learn stochastic feature on its own. By
 
 Instead in StyleGAN, the authors hypothise that by adding a noise map to feature map in each block of the synthesis network (a.k.a generator) then each layer makes use of this information to produce diverse stochastic nature without trying to do all by its own like in traditional GANs. This actually turned out well.
 
-![Example for noise](files/noise.png)
+![Example for noise](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/noise.png)
 
 ## Drawback of StyleGAN1 and the need for StyleGAN2;
 StyleGAN yields state-of-the-art results in data-driven unconditional generative image modeling but there existed few issues with respect to its existing architecture design which is dealt in the next version, StyleGAN2.
@@ -62,15 +62,15 @@ There are two major artifacts addressed in this paper, (i) common blob-like arti
 
 (i) Fixing blob artifacts.
 
-![blob Artifact](files/norm.png)
+![blob Artifact](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/norm.png)
 
 You can see the blob structure in the above image which the authors claim to have originated from the Normalisation process of StyleGAN1, hence below (d) is the proposed architecture which overcame the issue.
 
-![Demodulation](files/stylegan2_demod.png)
+![Demodulation](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/stylegan2_demod.png)
 
 (ii) Fixing strong location preference artifact in Progessive GAN structure
 
-![Phase Artifact](files/progress.png)
+![Phase Artifact](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/progress.png)
 
 In the above figure, each of the images are obtained by interpolating the latent code w to modulate the pose. This leads to quite unrealistic images irrespective of its high visual quality.
 
