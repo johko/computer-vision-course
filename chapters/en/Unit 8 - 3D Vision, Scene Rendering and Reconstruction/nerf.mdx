@@ -1,37 +1,31 @@
 # Neural Radiance Fields (NeRFs)
 
-Neural Radiance Fields are a way of storing a 3D scene within a neural network. This way of storing and representing a 
-scene is often called an implicit representation, since the scene parameters are fully represented by the underlying Multi-Layer Perceptron (MLP). (As compared to 
-an explicit representation that stores scene parameters like colour or density explicitly in voxel grids.) This novel way of representing 
-a scene showed very impressive results in the task of [novel view synthesis](https://en.wikipedia.org/wiki/View_synthesis), the task of interpolating novel 
-views from camera perspectives that are not in the training set. Furthermore it allows us to store large scenes with a smaller memory footprint than explicit 
-reresentation, since we merely need to store the weights of our neural network compared to voxel grids, that increase in memory size by a cubic term.
+Neural Radiance Fields are a way of storing a 3D scene within a neural network. This way of storing and representing a scene is often called an implicit representation, since the scene parameters are fully represented by the underlying Multi-Layer Perceptron (MLP). 
+(As compared to an explicit representation that stores scene parameters like colour or density explicitly in voxel grids.) 
+This novel way of representing a scene showed very impressive results in the task of [novel view synthesis](https://en.wikipedia.org/wiki/View_synthesis), the task of interpolating novel views from camera perspectives that are not in the training set. 
+Furthermore it allows us to store large scenes with a smaller memory footprint than explicit reresentation, since we merely need to store the weights of our neural network compared to voxel grids, that increase in memory size by a cubic term.
 
-## Short History
-The field of NeRFs is relatively young with the first publication by [Mildenhall et al.](https://www.matthewtancik.com/nerf) appearing in 2020. Since then,
-a vast number of papers have been published and fast advancements have been made. Since 2020,  more than 620 preprints and publications have been released with 
-more than 250 source codes on GitHub. *(as of Dec 2023, statistics from [paperswithcode.com](https://paperswithcode.com/method/nerf))*
+## Short History 📖
+The field of NeRFs is relatively young with the first publication by [Mildenhall et al.](https://www.matthewtancik.com/nerf) appearing in 2020. 
+Since then, a vast number of papers have been published and fast advancements have been made. 
+Since 2020, more than 620 preprints and publications have been released with more than 250 source codes on GitHub. 
+*(as of Dec 2023, statistics from [paperswithcode.com](https://paperswithcode.com/method/nerf))*
 
-Since the first formulation of NeRFs requires long training times (up to days on beefy GPUs) there have been a lot of advancements towards fatser training and 
-inference. An important leap would be NVIDIA's [Instant-ngp](https://nvlabs.github.io/instant-ngp/), that introduces innovative techniques that efficiently encode 
-input data. This allowed the authors to shrink the MLP down significantly, making it faster to train and query while performing on par quality wise with then 
-state-of-the-art methods. [Mipnerf-360](https://jonbarron.info/mipnerf360/) is also worth mentioning since it intoduces a scene contraction that allows 
-us to represent scenes that are unbounded in all directions, VERY important for real world applications... [Zip-NeRF](https://jonbarron.info/zipnerf/) which combines 
-recent advancements like the encoding from [Instant-ngp](https://nvlabs.github.io/instant-ngp/) and the scene contraction from [Mipnerf-360](https://jonbarron.info/mipnerf360/) 
-to handle real world situation whilst decreasing training times to under an hour. *(this is still measured on beefy GPUs to be fair)*
+Since the first formulation of NeRFs requires long training times (up to days on beefy GPUs) there have been a lot of advancements towards fatser training and inference. 
+An important leap would be NVIDIA's [Instant-ngp](https://nvlabs.github.io/instant-ngp/), that introduces innovative techniques that efficiently encode input data. 
+This allowed the authors to shrink the MLP down significantly, making it faster to train and query while performing on par quality wise with then state-of-the-art methods. 
+[Mipnerf-360](https://jonbarron.info/mipnerf360/) is also worth mentioning since it intoduced a scene contraction that allows us to represent scenes that are unbounded in all directions, which is important for real world applications. 
+[Zip-NeRF](https://jonbarron.info/zipnerf/) which combines recent advancements like the encoding from [Instant-ngp](https://nvlabs.github.io/instant-ngp/) and the scene contraction from [Mipnerf-360](https://jonbarron.info/mipnerf360/) to handle real world situation whilst decreasing training times to under an hour. 
+*(this is still measured on beefy GPUs to be fair)*
 
-Since the field of NeRFs is rapidly evolving, I am adding a section **Future Direction** on the bottom where I will tease the latest reseaerch and the possible 
-future direction of NeRFs.
+Since the field of NeRFs is rapidly evolving, I am adding a section **Future Direction** on the bottom where I will tease the latest reseaerch and the possible future direction of NeRFs.
 
-But now enough history, let's dive into the intrinsics of NeRFs!!
+But now enough history, let's dive into the intrinsics of NeRFs! 🚀🚀
 
 
-## Underlying approach (Vanilla NeRF)
-The fundamental idea behind NeRFs is to represent a scene as a continuous function that maps a position,
-$\mathbf{x} \in \mathbb{R}^{3}$, and a viewing direction, $\boldsymbol{\theta} \in \mathbb{R}^{2}$, to a colour
-$\mathbf{c} \in \mathbb{R}^{3}$ and volume density $\sigma \in \mathbb{R}^{1}$. As neural networks can serve as 
-universal function approximators, we can approximate this continuous function that represents the scene with a simple
-Multi-Layer Perceptron (MLP) $F_{\mathrm{\Theta}} : (\mathbf{x}, \boldsymbol{\theta}) \to (\mathbf{c},\sigma)$.
+## Underlying approach (Vanilla NeRF) 📘🔍
+The fundamental idea behind NeRFs is to represent a scene as a continuous function that maps a position, $\mathbf{x} \in \mathbb{R}^{3}$, and a viewing direction, $\boldsymbol{\theta} \in \mathbb{R}^{2}$, to a colour $\mathbf{c} \in \mathbb{R}^{3}$ and volume density $\sigma \in \mathbb{R}^{1}$. 
+As neural networks can serve as universal function approximators, we can approximate this continuous function that represents the scene with a simple Multi-Layer Perceptron (MLP) $F_{\mathrm{\Theta}} : (\mathbf{x}, \boldsymbol{\theta}) \to (\mathbf{c},\sigma)$.
 
 A simple NeRF pipeline can be summarized with the following picture:
 
@@ -53,16 +47,14 @@ This is overview is very high level, so for a better understanding, I will go in
 **Volume Rendering**
 This process of putting discrete samples in 3D to a 2D image works as follows:
 
-The principles behind the process of volumetric rendering are well established in classical computer graphics pipelines and do not stem from NeRFs. What is 
-important for the use case of NeRFs is that this step is **differentiable** in order to allow for backpropagation. The simplest form of volumetric rendering 
-in NeRFs can be formulated as follows:
+The principles behind the process of volumetric rendering are well established in classical computer graphics pipelines and do not stem from NeRFs. 
+What is important for the use case of NeRFs is that this step is **differentiable** in order to allow for backpropagation. The simplest form of volumetric rendering in NeRFs can be formulated as follows:
 
 $$\mathbf{C}(\mathbf{r}) = \int_{t_n}^{t_f}T(t)\sigma(\mathbf{r}(t))\mathbf{c}(\mathbf{r}(t),\mathbf{d})dt$$
 
-In the equation above, $\mathbf{C}(\mathbf{r})$ is the expectd colour of a camera ray 
-$\mathbf{r}(t)=\mathbf{o}+t\mathbf{d}$, where $\mathbf{o} \in \mathbb{R}^{3}$ is the origin of the camera, 
-$\boldsymbol{d} \in \mathbb{R}^{3}$ is the viewing direction as a 3D unit vector and $t \in \mathbb{R}_+$ is the distance along the ray. $t_n$ and $t_f$ stand 
-for the near and far bounds of the ray, respectively. $T(t)$ denotes the accumulated transmittance along ray $\mathbf{r}(t)$ from $t_n$ to $t$.
+In the equation above, $\mathbf{C}(\mathbf{r})$ is the expected colour of a camera ray $\mathbf{r}(t)=\mathbf{o}+t\mathbf{d}$, where $\mathbf{o} \in \mathbb{R}^{3}$ is the origin of the camera, $\boldsymbol{d} \in \mathbb{R}^{3}$ is the viewing direction as a 3D unit vector and $t \in \mathbb{R}_+$ is the distance along the ray. 
+$t_n$ and $t_f$ stand for the near and far bounds of the ray, respectively. 
+$T(t)$ denotes the accumulated transmittance along ray $\mathbf{r}(t)$ from $t_n$ to $t$.
 
 After discretization, the equation above can be computed as the following sum:
 
@@ -74,24 +66,23 @@ Below, you can see a schematic visualisation of a discretized camera ray in orde
 
 **Loss formulation**
 
-As the discretized volumetric rendeing equation is fully differentiable, the weights of the underlying neural network can then be trained using a 
-reconstruction loss on the rendered pixels. Many NeRF approaches use a pixel-wise error that can be written as follows:
+As the discretized volumetric rendeing equation is fully differentiable, the weights of the underlying neural network can then be trained using a reconstruction loss on the rendered pixels. 
+Many NeRF approaches use a pixel-wise error term that can be written as follows:
 
 $$\mathcal{L}_{\rm recon}(\boldsymbol{\hat{C}},\boldsymbol{C^*}) = \left\|\boldsymbol{\hat{C}}-\boldsymbol{C^*}\right\|^2$$
 
-where $\boldsymbol{\hat{C}}$ is the colour rendered pixel colour and $\boldsymbol{C}^*$ is the ground truth pixel colour.
+,where $\boldsymbol{\hat{C}}$ is the colour rendered pixel colour and $\boldsymbol{C}^*$ is the ground truth pixel colour.
 
 **Additional remarks**
 
-It is very hard to describe the whole NeRF pipeline in detail within one single chapter. The explanations above are important 
-to understand the basic cocepts and similar if not identical in every NeRF model. However, some additional tricks are needed to obtain a well performing model.
+It is very hard to describe the whole NeRF pipeline in detail within a single chapter. 
+The explanations above are important to understand the basic cocepts and similar if not identical in every NeRF model. 
+However, some additional tricks are needed to obtain a well performing model.
 
-First of all, it is necesarry to encode input signals in order to capture high-frequency variations in colour and geometry. The practice of encoding inputs before 
-passing them through a neural network is not unique to the NeRF domain but also widely adopted in other ML domains like for example Natural Language 
-Processing (NLP).
+First of all, it is necesarry to encode input signals in order to capture high-frequency variations in colour and geometry. 
+The practice of encoding inputs before passing them through a neural network is not unique to the NeRF domain but also widely adopted in other ML domains like for example Natural Language Processing (NLP).
 
-A very simple encoding where we map the inputs to a higher dimensional space, enabling us to capture high frequency variations in scene parameters could look as 
-follows:
+A very simple encoding where we map the inputs to a higher dimensional space, enabling us to capture high frequency variations in scene parameters could look as follows:
 
 ```python
 import torch
@@ -146,18 +137,18 @@ The output should look something like the image below:
 
 ![encoding](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/nerf_encodings.png)
 
-The second trick worth mentioning is that most approaches use smart approaches to sample points in space. Essentially, we want to avoid sampling in regions where 
-the scene is empty. There are various approaches to concentrate samples in regions that contribute most to the final image, but the most prominent one is to use 
-a second network, often called *proposal network* so that no compute is wasted. If you are interested in the inner workings and 
-optimisation of such a *proposal network*, feel free to dig into the publication of [Mipnerf-360](https://jonbarron.info/mipnerf360/), where it was first proposed.
+The second trick worth mentioning is that most approaches use smart approaches to sample points in space. 
+Essentially, we want to avoid sampling in regions where the scene is empty. 
+There are various approaches to concentrate samples in regions that contribute most to the final image, but the most prominent one is to use a second network, often called *proposal network* so that no compute is wasted. 
+If you are interested in the inner workings and optimisation of such a *proposal network*, feel free to dig into the publication of [Mipnerf-360](https://jonbarron.info/mipnerf360/), where it was first proposed.
 
 ## Train your own NeRF
-To get the full experience when training your first NeRF, I recommend taking a look at the awesome 
-[Google Colab notebook from the nerfstudio team](https://colab.research.google.com/github/nerfstudio-project/nerfstudio/blob/main/colab/demo.ipynb).
+To get the full experience when training your first NeRF, I recommend taking a look at the awesome [Google Colab notebook from the nerfstudio team](https://colab.research.google.com/github/nerfstudio-project/nerfstudio/blob/main/colab/demo.ipynb). 
+There, you can upload images of a scene of your choice and train a NeRF. You could for example fit a model to represent your living room. 🎉🎉
 
 ## Current advancements in the field
-The field is rapidly evolving and the number of new publications is almost exploding. Concerning training and rendering speed, [VR-NeRF](https://vr-nerf.github.io) 
-and [SMERF](https://smerf-3d.github.io) show very promising results. I believe that we will soon be able to stream a real world scene in real time on an edge device 
-and this is a huge leap towards a realistic *Metaverse*. However, the research in the field of NeRFs is not only focusing on training and inference speed, but 
-encompasses various directions like, Generative NeRFs, Pose Estimation, Deformable NeRFs, Compositionality and many more. If you are interested in a curated list 
-of NeRF publications, checkout [Awesome-NeRF](https://github.com/awesome-NeRF/awesome-NeRF).
+The field is rapidly evolving and the number of new publications is almost exploding. 
+Concerning training and rendering speed, [VR-NeRF](https://vr-nerf.github.io) and [SMERF](https://smerf-3d.github.io) show very promising results. 
+I believe that we will soon be able to stream a real world scene in real time on an edge device and this is a huge leap towards a realistic *Metaverse*. 
+However, the research in the field of NeRFs is not only focusing on training and inference speed, but encompasses various directions like, Generative NeRFs, Pose Estimation, Deformable NeRFs, Compositionality and many more. 
+If you are interested in a curated list of NeRF publications, checkout [Awesome-NeRF](https://github.com/awesome-NeRF/awesome-NeRF).
