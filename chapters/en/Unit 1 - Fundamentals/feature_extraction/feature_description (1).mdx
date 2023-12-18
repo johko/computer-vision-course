@@ -66,7 +66,8 @@ It stands for Speeded Up Robust features. It is another popular algorithm in com
 The basic workflow of SURF is given below:
 
 1. **Integral images:** SURF utilizes integral images, which are precomputed representations of the original image. They allow for fast calculations of rectangular area sums within an image, enabling a quicker feature computation.
-2. **Blob detection:** Similar to other feature detection algorithms , SURF starts by identifying potential interest points or keypoints in the image. It uses a Hessian matrix to detect blobs or regions that exhibit significant variations in intensity in multiple directions and scales. These regions are potential keypoints.
+2. **Blob detection:** Similar to other feature detection algorithms, SURF starts by identifying potential interest points or keypoints in the image. It uses a Hessian matrix to detect blobs or regions that exhibit significant variations in intensity in multiple directions and scales. These regions are potential keypoints.
+
 3. **Scale Selection**: It determines the scale of the keypoints by identifying regions with significant changes in scale-space. It analyzes the determinant of the Hessian matrix across different scales to find robust keypoints at multiple scales.
 
 4. **Orientation Assignment:** For each detected keypoint, SURF assigns a dominant orientation. This is done by calculating Haar wavelet responses in different directions around the keypoint’s neighborhood. Unlike SIFT, SURF uses a set of rectangular filters (Haar wavelets) applied to subregions of the keypoint's neighborhood. The responses of these filters are used to create a feature vector representing the keypoint.
