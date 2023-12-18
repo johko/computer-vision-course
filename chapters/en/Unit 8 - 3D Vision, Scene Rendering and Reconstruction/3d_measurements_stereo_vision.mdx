@@ -90,18 +90,25 @@ Note that x and y values above are with respect to the left camera since origin 
 
 # Demo 
 ## Setup 
-TBD
+We'll work through an example, capture some images, perform some calculations to find out if our above assumptions and maths works out ! For capturing the images we'll use a hardware device known as OAK-D Lite (OAK stands for OpenCV AI Kit). 
+This device has 3 cameras - left and right mono (black and white) cameras and center colour camera. We'll use the left and right mono cameras for our experiement. 
+A regular smartphone camera could also be used but using OAK-D lite has some advantages listed below.
+
+* Intrinsic camera parameters like focal length and location of principle point are known since the device comes pre-calibrated and these parameters can be read from the device using it's python API. For a smartphone camera, intrinsic parameters need to be determined and could be found by performing camera calibration or sometimes present in the metadata of the image captured using the smartphone. 
+* One of our main assumptions above is that the position and orientation of the left and right cameras are known. Using a smartphone camera, it may be difficult to precisely determine this information or an additional calibration may be required.  On the other hand, for an OAK-D Lite device position and orientation of the left and right cameras is fixed, known, pre-calibrated and very similar to the geometry of the simplified solution mentioned above. Although some post-processing/image rectification detailed below on the raw images is still required.
 
 ## Original Left and Right Images
-TBD
+TBD, include baseline distance, vertical positions and why discrepenacy , follows simplied geometry
+
 
 ## Rectified Left and Right Images 
-TBD
+TBD, explain the rectification process and link to source code, explain the stacking (aligned now) and overlapping with disparity meaning and disparity with depth
 
 ## Annotated Left and Right Rectified Images
 TBD
 
 ## 3D Coordinate Calculations  
+TBD 
 
 | point    |   u_left  |   v_left  |   u_right  |   v_right  |   depth/z(cm)  |   x_wrt_left(cm)  |   y_wrt_left(cm)  |
 |:--------:|:---------:|:---------:|:----------:|:----------:|:--------------:|:-----------------:|:-----------------:|
@@ -120,6 +127,7 @@ TBD
 
 
 ## Dimension Calculations and Accuracy 
+TBD 
 
 | dimension    |   measured(cm)  |   actual(cm)  |       % error       |
 |:------------:|:---------------:|:-------------:|:-------------------:|
