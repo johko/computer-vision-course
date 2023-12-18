@@ -22,7 +22,6 @@ Since the field of NeRFs is rapidly evolving, we added a section **Future Direct
 
 But now enough history, let's dive into the intrinsics of NeRFs! 🚀🚀
 
-
 ## Underlying approach (Vanilla NeRF) 📘🔍
 The fundamental idea behind NeRFs is to represent a scene as a continuous function that maps a position, $\mathbf{x} \in \mathbb{R}^{3}$, and a viewing direction, $\boldsymbol{\theta} \in \mathbb{R}^{2}$, to a colour $\mathbf{c} \in \mathbb{R}^{3}$ and volume density $\sigma \in \mathbb{R}^{1}$. 
 As neural networks can serve as universal function approximators, we can approximate this continuous function that represents the scene with a simple Multi-Layer Perceptron (MLP) $F_{\mathrm{\Theta}} : (\mathbf{x}, \boldsymbol{\theta}) \to (\mathbf{c},\sigma)$.
