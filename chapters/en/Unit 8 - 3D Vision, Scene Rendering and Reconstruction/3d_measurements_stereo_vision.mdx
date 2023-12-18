@@ -1,5 +1,5 @@
 # Introduction
-This section explains how stereo vision works and how it can be used to find the 3 dimensional structure of surrounding objects. Stereo vision means capturing 2 or more images of the same scene from different locations and/or viewpoints. Images could be captured by using 2 or more cameras, or by moving the same camera.
+This section explains how stereo vision works and how it can be used to find the 3 dimensional structure of surrounding objects. Stereo vision means capturing 2 or more images of the same scene from different positions and/or viewpoints. Images could be captured by using 2 or more cameras, or by moving the same camera.
 
 # Problem statement 
 Let's understand the problem statement of finding the 3D structure of objects by understanding the geometry of image formation. As shown in figure 1, we have a point P in 3D with x,y,z coordinates. Point P gets projected to the camera's image plane via the pinhole. This can also be viewed as projecting a 3D point to a 2D image plane. 
@@ -16,8 +16,8 @@ Let's assume we are given the following information:
 
 1. Single image of a scene point P
 2. Pixel coordinates of point P in the image 
-3. Position and orientation of the camera used to capture this image. For simplicity, we can also place a coordinate system xyz at the location of the pinhole, with z axis perpendicular to the image place and x,y axis parallel to the image plane like in figure 1.
-4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane. It's location (Ox,Oy) is usually defined in pixel coordinates.
+3. Position and orientation of the camera used to capture the image. For simplicity, we can also place a coordinate system xyz at the location of the pinhole, with z axis perpendicular to the image place and x,y axis parallel to the image plane like in figure 1.
+4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane. It's location in the image plane is usually denoted as (Ox,Oy).
 
 Using above information, we can find a line in 3D which starts at the pixel coordinates of point P (i.e projection of point P in the image plane), passes through the pinhole and extends to infinity. From the geometry of image formation, we also know that point P must lie somewhere on this line. 
 
@@ -36,7 +36,7 @@ Given 2 lines in 3D, there are are three possibilities for their intersection:
 
 If both images (with original and new camera positions) contain point P, then we know that 3D lines must intersect at atleast one point which is point P. 
 Also, we can imagine both lines intersecting at infinite number of points only if the 2 lines are collinear which is possible if the pinhole at the new camera position lies on the original 3D line. 
-For all other positions and orientations of the new camera location, the 2 lines in 3D must intersect at exactly 1 point, which is where point P lies. 
+For all other positions and orientations of the new camera location, the 2 lines in 3D must intersect at exactly 1 point, which is where point P must lie. 
 
 Therefore based on above reasoning, 1. using 2 images of the same scene point P, 2. known positions and orientations of the camera locations, 3. known internal parameters of the camera, we can precisely find where point P lies in the 3D space.
 
