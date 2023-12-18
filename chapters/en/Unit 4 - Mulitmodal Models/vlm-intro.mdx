@@ -39,13 +39,12 @@ Firstly proposed in [ULMFIT Paper](https://aclanthology.org/P18-1031.pdf) this p
 - Fine-tuning the pre-trained model with task-specific data.
 - Utilizing the trained model for downstream tasks such as classification, etc.
 
-In VLM's we use this paradigm and extend for combining visual images to get to our desired results. 
-For example, in 2021 OpenAI lead to the very strong paper called [CLIP](https://openai.com/research/clip) which led to the
-major utilization of the this style where they employs an imagetext contrastive objective and learns by pulling 
-the paired images and texts close and pushing others faraway in the embedding space. In this way, the pre-trained 
-VLM's capture rich vision-language correspondence knowledge and can perform zero-shot predictions by matching
-the embeddings of any given images and texts. It turns out they beat the Imagenet models on out-of-distribution
-tasks. You can read more on CLIP and such awesome models in our next section of this Chapter!
+In VLMs, we employ this paradigm and extend it to combine visual images, yielding the desired results. For instance, in 2021, 
+OpenAI introduced a groundbreaking paper called [CLIP](https://openai.com/research/clip) which significantly influenced the adoption of this approach. 
+CLIP utilizes an image-text contrastive objective, learning by bringing paired images and texts close while pushing others far away in the embedding space. 
+This pre-training method allows VLMs to capture rich vision-language correspondence knowledge, enabling zero-shot predictions by matching the embeddings of any given images and texts.
+ Notably, CLIP outperformed Imagenet models on out-of-distribution tasks. Further exploration of CLIP and similar models is covered in the next section of this chapter!
+
 
 ## Mechanism
 To enable the functionality of Vision Language Models (VLMs), a meaningful combination of both text and images is essential 
