@@ -19,7 +19,7 @@ Since transformers are permutation invariant, positional embeddings are added to
 ### Set-based Global Loss Function
 In YOLO, a popular object detection model, the loss function comprises the bounding box, objectness (ie. the probability of an object existing in a region of interest), and class loss. The loss is calculated over multiple bounding boxes per each grid cell, which is a fixed number. On the other hand, in DETR, the architecture is expected to generate unique bounding boxes in a permutation-invariant manner (i.e., the order of the detections does not matter in the output, and the bounding boxes must vary and cannot all be the same). Thus, matching is required to assess how good the predictions are.
 
-**Bipartite Matching**\
+**Bipartite Matching**
 Bipartite matching is a way to compute one-on-one matching between the ground truth bounding boxes and the predicted boxes. It finds matches with the highest similarity between ground truth and predicted bounding boxes, as well as classes. This ensures the closest prediction would be matched with the corresponding ground truth in order to properly adjust the boxes and classes in the loss function. If matching is not done, predictions not aligned with the order of the ground truth would be marked as incorrect even if it were correct.
 
 
