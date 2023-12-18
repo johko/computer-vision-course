@@ -2,7 +2,7 @@
 In this section, we will be doing a deep dive into Convolutional Vision Transformer (CvT) which is a variant of Vision Transformer ([ViT](https://arxiv.org/abs/2010.11929)) and extensively used for the Image Classification task in Computer Vision.
 
 ## Recap
-Before going into CvT, Lets have a small recap on ViT architecture which was covered in the previous sections to better appreciate the CvT architecture. ViT decomposes each image into a sequence of tokens (i.e non-overlapping patches) with fixed length, and then applies multiple standard Transformer layers, consisting of Multi-head Self Attention and Position-wise Feed-forward module (FFN) to model global relations for classification.
+Before going into CvT, Let's have a small recap on ViT architecture which was covered in the previous sections to better appreciate the CvT architecture. ViT decomposes each image into a sequence of tokens (i.e. non-overlapping patches) with fixed length, and then applies multiple standard Transformer layers, consisting of Multi-head Self Attention and Position-wise Feed-forward module (FFN) to model global relations for classification.
 
 ## Overview
 Convolutional Vision Transformer (CvT) model was proposed in [CvT: Introducing Convolutions to Vision Transformers](https://arxiv.org/abs/2103.15808) by Haiping Wu, Bin Xiao, Noel Codella, Mengchen Liu, Xiyang Dai, Lu Yuan and Lei Zhang. CvT employs all the benefits of CNNs: *local receptive fields*, *shared weights*, and *spatial subsampling* along with *shift*, *scale*, *distortion invariance* while keeping merits of Transformers: *dynamic attention*, *global context fusion*, and *better generalization*. CvT achieves superior performance while maintaining computational efficiency compared to ViT. Futhermore, due to built-in local context structure introduced by convolutions, CvT no longer requires a position embedding, giving it a potential advantage for adaption to a wide range of vision tasks requiring variable input resolution.
@@ -24,7 +24,7 @@ The above image of CvT architecture illustrates the main steps of 3-stage pipeli
 
 
 ### Comparision of CvT Architecture with other Vision Transformers 
-The below table shows the key differences in terms of neccessity of positional encodings, type of token embedding, type of projection, and Transformer structure in the backbone, between the above representative concurrent works and CvT.
+The below table shows the key differences in terms of the neccessity of positional encodings, type of token embedding, type of projection, and Transformer structure in the backbone, between the above representative concurrent works and CvT.
 
 | Model | Needs Position Encoding (PE) | Token Embedding | Projection for Attention | Hierarchical Transformers |
 | ------| -----------------------------| ----------------| -------------------------| --------------------------|
@@ -38,7 +38,7 @@ The below table shows the key differences in terms of neccessity of positional e
 ### Main Highlights
 The four main highlights of CvT that helped achieve superior performance and computational efficiency are the following:
 - **Hierarchy of Transformers** containing a new convolutional token embedding.
-- Convolutional Transformer block levaraging a **Convolutional Projection**.
+- Convolutional Transformer block leveraging a **Convolutional Projection**.
 - **Removal of Positional Encoding** due to built-in local context structure introduced by convolutions.
 - Fewer **Parameters** and lower **FLOPs** (Floating Point Operations per second) compared to other vision transformer architectures.
 
