@@ -28,7 +28,7 @@ To see an example of how you can perform inference with DETR using Hugging Face 
 
 ## Evolution of DETR
 ### Deformable DETR
-Two of the main problems of DETR is a long and slow process of convergence, and suboptimal small object detection. \
+Two of the main problems of DETR are a long and slow process of convergence and suboptimal small object detection. 
 **Deformable Attention**\
 The first problem is resolved by using deformable attention, which reduces the amount of sampling points to pay attention to. Traditional attention is inefficient due to global attention and heavily limit the resolution that the image can have. The model only attends to a fixed amount of sampling points around each reference point, and the reference points are learned by the model based on the input. For example, in an image of a dog, a reference point may be in the center of the dog, with sampling points near the ears, mouth, tail, etc. 
 **Multi-scale Deformable Attention Module**\
