@@ -9,7 +9,33 @@ Now, let's say we are given this 2D image and location of the pixel coordinates 
 For finding the 3D structure of objects, this is the problem we are trying to solve. For our problem statement we can view an object in 3D as a collection of 3D points. Finding the 3D coordinates of each of these points helps us determine the 3D structure of the object.
 
 # Solution 
-TBD
+Let's assume we are given the following information:
+
+1. Single image of a scene point P
+2. Pixel coordinates of point P in the image 
+3. Position and orientation of the camera used to capture this image. For simplicity, we can also place a coordinate system xyz at the location of the pinhole, with z axis perpendicular to the image place and x,y axis parallel to the image plane like in figure 1.
+4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane, as shown in figure 2. It's location (Ox,Oy) is usually defined in pixel coordinates.
+
+Using above information, we can find a line in 3D which starts at the pixel coordinates of point P (i.e projection of point P in the image plane), passes through the pinhole and extends to infinity. From the geometry of image formation, we also know that point P must lie somewhere on this line. 
+
+1. Initially (without an image) point P could have been present anywhere in the 3D space. 
+2. Using a single image, we reduced possible locations of point P to a single line in 3D. 
+3. Now think if we can further reduce possible locations to find precise location of point P on this 3D line ? 
+4. Imagine moving the camera to a different position. Let the coordinate system remain fixed at the previous position. The 3D line we found also remains the same and point P still lies somewhere on this line.
+5. From this new location of the camera, capture another image of the same scene point P. Again using pixel coordinates of point P in this new image and the new location of the camera pinhole, find the line in 3D on which point P must be lie. 
+6. Now we have 2 lines in 3D and point P lies somewhere on both these lines. So, point P must lie on the intersection of these 2 lines. 
+
+Given 2 lines in 3D, there are are three possibilities for their intersection:
+
+1. Intersect at exactly 1 point 
+2. Intersect at infinite number of points 
+3. Do not intersect 
+
+If both images (with original and new camera positions) contain point P, then we know that 3D lines must intersect at atleast one point which is point P. 
+Also, we can imagine both lines intersecting at infinite number of points only if the 2 lines are collinear which is possible if the pinhole at the new camera position lies on the original 3D line. 
+For all other positions and orientations of the new camera location, the 2 lines in 3D must intersect at exactly 1 point, which is where point P lies. 
+
+Therefore based on above reasoning, 1. using 2 images of the same scene point P, 2. known positions and orientations of the camera locations, 3. known internal parameters of the camera, we can precisely find where point P lies in the 3D space.
 
 # Simplified Solution 
 TBD
