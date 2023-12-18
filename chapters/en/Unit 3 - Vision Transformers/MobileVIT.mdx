@@ -34,7 +34,7 @@ Okay, that's a lot to take in. Let's break that down.
 - The block takes in a channeled image. Let's say for an RGB image 3 channels, so the block takes in a three channeled image. 
 - It then preforms a N by N convulsion on the channels appending them to the existing channels(LOOOK OVER TERMINOLOGY)
 - The block then creates a linear combination of the these channels and adds them to the existing stack of channels.
-- For each channels these images are unfolded into flattened patches.
+- For each channel these images are unfolded into flattened patches.
 - Then these flattened patches are passed through a transformer to project them into new patches. 
 - These patches are then folded back together to create an image with d dimensions. 
 - Afterwards a pointwise convolution is overlayed on the stitched image. 
