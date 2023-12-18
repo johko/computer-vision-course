@@ -34,16 +34,12 @@ Given 2 lines in 3D, there are are three possibilities for their intersection:
 2. Intersect at infinite number of points 
 3. Do not intersect 
 
-If both images (with original and new camera positions) contain point P, then we know that 3D lines must intersect at atleast one point which is point P. 
-Also, we can imagine both lines intersecting at infinite number of points only if the 2 lines are collinear which is possible if the pinhole at the new camera position lies on the original 3D line. 
-For all other positions and orientations of the new camera location, the 2 lines in 3D must intersect at exactly 1 point, which is where point P must lie. 
+If both images (with original and new camera positions) contain point P, then we know that 3D lines must intersect at atleast one point which is point P. Also, we can imagine both lines intersecting at infinite number of points only if the 2 lines are collinear which is possible if the pinhole at the new camera position lies on the original 3D line. For all other positions and orientations of the new camera location, the 2 lines in 3D must intersect at exactly 1 point, which is where point P must lie. 
 
 Therefore using 2 images of the same scene point P, known positions and orientations of the camera locations and known internal parameters of the camera, we can precisely find where point P lies in the 3D space.
 
 # Simplified Solution 
-Since there are many different positions and orientations for the camera locations which can be selected, we can select a location which makes the maths simpler, less complex and reduces computational processing when running on a computer or an embedded device. 
-
-One configuration which is popular and generally used is shown in figure 2. We use 2 cameras in this configuration but it is equivalent to using a single camera for capturing 2 images from 2 different locations.
+Since there are many different positions and orientations for the camera locations which can be selected, we can select a location which makes the maths simpler, less complex and reduces computational processing when running on a computer or an embedded device. One configuration which is popular and generally used is shown in figure 2. We use 2 cameras in this configuration but it is equivalent to using a single camera for capturing 2 images from 2 different locations.
 
 Figure 2: Image formation using 2 cameras 
 ![Figure 2: Image formation using 2 cameras](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_simple_stereo.jpg?download=true)
@@ -90,9 +86,7 @@ Note that x and y values above are with respect to the left camera since origin 
 
 # Demo 
 ## Setup 
-We'll work through an example, capture some images, perform some calculations to find out if our above assumptions and maths works out ! For capturing the images we'll use a hardware device known as OAK-D Lite (OAK stands for OpenCV AI Kit). 
-This device has 3 cameras - left and right mono (black and white) cameras and center colour camera. We'll use the left and right mono cameras for our experiement. 
-A regular smartphone camera could also be used but using OAK-D lite has some advantages listed below.
+We'll work through an example, capture some images, perform some calculations to find out if our above assumptions and maths works out ! For capturing the images we'll use a hardware device known as OAK-D Lite (OAK stands for OpenCV AI Kit). This device has 3 cameras - left and right mono (black and white) cameras and center colour camera. We'll use the left and right mono cameras for our experiement. A regular smartphone camera could also be used but using an OAK-D lite has some advantages listed below.
 
 * Intrinsic camera parameters like focal length and location of principle point are known since the device comes pre-calibrated and these parameters can be read from the device using it's python API. For a smartphone camera, intrinsic parameters need to be determined and could be found by performing camera calibration or sometimes present in the metadata of the image captured using the smartphone. 
 * One of our main assumptions above is that the position and orientation of the left and right cameras are known. Using a smartphone camera, it may be difficult to precisely determine this information or an additional calibration may be required.  On the other hand, for an OAK-D Lite device position and orientation of the left and right cameras is fixed, known, pre-calibrated and very similar to the geometry of the simplified solution mentioned above. Although some post-processing/image rectification detailed below on the raw images is still required.
