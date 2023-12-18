@@ -108,7 +108,7 @@ Before going into the transformer, the features with size `(batch size, hidden_d
 ```python
 h.flatten(2).permute(2, 0, 1)
 ```
-**Transformer**\
+**Transformer**
 The `nn.Transformer` function takes in the first parameter as the input to the encoder, and the second parameter as the input of the encoder. As you can see, the encoder takes in the resized features added to the positional embeddings, while the decoder takes in `query_pos`, which is the decoder positional embedding.
 ```python
 h = self.transformer(pos + h.flatten(2).permute(2, 0, 1),self.query_pos.unsqueeze(1))
