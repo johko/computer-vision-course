@@ -1,11 +1,9 @@
-## Multi-Modal Object Detection (OWL-ViT)
-
+# Multimodal Object Detection (OWL-ViT)
 ### Introduction
 
 Object detection, a critical aspect of computer vision, has seen significant advancements with models like the YOLO family. However, traditional models like YOLO have limitations in detecting objects outside their training datasets. To address this, the AI community has shifted towards developing models that can identify a wider range of objects, leading to the creation of models akin to CLIP but for object detection.
 
 ### OWL-ViT: Enhancements and Capabilities
-
 OWL-ViT represents a leap forward in open-vocabulary object detection. It starts with a training stage similar to CLIP, focusing on a vision and language encoder using a contrastive loss. This foundational stage enables the model to learn a shared representation space for both visual and textual data.
 
 #### Fine-tuning for Object Detection
@@ -16,7 +14,7 @@ Below is a diagram of the Pre-training and Fine-tuning stages of OWL-ViT:
 ![OWL-ViT Pre-training and Fine-tuning](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/model_doc/owlvit_architecture.jpg)
 
 #### Open-Vocabulary Detection
-Post fine-tuning, OWL-ViT excels in open-vocabulary object detection. It can identify objects not explicitly present in the training dataset, thanks to the shared embedding space of the vision and text encoders. This capability makes it possible to use both images and textual queries for object detection, enhancing its versatility.
+After fine-tuning, OWL-ViT excels in open-vocabulary object detection. It can identify objects not explicitly present in the training dataset, thanks to the shared embedding space of the vision and text encoders. This capability makes it possible to use both images and textual queries for object detection, enhancing its versatility.
 
 #### Example Use Case
 For practical applications, one typically uses text as the query and the image as context. The provided Python example demonstrates how to use the transformers library for running inference with OWL-ViT. 
