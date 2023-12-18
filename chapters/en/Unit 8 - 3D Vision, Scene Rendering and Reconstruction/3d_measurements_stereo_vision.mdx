@@ -8,13 +8,16 @@ Now, let's say we are given this 2D image and location of the pixel coordinates 
 
 For finding the 3D structure of objects, this is the problem we are trying to solve. For our problem statement we can view an object in 3D as a collection of 3D points. Finding the 3D coordinates of each of these points helps us determine the 3D structure of the object.
 
+Figure 1: Image formation using single camera
+![Figure 1: Image formation using single camera](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_single_camera.png?download=true )
+
 # Solution 
 Let's assume we are given the following information:
 
 1. Single image of a scene point P
 2. Pixel coordinates of point P in the image 
 3. Position and orientation of the camera used to capture this image. For simplicity, we can also place a coordinate system xyz at the location of the pinhole, with z axis perpendicular to the image place and x,y axis parallel to the image plane like in figure 1.
-4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane, as shown in figure 2. It's location (Ox,Oy) is usually defined in pixel coordinates.
+4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane. It's location (Ox,Oy) is usually defined in pixel coordinates.
 
 Using above information, we can find a line in 3D which starts at the pixel coordinates of point P (i.e projection of point P in the image plane), passes through the pinhole and extends to infinity. From the geometry of image formation, we also know that point P must lie somewhere on this line. 
 
@@ -38,7 +41,52 @@ For all other positions and orientations of the new camera location, the 2 lines
 Therefore based on above reasoning, 1. using 2 images of the same scene point P, 2. known positions and orientations of the camera locations, 3. known internal parameters of the camera, we can precisely find where point P lies in the 3D space.
 
 # Simplified Solution 
-TBD
+Since there are many different positions and orientations for the camera locations which can be selected, we try to find a location which makes the maths simpler, less complex and reduces computational processing when running on a computer or an embedded device. 
+
+One configuration which is popular and generally used is shown in figure 2. We use 2 cameras in this configuration but it is equivalent to using a single camera for capturing 2 images from 2 different locations.
+
+Figure 2: Image formation using 2 cameras 
+![Figure 2: Image formation using 2 cameras](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_simple_stereo.jpg?download=true)
+
+1. Origin of the coordinate system is placed at the pinhole of the first camera which is usually the left camera.
+2. Z axis of the coordinate system is defined perpendicular to the image plane. 
+3. X and Y axis of the coordinate system are defined parallel to the image plane.  
+4. We also have X and Y directions in a 2D image. X is the horizontal direction and Y is the vertical direction. We will refer to these directions in the image plane as u and v respectively. Therefore, pixel coordinates of a point are defined using (u,v) values.  
+5. X axis of the coordinate system is defined as the u direction / horizontal direction in the image plane.
+6. Similarly Y axis of the coordinate system is defined as the v direction / vertical direction in the image plane. 
+7. Second camera (more precisely pinhole of second camera) is placed at a distance b called baseline in the positive x direction to the right of the first camera. Therefore, coordinates of pinhole of second camera are (b,0,0)
+5. Image plane of the second camera is oriented parallel to the image plane of first camera.  
+6. u and v directions in the image plane of second/right camera are aligned with the u and v directions in the image plane of the first/left camera
+7. Both left and right cameras are assumed to have the same intrinsic parameters like focal length and location of principle point
+
+With the above configuration in place, we have the below equations which map a point in 3D to the image plane in 2D. 
+
+1. Left camera
+    1. $$u\_left = f\_x * \frac{x}{z} + O\_x$$
+    2. $$v\_left = f\_y * \frac{y}{z} + O\_y$$ 
+2. Right camera 
+    1. $$u\_right = f\_x * \frac{x-b}{z} + O\_x$$
+    2. $$v\_right = f\_y * \frac{y}{z} + O\_y$$ 
+
+Meaning of different symbols in above equations is defined below: 
+* u_left, v_left refer to pixel coordinates of point P in the left image 
+* u_right, v_right refer to pixel coordinates of point P in the right image 
+* f_x refers to the focal length (in pixels) in x direction and f_y refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole/optical center of the lens to the image plane. However, pixels may be rectangular and not perfect sqaures, resulting in different fx and fy values when we represent f in terms of pixels.
+* x,y,z are 3D coordinates of the point P (any unit like cm, feet, etc can be used)
+* O_x and O_y refer to pixel coordinates of the principle point 
+* b is called the baseline and refers to the distance between the left and right cameras. Same units are used for b and x,y,z (any unit like cm, feet, etc can be used)
+
+We have 4 equations above and 3 unknowns - x, y and z coordinates of a 3D point P. Intrinsic camera parameters - focal lengths and principle point are assumed to be known. Equations 1.2 and 2.2 indicate that v coordinates of a 3D point P in left and right images are same. 
+
+3. v_left = v_right 
+
+Using equations 1.1, 1.2 and 2.1 we can derive the x,y,z coordinates of point P. 
+
+1. $$x = \frac{b * (u\_left - O\_x)}{u\_left - u\_right}$$
+2. $$y = \frac{b * f\_x * (v\_left - O\_y)}{ f\_y * (u\_left - u\_right)}$$ 
+3. $$z = \frac{b * f\_x}{u\_left - u\_right}$$
+
+Note that x and y values above are with respect to the left camera since origin of the coordinate system is aligned with the left camera. Above equations show that we can find 3D coordinates of a point P using it's 2 images captured from 2 different camera locations. z value is also referred to as the depth value. Using this technique, we can find the depth values for different pixels within an image along with their real world x and y coordinates. We can also find real world distances between different points in an image and also the 3D structure of an imaged object.
 
 # Demo 
 ## Setup 
