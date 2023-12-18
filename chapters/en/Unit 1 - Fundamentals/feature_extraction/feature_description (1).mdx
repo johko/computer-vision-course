@@ -71,7 +71,8 @@ The basic workflow of SURF is given below:
 4. **Orientation Assignment:** For each detected keypoint, SURF assigns a dominant orientation. This is done by calculating Haar wavelet responses in different directions around the keypoint’s neighborhood. Unlike SIFT, SURF uses a set of rectangular filters (Haar wavelets) applied to subregions of the keypoint's neighborhood. The responses of these filters are used to create a feature vector representing the keypoint.
 5. **Descriptor Matching:** The generated descriptors are then used for matching keypoints between different images. Matching involves comparing the feature vectors of keypoints in one image to those in another image to find correspondences.
 
-You can learn more about SURF using following references:
+You can learn more about SURF using the following references:
+
 1. https://medium.com/@deepanshut041/introduction-to-surf-speeded-up-robust-features-c7396d6e7c4e
 2. https://docs.opencv.org/3.4/df/dd2/tutorial_py_surf_intro.html
 3. https://www.ijtra.com/view/feature-extraction-using-surf-algorithm-for-object-recognition.pdf
