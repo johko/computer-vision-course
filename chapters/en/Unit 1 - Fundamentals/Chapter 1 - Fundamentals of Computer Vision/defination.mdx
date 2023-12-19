@@ -1,59 +1,33 @@
 # What Is Computer Vision
 
-Let's revisit our example from the previous chapter: kicking a ball. As we have seen,
-this involves multiple tasks that our brains can do in a split second. The extraction of
-what is meaningful information from an image input is at the core of computer vision.
-But what precisely is computer vision?
+Let's revisit our example from the previous chapter: kicking a ball. As we have seen, this involves multiple tasks that our brains can do in a split second. The extraction of what is meaningful information from an image input is at the core of computer vision. But what is computer vision?
 
 ## Definition
 
-
-Computer Vision is a multi-disciplinary field of Artificial intelligence (AI)  
-that enables computer systems to analyze, interpret, and process visual information.
-It involves the development of algorithms, models, and systems that can extract knowledge from images,
-videos, and other forms of visual data.
-
+Computer vision is the science and technology of making machines see. It involves the development of theoretical and algorithmic methods to acquire, process, analyze, and understand visual data, and to use this information to produce meaningful representations, descriptions, and interpretations of the world. (*Forsyth & Ponce, Computer Vision: A Modern Approach*)
 
 ## Deep learning and the computer vision renaissance
 
+The evolution of computer vision has been marked by a series of incremental advancements in and across its interdisciplinary fields, where each step forward gave rise to breakthrough algorithms, hardware, and data, giving it more power and flexibility. One such leap was the jump to the widespread use of deep learning methods.
 
-The evolution of computer vision has been marked by a series of incremental advancements in
-and across its interdisciplinary fields, where each step forward gave rise to breakthrough algorithms,
-hardware, and data, giving it more power and flexibility. One such history was the jump to the widespread
-use of deep learning methods.
-
-Initially, to extract and learn the information in an image you extract features through image-preprocessing
-techniques (chapter 3). Once you have a group of features describing your image, you use a classical
-machine learning algorithm for your dataset of features. It is a strategy that already simplifies things
-from the hard-code rules, but it still relies on domain knowledge and exhaustive feature engineering.
-The competing strategy arises when deep learning methods and large datasets meet each other.
-Deep Learning(DL) allowed machines to automatically learn complex features from the raw data. This paradigm
-shift allowed us to build more adaptive and sophisticated models causing a renaissance in the field.
-
-We wanted to emphasize here that the compute vision community is made up of researchers,
-engineers, data scientists, and passionate hobbyists across the globe coming from a vast array
-of disciplines. This community maintains the Open-source initiates, leads community-driven projects,
-and democratizes access to cutting-edge tools and technologies.
-
+Initially, to extract and learn information in an image, you extract features through image-preprocessing techniques (chapter 3). Once you have a group of features describing your image, you use a classical machine learning algorithm on your dataset of features. It is a strategy that already simplifies things from the hard-coded rules, but it still relies on domain knowledge and exhaustive feature engineering. A more state-of-the-art approach arises when deep learning methods and large datasets meet. Deep learning (DL) allows machines to automatically learn complex features from the raw data. This paradigm shift allowed us to build more adaptive and sophisticated models, causing a renaissance in the field.
 
 ## Interdisciplinary with other fields + Image Understanding
 
-  
 Just as it is hard to draw a line that separates artificial intelligence and computer vision,
 it is also hard to separate computer vision from its neighbouring fields. Take image preprocessing and analysis
 as an example. A tentative separation is that the input and output of image analysis are always images.
-However, this is a myopic take. Even simple tasks, such as calculating the medium value of an image, would
+However, this is a shortsighted take. Even simple tasks, such as calculating the medium value of an image, would
 be classified under computer vision. To clarify their differences, we must introduce a new concept of image
 understanding.
 
 Image understanding is the process of making sense of the content of an image. It can be defined in three
-different levels :
+different levels:
 
 **Low-level processes** are primitive operations on images (i.e. image sharpening, changing the contrast).
 The input and the output are images. **Mid-level processes** include segmentation, description of objects,
 and object classification. The information is an image, but the result is attributes associated with the image.
 This could be done with a combination of image preprocessing and ML algorithms.
-
 **High-level processes** include making sense of the entirety of an image, i.e., recognition of a given object,
 scene reconstruction, and image-to-text. These are tasks typically associated with human cognition.
 
@@ -65,23 +39,16 @@ It is essential to remember this since allocating resources to develop a sophist
 neuronal network for data-poor scenarios or simple images, might not be appropriate. From a business point
 of view, model development costs time and money; it is necessary to know when to use the right tools.
 
-Combining a “preprocessing” part before moving on to a more robust model is not unusual.
+Combining a “preprocessing” part before moving on to a more robust model is usual.
 On the opposite side, sometimes, the layers of a neural network automatically perform tasks like these,
 eliminating the need for explicit preprocessing. Image analysis might act as a first exploratory data analysis
 step for those familiar with data science. Lastly, classical image analysis methods can also be used for
 data augmentation to improve the quality and diversity of training data for computer vision models.
 
-NOTE(TO HF TEAM): The following sections are not part of the initial draft but somehow we felt they might be
-useful and looking to iterate based on feedback.
 
 ## Computer Vision Tasks Overview
 
-We have seen before that this is a really hard task because computers have no previous knowledge of the world.
-In our example, we start knowing what a ball is, how to track its movement, how objects usually move in space,
-how to estimate when the ball will reach us, where is your foot, how a foot moves, and how to estimate how much
-force you need to hit the ball. If we were to break this down into specific computer vision tasks,
-we would have:
-
+We have seen before that computer vision is really hard for computers because they have no previous knowledge of the world. In our example, we start knowing what a ball is, how to track its movement, how objects usually move in space, how to estimate when the ball will reach us, where your foot is, how a foot moves, and how to estimate how much force you need to hit the ball. If we were to break this down into specific computer vision tasks, we would have:
   - Scene Recognition 
   - Object Recognition
   - Object Detection
@@ -90,7 +57,7 @@ we would have:
   - Dynamic Environment Adaptation
   - Path Planning
 
-You will see more about the core tasks of computer vision in the [CV TASKS] chapter.
+You will read more about the core tasks of computer vision in the [CV TASKS] chapter.
 But there are many more tasks that computer vision can do! Here is a non-exhaustive list:
 
   - Image Captioning
@@ -105,7 +72,7 @@ But there are many more tasks that computer vision can do! Here is a non-exhaust
 #TODO : add links to specific chapters that discuss some of these tasks
 
 
-# Task Complexity
+## Task Complexity
 
 The complexity of a given task in the realm of image analysis and computer vision is not solely determined
 by how noble or difficult a question or task may seem to an informed audience. Instead, it primarily hinges
@@ -127,5 +94,5 @@ regarding its applications. For example, a model that is deployed to detect canc
 consequences if it classifies a cancer sample as healthy. Surveillance technology, such as models that
 are capable of tracking people, also raises a lot of privacy concerns. This will be discussed in detail
 in Chapter 14- Applications of Computer Vision and real-world Use Cases, but we will give you a taste of
-some of its application
+some of its applications.
 
