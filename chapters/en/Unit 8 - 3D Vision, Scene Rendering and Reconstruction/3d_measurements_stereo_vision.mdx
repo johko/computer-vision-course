@@ -19,7 +19,7 @@ Let's assume we are given the following information:
 3. Position and orientation of the camera used to capture the image. For simplicity, we can also place a coordinate system xyz at the location of the pinhole, with z axis perpendicular to the image place and x,y axis parallel to the image plane like in figure 1.
 4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane. It's location in the image plane is usually denoted as (Ox,Oy).
 
-Using above information, we can find a line in 3D which starts at the pixel coordinates of point P (i.e projection of point P in the image plane), passes through the pinhole and extends to infinity. From the geometry of image formation, we also know that point P must lie somewhere on this line. 
+With the information provided above, we can find a 3D line that originates from the pixel coordinates of point P (the projection of point P in the image plane), passes through the pinhole, and extends to infinity. Based on the principles of image formation geometry, we can conclude that point P must exist somewhere along this line.. 
 
 1. Initially (without an image) point P could have been present anywhere in the 3D space. 
 2. Using a single image, we reduced possible locations of point P to a single line in 3D. 
