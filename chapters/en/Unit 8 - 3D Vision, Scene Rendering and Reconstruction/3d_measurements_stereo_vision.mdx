@@ -6,7 +6,7 @@ Let's understand the problem statement of finding the 3D structure of objects by
 
 Now, let's say we are given this 2D image and location of the pixel coordinates of point P in this image. We would like to find the 3D coordinates of point P. Is this possible ? Is point P unique or are there other 3D points which also map to the same pixel coordinates as point P ? Answer is all 3D points which lie on the line joining point P and the pinhole will map to the same pixel coordinates in the 2D image plane. 
 
-For finding the 3D structure of objects, this is the problem we are trying to solve. For our problem statement we can view an object in 3D as a collection of 3D points. Finding the 3D coordinates of each of these points helps us determine the 3D structure of the object.
+We aim to solve the problem of determining the 3D structure of objects. In our problem statement, we can represent an object in 3D as a set of 3D points. Finding the 3D coordinates of each of these points helps us determine the 3D structure of the object.
 
 Figure 1: Image formation using single camera
 ![Figure 1: Image formation using single camera](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_single_camera.png?download=true )
