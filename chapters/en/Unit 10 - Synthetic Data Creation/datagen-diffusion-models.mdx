@@ -19,11 +19,11 @@ While there are many underlying concepts behind the model's inner workings, the 
 
 The model adds noise to the input and processes it
 
-![noising](https://i.imgur.com/dR7E3D1.jpeg)
+![noising](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/noising.jpg?download=true)
 
 Then the model learns to denoise the given data distribution
 
-![denoising](https://i.imgur.com/Lc13i0S.jpeg)
+![denoising](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/denoising.jpg?download=true)
 
 We won't dive deep into the theory, but understanding how a diffusion model works will come really handy when we need to pick a technique.
 
@@ -39,11 +39,11 @@ Essentially, the way SD works is the same as we mentioned above. It uses three m
 
 So while the general workflow looks like this:
 
-![general stable diffusion workflow](https://i.imgur.com/9ZcNijf.png)
+![general stable diffusion workflow](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/general-workflow.png?download=true)
 
 Originally we used a text encoder to condition the model on our prompts:
 
-![original stable diffusion workflow](https://i.imgur.com/FVeHRff.png)
+![original stable diffusion workflow](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/stable-diffusion-workflow.png?download=true)
 
 This short overview is just the tip of the iceberg! If you wish to dive deep into the theory behind stable diffusion (or diffusion models), you can check these out:
 
@@ -93,7 +93,7 @@ By simply utilizing the pre-trained diffusion model (such as [Stable Diffusion X
 
 _Training with [Textual Inversion](https://huggingface.co/docs/diffusers/main/en/training/text_inversion)_:
 
-![textual-inversion](https://i.imgur.com/d8ZnaZD.png)
+![textual-inversion](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/textual_inversion.png?download=true)
 
 Textual inversion is a technique that works by interfering with the text embeddings in the model's architecture. You can add a new token to the vocabulary and then fine-tune the embeddings using a few examples.
 
@@ -101,13 +101,15 @@ By providing samples corresponding to the new token, we try to optimize the embe
 
 _Training a [LoRA (Low-Rank Adaptation)](https://huggingface.co/docs/diffusers/main/en/training/lora?installation=PyTorch) model_:
 
-LoRA has targeted the problem of fine-tuning LLMs. It's a technique that injects new weights into the pre-trained model and tries to optimize those.
+LoRA has targeted the problem of fine-tuning LLMs. It represents the weight updates with two smaller update matrices through low-rank decomposition, which has substantially less amount of parameters. Then these matrices can be trained to adapt the new data!
+
+The base model's weights remain frozen in the whole process, so we just train the new update matrices. Then lastly, the adapted weights are combined with the original weights.
 
 This means training LoRA is essentially much faster than the model itself! As an important note, it's also possible to combine LoRA with other techniques since it can be added on top of the model itself.
 
 _Training with [DreamBooth](https://huggingface.co/docs/diffusers/main/en/training/dreambooth)_:
 
-![dreambooth](https://i.imgur.com/yoh3RvQ.png)
+![dreambooth](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/dreambooth.png?download=true)
 
 DreamBooth is changing the diffusion model completely. Given a few images of a subject, it lets you fine-tune a pre-trained text-to-image model. The main idea is to associate a unique identifier with that specific subject.
 
@@ -117,7 +119,7 @@ In the original paper, authors find the rare tokens in the vocabulary and then c
 
 _Training with [Custom Diffusion](https://huggingface.co/docs/diffusers/main/en/training/custom_diffusion)_:
 
-![custom diffusion](https://i.imgur.com/427EPSs.png)
+![custom diffusion](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/custom_diffusion.png?download=true)
 
 Custom Diffusion is a really powerful technique to personalize the model. It requires just a few samples like the previously mentioned methods, but its power lies in being able to learn multiple concepts at the same time!
 
