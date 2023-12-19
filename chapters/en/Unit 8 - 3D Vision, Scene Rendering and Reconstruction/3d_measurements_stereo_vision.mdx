@@ -23,7 +23,7 @@ With the information provided above, we can find a 3D line that originates from 
 
 1. Initially (without an image) point P could have been present anywhere in the 3D space. 
 2. Using a single image, we reduced possible locations of point P to a single line in 3D. 
-3. Now think if we can further reduce possible locations to find precise location of point P on this 3D line ? 
+3. Now, let's consider whether we can further narrow down the potential locations to pinpoint the precise location of point P on this 3D line? 
 4. Imagine moving the camera to a different position. Let the coordinate system remain fixed at the previous position. The 3D line we found also remains the same and point P still lies somewhere on this line.
 5. From this new location of the camera, capture another image of the same scene point P. Again using pixel coordinates of point P in this new image and the new location of the camera pinhole, find the line in 3D on which point P must be lie. 
 6. Now we have 2 lines in 3D and point P lies somewhere on both these lines. So, point P must lie on the intersection of these 2 lines. 
