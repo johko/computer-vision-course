@@ -27,7 +27,9 @@ These are known as homogeneous coordinates - more generally, w can take any valu
 Libraries such as [Pytorch3d](https://pytorch3d.org/) provide a range of functions for generating and manipulating transformations.
 
 Yet another convention to note - OpenGL treats positions as column vectors x (of shape 4x1), and applies a transformation M by pre-multiplying the  vector by the matrix ( M @ x),
-whereas DirectX and Pytorch3d consider positions as row vectors of shape (1x4), and applies a transformation by post-multiplying the vector by the matrix ( x @ M ). To convert between the two conventions we need to take the transpose of the matrix M.T .
+whereas DirectX and Pytorch3d consider positions as row vectors of shape (1x4), and applies a transformation by post-multiplying the vector by the matrix ( x @ M ). To convert between the two conventions we need to take the transpose of the matrix M.T . 
+We will show how a cube transforms under different transfotmation matrices in a few code snippets. 
+For these code snippets, we will use the OpenGL convention.
 
 ### Translations
 
@@ -44,6 +46,66 @@ $$
 
 where $$t = [t_x,t_y,t_z]$$ is the direction vector to translate all the points.
 
+To try out a translation ourselves, let us first write a little helper function to visualise a cube:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def plot_cube(ax, cube, label, color="black"):
+    ax.scatter3D(cube[0, :], cube[1, :], cube[2, :], label=label, color=color)
+    lines = [[0, 1], [1, 2], [2, 3], [3, 0],
+             [4, 5], [5, 6], [6, 7], [7, 4],
+             [0, 4], [1, 5], [2, 6], [3, 7]]
+    for line in lines:
+        ax.plot3D(cube[0, line], cube[1, line], cube[2, line], color=color)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.legend()
+    ax.set_xlim([-2, 2])
+    ax.set_ylim([-2, 2])
+    ax.set_zlim([-2, 2])
+```
+
+Now, we can create a cube and pre-multiply it with a translation matrix:
+
+```python
+# define 8 corners of our cube with coordinates (x,y,z,w) and w is always 1 in our case
+cube = np.array([[-1, -1, -1, 1],
+                   [1, -1, -1, 1],
+                   [1, 1, -1, 1],
+                   [-1, 1, -1, 1],
+                   [-1, -1, 1, 1],
+                   [1, -1, 1, 1],
+                   [1, 1, 1, 1],
+                   [-1, 1, 1, 1]])
+
+# translate to follow OpenGL notation
+cube = cube.T
+
+# set up figure
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# plot original cube
+plot_cube(ax, cube,label="Original", color="blue")
+
+# translation matrix (shift 1 in positive x and 1 in positive y-axis)
+translation_matrix = np.array([[1, 0, 0, 1],
+                                [0, 1, 0, 1],
+                                [0, 0, 1, 0],
+                                [0, 0, 0, 1]])
+
+# translation
+translated_cube = translation_matrix @ cube
+plot_cube(ax, translated_cube, label="Translated", color="red")
+```
+
+The output should look something like this:
+
+![output_translation](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/translation.png)
 
 ### Scaling
 
@@ -59,6 +121,32 @@ s_x & 0 & 0 & 0 \\
 $$
 
 where $$s_x$$, $$s_y$$, and $$s_z$$ are the scaling factors along the X, Y, and Z axes, respectively.
+
+Let us try the following example of a scaling our cube by a factor of $2$ along the X-axis and $0.5$ along the Y-axis.
+
+```python
+# set up figure
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# plot original cube
+plot_cube(ax, cube,label="Original", color="blue")
+
+# scaling matrix (scale by 2 along x-axis and by 0.5 along y-axis)
+scaling_matrix = np.array([[2, 0, 0, 0],
+                        [0, 0.5, 0, 0],
+                        [0, 0, 1, 0],
+                        [0, 0, 0, 1]])
+
+
+scaled_cube = scaling_matrix @ cube
+
+plot_cube(ax, scaled_cube, label="Scaled", color="green")
+```
+
+The output should look something like this:
+
+![output_scaling](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/scaling.png)
 
 ### Rotations
 
@@ -78,6 +166,33 @@ However, as a simple example, we will just show how to construct rotations about
   \end{pmatrix}
   $$
 
+A little example for a positive 20 degree roation around the X-axis is given below:
+
+```python
+# set up figure
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# plot original cube
+plot_cube(ax, cube,label="Original", color="blue")
+
+# rotation matrix: +20 deg around x-axis
+angle = 20 * np.pi / 180
+rotation_matrix = np.array([[1, 0, 0, 0],
+                        [0, np.cos(angle), -np.sin(angle), 0],
+                        [0, np.sin(angle), np.cos(angle), 0],
+                        [0, 0, 0, 1]])
+
+
+rotated_cube = rotation_matrix @ cube
+
+plot_cube(ax, rotated_cube, label="Rotated", color="orange")
+```
+
+The output should look something like this:
+
+![output_rotation](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/rotation.png)
+
 - Rotation around the Y-axis
 
   $$
@@ -88,6 +203,8 @@ However, as a simple example, we will just show how to construct rotations about
   0 & 0 & 0 & 1
   \end{pmatrix}
   $$
+
+I am sure you can use the example snippet above and figure out how to implement a rotation around the Y-axis.😎😎
 
 - Rotation around the Z-axis
 
@@ -100,24 +217,11 @@ However, as a simple example, we will just show how to construct rotations about
   \end{pmatrix}
   $$
 
+Again, can you use the last code snippet and implement a rotation around the Z-axis❓
+
 Note that the standard convention is that a positive rotation angle corresponds to an anti-clockwise rotation when the axis of rotation is pointing towards the viewer.
 Also note that in most libraries the cosine function requires the angle to be in radians. To convert from
 degrees to radians, multiply by $$\pi/180$$.
-
-### Scaling
-
-Another key transformation is to be able to scale an object, increasing or decreasing its size. It is possible to write down a matrix corresponding to scaling along all three axes at the same time
-
-$$
-S = \begin{pmatrix}
-s_x & 0 & 0 & 0 \\
-0 & s_y & 0 & 0 \\
-0 & 0 & s_z & 0 \\
-0 & 0 & 0 & 1
-\end{pmatrix}
-$$
-
-where $$s_x$$, $$s_y$$, and $$s_z$$ are the scaling factors along the X, Y, and Z axes, respectively. Note that $$s=1$$ corresponds to no change in size along that axis.
 
 ### Combining transformations
 
@@ -125,3 +229,22 @@ Multiple transformations can be combined by multiplying together their matrices.
 
 Note that the order that matricies are multiplied matters - with the the matrices being applied right to left. To make a matrix that applies the transforms P, Q, and R, in that order, the composite transformation is given by $C = R @ Q @ P $.
 
+If we would want to do first the translation, then the rotation and then the scaling that we did above in one operation, it looks as follows:
+
+```python
+# set up figure
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# plot original cube
+plot_cube(ax, cube,label="Original", color="blue")
+
+# combination of transoforms
+combination_transform = rotation_matrix.dot(scaling_matrix.dot(translation_matrix))
+final_result = combination_transform.dot(cube)
+plot_cube(ax, final_result, label="Combined", color="violet")
+```
+
+The output should look something like this:
+
+![output_rotation](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/combined.png)
