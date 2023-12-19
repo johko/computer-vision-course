@@ -34,7 +34,7 @@ formats.
 
 Volumetric data is commonly used to encode information about
 transparent objects, such as clouds and fire.  Fundamentally, it takes
-the form of a function $$f(x,y,z)$$ mapping positions in space to a
+the form of a function $f(x,y,z)$ mapping positions in space to a
 density, color, and possibly other attributes.  One simple method of
 representing such data is as a volumetric grid, where the data at each
 point is found by trilinear interpolation from the eight corners of
@@ -49,11 +49,11 @@ or complex hash-grids such as in InstantNGP.
 
 Sometimes the flexibility of a volumetric representation is desirable,
 but the surface of the object itself is of interest.  Implicit
-surfaces are like volumetric data, but where the function $$f(x,y,z)$$
+surfaces are like volumetric data, but where the function $f(x,y,z)$
 maps each point in space to a single number, and where the surface is
 the zero of this function. For computational efficiency, it can be
 useful to require that this function is actually a signed distance
-function (SDF), where the function $$f(x,y,z)$$ indicates the sortest
+function (SDF), where the function $f(x,y,z)$ indicates the sortest
 distance to the surface, with positive values outsie the object and
 negative values inside (this sign is a convention and may
 vary). Maintaining this constraint is more difficult, but it allows
