@@ -13,8 +13,8 @@ can be divided into two general classes - those that generate an
 intermediate three-dimensional representation, which is rendered from a
 new viewing direction, and those which directly produce a new image.
 
-One key difficulty is that this task is almost always underdetermined;
-for example, for an image of the back of a sign, there are many
+One key difficulty is that this task is almost always underdetermined.
+For example, for an image of the back of a sign, there are many
 possible different things that could be on the front. Similarly,
 there could be parts of the object that are occluded, with one part of
 an object in front of another.
@@ -37,9 +37,9 @@ without an intermediate 3D representation.
 
 ## PixelNeRF
 
-PixelNeRF is a method which directly generates the parameters of a
-NeRF from one or more images.  (In other words, it conditions the
-NeRF on the input images.)  Unlike the original NeRF, which trains a
+PixelNeRF is a method that directly generates the parameters of a
+NeRF from one or more images. In other words, it conditions the
+NeRF on the input images. Unlike the original NeRF, which trains a
 MLP which takes spatial points to a density and color, PixelNeRF uses
 spatial features generated from the input images.
 
@@ -96,12 +96,12 @@ Networks](https://www.vincentsitzmann.com/srns/),
 
 ## Zero123 (or Zero-1-to-3)
 
-Zero123 takes a different approach, being a diffusion model, and
-rather than trying to generate a three-dimensional representation, it
+Zero123 takes a different approach, being a diffusion model. 
+Rather than trying to generate a three-dimensional representation, it
 instead directly predicts the image from the new views. The model
 takes a single input image, and the relative viewpoint transformation
 between the input and novel view direction. It attempts to generate a plausible,
-3d-consistent image from the novel view direction.
+3D-consistent image from the novel view direction.
 
 Zero123 is built upon the [Stable
 Diffusion](https://arxiv.org/abs/2112.10752) architecture, and it was
