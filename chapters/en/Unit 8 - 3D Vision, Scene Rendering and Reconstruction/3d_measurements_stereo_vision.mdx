@@ -8,8 +8,9 @@ Now, let's say we are given this 2D image and location of the pixel coordinates 
 
 We aim to solve the problem of determining the 3D structure of objects. In our problem statement, we can represent an object in 3D as a set of 3D points. Finding the 3D coordinates of each of these points helps us determine the 3D structure of the object.
 
+<img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_single_camera.png?download=true" alt="Figure 1: Image formation using single camera" width="500" height="auto"/>
+
 Figure 1: Image formation using single camera
-![Figure 1: Image formation using single camera](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_single_camera.png?download=true )
 
 # Solution 
 Let's assume we are given the following information:
@@ -41,8 +42,9 @@ Therefore using 2 images of the same scene point P, known positions and orientat
 # Simplified Solution 
 Since there are many different positions and orientations for the camera locations which can be selected, we can select a location which makes the math simpler, less complex and reduces computational processing when running on a computer or an embedded device. One configuration which is popular and generally used is shown in figure 2. We use 2 cameras in this configuration but it is equivalent to using a single camera for capturing 2 images from 2 different locations.
 
+<img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_simple_stereo.jpg?download=true" alt="Figure 2: Image formation using 2 cameras" width="500" height="auto"/>
+
 Figure 2: Image formation using 2 cameras 
-![Figure 2: Image formation using 2 cameras](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/image_formation_simple_stereo.jpg?download=true)
 
 1. Origin of the coordinate system is placed at the pinhole of the first camera which is usually the left camera.
 2. Z axis of the coordinate system is defined perpendicular to the image plane. 
@@ -100,8 +102,8 @@ Raw Left Image
 Raw Right Image 
 ![Raw Right Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/unrectified_right_frame.jpg?download=true)
 
-Raw Stacked Left and Right Images 
 ![Raw Stacked Left and Right Images ](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/unrectified_stacked_frames.jpg?download=true)
+Raw Stacked Left and Right Images 
 
 Let's focus on a single point - top left corner of the laptop. As per equation 3 above v_left=v_right for the the same point in the left and right images. However, notice that the red line which is at a constant v value touches the top-left corner of the laptop in the left image but misses this point by a few pixels in the right image. There are 2 main reasons for this discrepancy:
 
