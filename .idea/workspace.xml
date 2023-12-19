@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1446d3-8a45-4644-9ff5-c121515a4f97" name="Changes" comment="added paragraphs">
-      <change beforePath="$PROJECT_DIR$/chapters/en/Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/applications.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/chapters/en/Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/applications.mdx" afterDir="false" />
+    <list default="true" id="3b1446d3-8a45-4644-9ff5-c121515a4f97" name="Changes" comment="typo fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,21 +50,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;update__aman__patch&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tanuj\projects\computer-vision-course\chapters\en\Unit 1 - Fundamentals\Chapter 1 - Fundamentals of Computer Vision" />
@@ -101,6 +101,7 @@
       <workItem from="1702659053798" duration="6690000" />
       <workItem from="1702880249232" duration="1769000" />
       <workItem from="1702992986937" duration="1843000" />
+      <workItem from="1702997306403" duration="1014000" />
     </task>
     <task id="LOCAL-00001" summary="first pr draft">
       <option name="closed" value="true" />
@@ -166,7 +167,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702994733225</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="typo fix">
+      <option name="closed" value="true" />
+      <created>1702997451738</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1702997451738</updated>
+    </task>
+    <task id="LOCAL-00010" summary="typo fix">
+      <option name="closed" value="true" />
+      <created>1702997503532</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702997503532</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +200,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/bellabf-patch-1" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -203,6 +220,7 @@
     <MESSAGE value="defination.mdx changes" />
     <MESSAGE value="few structural changes" />
     <MESSAGE value="added paragraphs" />
-    <option name="LAST_COMMIT_MESSAGE" value="added paragraphs" />
+    <MESSAGE value="typo fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="typo fix" />
   </component>
 </project>
