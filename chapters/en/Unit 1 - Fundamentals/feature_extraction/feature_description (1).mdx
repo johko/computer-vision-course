@@ -47,12 +47,13 @@ The working of SIFT is given below:
 4. **Descriptor Generation:** A descriptor is computed for each keypoint region, capturing information about the local image gradients in the vicinity of the keypoint. This descriptor is a compact representation that encapsulates the key characteristics of the image patch surrounding the keypoint.
 5. **Descriptor Matching:** Finally, these descriptors are used for matching keypoints between different images. The descriptors from one image are compared to those in another image to find correspondences.
 
+SIFT's robustness to various image transformations and its ability to find distinctive features in an image makes it valuable in applications like object recognition, image stitching, and 3D reconstruction.
+
 You can learn more about SIFT using the following references:
 1. https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
 2. https://www.educative.io/answers/what-is-sift
 3. https://www.cse.iitb.ac.in/~ajitvr/CS763/SIFT.pdf
 
-SIFT's robustness to various image transformations and its ability to find distinctive features in an image makes it valuable in applications like object recognition, image stitching, and 3D reconstruction.
 
 
 ### SURF
@@ -70,11 +71,13 @@ The basic workflow of SURF is given below:
 4. **Orientation Assignment:** For each detected keypoint, SURF assigns a dominant orientation. This is done by calculating Haar wavelet responses in different directions around the keypoint’s neighborhood. Unlike SIFT, SURF uses a set of rectangular filters (Haar wavelets) applied to subregions of the keypoint's neighborhood. The responses of these filters are used to create a feature vector representing the keypoint.
 5. **Descriptor Matching:** The generated descriptors are then used for matching keypoints between different images. Matching involves comparing the feature vectors of keypoints in one image to those in another image to find correspondences.
 
+The key strengths of SURF lie in its computational efficiency, achieved through the use of integral images and Haar wavelet approximations while maintaining robustness to scale, rotation, and illumination changes. This makes SURF suitable for real time applications where speed plays a crucial part in object detection, tracking, and image stitching.
+
 You can learn more about SURF using the following references:
 
 1. https://medium.com/@deepanshut041/introduction-to-surf-speeded-up-robust-features-c7396d6e7c4e
 2. https://docs.opencv.org/3.4/df/dd2/tutorial_py_surf_intro.html
 3. https://www.ijtra.com/view/feature-extraction-using-surf-algorithm-for-object-recognition.pdf
 
-The key strengths of SURF lie in its computational efficiency, achieved through the use of integral images and Haar wavelet approximations while maintaining robustness to scale, rotation, and illumination changes. This makes SURF suitable for real time applications where speed plays a crucial part in object detection, tracking, and image stitching.
+
 
