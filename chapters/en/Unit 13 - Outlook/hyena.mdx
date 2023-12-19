@@ -53,7 +53,8 @@ In essence, Hyena can be performed in two steps:
 
 While Transformer is a well established and very capable architecture, the quadratic computational cost is an expensive price to pay, especially in inference. The H3 mechanism proposition went close to the perplexity of multi-headed attention mechanisms, but there was still a narrow gap in terms of perplexity. 
 
-A variety of attention replacements have been proposed over the last few years, and it remains challenging to evaluate the quality of a new architecture during the exploratory phase. Creating a versatile layer that can effectively process N-Dimensional data within deep neural networks while keeping a good expressiveness is a significant area of ongoing research.
+
+A variety of attention replacements have been proposed over the last few years, and evaluating the quality of a new architecture during the exploratory phase remains challenging. Creating a versatile layer that can effectively process N-Dimensional data within deep neural networks while maintaining good expressiveness is a significant area of ongoing research.
 
 Empirically, Hyena operators are able to significantly shrink the quality gap with attention at scale, reaching similar perplexity and downstream performance with a smaller computational budget and without hybridization of attention. It has already reached State of the art for [DNA sequence modeling](https://arxiv.org/abs/2306.15794) and is very promising in the field of large language models with Stripped-Hyena-7B. 
 
