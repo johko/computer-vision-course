@@ -2,7 +2,7 @@
 
 ### What is Hyena 
 
-Hyena is a new type of operator that substitutes the attention mechanism. Developed by Hazy Research, it features a subquadratic computational efficiency, constructed by interleaving implicitly parametrized long convolutions and data-controlled gating.
+Hyena is a new type of operator that serves as a substitute for the attention mechanism. Developed by Hazy Research, it features a subquadratic computational efficiency, constructed by interleaving implicitly parametrized long convolutions and data-controlled gating.
 
 ![transformer2hyena.png](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/outlook_hyena_images/transformer2hyena.png)
 It consists in recursively computing convolutions and multiplicative element-wise gating operations. This approach builds on top of the [Hungry Hungry Hippo (H3)](https://arxiv.org/abs/2212.14052) mechanism, also developed by the same researchers. The H3 mechanism is characterized by its data-controlled, parametric decomposition, acting as a surrogate attention mechanism.
@@ -56,7 +56,7 @@ While Transformer is a well established and very capable architecture, the quadr
 
 A variety of attention replacements have been proposed over the last few years, and evaluating the quality of a new architecture during the exploratory phase remains challenging. Creating a versatile layer that can effectively process N-Dimensional data within deep neural networks while maintaining good expressiveness is a significant area of ongoing research.
 
-Empirically, Hyena operators are able to significantly shrink the quality gap with attention at scale, reaching similar perplexity and downstream performance with a smaller computational budget and without hybridization of attention. It has already reached State of the art for [DNA sequence modeling](https://arxiv.org/abs/2306.15794) and is very promising in the field of large language models with Stripped-Hyena-7B. 
+Empirically, Hyena operators are able to significantly shrink the quality gap with attention at scale, reaching similar perplexity and downstream performance with a smaller computational budget and without hybridization of attention. It has already achieved a state-of-the-art status for [DNA sequence modeling](https://arxiv.org/abs/2306.15794) and shows great promise in the field of large language models with Stripped-Hyena-7B. 
 
 Similarly to Attention, Hyena can be used in computer vision tasks. In image classification, Hyena is able to match attention in accuracy when training on ImageNet-1k from scratch.
 
