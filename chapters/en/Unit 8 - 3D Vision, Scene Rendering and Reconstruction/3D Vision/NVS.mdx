@@ -11,7 +11,7 @@ or a similar algorithm to construct a 3D representation.
 Many methods have recently been developed for this task. However, they
 can be divided into two general classes - those that generate an
 intermediate three-dimensional representation, which is rendered from a
-new viewing direction, and those which directly produce a new image.
+new viewing direction, and those that directly produce a new image.
 
 One key difficulty is that this task is almost always underdetermined.
 For example, for an image of the back of a sign, there are many
@@ -58,7 +58,7 @@ input image features at this point, $W(\pi x)$ are then found by
 bilinear interpolation. Like in the original NeRF, the query point $x$
 is positionally encoded and concatentated with the viewing direction
 $d$.  The NeRF network consists of a set of ResNet blocks; the input
-image features $$W(\pi(x))$$ pass through a linear layer, and are added
+image features $W(\pi(x))$ pass through a linear layer, and are added
 to the features at the start of each of the first three residual blocks.  There
 are then two further residual blocks to further process these
 features, before an output layer to reduce the number of channels to
@@ -67,7 +67,7 @@ processed independently for the first three residual blocks, and then
 the features are averaged before the last two blocks.
 
 The original PixelNeRF model was trained on a relatively small set of
-renderings from the ShapeNet dataset.  The model is trained with either one or two
+renderings from the [ShapeNet](https://huggingface.co/datasets/ShapeNet/ShapeNetCore) dataset.  The model is trained with either one or two
 input images, and attempts to predict a single novel view from a
 new camera angle. The loss is the mean-squared error between the
 rendered and expected novel views.  A model was trained separately on
@@ -75,8 +75,8 @@ each class of object (e.g. planes, benches, cars).
 
 ### Results (from the PixelNeRF website)
 
-![](https://alexyu.net/pixelnerf/img/teaser/single_01_input.png)
-![](https://alexyu.net/pixelnerf/img/teaser/single_01.gif)
+![Input image of a chair](https://alexyu.net/pixelnerf/img/teaser/single_01_input.png)
+![Rotating gif animation of rendered novel views](https://alexyu.net/pixelnerf/img/teaser/single_01.gif)
 <sub><sup> image from https://alexyu.net/pixelnerf </sup></sub>
 
 
@@ -124,7 +124,7 @@ the latent representation of the input image is concatenated
 channel-wise with the noisy latents before being input into the
 denoising U-Net.
 
-To explore this model further, see the [Live Demo](ce.co/spaces/cvlab/zero123-live)
+To explore this model further, see the [Live Demo](https://huggingface.co/spaces/cvlab/zero123-live)
 
 ### Related methods
 
