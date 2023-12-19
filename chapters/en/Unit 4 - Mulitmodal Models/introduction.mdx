@@ -31,11 +31,10 @@ Many times communication between 2 people gets really awkward in textual mode, s
 ![Funny Image + Text Meme example](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/multimodal_fusion_text_vision/bigbang.jpg)
 
 To be more general, in the context of AI, 7% of the meaning conveyed is through textual modality, 38% through audio modality and 55% through vision modality.
-Within the context of deep learning, we would refer each modality as a way data arrives to a deep learning model for processing and predictions. The most commonly used modalities in deep learning are: vision, audio and text. Other modalities can also be considered for specific usecases like LIDAR, EEG Data, eye tracking data etc.
+Within the context of deep learning, we would refer each modality as a way data arrives to a deep learning model for processing and predictions. The most commonly used modalities in deep learning are: vision, audio and text. Other modalities can also be considered for specific use cases like LIDAR, EEG Data, eye tracking data etc.
 
 Unimodal models and datasets are purely based on a single modality, and have been studied for long with many tasks and benchmarks but are limited in their capabilities. Relying on a single modality might not give us the complete picture, and combining more modalities will increase the information content and reduce the possibility of missing cues that might be in them. 
-For the machines around us to be more intelligent, better at communicating with us and have enhanced interpretation and reasoning capabilities, it is important to build applications and services around models and datasets that are multimodal in nature. Because, multimodality can give us a clearer and more accurate representation
-of the world around us enabling us to develop applications that are closer to the real-world scenarios.
+For the machines around us to be more intelligent, better at communicating with us and have enhanced interpretation and reasoning capabilities, it is important to build applications and services around models and datasets that are multimodal in nature. Because, multimodality can give us a clearer and more accurate representation of the world around us enabling us to develop applications that are closer to the real-world scenarios.
 
 **Common combinations of modalities and real life examples:**
 - Vision + Text : Infographics, Memes, Articles, Blogs.
@@ -57,7 +56,7 @@ A multimodal dataset will require a model which is able to process data from mul
 Each modality has different tasks related to it, for example: vision downstream tasks contain image classification, image segmentation, object detection etc. and we would be using
 models specifically designed for these tasks. So tasks and models go hand in hand. If a task involves two or more modalities then it can be termed as a multimodal task. If we consider a task in terms of inputs and outputs, a multimodal task can generally be thought of as a single input/output arrangement with two different modalities at input and output ends respectively.
 
-HuggingFace supports a wide variety of multimodal tasks. Let us look into some of them.
+Hugging Face supports a wide variety of multimodal tasks. Let us look into some of them.
 
 **Some multimodal tasks supported by 🤗 and their variants:**
 1. Vision + Text:
@@ -71,30 +70,23 @@ HuggingFace supports a wide variety of multimodal tasks. Let us look into some o
 - [Text to Speech](https://huggingface.co/tasks/text-to-speech): Voice assistants, Announcement Systems.
 
 <Tip>
-
 💡An amazing usecase of multimodal task is Multimodal Emotion Recognition (MER). The MER task involves recognition of emotion from two or more modalities like audio+text, text+vision, audio+vision or vision+text+audio As we discussed in the example, MER is more efficient than unimodal emotion recognition and gives clear insight into the 
 emotion recognition task. Check out more on MER with this repository: https://github.com/EvelynFan/AWESOME-MER. 
-
 </Tip>
-
 
 ![Multimodal model flow](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/multimodal_fusion_text_vision/Multimodal.jpg)
 
 A multimodal model, is a model that can be used to perform multimodal tasks by processing data coming from multiple modalities at the same time. These models combine the uniqueness and strengths of different modalities to make a complete representation of data enhancing the performance on multiple tasks. Multimodal models are trained to integrate and process data from sources like images, videos, text, audio etc. 
-The process of combination of these modalities begins with multiple unimodal models, the outputs of  these unimodal models (encoded data) are then fused using a strategy by the fusion module. The strategy of fusion can be early fusion, late fusion or hybrid fusion. The overall task of the fusion module is to make a combined representation of the encoded data from the unimodal models. Finally, the fused representation is taken up by a classification network to make predictions.
+The process of combining these modalities begins with multiple unimodal models. The outputs of  these unimodal models (encoded data) are then fused using a strategy by the fusion module. The strategy of fusion can be early fusion, late fusion or hybrid fusion. The overall task of the fusion module is to make a combined representation of the encoded data from the unimodal models. Finally, a classification network takes up the fused representation to make predictions.
 
 A detailed section on multimodal tasks and models with a focus on Vision and Text, will be discussed in the next chapter.
 
-## An applicaion of multimodality: Multimodal Search 🔎📲💻
+## An application of multimodality: Multimodal Search 🔎📲💻
 
 Internet search was the one key advantage Google had, but with the introduction of ChatGPT by OpenAI, Microsoft started out with
-powering up their Bing search engine so that they can crush the competition. It was only restricted initially to LLMs, looking into large corpus of text data but the world around us, mainly social media content, web articles and all possible form of online content is largely multimodal. When we search about an image, the image pops up with a corresponding text to describe it. Won't it be super cool to have another powerful multimodal model which involved both Vision and Text at the same time? This can revolutionize the search landscape hugely, and the core tech involved in this is multimodal learning.
+powering up their Bing search engine so that they can crush the competition. It was only restricted initially to LLMs, looking into large corpus of text data but the world around us, mainly social media content, web articles and all possible form of online content is largely multimodal. When we search about an image, the image pops up with a corresponding text to describe it. Won't it be super cool to have another powerful multimodal model which involved both Vision and Text at the same time? This can revolutionize the search landscape hugely, and the core tech involved in this is multimodal learning. We know that many companies also have a large database which is multimodal and mostly unstructured in nature. Multimodal models might help companies with internal search, interactive documentation (chatbots), and many such use cases. This is another domain of Enterprise AI where we leverage AI for organizational intelligence. 
 
-We know that many companies also have a large database which is multimodal and mostly unstructured in nature. Multimodal models might help companies with internal search,
-interactive documentation (chatbots), and many such usecases. This is another domain of EnterpriseAI where we leverage AI for organizational intelligence. 
-
-Vision Language Models (VLMs) are models that can understand and process both Vision and Text modalities.
-The joint understanding of both modalities lead VLMs to perform various tasks efficiently like Visual Question Answering, Text-to-image search etc. VLMs thus can serve as one of the best candidates for multimodal search. So overall, VLMs should find some way to map text and image pairs to a joint embedding space where each such text-image pair is present as an embedding. Using these embeddings we can perform various downstream tasks, and these embeddings can be used for search as well. The idea of such a joint space is that image and text embeddings that are similar in meaning will lie close together enabling us to do searches for images based on text (text-to-image search) or vice-a-versa.
+Vision Language Models (VLMs) are models that can understand and process both vision and text modalities. The joint understanding of both modalities lead VLMs to perform various tasks efficiently like Visual Question Answering, Text-to-image search etc. VLMs thus can serve as one of the best candidates for multimodal search. So overall, VLMs should find some way to map text and image pairs to a joint embedding space where each text-image pair is present as an embedding. We can perform various downstream tasks using these embeddings, which can also be used for search. The idea of such a joint space is that image and text embeddings that are similar in meaning will lie close together, enabling us to do searches for images based on text (text-to-image search) or vice-versa.
 
 <!-- Shall we add a demo or space here for ImageBind or just a plain GIF from the site? -->
 
@@ -102,4 +94,4 @@ The joint understanding of both modalities lead VLMs to perform various tasks ef
 💡Meta released first multimodal AI model to bind information from 6 different modalities:  images and videos, audio, text, depth, thermal, and inertial measurement units (IMUs). Check more here: https://imagebind.metademolab.com/
 </Tip>
 
-After going through the fundamentals for multimodality, let's now take a look into different multimodal tasks and models available in 🤗 and their applications via cool demos and spaces.
+After going through the fundamentals for multimodality, let's now take a look into different multimodal tasks and models available in 🤗 and their applications via cool demos and Spaces.
