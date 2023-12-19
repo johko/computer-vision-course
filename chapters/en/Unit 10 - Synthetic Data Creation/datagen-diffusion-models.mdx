@@ -105,7 +105,7 @@ LoRA has targeted the problem of fine-tuning LLMs. It represents the weight upda
 
 The base model's weights remain frozen in the whole process, so we just train the new update matrices. Then lastly, the adapted weights are combined with the original weights.
 
-This means training LoRA is essentially much faster than the model itself! As an important note, it's also possible to combine LoRA with other techniques since it can be added on top of the model itself.
+This means training LoRA is essentially much faster than full model fine-tuning! As an important note, it's also possible to combine LoRA with other techniques since it can be added on top of the model itself.
 
 _Training with [DreamBooth](https://huggingface.co/docs/diffusers/main/en/training/dreambooth)_:
 
