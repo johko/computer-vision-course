@@ -1,18 +1,17 @@
-
 # Novel View Synthesis
 
 We've seen in the NeRF chapter how, given a large set of images, we
 can generate a three-dimensional representation of an object. But
-sometimes we have only a handful of images, or even just a single one.  Novel View
-Synthesis (NVS) is a collection of methods which can generate views
+sometimes we have only a handful of images or even just one.  Novel View
+Synthesis (NVS) is a collection of methods to generate views
 from new camera angles that are plausibly consistent with a set of
 images. Once we have a large, consistent set of images we can use NeRF
-or a similar algorithm to construct a 3d representation.
+or a similar algorithm to construct a 3D representation.
 
 Many methods have recently been developed for this task. However, they
-can be divided into two general classes - those which generate an
+can be divided into two general classes - those that generate an
 intermediate three-dimensional representation, which is rendered from a
-new viewing direction, and those which directly produce the new image.
+new viewing direction, and those which directly produce a new image.
 
 One key difficulty is that this task is almost always underdetermined;
 for example, for an image of the back of a sign, there are many
