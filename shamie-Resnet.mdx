@@ -9,7 +9,8 @@ The pre-existing perspectives of deeper layers was always thought of as effectiv
 As the layers deepened, the extracted features could be further enriched, such as seen with VGG16 and VGG19.
 
 A question arised: "Is learning networks as easy as stacking more layers"?
-The obstacle to answering this question, "gradient vanishing problem", was adressed by Normalised initializations and intermediate normalization layers.
+The obstacle to answering this question, the "gradient vanishing problem", was addressed by Normalised initializations and intermediate normalization layers.
+
 However, the degradation problem was observed, as the depth of the neural network deepened, the accuracy gets saturated and degrades rapidly. An experiment to explore the problem
 was conducted, comparing a shallow model and a deep model. The training error and the test error of the Deeper model increased than with the shallow model. This was not because of overfitting but because the training error increased when the network deepened.
 
