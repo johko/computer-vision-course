@@ -1,43 +1,4 @@
-
-<!--
-
-To the HF reviewers,
-
-For context, there is a chapter before this one that adress how images are obtained from photographs and a chapter afterwards of how images are preprocessed for cv.
-
-Based on our original discussions, I tried to go from a more intuitive approach without it being too technical.
-
-I also tried to incorporate this comment "For the "Imagine everything" feel free (if you'd like) to link an example that we have in the Audio course on audio classification using spectrograms to encourage learners to think out of the box on what else can be viewed as an image." from @MKhalusova.
-
-
-Now, where we part from the original discussion are the results adressing the feedback from @ATaylorAerospace and @johko which asked for:
- "(introduce the concept with a simple example and then add different examples and go into more depth as we discuss other imaging technique)"
-
-and 
-
-"I would say don't go too deep into actual methods, but of course it is good for the course participants to have an intuition for what edge detection does, as that is fundamental for feature extraction and is a good connection to the next chapter". (@johko).
-
-These were moved to a 4th section called "Preprocessing for Computer Vision" because there was too much information within the same section.
-
-I also did PR for the images/videos of this chapter on the hub. At the time, I am writing it, it has not been approved yet (which is pretty normal since it is is sunday and I did the PR last night). For the sake of meeting the deadline, I will do the PR of this chapter image-free. I know, sad. 
-
-I left the sources of the image in the comments when they were obtained from the articles. 
-
-
--->
-
-<!--
-
-#Outline of this section chapter
- Challenges in imaging real-life
- Imaging everything (how we extend sensors to make images from things that are not usually thought of as images)
- Perspective on what we obtained from this and its impact on us (i.e. we have imaged outer space and electrons; we have an MRI machine capable of imaging inside of us without ever touching 🤯)
- Example(s) of how image-acquired characteristics of images come from what types of sensors they record, challenges/difficulties in computer vision change according to the image/data, not all data is RGB
-
--->
-
-
-##  Challenges in imaging real-life
+#  Challenges in imaging real-life
 
 Have you ever tried to take a picture of a litter of kittens? If were not privileged with this experience, you are missing out on the most beautiful chaotic mess.  Kittens are adorable creatures that move around in the most deranged ways. They will do the cutest thing possible, but it will only last half a second before they top it off with an even cuter event. Before you know it, you are bending yourself backward to get that one kitten in the frame while changing the zoom, and the angle of the camera meanwhile you have another kitten climbing your leg. You get so immersed in their fluffiness that you do not have the time to check the photos. When you sit down to check on them. They. are. all. just. a. blur. There is only one or two pictures worth keeping on your phone. You are just left there thinking, I thought kittens were more photogenic. 
 
@@ -65,7 +26,7 @@ It is not surprising that, as a species, we have developed new ways of seeing be
 
 As a species, we only see a fraction of the spectrum. We call that the visible spectrum. The image below shows us just how narrow it is: 
 
-![Image showing the visible spectrum compared to the Electromagnetic Spectrum](https://open.lib.umn.edu/app/uploads/sites/2/2015/01/b4eaddac5823123ca0aa5e6abe24da3d.jpg)
+![Image showing the visible spectrum compared to the Electromagnetic Spectrum](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/human_spectrum.jpg)
 
 <!--
 
@@ -108,7 +69,7 @@ As we have seen previously, we grew accustomed to different ways to image things
 ### Picture 51
 
 ![Picture 51](
-https://upload.wikimedia.org/wikipedia/en/b/b2/Photo_51_x-ray_diffraction_image.jpg?20121230185027)
+https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Photo_51_x-ray_diffraction_image.jpg)
 
 
 <!--
@@ -123,7 +84,7 @@ By Raymond Gosling/King&#039;s College London - http://www-project.slac.stanford
 
 
 ![The Pale Blue Dot](
-https://upload.wikimedia.org/wikipedia/commons/7/73/Pale_Blue_Dot.png)
+https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Pale_Blue_Dot.png)
 
 
 <!--
@@ -131,16 +92,14 @@ https://upload.wikimedia.org/wikipedia/commons/7/73/Pale_Blue_Dot.png)
 By Voyager 1 - http://visibleearth.nasa.gov/view.php?id=52392, Public Domain, https://commons.wikimedia.org/w/index.php?curid=4400327
 -->
 
-The pale blue dot is a picture taken in 1990 by a space probe. Earth's size is so small that is less than a pixel. The picture received a lot of notoriety by showing how tiny and short Earth is relative to the vast majority of the space. It inspired Carl Sagan to write the book "The Pale Blue Dot". This picture was taken by the 1500mm high-resolution narrow-angle camera on the Voyager 1. The space probe is also responsible for taking the "Family portrait of the solar system seen below. 
-
-
+The pale blue dot is a picture taken in 1990 by a space probe. Earth's size is so small that is less than a pixel. The picture received a lot of notoriety by showing how tiny and short Earth is relative to the vast majority of the space. It inspired Carl Sagan to write the book "The Pale Blue Dot". This picture was taken by the 1500mm high-resolution narrow-angle camera on the Voyager 1. The space probe is also responsible for taking the "Family portrait of the solar system".
 
 ### Black hole
 
 
 
 ![M87](
-https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/1024px-Black_hole_-_Messier_87_crop_max_res.jpg)
+https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Black_hole_-_Messier_87.jpg)
 
 <!--
 
@@ -151,7 +110,7 @@ Another astronomically important event occurred in 2017 when researchers took th
 
 
 
-![Sag A](https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Sag_A%2A.jpg/1024px-Sag_A%2A.jpg)
+![Sag A](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/sag-event-image.jpg)
 
 
 <!--
@@ -166,7 +125,7 @@ Now with that know-how, they aimed to image the supermassive black hole in the c
 
 
 
-![gif dna](https://cdn.technologyreview.com/i/images/horsegif_0.gif)
+![gif dna](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/horsegif_0.gif)
 
 
 This one is a bit of a twist. It does not involve a new way to image, but rather a new way to read and archive images. The GIF you see above is an image that was stored in the DNA of a living bacteria. This was first made in 2017 by a group of scientists to show as a proof-of-concept that a living organism is an excellent way to archive data. To do this, the first translated the image values into nucleotides code (the famous ATCG). Then, they put this sequence into the DNA by using a system called CRISPR which is capable of editing the DNA. Then, they resequenced the DNA and reconstructed the gif you see below.
