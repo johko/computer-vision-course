@@ -12,3 +12,5 @@
   sections:
   - local: chapters/en/Unit 12 - Ethics and Biases/pre-intro
     title: What you'll learn
+  - local: chapters/en/Unit 12 - Ethics and Biases/introduction
+    title: Introduction
