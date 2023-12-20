@@ -1,45 +1,5 @@
 #  Imaging in real-life
 
-<!--
-
-To the HF reviewers,
-
-For context, there is a chapter before this one that adress how images are obtained from photographs and a chapter afterwards of how images are preprocessed for cv.
-
-Based on our original discussions, I tried to go from a more intuitive approach without it being too technical.
-
-I also tried to incorporate this comment "For the "Imagine everything" feel free (if you'd like) to link an example that we have in the Audio course on audio classification using spectrograms to encourage learners to think out of the box on what else can be viewed as an image." from @MKhalusova.
-
-
-Now, where we part from the original discussion are the results adressing the feedback from @ATaylorAerospace and @johko which asked for:
- "(introduce the concept with a simple example and then add different examples and go into more depth as we discuss other imaging technique)"
-
-and 
-
-"I would say don't go too deep into actual methods, but of course it is good for the course participants to have an intuition for what edge detection does, as that is fundamental for feature extraction and is a good connection to the next chapter". (@johko).
-
-These were moved to a 4th section called "Preprocessing for Computer Vision" because there was too much information within the same section.
-
-I also did PR for the images/videos of this chapter on the hub. At the time, I am writing it, it has not been approved yet (which is pretty normal since it is is sunday and I did the PR last night). For the sake of meeting the deadline, I will do the PR of this chapter image-free. I know, sad. 
-
-I left the sources of the image in the comments when they were obtained from the articles. 
-
-
--->
-
-<!--
-
-#Outline of this section chapter
- Challenges in imaging real-life
- Imaging everything (how we extend sensors to make images from things that are not usually thought of as images)
- Perspective on what we obtained from this and its impact on us (i.e. we have imaged outer space and electrons; we have an MRI machine capable of imaging inside of us without ever touching 🤯)
- Example(s) of how image-acquired characteristics of images come from what types of sensors they record, challenges/difficulties in computer vision change according to the image/data, not all data is RGB
-
--->
-
-
-##  Challenges in imaging real-life
-
 Have you ever tried to take a picture of a litter of kittens? If were not privileged with this experience, you are missing out on the most beautiful chaotic mess.  Kittens are adorable creatures that move around in the most deranged ways. They will do the cutest thing possible, but it will only last half a second before they top it off with an even cuter event. Before you know it, you are bending yourself backward to get that one kitten in the frame while changing the zoom, and the angle of the camera meanwhile you have another kitten climbing your leg. You get so immersed in their fluffiness that you do not have the time to check the photos. When you sit down to check on them. They. are. all. just. a. blur. There is only one or two pictures worth keeping on your phone. You are just left there thinking, I thought kittens were more photogenic. 
 
 The litter of kittens is a simple story, but it reflects why it is so hard to imagine things in real life. The samples (the scenario containing the kittens) often change faster than the camera can adjust to it. A steady position camera that does not try to track the kitten is also a difficult task since our object (the kitten) moves in space in ways that change the focus of the camera. Changing the lenses to capture a white field might also cause distortions depending on the distance of the object to the camera (see the adorable example below). The event of interest (that one adorable pose of the kitten) is lost in hundreds of other rather uninteresting pictures. Our kitten's example is a silly one, but these difficulties also happen in a variety of other scenarios. Imaging is hard. Yet, the internet is flooded with adorable cat pictures.
