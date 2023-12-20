@@ -32,21 +32,19 @@ A simple NeRF pipeline can be summarized with the following picture:
 
 ![nerf_pipeline](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/nerf_pipeline.png)
 
-Image from: [Mildenhall et al.](https://www.matthewtancik.com/nerf)
+Image from: [Mildenhall et al. (2020)](https://www.matthewtancik.com/nerf)
 
 **(a)** Sample points and viewing directions along camera rays and pass them through the network.
 
 **(b)** Network output is a colour vector and density value for each sample.
 
-**(c)** Combine the outputs of the network via volumetric rendering. 
+**(c)** Combine the outputs of the network via volumetric rendering to go from discrete samples in 3D space to a 2D image. 
 
 **(d)** Compute the loss and update network gradients via backpropagation to represent scene.
 
-This is overview is very high level, so for a better understanding, I will go into the details of 
-**(c)** and **(d)** below:
+This is overview is very high level, so for a better understanding, let's go into the details of the volume rendering and the used loss function.
 
 **Volume Rendering**
-This process of putting discrete samples in 3D to a 2D image works as follows:
 
 The principles behind the process of volumetric rendering are well established in classical computer graphics pipelines and do not stem from NeRFs. 
 What is important for the use case of NeRFs is that this step is **differentiable** in order to allow for backpropagation. The simplest form of volumetric rendering in NeRFs can be formulated as follows:
@@ -81,8 +79,7 @@ The explanations above are important to understand the basic cocepts and similar
 However, some additional tricks are needed to obtain a well performing model.
 
 First of all, it is necesarry to encode input signals in order to capture high-frequency variations in colour and geometry. 
-The practice of encoding inputs before passing them through a neural network is not unique to the NeRF domain but also widely adopted in other ML domains like for example Natural Language Processing (NLP).
-
+The practice of encoding inputs before passing them through a neural network is not unique to the NeRF domain but also widely adopted in other ML domains like for example Natural Language Processing (NLP). 
 A very simple encoding where we map the inputs to a higher dimensional space, enabling us to capture high frequency variations in scene parameters could look as follows:
 
 ```python
