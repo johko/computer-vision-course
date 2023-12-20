@@ -18,7 +18,7 @@ Bring your model closer to where it will be used for prediction, so typical use 
 
 - **Serialization:** Serialization converts a complex object (a machine learning model) into a format that can be easily stored or transmitted. It's like flattening a three-dimensional puzzle into a two-dimensional image. This serialized representation can be saved to disk, sent over a network, or stored in a database.
     - **ONNX (Open Neural Network Exchange):** ONNX is like a universal translator for machine learning models. It's a format that allows different frameworks, like TensorFlow, PyTorch, and scikit-learn, to understand and work with each other's models. It's like having a common language that all frameworks can speak. 
-        - PyTorch's ``` torch.onnx.export() ``` function converts a PyTorch model to the ONNX format, facilitating interoperability between frameworks.
+        - PyTorch's `torch.onnx.export()` function converts a PyTorch model to the ONNX format, facilitating interoperability between frameworks.
         - TensorFlow offers methods to freeze the graph and convert it to ONNX format using tools like ```tf.compat.v1.graph_util.convert_variables_to_constants()``` and ```tf2onnx```.
 
 - **Packaging:** Packaging, on the other hand, involves bundling all the necessary components and dependencies of a machine learning model. It's like putting all the puzzle pieces into a box, along with the instructions on assembling it. Packaging includes everything needed to run the model, such as the serialized model file, pre-processing or post-processing code, and required libraries or dependencies.
