@@ -10,7 +10,6 @@
 
 You need to remember that deployment to the edge is an option that is not cloud-specific. However, a key consideration is deploying models closer to your users or in areas with poor network connectivity. In the case of edge deployments, you train your models in another environment, like in the cloud, and then optimize your model for deployment to edge devices. Typically aimed at compiling or packaging your model in a way optimized to run at the edge, like reducing the model package size for running on smaller devices.
 
-
 Bring your model closer to where it will be used for prediction, so typical use cases would be like manufacturing, where you have cameras on an assembly line. You need to make real-time inferences or use cases where you need to detect equipment anomalies at the edge. Inference data, in this case, is often sent back to the cloud for additional analysis or to collect ground truth data that can then be used to optimize your model further.
 
 - **Mobile**: Optimizing models for performance and resource constraints. Frameworks like [Core ML](https://developer.apple.com/documentation/coreml) (for iOS) and [TensorFlow Mobile](https://www.tensorflow.org/mobile) (for Android and iOS) facilitate model deployment on mobile platforms.
