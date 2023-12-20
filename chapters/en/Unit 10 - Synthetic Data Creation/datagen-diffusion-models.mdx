@@ -9,11 +9,11 @@ As you've seen in the previous sections, it is possible to use generative models
 
 Diffusion models are generative models that gained significant popularity in recent years, thanks to their capabilities to produce high-quality images. Nowadays, they're widely used in image, video, and text synthesis.
 
-A diffusion model works by learning to denoise random Gaussian noise step-by-step. The training process requires adding Gaussian noise to the input samples and letting the model learn denoising.
+A diffusion model works by learning to denoise random Gaussian noise step-by-step. The training process requires adding Gaussian noise to the input samples and letting the model learn denoising. 
 
-These models are generally conditioned to some kind of input besides the data distribution, such as text prompts, images or even audio. But it's also possible to [build an unconditional generator](https://huggingface.co/docs/diffusers/training/unconditional_training).
+Diffusion models are generally conditioned to a kind of input besides the data distribution, such as text prompts, images or even audio. Additionally, it's also possible to [build an unconditional generator](https://huggingface.co/docs/diffusers/training/unconditional_training).
 
-While there are many underlying concepts behind the model's inner workings, the simplified version is similar to this:
+There are many underlying concepts behind the model's inner workings but the simplified version is similar to this:
 
 Firstly, the model adds noise to the input and processes it.
 
