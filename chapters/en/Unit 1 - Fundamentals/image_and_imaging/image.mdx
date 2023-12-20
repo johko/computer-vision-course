@@ -27,7 +27,7 @@ Now that we have discussed space, we can talk about color. The good news is you 
 
 The most common color model is RGB (Red, Green, Blue). Three colors, three channels, three $F(X, Y)$. In this model, the true color of a coordinate $(x_i, y_i)$ is given by the combination of the three different F $(x_i, y_i)$ at that location. Combined, these three colors describe a wide spectrum of colors.
 
-If you're only looking at the $F(x, y)$ for one color, we call that the gray level or the intensity.  The intensity values for each channel typically range from $0$ to $255$, where $0$ represents no intensity and $255$ represents maximum intensity. If you are in a different color system, how to combine these values might change. So, it is important to understand where your data comes from.
+If you're only looking at the $F(x, y)$ for one color, we call that the gray level or the intensity.  The intensity values for each channel typically range from $0$ to $255$, where $0$ represents no intensity and $255$ represents maximum intensity. In a different color system, combining these values might differ. So, it is important to understand where your data comes from.
 
 There are special types of image where the coordinates $x_i, y_i$ do not describe an intensity value, but rather it labels a pixel. The most simple example of this operation is separating foreground and background. Everything that is foreground receives the label $1$ and everything that is background receives the label $0$. These images are commonly refered to as labeled images. When the are only two labels, like our example, we call them binary images or masks. 
 
