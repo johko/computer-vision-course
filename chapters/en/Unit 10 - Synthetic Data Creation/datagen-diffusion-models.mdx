@@ -1,27 +1,27 @@
 # Synthetic Data Generation with Diffusion Models
 
-Imagine trying to train a model for tumor segmentation, as it's hard to gather data for medical imaging, it'd be really difficult for the model to converge.
+Imagine trying to train a model for tumor segmentation. As it's hard to gather data for medical imaging, it'd be really difficult for the model to converge.
 Ideally, we expect to have at least enough data to build a simple baseline, but what if you have just a few samples?
 
 Synthetic data generation methods try to solve this dilemma, and now we have many more options with the boom of generative models!
 
-As you've seen in the previous sections, it is possible to use generative models such as DCGAN to generate synthetic images. In this section, we will focus on diffusion models using `diffusers`!
+As you've seen in the previous sections, it is possible to use generative models such as DCGAN to generate synthetic images. In this section, we will focus on diffusion models using [diffusers](https://huggingface.co/docs/diffusers/index)!
 
-## Remember the Diffusion Models
+## Recap of the Diffusion Models
 
-Diffusion models are generative models that gained significant popularity in recent years, thanks to their capabilities to produce high-quality images. They're widely used in image, video and text synthesis nowadays.
+Diffusion models are generative models that gained significant popularity in recent years, thanks to their capabilities to produce high-quality images. Nowadays, they're widely used in image, video, and text synthesis.
 
-The diffusion model works by learning to denoise random Gaussian noise step-by-step, the training process requires adding Gaussian noise to the input samples and letting the model learn denoising.
+A diffusion model works by learning to denoise random Gaussian noise step-by-step. The training process requires adding Gaussian noise to the input samples and letting the model learn denoising.
 
 These models are generally conditioned to some kind of input besides the data distribution, such as text prompts, images or even audio. But it's also possible to [build an unconditional generator](https://huggingface.co/docs/diffusers/training/unconditional_training).
 
 While there are many underlying concepts behind the model's inner workings, the simplified version is similar to this:
 
-The model adds noise to the input and processes it
+Firstly, the model adds noise to the input and processes it.
 
 ![noising](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/noising.jpg?download=true)
 
-Then the model learns to denoise the given data distribution
+Then the model learns to denoise the given data distribution.
 
 ![denoising](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/denoising.jpg?download=true)
 
@@ -29,20 +29,18 @@ We won't dive deep into the theory, but understanding how a diffusion model work
 
 ## Text-To-Image Diffusion Model: Stable Diffusion
 
-Essentially, the way SD works is the same as we mentioned above. It uses three main components that help it to produce high-quality images.
+Essentially, the way Stable Diffusion (SD) works is the same as we mentioned above. It uses three main components that help it to produce high-quality images.
 
-1. __The diffusion process:__ The input is processed multiple times to generate useful information about the image. The "usefulness" is learned while training the model.
+1. **The diffusion process:** The input is processed multiple times to generate useful information about the image. The "usefulness" is learned while training the model.
 
-2. __Image encoder and decoder model:__ It lets the model compress images from pixel space to a smaller dimensional space, abstracting meaningless information while increasing performance.
+2. **Image encoder and decoder model:** Lets the model compress images from pixel space to a smaller dimensional space, abstracting meaningless information while increasing performance.
 
-3. __Optional conditional encoder:__ This component is used to condition to generation process on an input. This extra input can be text prompts, images, audio and other kinds of representations. Originally it was a text encoder
+3. **Optional conditional encoder:** This component is used to condition to generation process on an input. This extra input can be text prompts, images, audio, and other representations. Originally, it was a text encoder.
 
 So while the general workflow looks like this:
-
 ![general stable diffusion workflow](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/general-workflow.png?download=true)
 
 Originally we used a text encoder to condition the model on our prompts:
-
 ![original stable diffusion workflow](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/stable-diffusion-workflow.png?download=true)
 
 This short overview is just the tip of the iceberg! If you wish to dive deep into the theory behind stable diffusion (or diffusion models), you can check these out:
@@ -71,27 +69,25 @@ This means we have many tools under our belt to generate synthetic data!
 
 There are generally three cases for needing synthetic data,
 
-_Extending an existing dataset_:
+**Extending an existing dataset:**
 
-- There are not enough samples.
-  - A nice example is a medical imaging dataset such as [DDSM](https://www.mammoimage.org/databases/) (Digital Database for Screening Mammography, ~2500 samples), a small amount of samples makes it harder to build a model for further analysis. It's also rather expensive to build such medical imaging datasets.
+- **There are not enough samples:** A nice example is a medical imaging dataset such as [DDSM](https://www.mammoimage.org/databases/) (Digital Database for Screening Mammography, ~2500 samples), a small amount of samples makes it harder to build a model for further analysis. It's also rather expensive to build such medical imaging datasets.
 
-_Creating a Dataset from Scratch_:
+**Creating a Dataset from Scratch**:
 
-- There aren't any samples at all.
-  - Let's assume that you want to build a weapon detection system on top of CCTV video streams. But there aren't any samples for the specific weapon you want to detect, you can use similar observations in different settings to apply style transfer to make them look like CCTV streams!
+- **There aren't any samples at all:** Let's assume that you want to build a weapon detection system on top of CCTV video streams. But there aren't any samples for the specific weapon you want to detect, you can use similar observations in different settings to apply style transfer to make them look like CCTV streams!
 
-_Preserving Privacy_:
+**Preserving Privacy**:
 
 - Hospitals collect huge amounts of data on patients, surveillance cameras capture raw information about individuals' faces and activities, and all of these introduce a potential infringe on privacy. We can use diffusion models to generate privacy-preserving datasets to develop our solutions, without giving up on anyone's privacy rights.
 
 There are different methods for us to utilize a text-to-image diffusion model to generate customized outputs:
 
-_Just prompt engineering_:
+**Prompt Engineering:**
 
 By simply utilizing the pre-trained diffusion model (such as [Stable Diffusion XL](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_xl)), you can try to construct a nice prompt to generate images. But the quality of the generated images may not be consistent and it might be really difficult to construct such a prompt for your specific use case.
 
-_Training with [Textual Inversion](https://huggingface.co/docs/diffusers/main/en/training/text_inversion)_:
+**Training with [Textual Inversion](https://huggingface.co/docs/diffusers/main/en/training/text_inversion):**
 
 ![textual-inversion](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/textual_inversion.png?download=true)
 
@@ -99,7 +95,7 @@ Textual inversion is a technique that works by interfering with the text embeddi
 
 By providing samples corresponding to the new token, we try to optimize the embeddings to capture the characteristics of the object.
 
-_Training a [LoRA (Low-Rank Adaptation)](https://huggingface.co/docs/diffusers/main/en/training/lora?installation=PyTorch) model_:
+**Training a [LoRA (Low-Rank Adaptation)](https://huggingface.co/docs/diffusers/main/en/training/lora?installation=PyTorch) model:**
 
 LoRA has targeted the problem of fine-tuning LLMs. It represents the weight updates with two smaller update matrices through low-rank decomposition, which has substantially less amount of parameters. Then these matrices can be trained to adapt the new data!
 
@@ -107,7 +103,7 @@ The base model's weights remain frozen in the whole process, so we just train th
 
 This means training LoRA is essentially much faster than full model fine-tuning! As an important note, it's also possible to combine LoRA with other techniques since it can be added on top of the model itself.
 
-_Training with [DreamBooth](https://huggingface.co/docs/diffusers/main/en/training/dreambooth)_:
+**Training with [DreamBooth](https://huggingface.co/docs/diffusers/main/en/training/dreambooth):**
 
 ![dreambooth](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/dreambooth.png?download=true)
 
@@ -129,7 +125,7 @@ It works by training just a part of the diffusion process and the text encoder w
 
 There are many unique cases where diffusion models are used to generate synthetic datasets!
 
-Such as:
+Find them below.
 
 - [Apple Images for Apple Detection in Orchards](https://arxiv.org/abs/2306.09762)
 - [Automatically Labeled Polyp Images for Medical Image Segmentation](https://arxiv.org/abs/2310.16794)
