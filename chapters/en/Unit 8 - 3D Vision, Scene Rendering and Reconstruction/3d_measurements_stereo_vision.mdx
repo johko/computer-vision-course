@@ -18,7 +18,7 @@ Let's assume we are given the following information:
 1. Single image of a scene point P
 2. Pixel coordinates of point P in the image 
 3. Position and orientation of the camera used to capture the image. For simplicity, we can also place a coordinate system xyz at the location of the pinhole, with z axis perpendicular to the image place and x,y axis parallel to the image plane like in figure 1.
-4. Internal parameters of the camera such as focal length and location of principle point. Principle point is the point where the optical axis intersects the image plane. It's location in the image plane is usually denoted as (Ox,Oy).
+4. Internal parameters of the camera such as focal length and location of principal point. The principal point is the point where the optical axis intersects the image plane. It's location in the image plane is usually denoted as (Ox,Oy).
 
 With the information provided above, we can find a 3D line that originates from the pixel coordinates of point P (the projection of point P in the image plane), passes through the pinhole, and extends to infinity. Based on the principles of image formation geometry, we can conclude that point P must exist somewhere along this line.. 
 
@@ -35,7 +35,7 @@ Given 2 lines in 3D, there are are three possibilities for their intersection:
 2. Intersect at infinite number of points 
 3. Do not intersect 
 
-If both images (with original and new camera positions) contain point P, then we can conclude that the 3D lines must intersect at least once, and that intersection point is point P.Furthermore, we can envision an infinite number of points where both lines intersect only if the two lines are collinear, which is achievable if the pinhole at the new camera position aligns with the original 3D line. For all other positions and orientations of the new camera location, the two 3D lines must intersect at precisely one point, which is the location where point P  lie. 
+If both images (with original and new camera positions) contain point P, then we can conclude that the 3D lines must intersect at least once, and that intersection point is point P.Furthermore, we can envision an infinite number of points where both lines intersect only if the two lines are collinear, which is achievable if the pinhole at the new camera position lies somewhere on the original 3D line. For all other positions and orientations of the new camera location, the two 3D lines must intersect at precisely one point, which is the location where point P lies. 
 
 Therefore using 2 images of the same scene point P, known positions and orientations of the camera locations and known internal parameters of the camera, we can precisely find where point P lies in the 3D space.
 
@@ -55,7 +55,7 @@ Figure 2: Image formation using 2 cameras
 7. Second camera (more precisely the pinhole of the second camera) is placed at a distance b called baseline in the positive x direction to the right of the first camera. Therefore, x,y,z coordinates of pinhole of second camera are (b,0,0)
 5. Image plane of the second camera is oriented parallel to the image plane of the first camera.  
 6. u and v directions in the image plane of second/right camera are aligned with the u and v directions in the image plane of the first/left camera
-7. Both left and right cameras are assumed to have the same intrinsic parameters like focal length and location of principle point
+7. Both left and right cameras are assumed to have the same intrinsic parameters like focal length and location of principal point
 
 With the above configuration in place, we have the below equations which map a point in 3D to the image plane in 2D. 
 
@@ -71,10 +71,10 @@ Different symbols used in above equations are defined below:
 * u_right, v_right refer to pixel coordinates of point P in the right image 
 * f_x refers to the focal length (in pixels) in x direction and f_y refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (/ optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.
 * x,y,z are 3D coordinates of the point P (any unit like cm, feet, etc can be used)
-* O_x and O_y refer to pixel coordinates of the principle point 
+* O_x and O_y refer to pixel coordinates of the principal point 
 * b is called the baseline and refers to the distance between the left and right cameras. Same units are used for both b and x,y,z coordinates (any unit like cm, feet, etc can be used)
 
-We have 4 equations above and 3 unknowns - x, y and z coordinates of a 3D point P. Intrinsic camera parameters - focal lengths and principle point are assumed to be known. Equations 1.2 and 2.2 indicate that the v coordinate value in the left and right images is the same. 
+We have 4 equations above and 3 unknowns - x, y and z coordinates of a 3D point P. Intrinsic camera parameters - focal lengths and principal point are assumed to be known. Equations 1.2 and 2.2 indicate that the v coordinate value in the left and right images is the same. 
 
 3. v_left = v_right 
 
@@ -90,7 +90,7 @@ Note that x and y values above are with respect to the left camera since origin 
 ## Setup 
 We'll work through an example, capture some images, perform some calculations to find out if our above assumptions and math works out! For capturing the images we'll use a hardware device known as OAK-D Lite (OAK stands for OpenCV AI Kit). This device has 3 cameras - left and right mono (black and white) cameras and center colour camera. We'll use the left and right mono cameras for our experiement. A regular smartphone camera could also be used but using an OAK-D lite has some advantages listed below.
 
-* Intrinsic camera parameters like focal length and location of principle point are known for an OAK-D Lite since the device comes pre-calibrated and these parameters can be read from the device using it's python API. For a smartphone camera, intrinsic parameters need to be determined and could be found by performing camera calibration or sometimes present in the metadata of the image captured using the smartphone. 
+* Intrinsic camera parameters like focal length and location of principal point are known for an OAK-D Lite since the device comes pre-calibrated and these parameters can be read from the device using it's python API. For a smartphone camera, intrinsic parameters need to be determined and could be found by performing camera calibration or sometimes present in the metadata of the image captured using the smartphone. 
 * One of the main assumptions above is that the position and orientation of the left and right cameras is known. Using a smartphone camera, it may be difficult to precisely determine this information or an additional calibration may be required.  On the other hand, for an OAK-D Lite device position and orientation of the left and right cameras is fixed, known, pre-calibrated and very similar to the geometry of the simplified solution mentioned above. Although some post-processing/image rectification detailed below on the raw images is still required.
 
 ## Raw Left and Right Images
@@ -111,7 +111,7 @@ Let's focus on a single point - top left corner of the laptop. As per equation 3
 * Left and right camera orientations differ slightly from the geometry of the simplified solution detailed above. 
 
 ## Rectified Left and Right Images 
-We can perform image rectification/post-processing to correct for differences in intrinsic parameters and orientations of the left and right cameras. This process involves performing 3x3 matrix transformations. In the OAK-D Lite API, there is a stereo node which performs these calculations and outputs the rectified left and right images. Details and source code can be viewed [here](https://github.com/luxonis/depthai-experiments/blob/master/gen2-stereo-on-host/main.py). In this specific implementation, correction for intrinsic parameters is performed using intrinsic camera matrices and correction for orientation is performed using rotation matrices(part of calibration parameters) for the left and right cameras. Rectified left image is transformed as if the left camera had the same intrinsic parameters as the right camera. Therefore, in all our following calculations we'll use the intrinsic parameters for the right camera i.e focal length of 452.9 and principle point at (298.85, 245.52). In the recitifed and stacked images below, notice that the red line at constant v touches the top-left corner of the laptop in both the left and right images.
+We can perform image rectification/post-processing to correct for differences in intrinsic parameters and orientations of the left and right cameras. This process involves performing 3x3 matrix transformations. In the OAK-D Lite API, there is a stereo node which performs these calculations and outputs the rectified left and right images. Details and source code can be viewed [here](https://github.com/luxonis/depthai-experiments/blob/master/gen2-stereo-on-host/main.py). In this specific implementation, correction for intrinsic parameters is performed using intrinsic camera matrices and correction for orientation is performed using rotation matrices(part of calibration parameters) for the left and right cameras. Rectified left image is transformed as if the left camera had the same intrinsic parameters as the right camera. Therefore, in all our following calculations we'll use the intrinsic parameters for the right camera i.e focal length of 452.9 and principal point at (298.85, 245.52). In the recitifed and stacked images below, notice that the red line at constant v touches the top-left corner of the laptop in both the left and right images.
 
 Rectified Left Image
 ![Rectified Left Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_left_frame.jpg?download=true)
