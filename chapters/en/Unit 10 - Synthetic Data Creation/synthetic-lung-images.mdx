@@ -77,17 +77,17 @@ During training, the generator aims to produce synthetic lung images that are in
 
 Let's visualize the progress:
 
-![trainig-gif](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/dcgan-lung_images/dcgan_training_animation.gif)
+![trainig-gif](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/dcgan_training_animation.gif)
 
 ## How did we do?
 
-Here are 64 "verified" synthetic images, defined as receiving a "real" label from the discriminator with a 70% probability.
+Here are 64 "good" synthetic images, defined as receiving a "real" label from the discriminator with a 70% probability.
 
-![lung-images](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/dcgan-lung_images/verified.png)
+![lung-images](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/good_images.png)
 
-We can see that most of the synthetic lung images look good, but a couple are hazy. There are some important things to mention. First, researchers generating synthetic medical images typically employ a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with the real data to train the model. Second, even though the generated images appear to look OK (at least to an amateur), they do appear to be very similar. This is another known issue with GANs - they suffer from "mode collapse." Essentially, this happens when the generator starts producing the same type of output. Think of it as someone who has gotten a lot of praise for making chocolate chip cookies, and therefore, gets _really, really_ good at making those cookies but can't make any other type of cookies.
+We can see that some of the synthetic lung images look good, but others are hazy. There are some important things to mention. First, researchers generating synthetic medical images typically employ a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with the real data to train the model. Second, the generated images that appear to look OK (at least to an amateur) look very similar. This is another known issue with GANs - they can suffer from "mode collapse." Essentially, this happens when the generator starts producing the same type of output. Think of it as someone who has gotten a lot of praise for making chocolate chip cookies, and therefore, gets _really, really_ good at making those cookies but can't make any other type of cookies.
 
-[[Link to Notebook]]
+[[./Synthetic_lung_images_hf_course.ipynb]]
 
 Given the known challenges associated with employing GANs to train high-quality medical images, some researchers have explored the use of diffusion models to generate lung images. Medfusion, a conditional latent DDPM for medical images, was proposed in [Diffusion Probabilistic Models Beat GAN On Medical 2D Images](https://arxiv.org/pdf/2212.07501.pdf). [Synthetically Enhanced: Unveiling Synthetic Data's Potential In Medical Imaging Research](https://arxiv.org/pdf/2311.09402.pdf), Khosravi et. al find that using a mix of real and synthetically generated lung images using a diffusion process improved model performance.
 
@@ -100,6 +100,7 @@ Given the known challenges associated with employing GANs to train high-quality 
 - [Diffusion Probabilistic Models beat GANs on Medical Images](https://arxiv.org/abs/2212.07501)
 - [DR-DCGAN: A Deep Convolutional Generative Adversarial Network (DC-GAN) for Diabetic Retinopathy Image Synthesis](<https://www.webology.org/data-cms/articles/20220204053948pmwebology%2019%20(2)%20-%2077%20.pdf>)
 - [Deepfake Image Generation for Improved Brain Tumor Segmentation](https://aps.arxiv.org/abs/2307.14273)
+- [GAN Lab](https://poloclub.github.io/ganlab/)
 - [GANs for Medical Image Synthesis: An Empirical Study](https://arxiv.org/abs/2105.05318)
 - [Medfusion Github repo](https://github.com/mueller-franzes/medfusion)
 - [Medical image editing in the latent space of Generative Adversarial Networks](https://www.sciencedirect.com/science/article/pii/S2666521221000168?ref=pdf_download&fr=RR-2&rr=833e48fa5e777142)
