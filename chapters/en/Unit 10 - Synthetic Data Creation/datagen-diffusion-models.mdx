@@ -1,9 +1,7 @@
 # Synthetic Data Generation with Diffusion Models
 
 Imagine trying to train a model for tumor segmentation. As it's hard to gather data for medical imaging, it'd be really difficult for the model to converge.
-Ideally, we expect to have at least enough data to build a simple baseline, but what if you have just a few samples?
-
-Synthetic data generation methods try to solve this dilemma, and now we have many more options with the boom of generative models!
+Ideally, we expect to have at least enough data to build a simple baseline, but what if you have just a few samples? Synthetic data generation methods try to solve this dilemma, and now we have many more options with the boom of generative models!
 
 As you've seen in the previous sections, it is possible to use generative models such as DCGAN to generate synthetic images. In this section, we will focus on diffusion models using [diffusers](https://huggingface.co/docs/diffusers/index)!
 
@@ -25,7 +23,7 @@ Then the model learns to denoise the given data distribution.
 
 ![denoising](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/denoising.jpg?download=true)
 
-We won't dive deep into the theory, but understanding how a diffusion model works will come really handy when we need to pick a technique.
+We won't dive deep into the theory, but understanding how a diffusion model works will come really handy when we need to pick a technique to generate synthetic data for our use case.
 
 ## Text-To-Image Diffusion Model: Stable Diffusion
 
@@ -43,15 +41,9 @@ So while the general workflow looks like this:
 Originally we used a text encoder to condition the model on our prompts:
 ![original stable diffusion workflow](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/stable-diffusion-workflow.png?download=true)
 
-This short overview is just the tip of the iceberg! If you wish to dive deep into the theory behind stable diffusion (or diffusion models), you can check these out:
+This short overview is just the tip of the iceberg! If you wish to dive deep into the theory behind stable diffusion (or diffusion models), you can out the [further reading section](#further-reading-about-stable-diffusion)!
 
-- [The Illustrated Stable Diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
-- [Diffusion Explainer: Stable Diffusion Explained with Visualization](https://poloclub.github.io/diffusion-explainer/)
-- [Introduction to Diffusion Models](https://www.assemblyai.com/blog/diffusion-models-for-machine-learning-introduction/)
-- [FastAI, Practical Deep Learning for Coders - Lesson 9: Stable Diffusion](https://course.fast.ai/Lessons/lesson9.html)
-- [Original paper](https://arxiv.org/abs/2112.10752)
-
-`diffusers` provide us ready to use pipelines for different tasks, such as:
+[diffusers](https://huggingface.co/docs/diffusers/index) provide us ready to use pipelines for different tasks, such as:
 
 | Task | Description | Pipeline |
 |------|-------------|----------|
@@ -81,11 +73,9 @@ There are generally three cases for needing synthetic data,
 
 - Hospitals collect huge amounts of data on patients, surveillance cameras capture raw information about individuals' faces and activities, and all of these introduce a potential infringe on privacy. We can use diffusion models to generate privacy-preserving datasets to develop our solutions, without giving up on anyone's privacy rights.
 
-There are different methods for us to utilize a text-to-image diffusion model to generate customized outputs:
+There are different methods for us to utilize a text-to-image diffusion model to generate customized outputs. For example, by simply utilizing the pre-trained diffusion model (such as [Stable Diffusion XL](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_xl)), you can try to construct a nice prompt to generate images. But the quality of the generated images may not be consistent and it might be really difficult to construct such a prompt for your specific use case.
 
-**Prompt Engineering:**
-
-By simply utilizing the pre-trained diffusion model (such as [Stable Diffusion XL](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_xl)), you can try to construct a nice prompt to generate images. But the quality of the generated images may not be consistent and it might be really difficult to construct such a prompt for your specific use case.
+You will usually be required to change some parts of the model to generate the personalized output you want, here are a few techniques that you can use for that:
 
 **Training with [Textual Inversion](https://huggingface.co/docs/diffusers/main/en/training/text_inversion):**
 
@@ -107,13 +97,13 @@ This means training LoRA is essentially much faster than full model fine-tuning!
 
 ![dreambooth](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/dreambooth.png?download=true)
 
-DreamBooth is changing the diffusion model completely. Given a few images of a subject, it lets you fine-tune a pre-trained text-to-image model. The main idea is to associate a unique identifier with that specific subject.
+DreamBooth is a technique to fine-tune the model to personalize the outputs. Given a few images of a subject, it lets you fine-tune a pre-trained text-to-image model. The main idea is to associate a unique identifier with that specific subject.
 
 For training, we use the tokens in the vocabulary and build a dataset using preferably a rare-token identifier. Because if you choose a rather common identifier, the model would also have to learn to disentangle from their original meaning.
 
-In the original paper, authors find the rare tokens in the vocabulary and then choose identifiers from those. This reduces the risk of an identifier having a strong prior.
+In the original paper, authors find the rare tokens in the vocabulary and then choose identifiers from those. This reduces the risk of an identifier having a strong prior. It is also stated that the best results were achieved by fine-tuning all the layers of the model.
 
-_Training with [Custom Diffusion](https://huggingface.co/docs/diffusers/main/en/training/custom_diffusion)_:
+**Training with [Custom Diffusion](https://huggingface.co/docs/diffusers/main/en/training/custom_diffusion):**
 
 ![custom diffusion](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-diffusion-models/custom_diffusion.png?download=true)
 
@@ -133,3 +123,11 @@ Find them below.
 - [Generating Transmission Line Images with DDPM](https://ieeexplore.ieee.org/document/10281144)
 - [Synthetic Aerial Dataset for Unmanned Aerial Vehicle Detection](https://ieeexplore.ieee.org/document/10195076)
 - [Differentially Private Diffusion Models for Privacy-preserving Synthetic Image Generation](https://arxiv.org/pdf/2302.13861.pdf)
+
+## Further reading about Stable Diffusion
+
+- [The Illustrated Stable Diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
+- [Diffusion Explainer: Stable Diffusion Explained with Visualization](https://poloclub.github.io/diffusion-explainer/)
+- [Introduction to Diffusion Models](https://www.assemblyai.com/blog/diffusion-models-for-machine-learning-introduction/)
+- [FastAI, Practical Deep Learning for Coders - Lesson 9: Stable Diffusion](https://course.fast.ai/Lessons/lesson9.html)
+- [Original paper](https://arxiv.org/abs/2112.10752)
