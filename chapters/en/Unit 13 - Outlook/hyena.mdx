@@ -16,7 +16,7 @@ The attention mechanism is characterized by two fundamental properties:
 2) It is data-dependent, meaning the operation of the attention equation varies based on the input data itself, specifically the input projections  $q$, $k$ and $v$.
 
 In an attempt to replicate these characteristics, the Hyena operator incorporates two key elements:
-1) It employs long convolution to provide a sense of global context, akin to the first property of the attention mechanism.
+1. It employs long convolution to provide a sense of global context, akin to the first property of the attention mechanism.
 2) For data dependency, Hyena uses element-wise gating. This is essentially an element-wise multiplication of input projections, mirroring the data-dependent nature of traditional attention.
 
 In the realm of computational efficiency, the Hyena operator attains an evaluation time complexity of $O(L \times \log_2 L)$, indicating a noteworthy enhancement in processing speed.
