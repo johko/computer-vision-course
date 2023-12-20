@@ -107,7 +107,7 @@ Raw Stacked Left and Right Images
 
 Let's focus on a single point - top left corner of the laptop. As per equation 3 above v_left=v_right for the same point in the left and right images. However, notice that the red line which is at a constant v value touches the top-left corner of the laptop in the left image but misses this point by a few pixels in the right image. There are two main reasons for this discrepancy:
 
-* Intrinsic parameters for the left and right cameras are different. Principle point for the left camera is at (319.13, 233.86) versus (298.85, 245.52) for the right camera. Focal length for the left camera is 450.9 versus 452.9 for the right camera. fx equals fy for both the left and right cameras. These intrinsic parameters were read from the device using it's python API and could be different for different OAK-D Lite devices.
+* The intrinsic parameters for the left and right cameras are different. The principal point for the left camera is at (319.13, 233.86), whereas it is (298.85, 245.52) for the right camera. The focal length for the left camera is 450.9, whereas it is 452.9 for the right camera. The values of fx are equal to fy for both the left and right cameras. These intrinsic parameters were read from the device using it's python API and could be different for different OAK-D Lite devices.
 * Left and right camera orientations differ slightly from the geometry of the simplified solution detailed above. 
 
 ## Rectified Left and Right Images 
