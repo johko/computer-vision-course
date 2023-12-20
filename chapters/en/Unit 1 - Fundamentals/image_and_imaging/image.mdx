@@ -23,7 +23,6 @@ If you only look at the F(x, y) for one color, we call it the gray level or the 
 
 On occasion, it is also possible to hear that people are working on 4D or 5D images/ this terminology is mostly used by people in the biomedical field and microscopists. Again fear not! This naming came to be from people that image volumetric data in time, different channels, or different imaging modalities (i.e. photo and an x-ray). The idea is that each new source of information becomes an extra dimension. 
 
-
 But how are they represented on the computer? Most commonly by matrices. It is easy to picture an image as a 2-D numerical array. This is an advantage because arrays are easy to deal with in computers. Apart from different performances in memory and reading, most different image formats end up in your script as a numpy array. Seeing matrices as images helps us understand some of the processes in convolution neural networks and image preprocessing, which we will see in later chapters. For instance, aligning an image might be decomposed into a mix of rotation and shearing operations, much like the typical linear algebra problem. 
 
 Alternatively, images might be represented as graphs where each edge is a coordinate, and the edges are the neighboring coordinates. Take a moment to let that sink in, this means that the algorithms and models used for graphs can also be used for images. The inverse can also be true, you might be able to transform a graph into an image and analyze it as if it were a picture.
