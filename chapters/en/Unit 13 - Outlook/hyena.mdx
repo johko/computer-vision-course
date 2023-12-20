@@ -5,7 +5,7 @@
 Hyena is a new type of operator that serves as a substitute for the attention mechanism. Developed by Hazy Research, it features a subquadratic computational efficiency, constructed by interleaving implicitly parametrized long convolutions and data-controlled gating.
 
 ![transformer2hyena.png](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/outlook_hyena_images/transformer2hyena.png)
-It consists in recursively computing convolutions and multiplicative element-wise gating operations. This approach builds on top of the [Hungry Hungry Hippo (H3)](https://arxiv.org/abs/2212.14052) mechanism, also developed by the same researchers. The H3 mechanism is characterized by its data-controlled, parametric decomposition, acting as a surrogate attention mechanism.
+It consists of recursively computing convolutions and multiplicative element-wise gating operations. This approach builds on top of the [Hungry Hungry Hippo (H3)](https://arxiv.org/abs/2212.14052) mechanism, also developed by the same researchers. The H3 mechanism is characterized by its data-controlled, parametric decomposition, acting as a surrogate attention mechanism.
 
 Another way of understanding Hyena is to consider it as a generalization of the H3 mechanism for an arbitrary number of projections, where the Hyena layer extends recursively H3 with a different choice of parametrization for the long convolution.
 
