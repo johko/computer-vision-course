@@ -76,7 +76,7 @@ We can categorize [group](https://lilianweng.github.io/posts/2022-06-09-vlm/#no-
 - Translating images into embedding features that can be jointly trained with token embeddings.
     - In this method we fuse visual information into language models by treating images as normal text tokens and train the model 
       on a sequence of joint representations of both text and images. Precisely, images are divided into multiple smaller patches and each patch 
-      is treated as one “token” in the input sequence. Eg. [VisualBERT](https://arxiv.org/abs/1908.03557), [SimVLM](https://arxiv.org/abs/2108.10904).
+is treated as one "token" in the input sequence. e.g. [VisualBERT](https://arxiv.org/abs/1908.03557), [SimVLM](https://arxiv.org/abs/2108.10904).
 
 - Learning good image embeddings that can work as a prefix for a frozen, pre-trained language model.
     - In this method we don't change the language model parameters when adapting to handle visual signal. Instead we learn such an embedding 
