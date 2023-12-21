@@ -109,7 +109,7 @@ dataset was used in training Stable-Diffusion Models.
 ## Downstream Tasks and Evaluation
 VLMs are getting good at many downstream tasks, including image classification, object detection, semantic segmentation, image-text retrieval, 
 and action recognition while surpassing models trained traditionally. Generally the setup used for evaluation VLMs is zero-shot prediction and linear probing.
-Zero-shot prediction is mmost commmon way to evaluate the VLM's where we directly applies pre-trained VLMs to downstream tasks without any task-specific fine-tuning.
+Zero-shot prediction is the most common way to evaluate the VLMs, where we directly apply pre-trained VLMs to downstream tasks without any task-specific fine-tuning.
 In Linear Probing we freeze the pre-trained VLM and train a linear classifier to classify the VLM-encoded embeddings to measure it's representation.
 How do we evaluate these models? we can check how do they perform on these datasets like given an image and a question, the task is to correctly answer the question!
 We can also check how these models reason aswer questions about the visual data for this the most common dataset used is [CLEVR](https://cs.stanford.edu/people/jcjohns/clevr/).
