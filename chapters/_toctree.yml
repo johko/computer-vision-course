@@ -5,7 +5,7 @@
 
 - title: Unit 4. Multimodal Models
   sections:
-  - local: chapters/en/Unit 4 - Mulitmodal Models/tranfer_learning
+  - local: chapters/en/Unit 4 - Multimodal Models/transfer_learning
     title: Transfer learning
  
 - title: Unit 10. Synthetic Data Creation
