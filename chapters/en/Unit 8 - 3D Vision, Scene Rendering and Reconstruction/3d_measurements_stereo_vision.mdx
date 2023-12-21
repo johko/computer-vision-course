@@ -2,7 +2,7 @@
 This section explains how stereo vision works and how it can be used to find the 3-dimensional structure of surrounding objects. Stereo vision involves capturing two or more images of the same scene from varying positions and viewpoints. These images can be obtained using multiple cameras or by repositioning the same camera.
 
 # Problem statement 
-Let's understand the problem statement of finding the 3D structure of objects by understanding the geometry of image formation. As shown in figure 1, we have a point P in 3D with x,y,z coordinates. Point P gets projected to the camera's image plane via the pinhole. This can also be viewed as projecting a 3D point to a 2D image plane. 
+Let's understand the problem statement of finding the 3D structure of objects by understanding the geometry of image formation. As shown in Figure 1, we have a point P in 3D with x, y, z coordinates. Point P gets projected to the camera's image plane via the pinhole. This can also be viewed as projecting a 3D point to a 2D image plane. 
 
 Now, let's say we are given this 2D image and location of the pixel coordinates of point P in this image. We would like to find the 3D coordinates of point P. Is this possible ? Is point P unique or are there other 3D points which also map to the same pixel coordinates as point P ? Answer is all 3D points which lie on the line joining point P and the pinhole will map to the same pixel coordinates in the 2D image plane. 
 
