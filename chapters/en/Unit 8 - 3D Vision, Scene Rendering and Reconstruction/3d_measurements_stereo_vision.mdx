@@ -122,7 +122,7 @@ Rectified Right Image
 Rectified and Stacked Left and Right Images 
 ![Rectified and Stacked Left and Right Images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_stacked_frames.jpg?download=true)
 
-Let's also overlap the rectified left and right images to see the difference in the images. We can see that the v values for different points remains mostly constant in the left and right images. However, the u values change and this difference in the u values helps us find the depth information for different points in the scene as shown in equation 6 above. This difference in 'u' values (u_left - u_right) is called disparity, and we can notice that the disparity for points near the camera is greater compared to points further away. Depth z and disparity (u_left-u_right) are inversely proportional as shown in equation 6.
+Let's also overlap the rectified left and right images to see the difference. We can see that the v values for different points remain mostly constant in the left and right images. However, the u values change, and this difference in the u values helps us find the depth information for different points in the scene, as shown in Equation 6 above. This difference in 'u' values (u_left - u_right) is called disparity, and we can notice that the disparity for points near the camera is greater compared to points further away. Depth z and disparity (u_left-u_right) are inversely proportional, as shown in equation 6.
 
 Rectified and Overlapped Left and Right Images 
 ![Rectified and Overlapped Left and Right Images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_overlapping_frames.jpg?download=true)
