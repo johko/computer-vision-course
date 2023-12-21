@@ -113,7 +113,7 @@ Zero-shot prediction is the most common way to evaluate the VLMs, where we direc
 In linear probing, we freeze the pre-trained VLM and train a linear classifier to classify the VLM-encoded embeddings to measure it's representation.
 How do we evaluate these models? We can check how they perform on these datasets given an image and a question, the task is to correctly answer the question!
 We can also check how these models reason answer questions about the visual data. For this, the most common dataset used is [CLEVR](https://cs.stanford.edu/people/jcjohns/clevr/).
-But lot of these dataset can be reasy because models can learn to generalize well. So, some dataset like Hateful Memes [Hateful Memes](https://arxiv.org/abs/2005.04790) solves
+Standard datasets like MSCOCO might be straightforward for a model to learn due to their distribution, which may not adequately demonstrate a model's capacity to generalize across more challenging or diverse datasets. In response, datasets like [Hateful Memes](https://arxiv.org/abs/2005.04790) are created to address
 this problem by understanding the models capability to an extreme by adding difficult examples ("benign confounders") to the dataset to make it hard which showed that multimodal 
 pre-training dosen't work and models had huge gap with human performance. 
 
