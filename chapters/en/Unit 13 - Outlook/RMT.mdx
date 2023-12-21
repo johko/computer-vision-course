@@ -3,16 +3,16 @@
 ### What is Retention Networks
 RetNet, or Retentive Network, is a foundational architecture proposed for large language models in the paper <paper: RetNet>. This architecture is designed to address key challenges in the realm of large-scale language modeling: Training Parallelism, Low-Cost Inference, and Good performance.
 
-<img: LLM Challenges>
+![LLM Challenges.png](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/LLM%20Challenges.png)
 RetNet is able to tackle these challenges by introducing the Multi-Scale Retention (MSR) mechanism, which is an alternative to the multi-head attention mechanism commonly used in Transformer models. 
 MSR has a dual form of recurrence and parallelism, so it is possible to train the models in a parallel way while recurrently conducting inference.
 
 The Multi-Scale Retention mechanism operates under three computation paradigms:
 1) **Parallel Representation**: This aspect of RetNet is designed to fully utilize GPU resources, enabling efficient parallel training of the model.
-<img: Parallel Representation>
+![Parallel Representation.png](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Parallel%20Representation.png)
 
 2) **Recurrent Representation**: This representation facilitates efficient inference with O(1) complexity in terms of memory and computational requirements. It significantly reduces deployment costs and latency, and simplifies implementation by eliminating the need for key-value cache strategies often used in traditional models.
-<img: Recurrent Representation>
+![Recurrent Representation.png](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Recurrent%20Representation.png)
 
 3) **Chunkwise Recurrent Representation**: This third paradigm addresses the challenge of long-sequence modeling. It achieves this by encoding each local block in parallel for computational speed while simultaneously encoding global blocks in a recurrent manner to optimize GPU memory usage.
 
@@ -24,15 +24,15 @@ Paper "Retentive Networks Meet Vision Transformers" <paper: RMT> proposes a new 
 This includes adapting the RetNet’s temporal decay to spatial domains and using a Manhattan distance-based spatial decay matrix, along with an attention decomposition form, to improve efficiency and scalability in vision tasks.
 
 * Manhattan Self-Attention (MaSA)
-<img: Attention Comparison>
+![Attention Comparison.png](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Attention%20Comparison.png)
 MaSA incorporates Self-Attention mechanism with a two-dimensional bidirectional spatial decay matrix based on the Manhattan distance among the tokens. This matrix decreases attention scores for tokens further away from a target token, allowing it to perceive global information while varying attention based on distance.
 
 * Decomposed Manhattan Self-Attention (MaSAD)
-<img: MaSAD>
+![MaSAD.png](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/MaSAD.png)
 This mechanism decomposes Self-Attention in images along horizontal and vertical axes of the image, maintaining the spatial decay matrix without losing prior information. This decomposition allows the Manhattan Self-Attention (MaSA) to model global information efficiently with linear complexity, while preserving the original MaSA's receptive field shape.
 
 However, unlike the original RetNet that performs training with parallel representation and inference with recurrent representation, RMT does both processes with MaSA mechanism. The authors have done comparisons between MaSA and other RetNet's representations, and they show that MaSA has the best throughput with highest accuracy.
-<img: MaSA vs Retention>
+![MaSA vs Retention.png](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/MaSA%20vs%20Retention.png)
 
 ## Further Reading 
 
