@@ -11,7 +11,6 @@ What will you learn from this chapter:
 Humans explore the world through diverse senses: sight, sound, touch, and scent. A complete grasp of surroundings emerges by harmonizing insights from these varied modalities.
 We think of modality which was initially introduced in mathematics as distinct peaks, in a poetic way as: "With each modality, a unique part to play,
 Together they form our understanding array. A symphony of senses, a harmonious blend, In perception's dance, our world transcends." 
-
 In pursuit of making a AI capable to understand the world, the field of machine learning seeks to cultivate models capable of processing and 
 integrating data across multiple modalities. However, several challenges, including representation and alignment, must be addressed.
 Representation explores techniques to effectively summarize multimodal data, capturing the intricate connections among individual modality elements. 
@@ -31,7 +30,7 @@ For a deeper understanding of multimodality, please refer to the preceding secti
 ## Introduction 
 Processing images to generate text, such as image captioning and visual question-answering, 
 has been studied for many years which includes autonomous driving, remote sensing, etc. We also have seen 
-shift from tradional ML/DL to new learning paradigm called Pre-training, Fine-tuning and prediction which has 
+shift from tradional ML/DL to new learning paradigm called pre-training, fine-tuning and prediction which has 
 shown great benefit due since in tradional way we may need to collect huge amount of data, etc. 
 
 Firstly proposed in [ULMFIT Paper](https://aclanthology.org/P18-1031.pdf) this paradigm involves:
@@ -91,7 +90,7 @@ is treated as one "token" in the input sequence. e.g. [VisualBERT](https://arxiv
 
 ## Common VLM Datasets
 These are some of the common dataset used in VLM's present in [HF dataset](https://huggingface.co/docs/datasets/index).
-**[MMCOCO](https://huggingface.co/datasets/HuggingFaceM4/COCO)** contains 328K images and each paired with 5 independent captions.
+**[MSCOCO](https://huggingface.co/datasets/HuggingFaceM4/COCO)** contains 328K images and each paired with 5 independent captions.
 
 **[NoCaps](https://huggingface.co/datasets/HuggingFaceM4/NoCaps)** designed to measure generalization to unseen classes and concepts, where in-domain contains images portraying 
 only COCO classes, near-domain contains both COCO and novel classes, and out-of-domain consists of only novel classes.
@@ -120,14 +119,13 @@ pre-training dosen't work and models had huge gap with human performance.
 ![Winogrand Idea](https://huggingface.co/datasets/hf-vision/course-assets/resolve/99ac107ade7fb89aae792f3655341528e64e1fbb/winogrand_paper.png)
 
 One more such dataset called **Winoground** was designed to figure out, okay, so how godd is CLIP actually? **Figure Above**
-It is designed to let us think as if the results of models look really amazing and they are way better than previous models but does it understand compositional relationships
-in the same way humans would understand it rather than just generalizing to the data. For example, earlier version of Stable Diffusion was
-not able to clearly count fingers. So, there's still lot of amazing work to be done and get the VLM's to the next stage! 
+This dataset challenges us to consider if models, despite their impressive results, truly grasp compositional relationships like humans, or if they're just generalizing data. 
+For example, earlier version of Stable Diffusion was not able to clearly count fingers. So, there's still lot of amazing work to be done to get the VLM's to the next stage! 
 
 
 ## What's Next!
 The community is moving fast and we can see already lot of amazing work like [FLAVA](https://arxiv.org/abs/2112.04482) which tries to have 
-a single "foundational" model for all the target modalities at once. etc. So, in future there will be modality-agnostic foundation models
+a single "foundational" model for all the target modalities at once, etc. So, in future there will be modality-agnostic foundation models
 that can read and generate many modalities! Interesting future ahead. To capture more on these recent advances please follow the HF's [Transformers Library](https://huggingface.co/docs/transformers/index), 
 and [Diffusers Library](https://huggingface.co/docs/diffusers/index) where we try to add these recent advances super fast!
 
