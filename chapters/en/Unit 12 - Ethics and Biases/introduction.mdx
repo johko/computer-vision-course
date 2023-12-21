@@ -31,7 +31,7 @@ ImageNet is a large-scale dataset that was created for object recognition benchm
 
 ### Motivation Behind ImageNet Roulette 🃏
 
-Now let's talk about the app we discussed earlier. This app existed a few years back on internet as a web application. This was an intentional experiment termed as ImageNet Roulette, and is still one of the most popular cases of how AI models can go wrong if the training data is not prepared carefully with guidelines. This project was developed by artist Trevor Paglen and researcher Kate Crawford. They trained their model based on the 2,833 subcategories of the Person category found in the dataset.
+Now, let's talk about the app we discussed earlier. This app existed on the internet a few years ago as a web application. This was an intentional experiment termed ImageNet Roulette and is still one of the most popular cases of how AI models can go wrong if the training data is not prepared carefully with guidelines. This project was developed by artist Trevor Paglen and researcher Kate Crawford. They trained their model based on the 2,833 subcategories of the Person category found in the dataset.
 The model was trained using Caffe on the images and labels in the "person" category. The app prompted the user for an image, and a face detector detects faces in the image. The detected face was then sent to the Caffe model for classification and finally the app returned an image with bounding box around the detected face and the label the Caffe model predicted.
 
 ![ImageNet Roulette]()
