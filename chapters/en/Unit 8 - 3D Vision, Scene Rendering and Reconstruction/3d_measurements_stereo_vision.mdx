@@ -35,7 +35,7 @@ Given 2 lines in 3D, there are are three possibilities for their intersection:
 2. Intersect at infinite number of points 
 3. Do not intersect 
 
-If both images (with original and new camera positions) contain point P, then we can conclude that the 3D lines must intersect at least once, and that intersection point is point P.Furthermore, we can envision an infinite number of points where both lines intersect only if the two lines are collinear, which is achievable if the pinhole at the new camera position lies somewhere on the original 3D line. For all other positions and orientations of the new camera location, the two 3D lines must intersect at precisely one point, which is the location where point P lies. 
+If both images (with original and new camera positions) contain point P, we can conclude that the 3D lines must intersect at least once and that the intersection point is point P. Furthermore, we can envision infinite points where both lines intersect only if the two lines are collinear. This is achievable if the pinhole at the new camera position lies somewhere on the original 3D line. For all other positions and orientations of the new camera location, the two 3D lines must intersect precisely at one point, where point P lies. 
 
 Therefore using 2 images of the same scene point P, known positions and orientations of the camera locations and known internal parameters of the camera, we can precisely find where point P lies in the 3D space.
 
