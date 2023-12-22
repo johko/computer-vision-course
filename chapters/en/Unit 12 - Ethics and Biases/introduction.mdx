@@ -5,14 +5,14 @@ In this chapter, we will:
 - Cover the popular ImageNet Roulette case study in context to ethics and bias in computer vision with examples.
 - Explore what implications it can have on people and certain groups.
 - Take a look into the consequences of the experiment.
-- Efforts of ImageNet to tackle and mitigate these problems.
+- Efforts by ImageNet team to tackle and mitigate these problems.
 - Conclude the chapter with some questions on the case study and lay foundation for next chapters.
 
 So let us dive in 🤗
 
 ## ImageNet Roulette: A Case Study on Biases in Classification 
 
-Imagine you wake up on a Sunday morning and play around with your phone. You come across this app which tries to return sarcastic and funny labels if you upload different images or maybe take a selfie. You don't mind some fun, so you try the app out by uploading a selfie and to your shock, it returns the label 'rape suspect'. You also see social media posts on the same app of different people with provoking labels, increasing the chances of racial profiling like first-offendor, gook, negroid, slant-eye, mulatto etc. This app returns very offensive labels oftenly and might harm self-interests and target a special group of people. A wide range of such labels which can offend people based on their religion, ethnicity, gender or age were present in the app, and you are just shocked and also kind of confused on what's going on with this? 
+Imagine you wake up on a Sunday morning and play around with your phone. You come across this app which tries to return sarcastic and funny labels if you upload different images or maybe take a selfie. You don't mind some fun, so you try the app out by uploading a selfie and to your shock, it returns an alarming label. It mentions you as a crime suspect (this crime can also be highly dangerous and heinous). You also see social media posts on the same app of different people with provoking labels, increasing the chances of racial and gender profiling. Some of these labels would mean: a person who is a crime offendor, a person having specific facial features that are linked with one's ethnicity, or a person's ancestory. This app returns very offensive labels oftenly and might harm self-interests and target a special group of people. A wide range of such labels which can offend people based on their religion, ethnicity, gender or age were present in the app, and you are just shocked and also kind of confused on what's going on with this? 
 Some examples:
 
 ![ImageNet Roulette Tweet]()
@@ -37,7 +37,7 @@ The model was trained using Caffe on the images and labels in the "person" categ
 ![ImageNet Roulette]()
 
 The main motivation behind ImageNet Roulette was to show inherent biases in classifying people. It was trained on only the "person" category from the ImageNet dataset (as discussed earlier).
-So what went wrong? The inference on different images reflected harmful and provocative on many levels. The biggest cause for bias in this system was largely due to the already available ImageNet categories. The classes reflect how they were kind of absurd, offensive, and provocative while annotating the images, some examples being: pill pusher, ball buster, snob, slut, anti-semite, hermaphrodite, loser, and many more. A wide range of labels that categorize people based on gender, race, profession, etc., was inherent in ImageNet. And where did it go wrong? These labels are all drawn from the structure of WordNet. This is exactly where the biases crept into this model (due to overlooking the data preparation process, irrelevant images were downloaded in bulk). We will explore the reasons mentioned by the ImageNet team `later` in the chapter.
+So what went wrong? The inference on different images reflected harmful and provocative on many levels. The biggest cause for bias in this system was largely due to the already available ImageNet categories. The classes reflect how they were kind of absurd, offensive, and provocative while annotating the images. Some of the labels (after rephrasing them from their initial labels, to avoid triggering) would mean: a person who is an addict, a person with questionable character, a person who is against a specific group of people, a person who is unsuccessful and a loser, and many more. A wide range of labels that categorize people based on gender, race, profession, etc., was inherent in ImageNet. And where did it go wrong? These labels are all drawn from the structure of WordNet. This is exactly where the biases crept into this model (due to overlooking the data preparation process, irrelevant images were downloaded in bulk). We will explore the reasons mentioned by the ImageNet team `later` in the chapter.
 Would you like such models to be deployed without any checks? If deployed, are you fine with letting people around you refer to you as an unsuccessful person or rape suspect and make a viral post? This is what went wrong and unlooked for while preparing the dataset. 
 
 ### Implications of ImageNet Roulette
