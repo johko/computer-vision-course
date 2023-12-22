@@ -86,14 +86,14 @@ Using equations 1.1, 1.2 and 2.1 we can derive the x,y,z coordinates of point P.
 
 Note that the x and y values above concern the left camera since the origin of the coordinate system is aligned with the left camera. The above equations show that we can find 3D coordinates of a point P using its 2 images captured from 2 different camera locations. z value is also referred to as the depth value. Using this technique, we can find the depth values for different pixels within an image and their real-world x and y coordinates. We can also find real-world distances between different points in an image. 
 
-# Demo 
-## Setup 
+## Demo 
+### Setup 
 We'll work through an example, capture some images, and perform some calculations to find out if our above assumptions and math work out! For capturing the images we'll use a hardware known as OAK-D Lite (OAK stands for OpenCV AI Kit). This device has 3 cameras - left and right mono (black and white) and a center color cameras. We'll use the left and right mono cameras for our experiment. A regular smartphone camera could also be used, but OAK-D lite has some advantages listed below.
 
 * Intrinsic camera parameters like focal length and location of principal point are known for an OAK-D Lite since the device comes pre-calibrated, and these parameters can be read from the device using its Python API. For a smartphone camera, intrinsic parameters need to be determined and could be found by performing camera calibration or sometimes present in the metadata of the image captured using the smartphone. 
 * One of the main assumptions above is that the position and orientation of the left and right cameras are known. Using a smartphone camera, it may be difficult to determine this information or additional calibration may be required.  On the other hand, for an OAK-D Lite device, the position and orientation of the left and right cameras are fixed, known, pre-calibrated, and very similar to the geometry of the simplified solution mentioned above. Although some post-processing/image rectification detailed below on the raw images is still required.
 
-## Raw Left and Right Images
+### Raw Left and Right Images
 The left and right cameras in OAK-D Lite are oriented similarly to the geometry of the simplified solution detailed above. The baseline distance between the left and right cameras is 7.5cm. Left and right images of a scene captured using this device are shown below. The figure also shows these images stacked horizontally with a red line drawn at a constant height (i.e. at a constant v value ). We'll refer to the horizontal x-axis as u and the vertical y-axis as v. 
 
 Raw Left Image
@@ -110,7 +110,7 @@ Let's focus on a single point - the top left corner of the laptop. As per equati
 * The intrinsic parameters for the left and right cameras are different. The principal point for the left camera is at (319.13, 233.86), whereas it is (298.85, 245.52) for the right camera. The focal length for the left camera is 450.9, whereas it is 452.9 for the right camera. The values of fx are equal to fy for both the left and right cameras. These intrinsic parameters were read from the device using it's python API and could be different for different OAK-D Lite devices.
 * Left and right camera orientations differ slightly from the geometry of the simplified solution detailed above. 
 
-## Rectified Left and Right Images 
+### Rectified Left and Right Images 
 We can perform image rectification/post-processing to correct for differences in intrinsic parameters and orientations of the left and right cameras. This process involves performing 3x3 matrix transformations. In the OAK-D Lite API, a stereo node performs these calculations and outputs the rectified left and right images. Details and source code can be viewed [here](https://github.com/luxonis/depthai-experiments/blob/master/gen2-stereo-on-host/main.py). In this specific implementation, correction for intrinsic parameters is performed using intrinsic camera matrices, and correction for orientation is performed using rotation matrices(part of calibration parameters) for the left and right cameras. The rectified left image is transformed as if the left camera had the same intrinsic parameters as the right one. Therefore, in all our following calculations, we'll use the intrinsic parameters for the right camera i.e. focal length of 452.9 and principal point at (298.85, 245.52). In the rectified and stacked images below, notice that the red line at constant v touches the top-left corner of the laptop in both the left and right images.
 
 Rectified Left Image
@@ -127,7 +127,7 @@ Let's also overlap the rectified left and right images to see the difference. We
 Rectified and Overlapped Left and Right Images 
 ![Rectified and Overlapped Left and Right Images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_overlapping_frames.jpg?download=true)
 
-## Annotated Left and Right Rectified Images
+### Annotated Left and Right Rectified Images
 Let's find the 3D coordinates for some points in the scene. A few points are selected and manually annotated with their (u,v) values, as shown in the figures below. Instead of manual annotations, we can also use template-based matching, feature detection algorithms like SIFT, etc for finding corresponding points in left and right images. 
 
 Annotated Left Image 
@@ -136,7 +136,7 @@ Annotated Left Image
 Annotated Right Image 
 ![Annotated Right Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/annotated_right_img.jpg?download=true)
 
-## 3D Coordinate Calculations  
+### 3D Coordinate Calculations  
 Twelve points are selected in the scene, and their (u,v) values in the left and right images are tabulated below. Using equations 4, 5, and 6, (x,y,z) coordinates for these points are also calculated and tabulated below. X and Y coordinates concerning the left camera, and the origin is at the left camera's pinhole (or optical center of the lens). Therefore, 3D points left and above the pinhole have negative X and Y values, respectively.
 
 | point    |   u_left  |   v_left  |   u_right  |   v_right  |   depth/z(cm)  |   x_wrt_left(cm)  |   y_wrt_left(cm)  |
@@ -155,7 +155,7 @@ Twelve points are selected in the scene, and their (u,v) values in the left and 
 | pt12    |      579 |      388 |       528 |       390 |         66.61 |            41.2  |            20.95 |
 
 
-## Dimension Calculations and Accuracy 
+### Dimension Calculations and Accuracy 
 We can also compute 3D distances between different points using their (x,y,z) values using the formulae $distance = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}$. Computed distances between some of the points are tabulated below along with their actual measured values. Percentage error ($\frac{(actual-measured) * 100}{actual}$) is also computed and tabulated. Notice that the calculated and actual values match very well with a percentage error of 1.2% or less. 
 
 | dimension    |   calculated(cm)  |   actual(cm)  |       % error       |
@@ -170,12 +170,12 @@ We can also compute 3D distances between different points using their (x,y,z) va
 Calculated Dimension Results 
 ![Calculated Dimension Results] (https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/calculated_dim_results.png?download=true)
 
-# Conclusion
+## Conclusion
 1. In summary, we learned how stereo vision works, the equations used to find the real-world coordinates (x, y, z) of a point P given its two images captured from different viewpoints, and compared theoretical values with experimental results. 
 2. We assumed that the intrinsic parameters - focal length and principal point of the cameras - are known, along with their position and orientation information. This is also referred to as calibrated stereo vision.
 3. Interestingly, it is also possible to find the 3D coordinates of a point, P, if the position and orientation of the cameras are unknown. In fact, the position and orientation of the cameras with respect to each other can be found using the images themselves. This is referred to as uncalibrated stereo vision!
 
-# References 
+## References 
 1. 3D Reconstruction - Multiple Viewpoints [Coursera](https://www.coursera.org/learn/3d-reconstruction-multiple-viewpoints)
 2. Stereo Vision and Depth Estimation using OpenCV AI Kit [LearnOpenCV](https://learnopencv.com/stereo-vision-and-depth-estimation-using-opencv-ai-kit/)
 3. OAK-D Lite [Luxonics](https://docs.luxonis.com/projects/hardware/en/latest/pages/DM9095/)
