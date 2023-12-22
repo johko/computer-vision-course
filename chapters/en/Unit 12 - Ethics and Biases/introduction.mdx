@@ -13,9 +13,8 @@ So let us dive in 🤗
 ## ImageNet Roulette: A Case Study on Biases in Classification 
 
 Imagine you wake up on a Sunday morning and play around with your phone. You come across this app which tries to return sarcastic and funny labels if you upload different images or maybe take a selfie. You don't mind some fun, so you try the app out by uploading a selfie and to your shock, it returns an alarming label. It mentions you as a crime suspect (this crime can also be highly dangerous and heinous). You also see social media posts on the same app of different people with provoking labels, increasing the chances of racial and gender profiling. Some of these labels would mean: a person who is a crime offendor, a person having specific facial features that are linked with one's ethnicity, or a person's ancestory. This app returns very offensive labels oftenly and might harm self-interests and target a special group of people. A wide range of such labels which can offend people based on their religion, ethnicity, gender or age were present in the app, and you are just shocked and also kind of confused on what's going on with this? 
-Some examples:
 
-![ImageNet Roulette Tweet]()
+![ImageNet Roulette Tweet](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/IR Tweet.jpg)
 
 AI has made our lives easier and more comfortable, but many times, if AI is not kept in check, it can cause havoc in people's lives. Humans should be more inclusive and aware of others' needs and preferences. The same human values must be incorporated and reflected while developing and deploying AI models. AI models should not create negative sentiments or try to manipulate anyone against a group. 
 
@@ -23,7 +22,7 @@ AI has made our lives easier and more comfortable, but many times, if AI is not 
 
 ImageNet is a large-scale dataset that was created for object recognition benchmarks at scale. The aim was to map out the entire world of objects to make machines around us smarter in scene understanding, in which humans are far better. This dataset was one of the earliest attempts of it's kind in creating a large scale dataset for object recognition. The ImageNet team started scraping image data from various sources on the internet. The original dataset consisted of around 14,197,122 images with 21,841 classes, this was referred to as Imagenet-21K reflecting around 21K classes. The annotations were crowdsourced using Amazon Mechanical Turks. A smaller subset of this dataset which was termed as ImageNet-1K contained 1,281,167 training images, 50,000 validation images and 100,000 test images with 1000 classes which was used as the foundation for the popular ImageNet Large Scale Visual Recognition Challenge (ILSVRC). The ILSVRC became the competition ground for many aspiring companies and labs working in the field of computer vision, to outperform previous approaches on labeling the objects accurately. The structure for ImageNet was based on WordNet, a database of word classifications developed at Princeton University.
 
-![ImageNet General]()
+![ImageNet General](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/imagenet.png)
 
 <Tip>
 💡You can read more about ImageNet here: https://www.image-net.org/. Also check out the TED Talk by Prof. Fei Fei Li on the same topic: https://www.youtube.com/watch?v=40riCqvRoMs
@@ -32,9 +31,13 @@ ImageNet is a large-scale dataset that was created for object recognition benchm
 ### Motivation Behind ImageNet Roulette 🃏
 
 Now, let's talk about the app we discussed earlier. This app existed on the internet a few years ago as a web application. This was an intentional experiment termed ImageNet Roulette and is still one of the most popular cases of how AI models can go wrong if the training data is not prepared carefully with guidelines. This project was developed by artist Trevor Paglen and researcher Kate Crawford. They trained their model based on the 2,833 subcategories of the Person category found in the dataset.
-The model was trained using Caffe on the images and labels in the "person" category. The app prompted the user for an image, and a face detector detects faces in the image. The detected face was then sent to the Caffe model for classification and finally the app returned an image with bounding box around the detected face and the label the Caffe model predicted.
+The model was trained using Caffe on the images and labels in the "person" category. The app prompted the user for an image, and a face detector detects faces in the image. The detected face was then sent to the Caffe model for classification and finally the app returned an image with bounding box around the detected face and the label the Caffe model predicted. Let us see some example images from the experiment:
+*Note: We have blurred faces and labels that might be offensive and triggering to readers so that the readers get an idea in a neutral manner.*
 
-![ImageNet Roulette]()
+![ImageNet Roulette 1](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/crime offendor.jpg)
+*A person being identified as a first time crime offendor, in the bottom it also shows the word connections from WordNet.*
+![ImageNet Roulette 2](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/ethnic slur.jpg)
+*A person being identified on the basis of their ancestory and ethnicity.*
 
 The main motivation behind ImageNet Roulette was to show inherent biases in classifying people. It was trained on only the "person" category from the ImageNet dataset (as discussed earlier).
 So what went wrong? The inference on different images reflected harmful and provocative on many levels. The biggest cause for bias in this system was largely due to the already available ImageNet categories. The classes reflect how they were kind of absurd, offensive, and provocative while annotating the images. Some of the labels (after rephrasing them from their initial labels, to avoid triggering) would mean: a person who is an addict, a person with questionable character, a person who is against a specific group of people, a person who is unsuccessful and a loser, and many more. A wide range of labels that categorize people based on gender, race, profession, etc., was inherent in ImageNet. And where did it go wrong? These labels are all drawn from the structure of WordNet. This is exactly where the biases crept into this model (due to overlooking the data preparation process, irrelevant images were downloaded in bulk). We will explore the reasons mentioned by the ImageNet team `later` in the chapter.
@@ -58,13 +61,17 @@ a. ImageNet appointed a group of in-house manual annotators to classify synsets 
 b. Out of the 2,832 synsets within the person category, 1,593 unsafe synsets (offensive and sensitive) were identified and the remaining 1,239 synsets were temporarily deemed safe. 
 c. A new version of ImageNet was prepared by removing unsafe synsets resulting in removal of around 600,000 images in total.
 
+![Good person IR](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/goodperson.jpg)
+*This is an example of non-imageable concept. Logically, a person cannot be identified as good depending just on visual appearance.*
+
 **Problem 2: Non-imageable concepts** Some synsets might not be offensive but including them in the overall dataset is also not logical. For example: we cannot classify a person in the image as a philanthropist. Similarly, there might be many synsets that cannot be captured visually using images. 
 **Solutions:**
 a. For such concepts, multiple workers were asked to rate each of the 2,394 people synsets (safe + sensitive).
 b. The rating was done based on the ease with which the synset arouses mental imagery in a scale of 1-5, 1 being very hard and 5 begin very easy.
 c. The median rating was 2.36 and around 219 synsets had a rating more than 4, images with very low imageability were removed.
 
-![Programmer ImageNet]()
+![Balancing Images](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/balancing.png)
+*This image shows the results before and after balancing the ImageNet database on the basis of gender, skin-color and age.*
 
 **Problem 3: Diversity of images** Many images in ImageNet might have lesser representation. For example, an image search of a particular profession can end up returning different gender ratios as in the real world. Images of construction workers or gangsters might be more inclined toward a particular gender or race.  Not only during search but also during annotations and data cleaning, annotators might be inclined to respond to particular categories in an already socially stereotypical manner. 
 **Solutions:**
@@ -72,7 +79,8 @@ a. To mitigate such stereotypes in search and annotations, images should have hi
 b. ImageNet team did a demographic analysis on most imageable attributes like gender, color and age.
 c. After this analysis, the dataset was balanced by removing overrepresented attributes in a synset leading to a more uniform gender, color and age balance. 
 
-![Face Obfuscation ImageNet]()
+![Face Obfuscation](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ethics_bias/crime suspect.jpg)
+*A person being identified as a crime suspect (we removed the exact label as the crime was dangerous). Before returning sensitive labels and images, face obfuscation can be used to preserve individual identity without harming it.*
 
 **Problem 4: Privacy Concerns** While classification was subject to some inherent biases, to protect an individual's identity, privacy is also an equally important factor. If these classifications from the experiment were viral, it would have a huge impact on people's lives and overall well-being. To ensure this, AI models should not only be fair but also preserve subjects' privacy.
 **Solutions:**
