@@ -6,18 +6,17 @@ Representing features in data is crucial for organizing and manipulating data ef
 
 
 1. **Numerical features**
-    - Arrays/Lists: Simplest form to store numerical values. Each element in the array corresponds to a feature.
-    - Tensors: Multidimensional arrays often used in the machine learning frameworks to handle large sets of numerical data efficiently.
+- Arrays/Lists: Simplest form to store numerical values. Each element in the array corresponds to a feature.
+- Tensors: Multidimensional arrays often used in the machine learning frameworks to handle large sets of numerical data efficiently.
 2. **Categorical features**
-
-    - Dictionaries/Lists: Assigning categories to numerical labels or directly storing categorical values.
-    - One hot encoding:** Transforming categorical variables into binary vectors where each bit represents a category.
-7. **Text features**
-    - Bag of Words Representation: Breaking text into individual words and counting their occurrences.
-    - Word Embeddings: Representing words as dense vectors capturing semantic meanings.
-10. **Image features**
-    - Pixel Values: Strong pixel values matrices or multi-dimensional arrays.
-    - Convolutional Neural Network features(CNN): Extracting features using pre-trained CNN models.
+- Dictionaries/Lists: Assigning categories to numerical labels or directly storing categorical values.
+- One hot encoding:** Transforming categorical variables into binary vectors where each bit represents a category.
+3. **Text features**
+- Bag of Words Representation: Breaking text into individual words and counting their occurrences.
+- Word Embeddings: Representing words as dense vectors capturing semantic meanings.
+4. **Image features**
+- Pixel Values: Strong pixel values matrices or multi-dimensional arrays.
+- Convolutional Neural Network features(CNN): Extracting features using pre-trained CNN models.
 
 ## What Makes a Good Descriptor
 
@@ -73,6 +72,7 @@ The basic workflow of SURF is given below:
 3. **Scale Selection**: It determines the scale of the keypoints by identifying regions with significant changes in scale-space. It analyzes the determinant of the Hessian matrix across different scales to find robust keypoints at multiple scales.
 
 4. **Orientation Assignment:** For each detected keypoint, SURF assigns a dominant orientation. This is done by calculating Haar wavelet responses in different directions around the keypoint’s neighborhood. Unlike SIFT, SURF uses a set of rectangular filters (Haar wavelets) applied to subregions of the keypoint's neighborhood. The responses of these filters are used to create a feature vector representing the keypoint.
+
 5. **Descriptor Matching:** The generated descriptors are then used for matching keypoints between different images. Matching involves comparing the feature vectors of keypoints in one image to those in another image to find correspondences.
 
 The key strengths of SURF lie in its computational efficiency, which is achieved through the use of integral images and Haar wavelet approximations while maintaining robustness to scale, rotation, and illumination changes. This makes SURF suitable for real-time applications where speed plays a crucial part in object detection, tracking, and image stitching.
