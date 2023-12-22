@@ -249,7 +249,27 @@ Learn more about how to train and use Image Captioning models in HuggingFace `tr
     - Image-to-text retrieval: Given an image as input, retrieve text descriptions or captions that accurately describe its content.
     - Text-to-image retrieval: Given a text query, retrieve images that visually match the concepts and entities mentioned in the text.
 
-Image-text retrieval involves classifying or ranking image-text pairs based on their similarity. It typically employs a visual encoder, a text encoder, and a multimodal fusion module to project cross-modal representations into a similarity measure. Visual encoders have evolved from global image features to grid features and bottom-up features, while text encoders have explored BoW, RNN, and CNN architectures. Multimodal fusion techniques range from projecting global features into a common space to finer-grained alignment using attention mechanisms and graph neural networks.
+One of most popular model for the Image-Text Retrieval is CLIP.
+- **CLIP (Contrastive Language-Image Pretraining):** It excels in image-text retrieval by leveraging a shared embedding space. Through contrastive learning, it pretrains on large-scale image and text datasets, enabling the model to map diverse concepts into a common space. CLIP leverages a contrastive learning approach during pretraining, where it learns to map images and text into a shared embedding space. This shared space enables direct comparison between the two modalities, allowing for efficient and accurate retrieval tasks. In image-text retrieval, CLIP can be applied by encoding images and text into the shared embedding space, and the similarity between an image and a textual query is measured by the proximity of their respective embeddings.  The model's versatility arises from its ability to grasp semantic relationships without task-specific fine-tuning, making it efficient for applications ranging from content-based image retrieval to interpreting natural language queries for images. You can use CLIP in HuggingFace for Image-Text retrieval as follows:
+```python
+from PIL import Image
+import requests
+
+from transformers import CLIPProcessor, CLIPModel
+
+model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = Image.open(requests.get(url, stream=True).raw)
+
+inputs = processor(text=["a photo of a cat", "a photo of a dog"], images=image, return_tensors="pt", padding=True)
+
+outputs = model(**inputs)
+logits_per_image = outputs.logits_per_image  # this is the image-text similarity score
+probs = logits_per_image.softmax(dim=1)  # we can take the softmax to get the label probabilities
+```
+Learn more about how to use CLIP for Image-Text retrieval in HuggingFace [here](https://huggingface.co/docs/transformers/model_doc/clip#resources).
 
 ## Visual Grounding
 ![Visual Grounding](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/multimodal_fusion_text_vision/visual_grounding.jpg)
@@ -293,7 +313,8 @@ for box, score, label in zip(boxes, scores, labels):
     box = [round(i, 2) for i in box.tolist()]
     print(f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}")
 ```
-- **Grounding DINO:** It combines the Transformer-based object detector (DINO) with "grounded pre-training" to create a state-of-the-art, zero-shot object detection model. This means it can identify objects even if they weren't in its training data, thanks to its ability to understand both images and human language inputs (like category names or descriptions). Its architecture combines text and image backbones, a feature enhancer, language-guided query selection, and a cross-modality decoder, achieving impressive results on benchmarks like COCO and LVIS. Essentially, Grounding DINO takes visual information, links it to textual descriptions, and then uses that understanding to pinpoint objects even within completely new categories.
+- **Grounding DINO[[3]](#grounding-dino):** It combines the Transformer-based object detector (DINO) with "grounded pre-training" to create a state-of-the-art, zero-shot object detection model. This means it can identify objects even if they weren't in its training data, thanks to its ability to understand both images and human language inputs (like category names or descriptions). Its architecture combines text and image backbones, a feature enhancer, language-guided query selection, and a cross-modality decoder, achieving impressive results on benchmarks like COCO and LVIS. Essentially, Grounding DINO takes visual information, links it to textual descriptions, and then uses that understanding to pinpoint objects even within completely new categories.
+You can try out the Grounding DINO model in the Google Colab [here](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/zero-shot-object-detection-with-grounding-dino.ipynb).
 
 ## Text-to-Image Generation
 ![Text-Image Generation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/multimodal_fusion_text_vision/text_image_generation.png)
@@ -336,8 +357,9 @@ Now you know what are the some of popular tasks and models involving Image and T
 
 Given an image-text pair, a VL model first extracts text features via a text encoder and a vision encoder, respectively. The text and visual features are then fed into a multimodal fusion module to produce cross-modal representations, which are then optionally fed into a decoder before generating the final outputs. An illustration of this general framework is shown in the above figure. In many cases, there are no clear boundaries among image/text backbones, multimodal fusion module, and the decoder.
 
-Congratulations! you made till the end. Now on to the next section for more on Vision-Language Pretrained Models.
+Congratulations! you made it till the end. Now on to the next section for more on Vision-Language Pretrained Models.
 
 ## References
 1. [Vision-Language Pre-training: Basics, Recent Advances, and Future Trends](https://arxiv.org/abs/2210.09263)<a id="pretraining-paper"></a>
 2. [Document Collection Visual Question Answering](https://arxiv.org/abs/2104.14336)<a id="doc-vqa-paper"></a>
+3. [Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection](https://arxiv.org/abs/2303.05499)<a id="grounding-dino"></a>
