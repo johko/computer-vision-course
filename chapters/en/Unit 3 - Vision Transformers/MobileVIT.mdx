@@ -1,7 +1,7 @@
 # MobileViT v2 
 
-The previously discussed Vision Transformer architectures are computationally intensive and hard to run on mobile devices. The previous state-of-the-art architecture used CNNs for mobile vision tasks. However, as CNNs cannot learn global representations, and as a result they perform worse than their transformer counterparts.
-The MobileVit architecture aims to solve the required problems for vision mobile tasks, such as low-latency and lightweight architecture, while providing the advantages of transformers and CNNs. The mobileVit Architecture was developed by Apple and builds MobileNet from Google's research team. The MobileVit architecture builds upon the previous MobileNet architecture by adding the MobileVit Block and self-separable attention. These two features allow for lightning-fast latency, reduction of parameters, computational complexity, and deployment of vision ML models on resource-constrained devices.
+The previously discussed Vision Transformer architectures are computationally intensive and hard to run on mobile devices. The previous state-of-the-art architecture used CNNs for mobile vision tasks. However, CNNs cannot learn global representations, and as a result they perform worse than their transformer counterparts.
+The MobileVit architecture aims to solve the required problems for vision mobile tasks, such as low-latency and a lightweight architecture, while providing the advantages of transformers and CNNs. The mobileVit Architecture was developed by Apple and builds MobileNet from Google's research team. The MobileVit architecture builds upon the previous MobileNet architecture by adding the MobileVit Block and separable self-attention. These two features allow for lightning-fast latency, reduction of parameters, computational complexity, and deployment of vision ML models on resource-constrained devices.
 ## MobileVit Architecture
 The architecture of MobileViT presented in the paper "MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer" by Sachin Mehta and Mohammad Rastegari is as follows:
 ![MobileViT Architecture](MobileViT-Architecture.png)
@@ -37,32 +37,30 @@ A receptive field is the size of a region in an input space that affects the fea
 
 This compound approach allows MobileViT to have fewer parameters than traditional CNNs and even better accuracy!
 
-![](MobileViT-CNNPreformance.png)
+![MobileViT CNNPreformance](MobileViT-CNNPreformance.png)
   
 
 The main efficiency bottleneck in the original MobileViT architecture is the multi-head self-attention in Transformers, which requires O(k^2) time complexity concerning the input tokens.
 
 Multi-head self-attention also requires costly operations like batch-wise matrix multiplications, which can impact latency on resource-constrained devices.
 
-The same authors wrote another paper on exactly how to make attention operate faster. They've called it self-separable attention.
+These same authors wrote another paper on exactly how to make attention operate faster. They've called it separable self-attention.
 
-# Self Separable Attention
+# Separable Self-attention
 
-In traditional multihead attention, the big O concerning input tokens is quadratic (O(k^2)). Self Separable Attention introduced in this paper has a complexity of O(k) concerning input tokens.
+In traditional multihead attention, the big O concerning input tokens is quadratic (O(k^2)). Separable self-attention introduced in this paper has a complexity of O(k) concerning input tokens.
 
 In addition, the attention method does not use any batch-wise matrix multiplications, which helps reduce latency on resource-constrained devices like mobile phones.
 
 This is a massive improvement!
 
-<Note>
+<Tip>
 There have been many other forms of Attention such that complexity has ranged from O(k), O(k*sqrt(k)), O(k*log(k)).
 
-Self-Seperable Attention was also not the first paper to have O(k) complexity. In Linformer,
-
-O(k) complexity for Attention was also achived in Linformer (ADD PAPER LINK HERE) before self seperable attention.
+Separable self-attention was also not the first paper to have O(k) complexity. In Linformer, O(k) complexity for Attention was also achived in Linformer (ADD PAPER LINK HERE) before separable self-attention.
 
 However, it still used costly operations like batch-wise matrix multiplications
-</Note>
+</Tip>
 
 
 A comparison between the attention mechanisms in Transformer, Linformer, and MobileViT is shown below:
@@ -77,15 +75,15 @@ The image above gives a comparison of each of the individual types of attention 
 
 For example, in both the transformer and Linformer architectures, the attention computations perform two batch-wise matrix multiplications.  
 
-However, in the case of self-separable attention, these two batch-wise multiplications are replaced by two separate linear computations. This allows for further boosted inference speed. 
+However, in the case of separable self-attention, these two batch-wise multiplications are replaced by two separate linear computations. This allows for further boosted inference speed. 
 
 # Conclusion
 
 MobileViT blocks retain spatially local information while developing global representations, combining the strengths of Transformers and CNNs. They provide a receptive field that encompasses the entire image.
 
-The introduction of Self separable attention into this existing architecture even further boosted both accuracy and inference speed.
+The introduction of separable self-attention into this existing architecture even further boosted both accuracy and inference speed.
 
-![Inference Tests](MobileViT-Inference.png)
+![Inference Tests](MobileViTInference.png)
 
 Tests performed with different architectures on the iPhone 12s exhibited a large jump in performance with the introduction of separable Attention as shown above!
 
