@@ -135,7 +135,7 @@ The output should look something like the image below:
 
 ![encoding](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/nerf_encodings.png)
 
-The second trick worth mentioning is that most approaches use smart approaches to sample points in space. 
+The second trick worth mentioning is that most methods use smart approaches to sample points in space. 
 Essentially, we want to avoid sampling in regions where the scene is empty. 
 There are various approaches to concentrate samples in regions that contribute most to the final image, but the most prominent one is to use a second network, often called *proposal network* so that no compute is wasted. 
 If you are interested in the inner workings and optimisation of such a *proposal network*, feel free to dig into the publication of [Mipnerf-360](https://jonbarron.info/mipnerf360/), where it was first proposed.
