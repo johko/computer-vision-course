@@ -55,8 +55,11 @@ Serialization is device-agnostic when packaging for cloud deployment. Serialized
 - **MLOps** is an emerging practice that applies DevOps principles to machine learning projects. It encompasses various best practices for deploying models in production, such as version control, continuous integration and deployment, monitoring, and automation.
 - **Load Testing**: Simulate varying workloads to ensure the model's responsiveness under different conditions.
 - **Anomaly Detection**: Implement systems to detect deviations in model behavior and performance.
+    - Example: A *Distribution shift* occurs when the statistical properties of incoming data change significantly from the data the model was trained on. This change might lead to reduced model accuracy or performance, highlighting the importance of anomaly detection mechanisms to identify and mitigate such shifts in real-time.
 - **Real-time Monitoring**: Utilize tools for immediate identification of issues in deployed models.
+    - Real-time monitoring tools can flag sudden spikes in prediction errors or unusual patterns in input data, triggering alerts for further investigation and prompt action.
 - **Security and Privacy:** Employ encryption methods for securing data during inference and transmission. Establish strict access controls to restrict model access and ensure data privacy.
 - **A/B Testing**: Evaluate new model versions against the existing one through A/B testing before full deployment.
+    - A/B testing involves deploying two versions of the model simultaneously, directing a fraction of traffic to each. Performance metrics, such as accuracy or user engagement, are compared to determine the superior model version.
 - **Continuous Evaluation**: Continuously assess model performance post-deployment and prepare for rapid rollback if issues arise.
 - Maintain detailed records covering model architecture, dependencies, and performance metrics.
