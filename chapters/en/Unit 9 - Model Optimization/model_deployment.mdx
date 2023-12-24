@@ -35,8 +35,9 @@ This chapter delves into the intricate considerations of deploying machine learn
 
 - **Packaging:** Packaging, on the other hand, involves bundling all the necessary components and dependencies of a machine learning model. It's like putting all the puzzle pieces into a box, along with the instructions on assembling it. Packaging includes everything needed to run the model, such as the serialized model file, pre-processing or post-processing code, and required libraries or dependencies.
     
-Serialization is device-agnostic when packaging for cloud deployment. Serialized models are often packaged into containers (e.g., Docker) or deployed as web services (e.g., Flask or FastAPI). Cloud deployments also involve auto-scaling, load balancing, and integration with other cloud services.
+- Serialization is device-agnostic when packaging for cloud deployment. Serialized models are often packaged into containers (e.g., Docker) or deployed as web services (e.g., Flask or FastAPI). Cloud deployments also involve auto-scaling, load balancing, and integration with other cloud services.
 
+- Another modern approach to deploying machine learning models is through dedicated and fully managed infrastructure provided by 🤗 [Inference Endpoints](https://huggingface.co/inference-endpoints). These endpoints facilitate easy deployment of Transformers, Diffusers, or any model without the need to handle containers and GPUs directly. The service offers a secure, compliant, and flexible production solution, enabling deployment with just a few clicks.
 ## Model Serving and Inference
 
 - **Model Serving:**  Involves making the trained and packaged model accessible for inference requests.
