@@ -1,0 +1,50 @@
+# Feature Visualization
+
+In the last sections we have seen different kinds of features, learned about feature descriptors and how to use features to find matches between images.
+
+In this section we will have a look at how to visualize some of the most common features and how that can help us to understand the data better. In the end
+we will also have a look at the shortcomings of the "traditional" CV features and how Artificial Neural Networks, especially Convolutional Neural Networks,
+can help us to overcome those.
+
+## Corner Detector Visualizations
+
+A simple way to detect at least half-way meaningful and descriptive parts in an image are corner detectors, like Harris or Shi-Tomasi.
+Visualizing the features they detected is mostly done by simply adding an overlay to the original image, pointing out
+the detected corners. As in the following example, using the `goodFeaturesToTrack` method from OpenCV, which by default uses the
+Shi-Tomasi Corner Detection:
+
+```bash
+!pip install opencv-python
+```
+
+```python
+import cv2
+import numpy
+from matplotlib import pyplot as plt
+```
+
+```python
+img = cv.imread('img1.jpg')
+gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+corners = cv.goodFeaturesToTrack(gray,25,0.01,10)
+corners = np.int0(corners)
+for i in corners:
+    x,y = i.ravel()
+    cv.circle(img,(x,y),3,255,-1)
+plt.imshow(img),plt.show()
+```
+
+The advantage of these features is that they are very easy to identify and easily understandable for humans.
+The downside however is the fact that corners are still pretty weak features and can mainly be used for things
+like matching images or tracking objects. When it comes to more sophisticated tasks like e.g. classifying animals,
+corners don't get you far.
+
+## Haar-Like Features
+
+## SIFT and SURF
+
+Becoming a bit more sophisticated, SIFT and SURF
+
+## HOG
+
+## Convolutional Neural Networks
