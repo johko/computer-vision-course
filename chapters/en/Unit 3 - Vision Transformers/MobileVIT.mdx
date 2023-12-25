@@ -2,9 +2,9 @@
 
 The previously discussed Vision Transformer architectures are computationally intensive and hard to run on mobile devices. The previous state-of-the-art architecture used CNNs for mobile vision tasks. However, CNNs cannot learn global representations, and as a result they perform worse than their transformer counterparts.
 
-The MobileVit architecture aims to solve the required problems for vision mobile tasks, such as low-latency and a lightweight architecture, while providing the advantages of transformers and CNNs. The mobileVit Architecture was developed by Apple and builds MobileNet from Google's research team. The MobileVit architecture builds upon the previous MobileNet architecture by adding the MobileVit Block and separable self-attention. These two features allow for lightning-fast latency, reduction of parameters, computational complexity, and deployment of vision ML models on resource-constrained devices.
+The MobileVit architecture aims to solve the required problems for vision mobile tasks, such as low-latency and lightweight architecture, while providing the advantages of transformers and CNNs. The mobileVit Architecture was developed by Apple and builds MobileNet from Google's research team. The MobileVit architecture builds upon the previous MobileNet architecture by adding the MobileViT Block and separable self-attention. These two features allow for lightning-fast latency, reduction of parameters, computational complexity, and deployment of vision ML models on resource-constrained devices.
 
-## MobileVit Architecture
+## MobileViT Architecture
 
 The architecture of MobileViT presented in the paper "MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer" by Sachin Mehta and Mohammad Rastegari is as follows:
 ![MobileViT Architecture](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-Architecture.png)
@@ -78,6 +78,6 @@ MobileViT blocks retain spatially local information while developing global repr
 The introduction of separable self-attention into this existing architecture even further boosted both accuracy and inference speed.
 ![Inference Tests](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-Inference.png)
 
-Tests performed with different architectures on the iPhone 12s exhibited a large jump in performance with the introduction of separable Attention as shown above!
+Tests performed with different architectures on the iPhone 12s exhibited a large jump in performance with the introduction of separable attention, as shown above!
 
 Overall, the MobileViT Architecture is an extraordinarily powerful architecture for resource-limited vision tasks that provides fast inference and high accuracy.
