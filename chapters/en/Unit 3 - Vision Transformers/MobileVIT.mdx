@@ -7,7 +7,7 @@ The MobileVit architecture aims to solve the required problems for vision mobile
 ## MobileVit Architecture
 
 The architecture of MobileViT presented in the paper "MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer" by Sachin Mehta and Mohammad Rastegari is as follows:
-![MobileViT Architecture](MobileViT-Architecture.png)
+![MobileViT Architecture](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-Architecture.png)
 
 Some of this should look similar to the previous chapter. The MobileNet blocks, nxn convolutions, downsampling, global pooling, and the final linear layer.
 
@@ -18,7 +18,7 @@ As seen by the global pooling layer and the linear layer, the model shown here i
 The MobileViT block combines CNN's local processing and global processing, as seen in transformers. It uses a combination of convolutions and a transformer layer, allowing it to capture spatially local information and global dependencies in the data. 
 
 A diagram of the MobileViT Block is shown below:
-![MobileViT Block](MobileViT-MobileViTBlock.png)
+![MobileViT Block](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-MobileViTBlock.png)
 
 Okay, that's a lot to take in. Let's break that down.
 
@@ -38,7 +38,7 @@ A receptive field is the size of a region in an input space that affects the fea
 </Tip>
 
 This compound approach allows MobileViT to have fewer parameters than traditional CNNs and even better accuracy!
-![MobileViT CNNPreformance](MobileViT-CNNPreformance.png)  
+![MobileViT CNNPreformance](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-CNNPreformance.png)  
 
 The main efficiency bottleneck in the original MobileViT architecture is the multi-head self-attention in Transformers, which requires O(k^2) time complexity concerning the input tokens.
 
@@ -63,7 +63,7 @@ However, it still used costly operations like batch-wise matrix multiplications
 </Tip>
 
 A comparison between the attention mechanisms in Transformer, Linformer, and MobileViT is shown below:
-![Attention Comparison](MobileViT-Attention.png)  
+![Attention Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-Attention.png)  
 
 The image above gives a comparison of each of the individual types of attention between the Transformer, Linformer, and MobileViT v2 architectures.
 
@@ -76,7 +76,7 @@ However, in the case of separable self-attention, these two batch-wise multiplic
 MobileViT blocks retain spatially local information while developing global representations, combining the strengths of Transformers and CNNs. They provide a receptive field that encompasses the entire image.
 
 The introduction of separable self-attention into this existing architecture even further boosted both accuracy and inference speed.
-![Inference Tests](MobileViT-Inference.png)
+![Inference Tests](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MobileViT-Inference.png)
 
 Tests performed with different architectures on the iPhone 12s exhibited a large jump in performance with the introduction of separable Attention as shown above!
 
