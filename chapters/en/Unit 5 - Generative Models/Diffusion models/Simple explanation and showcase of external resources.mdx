@@ -24,6 +24,7 @@ Below is an example of how to load the LoRA weights in both cases and then fuse 
 ```python
 !pip install diffusers # Install diffusers library if you haven't already
 from diffusers import StableDiffusionXLPipeline
+import torch
 
 model = "stabilityai/stable-diffusion-xl-base-1.0"
 pipe = StableDiffusionXLPipeline.from_pretrained(model,torch_dtype=torch.float16)
