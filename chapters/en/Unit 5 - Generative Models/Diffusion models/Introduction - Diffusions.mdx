@@ -26,7 +26,7 @@ In Science, Diffusion is a process where solute particles move from higher conce
 
 Above is the traditional diffusion process where the drop of ink completely merges after some time when dropped in a clean water glass. Practically reversing this is impossible, i.e., getting the drop from the mixture. But this is what is done in diffusion models, i.e., removing noise and hence producing a clean image.
 
-In diffusion models, Gaussian noise is added step-by-step to the training images to turn it completely into a junk noisy image. Through this process, the model learns to remove the noise step-by-step hence capable of turning any Gaussian noisy image into a new diverse image (can also be conditioned based on text prompts).
+In diffusion models, Gaussian noise is added step-by-step to the training images to turn them completely into junk noisy images. Through this process, the model learns to remove the noise step-by-step, hence it is capable of turning any Gaussian noisy image into a new diverse image (can also be conditioned based on text prompts).
 
 ![Reverse-process](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/diffusion-process.jpg)
 
@@ -35,7 +35,7 @@ In diffusion models, Gaussian noise is added step-by-step to the training images
 
 There are 3 major diffusion modelling frameworks
 - Denoising diffusion probabilistic models (DDPMs):
-	- DDPMs are latent variable models that employ latent variables to estimate the probability distribution. From this point of view, DDPMs can be viewed as a special kind of variational auto-encoders (VAEs), where the forward diffusion stage corresponds to the encoding process inside VAE, while the reverse diffusion stage corresponds to the decoding process
+	- DDPMs are models that employ latent variables to estimate the probability distribution. From this point of view, DDPMs can be viewed as a special kind of variational auto-encoders (VAEs), where the forward diffusion stage corresponds to the encoding process inside VAE, while the reverse diffusion stage corresponds to the decoding process
 - Noise conditioned score networks (NCSNs):
 	- It is based on training a shared neural network via score matching to estimate the score function (defined as the gradient of the log density) of the perturbed data distribution at different noise levels.
 - Stochastic differential equations (SDEs):
@@ -60,6 +60,6 @@ Want to play with diffusion models? No worries, Hugging Face's [Diffusers](https
 
 ## Drawbacks in Diffusion models
 
-The most significant disadvantage of diffusion models remains the need to perform multiple steps at inference time to generate only one sample. Despite the important amount of research conducted in this direction, GANs are still faster at producing images. 
+The most significant disadvantage of diffusion models remains the need to perform multiple steps at inference time to generate only one sample. [Latent consistency models](https://latent-consistency-models.github.io/)(LCMs) is one direction of research proposed to overcome the slow iterative sampling process of Latent Diffusion models (LDMs), enabling fast inference with minimal steps on any pre-trained LDMs (e.g Stable Diffusion). Despite the important amount of research conducted in this direction, GANs are still faster at producing images. 
 
 Other issues of diffusion models can be linked to the commonly used strategy to employ CLIP embeddings for text-to-image generation. Few literature studies highlight that their model struggles to render readable text in an image and motivates the behavior by stating that CLIP embeddings do not contain information about spelling. 
