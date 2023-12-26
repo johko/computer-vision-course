@@ -12,16 +12,18 @@ There is an implementation of this concept, called Mobile-Former.
 ### Mobile-Former
 Mobile-Former is a neural network architecture that aims to combine both MobileNet and Transformers for effective image processing tasks. It's designed to leverage MobileNet for local feature extraction, and Transformers for context understanding.
 
-You can find architecture, benchmarks and other detailed explanations from [Mobile-Former's paper](https://arxiv.org/abs/2108.05895).
+![Mobile-Former Architecture](https://www.researchgate.net/publication/370058769/figure/fig1/AS:11431281148324026@1681702186116/The-overall-architecture-of-Dynamic-Mobile-FormerDMF-and-details-of-DMF-block.png)
 
-## How About Timm?
+You can find other detailed explanations from [Mobile-Former's paper](https://arxiv.org/abs/2108.05895).
+
+## MobileNet with Timm
 ### What is Timm?
 Timm is a Python library that provides a collection of pre-trained deep learning models, primarily focused on computer vision tasks, along with utilities for training, fine-tuning, and inference. The name "timm" stands for "Py**T**orch **Im**age **M**odels". It was created by Ross Wightman and has become a popular tool among researchers and practitioners for its comprehensive coverage of state-of-the-art and classic image models.
 
 Using MobileNet through the `timm` library in PyTorch is straightforward, as `timm` provides an easy way to access a wide range of pre-trained models, including various versions of MobileNet. Here's a basic implementation on how to use MobileNet with `timm`:
 
 You must install `timm` with `pip` first:
-```python 
+```
 pip install timm
 ```
 Here is the basic code:
