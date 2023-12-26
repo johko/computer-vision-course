@@ -7,7 +7,7 @@ Although diffusion models and GANs can create many new, unique items, they can't
 One example is Dreambooth by Google Research, a training technique that updates the entire diffusion model by training on just a few images of a subject or style. It works by associating a special word in the prompt with the example images. The details on Dreambooth can be found [on the papers page](https://dreambooth.github.io/) and the [Hugging Face Dreambooth training documentation](https://huggingface.co/docs/diffusers/training/dreambooth).
 
 Below, you can see the results of Dreambooth being used to train on 4 images of a dog and some inference examples.
-![Dreambooth Dog Example](https://dreambooth.github.io/DreamBooth_files/teaser_static.jpg)
+![Dreambooth Dog Example](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/teaser_static.jpg)
 You can recreate the results following the Hugging Face documentation given above.
 
 From this example, it's clear that the model has learned about that specific dog and can generate new images of that dog in diverse poses and backgrounds. Although computing, data, and time are improvements, others have found more efficient ways to customize a model.
@@ -16,16 +16,31 @@ This is where the current most popular method for this comes in, which is Low Ra
 
 Now, if we put those ideas together we can use LoRA to efficiently fine-tune a diffusion model on a few examples using Dreambooth. A tutorial Google Colab notebook on how to do this can be found [here](https://colab.research.google.com/github/huggingface/notebooks/blob/main/diffusers/SDXL_DreamBooth_LoRA_.ipynb).
 
-Due to the quality and efficiency of this method, many people have created their own LoRA parameters which many can be found on a website called [Civitai](https://civitai.com/models). Here you can downloads the LoRA weights which usually are in the range of 50-500MB and can be loaded into their corresponding diffusion model like so:
+Due to the quality and efficiency of this method, many people have created their own LoRA parameters which many can be found on a website called [Civitai](https://civitai.com/models) and [Hugging Face](https://huggingface.co/collections/multimodalart/awesome-sdxl-loras-64f9af6d5cce4f4e8f351466). 
+For Civitai you can download the LoRA weights which usually are in the range of 50-500MB and in the case of Hugging Face version you can just load the model directly from the model hub.
+Below is an example of how to load the LoRA weights in both cases and then fuse them with the model.
+ 
 
 ```python
+!pip install diffusers # Install diffusers library if you haven't already
+from diffusers import StableDiffusionXLPipeline
+
 model = "stabilityai/stable-diffusion-xl-base-1.0"
 pipe = StableDiffusionXLPipeline.from_pretrained(model,torch_dtype=torch.float16)
-pipe.load_lora_weights("lora_weights.safetensors")
+pipe.load_lora_weights("lora_weights.safetensors") # Civitai
+pipe.load_lora_weights("ostris/crayon_style_lora_sdxl") # Hugging Face
 pipe.fuse_lora(lora_scale=0.8)
 ```
 
 This makes it quick to load a customised diffusion model and use it for inference, especially with how many models there are to choose from. Then if we want to remove the LoRA weights we can call `pipe.unfuse_lora()` which will return the model to its original state. As for the `lora_scale` parameter, this is a hyperparameter that controls how much the LoRA weights are used during inference. A value of 1.0 means the LoRA weights are fully used and a value of 0.0 means the LoRA weights are not used at all. The best value is often between 0.7 and 1.0 but it's worth experimenting with different values to see what works best for your use case.
+
+You can try some of the Hugging Face LoRA models in this Gradio demo:
+<iframe
+	src="https://multimodalart-LoraTheExplorer.hf.space"
+	frameborder="0"
+	width="850"
+	height="450">
+</iframe>
 
 ## Guided Diffusion via ControlNet
 
