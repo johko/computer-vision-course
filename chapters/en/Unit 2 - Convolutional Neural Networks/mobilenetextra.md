@@ -24,7 +24,7 @@ Using MobileNet through the `timm` library in PyTorch is straightforward, as `ti
 Here's a basic implementation on how to use MobileNet with `timm`.
 
 You must install `timm` with `pip` first:
-```
+```bash
 pip install timm
 ```
 Here is the basic code:
