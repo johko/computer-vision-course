@@ -22,7 +22,7 @@ Generally, it is really hard to come up with meaningful metrics for evaluating g
 
 Let's quickly go over FID. FID stands for Fréchet Inception Distance, it is an improvement on the Inception Score and was introduced in [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/pdf/1706.08500.pdf). FID is considered to be resistant to noise and certain artifacts that can be present in generated images. The lower the FID, the better. 
 
-It is calculated by constructing 2 distributions from the inceptionv3 features. The first distribution is calculated from the training data features, and the second distribution is calculated from the generated image features. Then the  Fréchet distance between these 2 distributions is calculated, and that is your FID score. The lower this score, the better the perceived quality of the generated images. Here is a [short explanation](https://www.youtube.com/watch?v=9zTwSzXxNDo&t=398s) on FID.
+It is calculated by constructing 2 distributions from the Inception-v3 features. The first distribution is calculated from the training data features, and the second distribution is calculated from the generated image features. Then the  Fréchet distance between these 2 distributions is calculated, and that is your FID score. The lower this score, the better the perceived quality of the generated images. Here is a [short explanation](https://www.youtube.com/watch?v=9zTwSzXxNDo&t=398s) on FID.
 
 Some other metrics you might come across are SSIM, PSNR, IS(Inception Score), and the recently introduced CLIP Score.
 
