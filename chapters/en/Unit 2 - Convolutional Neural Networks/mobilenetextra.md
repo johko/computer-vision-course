@@ -44,4 +44,4 @@ input_tensor = torch.rand(1, 3, 224, 224)
 output = model(input_tensor) 
 print(output)
 ```
-You can click [Timm's Hugging Face Page](https://huggingface.co/timm) and find other pretrained models and datasets for various tasks.
+You can go to [Timm's Hugging Face Page](https://huggingface.co/timm) and find other pretrained models and datasets for various tasks.
