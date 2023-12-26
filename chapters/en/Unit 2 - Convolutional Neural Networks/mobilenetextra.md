@@ -18,7 +18,7 @@ You can find other detailed explanations from [Mobile-Former's paper](https://ar
 
 ## MobileNet with Timm
 ### What is Timm?
-`timm` (or PyTorch Image Models) is a Python library that provides a collection of pre-trained deep learning models, primarily focused on computer vision tasks, along with utilities for training, fine-tuning, and inference. 
+`timm` (or Py**T**orch **Im**age **M**odels) is a Python library that provides a collection of pre-trained deep learning models, primarily focused on computer vision tasks, along with utilities for training, fine-tuning, and inference. 
 
 Using MobileNet through the `timm` library in PyTorch is straightforward, as `timm` provides an easy way to access a wide range of pre-trained models, including various versions of MobileNet.
 Here's a basic implementation on how to use MobileNet with `timm`.
