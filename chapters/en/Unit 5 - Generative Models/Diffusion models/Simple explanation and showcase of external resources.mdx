@@ -2,12 +2,13 @@
 
 ## Personalisation
 
-Although diffusion models and GANs can create many new, unique items, they aren't always able to create the specific thing you need. Hence, you have to fine-tune a model, which usually requires a lot of data and computation. However, some techniques can be used to personalize a model with just a few examples.
+Although diffusion models and GANs can create many new, unique items, they can't always create the specific thing you need. Hence, you have to fine-tune a model, which usually requires a lot of data and computation. However, some techniques can be used to personalize a model with just a few examples.
 
-One such example is Dreambooth by Google Research, a training technique that updates the entire diffusion model by training on just a few images of a subject or style. It works by associating a special word in the prompt with the example images. The details on Dreambooth can be found [on the papers page](https://dreambooth.github.io/) and the [Hugging Face Dreambooth training documentation](https://huggingface.co/docs/diffusers/training/dreambooth).
+One example is Dreambooth by Google Research, a training technique that updates the entire diffusion model by training on just a few images of a subject or style. It works by associating a special word in the prompt with the example images. The details on Dreambooth can be found [on the papers page](https://dreambooth.github.io/) and the [Hugging Face Dreambooth training documentation](https://huggingface.co/docs/diffusers/training/dreambooth).
 
 Below, you can see the results of Dreambooth being used to train on 4 images of a dog and some inference examples.
-![dog](https://dreambooth.github.io/DreamBooth_files/teaser_static.jpg). You can recreate the results following the above hugging face documentation.
+![Dreambooth Dog Example](https://dreambooth.github.io/DreamBooth_files/teaser_static.jpg)
+You can recreate the results following the Hugging Face documentation given above.
 
 From this example, it's clear that the model has learned about that specific dog and can generate new images of that dog in diverse poses and backgrounds. Although computing, data, and time are improvements, others have found more efficient ways to customize a model.
 
