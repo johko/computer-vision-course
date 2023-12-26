@@ -10,7 +10,7 @@ Another approach is training MobileNet and a Vision Transformer separately and t
 There is an implementation of this concept, called Mobile-Former.
 
 ### Mobile-Former
-Mobile-Former is a neural network architecture that aims to combine both MobileNet and Transformers for effective image processing tasks. It's designed to MobileNet for local feature extraction and context understanding with Transformers.
+Mobile-Former is a neural network architecture that aims to combine both MobileNet and Transformers for effective image processing tasks. It's designed to leverage MobileNet for local feature extraction, and Transformers for context understanding.
 
 You can find architecture, benchmarks and other detailed explanations from [Mobile-Former's paper](https://arxiv.org/abs/2108.05895).
 
