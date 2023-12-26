@@ -1,6 +1,6 @@
-![Header](https://github.com/johko/computer-vision-course/assets/53175384/afabfd9d-7e2f-451c-a13c-f751f2adbafb)
+![Course](https://github.com/johko/computer-vision-course/assets/53175384/58e39903-5a3a-4d48-8f3c-5811f31b93b5)
 
-# Hugging Face Computer Vision Community Course
+# Community-led Computer Vision Community Course Sprint 🤗
 
 This is the repository for a community-led course on Computer Vision. Once finished, the course will be released in huggingface.co/learn. Below, you can find how you can help us in this effort.
 
@@ -17,7 +17,7 @@ This is the repository for a community-led course on Computer Vision. Once finis
 
 1. Join us in Discord 👾
 
-   Join [the Hugging Face discord](hf.co/join/discord), take the role open-source and join us at the channel #cv-community-project.
+   Join [the Hugging Face discord](https://discord.gg/hugging-face-879548962464493619), take the role open-source and join us at the channel #cv-community-project.
 <img width="491" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/c13d5b34-ed1c-4f12-b044-192484b94f9d">
 <img width="180" alt="image" src="https://github.com/lunarflu/fork-computer-vision-course/assets/70143200/b3372a47-711f-4b43-bc85-0ba2b6f8b914">
 
@@ -30,15 +30,36 @@ This is the repository for a community-led course on Computer Vision. Once finis
 
 ### 🤝 How to contribute to the course
 Important Note: If you’ve never contributed to open-source projects on GitHub, kindly read [this document](https://www.notion.so/19411c29298644df8e9656af45a7686d?pvs=25) to learn how to do so.
-1. One person from your team should create a fork of this repository
-2. Add your team members as collaborators to the fork
-3. Add a branch for your section
-4. Create `.mdx` files or Jupyter Notebooks for the chapters you want to contribute to
-5. Add the notebooks to the fork
-6. Work on the notebooks in your team and collaborate via standard git functionalities
-7. Make sure to update the requirements.txt file in the root of the repository
-8. When you feel like you are ready, create a pull request to this repository
+
+Before you, start reading more on the contribution guidelines, this is how our course outline looks like:
+
+```
+.
+
+└── chapters/
+	├── chapter0/
+        │   ├── introduction.mdx
+        │   └── getting_started.mdx
+        ├── chapter1/
+        │   └── ...mdx
+        └── _toctree.yml
+```
+
+1. First go to the [discussion section](https://github.com/johko/computer-vision-course/discussions/).
+2. Each new chapter outline should be put up under a pinned discussion. As shown in this [example](https://github.com/johko/computer-vision-course/discussions/80). 
+3. Each chapter can contain multiple topics and sub-topics. All of that should be defined in the chapter outline. Also, for each sub-topic, a single contributor should be assigned to work on that. See more in this [example](https://github.com/johko/computer-vision-course/discussions/80).
+4. Interested contributors motivated to work in a common chapter can come together to form a team. Where each contributor can directly contribute to a sub-topic and other fellow teammates can act as reviewers.
+5. One contributor from each team should fork the repository and other contributors should mutually agree on working collaboratively under that forked repo. 
+6. Under the forked repo, contributors should create issues (that will be the sub-topic name) and start working on that issue. 
+7. When contributors work on a subtopic, they should follow the below instructions:
+   1. Create `.mdx` files or Jupyter Notebooks for the sub-topics you want to contribute to
+   2. Make sure to update the requirements.txt file in the root of the repository
+   3.  When you feel like you are ready, create a pull request to this repository. 
+   4.  Your teammates will review your PR under that forked repo and then if things get approved, you can create the PR to merge it in our main branch 🤗
+
+   
 **Tip:** Contribute one subsection at a time, so that it’s not overwhelming for both you and reviewers.
+
 
 ## 📆 Deadlines
 
@@ -144,7 +165,11 @@ $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
   
 - Before contributing, please read the general [contribution guide](https://huggingface2.notion.site/Contribution-Guide-19411c29298644df8e9656af45a7686d?pvs=4).
 
-- If you have any images, videos and more in your PRs, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet.
+- If you have any images, videos and more in your PRs, please store them in [this Hugging Face repository](https://huggingface.co/datasets/hf-vision/course-assets) to keep this repository lightweight. You can ask for an access to the organization if you aren't a part of it yet. The steps to do so are below 👇
+1. Request to join the https://huggingface.co/hf-vision organization. 
+2. Upload an image to https://huggingface.co/datasets/hf-vision/course-assets, e.g. via the web UI.
+3. Get the URL (e.g. https://huggingface.co/datasets/huggingface-course/audio-course-images/blob/main/all_models.png) right click to "Download" button and copy the link.
+4. Use that in standard markdown like ![image](link-to-image)
 
 ### Notebooks
 
