@@ -34,7 +34,7 @@ Different color models, such as RGB for monitors and cameras and CMY/CMYK for pr
 ## Image Compression
 Data compression reduces the data needed to represent information. It distinguishes between data (the means of conveying information) and information itself. It targets redundancy, which is data that is either irrelevant or repetitive. For example, a 10:1 compression ratio indicates 90% data redundancy. 
 
-In digital image compression, particularly with 2-D intensity arrays, the three main types of redundancies are 
+In digital image compression, particularly with 2-D intensity arrays, the three main types of redundancies are:
 - a) **Coding redundancy**. Coding redundancy is particularly prevalent in images where the distribution of intensity values does not spread evenly across all possible values, which is depicted as a non-uniform histogram. In such images, some intensity values occur more frequently than others, yet natural binary encoding assigns the same number of bits to represent each intensity value, regardless of its frequency. This means that common values are not encoded more efficiently than rare values, leading to an inefficient use of bits and thus coding redundancy. Ideally, more frequent values should be assigned shorter codes and less frequent values longer codes to minimize the total number of bits used, which is not the case with natural binary encoding in non-uniform histograms.
 - b) **Spatial and temporal redundancy**. Spatial and temporal redundancy appear in correlated pixel values within an image or across video frames.
 - c) **Irrelevant information**. Irrelevant information includes data ignored by the human visual system or unnecessary for the image's purpose.
