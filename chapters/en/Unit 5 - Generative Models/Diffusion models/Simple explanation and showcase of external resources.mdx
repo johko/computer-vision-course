@@ -19,17 +19,17 @@ Now, if we put those ideas together we can use LoRA to efficiently fine-tune a d
 Due to the quality and efficiency of this method, many people have created their own LoRA parameters which many can be found on a website called [Civitai](https://civitai.com/models) and [Hugging Face](https://huggingface.co/collections/multimodalart/awesome-sdxl-loras-64f9af6d5cce4f4e8f351466). 
 For Civitai you can download the LoRA weights which usually are in the range of 50-500MB and in the case of Hugging Face version you can just load the model directly from the model hub.
 Below is an example of how to load the LoRA weights in both cases and then fuse them with the model.
- 
-
+ We can start with installing diffusers library.
+```bash
+pip install diffusers
 ```python
-!pip install diffusers # Install diffusers library if you haven't already
 from diffusers import StableDiffusionXLPipeline
 import torch
 
 model = "stabilityai/stable-diffusion-xl-base-1.0"
 pipe = StableDiffusionXLPipeline.from_pretrained(model,torch_dtype=torch.float16)
-pipe.load_lora_weights("lora_weights.safetensors") # Civitai
-pipe.load_lora_weights("ostris/crayon_style_lora_sdxl") # Hugging Face
+pipe.load_lora_weights("lora_weights.safetensors") # if you want to install from a weight file
+pipe.load_lora_weights("ostris/crayon_style_lora_sdxl") # if you wish to install a lora from a repository directly
 pipe.fuse_lora(lora_scale=0.8)
 ```
 
