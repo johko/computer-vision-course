@@ -42,7 +42,7 @@ However, unlike the original RetNet that performs training with parallel represe
 
 Another work inspired by the RetNet architecture is the ViR, as discussed in the paper [ViR: Vision Retention Networks](http://arxiv.org/abs/2310.19731). In this architecture, the authors propose a general vision backbone with a redesigned retention mechanism. They demonstrate that ViR can scale favorably to larger image resolutions in terms of image throughput and memory consumption by leveraging the dual parallel and recurrent properties of the retentive network.
 
-The overall architecture of ViR is quite similar to that of ViT, except that it replaces the Multi-Head Attention with Multi-Head Retention (MHR). This MHR mechanism is free of any gating function and can be switched between parallel, recurrent, or chunkwise (a hybrid between parallel and recurrent) modes. Another difference in ViR is that the positional embedding is first added to the patch embedding, and then the [class] token is appended.
+The overall architecture of ViR is quite similar to that of ViT, except that it replaces the Multi-Head Attention (MHA) with Multi-Head Retention (MHR). This MHR mechanism is free of any gating function and can be switched between parallel, recurrent, or chunkwise (a hybrid between parallel and recurrent) modes. Another difference in ViR is that the positional embedding is first added to the patch embedding, and then the [class] token is appended.
 
 ### Further Reading
 
