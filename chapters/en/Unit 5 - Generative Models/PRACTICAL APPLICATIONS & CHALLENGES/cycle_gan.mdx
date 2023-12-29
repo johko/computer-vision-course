@@ -1,4 +1,4 @@
-# CycleGAN Brief Introduction
+# CycleGAN Introduction
 
 This section introduces CycleGAN, short for Cycle-Consistent Generative Adversarial Network, which is a framework designed for image-to-image translation tasks where paired examples are not available. Introduced by Zhu et al. in a [2017](https://arxiv.org/abs/1703.10593) paper, it represents a significant advancement in the field of computer vision and machine learning.
 
@@ -23,7 +23,7 @@ These generators are enhanced with additional convolutional layers and skip conn
 
 Ensures that the style of an image can be changed (e.g., sad face to hugging face) and then reverted back to its original form (hugging face back to sad face) with minimal loss of detail or content.
 
-Implementation: Involves two stages of transformation:
+Implementation Involves two stages of transformation.
 
 **First Stage**: A sad face is transformed into a hugging face. **Second Stage**: This hugging face is then converted back into a sad face. The model aims for the final image (reverted sad face) to closely resemble the original sad face. This is achieved by minimizing the pixel difference between these two images, which is added to the model's loss function. The cycle consistency is applied in both directions: sad face to hugging face to sad face, and hugging face to sad face to hugging face. The loss for each cycle is calculated by summing the pixel differences and is then incorporated into the overall generator loss. 
 Integration with Adversarial Loss: Cycle consistency loss is combined with adversarial loss, commonly used in GANs, to form a comprehensive loss function. This combined loss function is optimized simultaneously for both generators in CycleGAN.
