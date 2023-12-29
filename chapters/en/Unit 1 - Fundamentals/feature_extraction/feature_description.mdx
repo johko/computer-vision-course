@@ -1,18 +1,26 @@
 ﻿# Feature Description
 
 ## How Can We Represent Features In Data Structures?
+
 Representing features in data is crucial for organizing and manipulating data effectively. Features, or attributes or variables, can be diverse, ranging from numerical values and categories to more complex structures like images or text. Here are some ways to represent features in data:
 
 1. **Numerical features**
+
 - Arrays/Lists: Simplest form to store numerical values. Each element in the array corresponds to a feature.
 - Tensors: Multidimensional arrays often used in the machine learning frameworks to handle large sets of numerical data efficiently.
+
 2. **Categorical features**
+
 - Dictionaries/Lists: Assigning categories to numerical labels or directly storing categorical values.
-- One hot encoding:** Transforming categorical variables into binary vectors where each bit represents a category.
+- One hot encoding:\*\* Transforming categorical variables into binary vectors where each bit represents a category.
+
 3. **Text features**
+
 - Bag of Words Representation: Breaking text into individual words and counting their occurrences.
 - Word Embeddings: Representing words as dense vectors capturing semantic meanings.
+
 4. **Image features**
+
 - Pixel Values: Strong pixel values matrices or multi-dimensional arrays.
 - Convolutional Neural Network features(CNN): Extracting features using pre-trained CNN models.
 
@@ -22,17 +30,18 @@ A good descriptor in image processing or computer vision is a set of characteris
 
 1. **Invariant to transformation:** Descriptors should ideally be robust to variations like rotation, translation, scaling and changes in illumination. This means that regardless of how an object is positioned or how the image is altered, the descriptor should remain relatively unchanged and contain the same description as the original one.
 2. **Distinctiveness:** A good descriptor captures unique information about the object. It should be able to discriminate between different objects or parts of an image and be distinct enough to differentiate them from similar elements.
-3. **Dimensionality:**  Good descriptors often have a manageable size, conveying enough information without being excessively large. Balancing dimensionality is crucial for efficiency in processing and storage.
+3. **Dimensionality:** Good descriptors often have a manageable size, conveying enough information without being excessively large. Balancing dimensionality is crucial for efficiency in processing and storage.
 4. **Locality:** Descriptors often identify local features within an image. Local descriptors focus on specific regions or keypoints and describe the characteristics of these areas, enabling matching and recognition of similar regions across different images.
 5. **Repeatability:** Descriptors should be consistent and reproducible across multiple instances of the same object or scene even in the presence of noise or minor variations.
-6. **Compatibility with Matching Algorithms:**  Descriptors are often used in conjunction with matching algorithms to find correspondences between different images. A good descriptor should be suitable for the matching algorithm being used, whether it's based on distance metrics, machine learning models, or other techniques.
+6. **Compatibility with Matching Algorithms:** Descriptors are often used in conjunction with matching algorithms to find correspondences between different images. A good descriptor should be suitable for the matching algorithm being used, whether it's based on distance metrics, machine learning models, or other techniques.
 7. **Computational Efficiency:** Efficiency is really a crucial part of a descriptor, especially in real-time applications. Descriptors should be computationally feasible for quick processing, particularly in scenarios where speed is crucial, such as robotics or autonomous vehicles.
 8. **Adaptability:** Descriptors that can adapt or learn from the data they are processing can be highly effective, especially in situations where the characteristics of the objects or scenes may change over time. This can increase the useability of the descriptor.
 9. **Noise Robustness:** Descriptors should be able to handle noise in the image data without significantly compromising their ability to accurately represent the underlying features.
 
 ## Some of the Techniques Used in Feature Descriptors
 
-### SIFT 
+### SIFT
+
 ![Basic Working of SIFT](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/feature-extraction-feature-matching/Original-SIFT-algorithm-flow.png)
 
 It stands for scale invariant feature transform. It is a widely used algorithm in computer vision and image processing for detecting and describing local features in images.
@@ -48,12 +57,14 @@ The working of SIFT is given below:
 SIFT's robustness to various image transformations and its ability to find distinctive features in an image makes it valuable in applications like object recognition, image stitching, and 3D reconstruction.
 
 You can learn more about SIFT using the following references:
+
 1. [Introduction to SIFT (Scale-Invariant Feature Transform)](https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html)
 
 2. https://www.educative.io/answers/what-is-sift
 3. https://www.cse.iitb.ac.in/~ajitvr/CS763/SIFT.pdf
 
 ### SURF
+
 ![Basic Working of SURF](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/feature-extraction-feature-matching/Flow-Chart-for-SURF-Feature-Detection.png)
 
 It stands for Speeded Up Robust features. It is another popular algorithm in computer vision and image processing. It is particularly known for its speed and robustness in detecting and describing local image features.
@@ -72,11 +83,10 @@ The basic workflow of SURF is given below:
 
 The key strengths of SURF lie in its computational efficiency, which is achieved through the use of integral images and Haar wavelet approximations while maintaining robustness to scale, rotation, and illumination changes. This makes SURF suitable for real-time applications where speed plays a crucial part in object detection, tracking, and image stitching.
 
-
 You can learn more about SURF using the following references:
 
-- [Introduction to SURF](https://medium.com/@deepanshut041/introduction-to-surf-speeded-up-robust-features-c7396d6e7c4e)
+- [Medium Blogpost - Introduction to SURF ](https://medium.com/@deepanshut041/introduction-to-surf-speeded-up-robust-features-c7396d6e7c4e)
 
-2. https://docs.opencv.org/3.4/df/dd2/tutorial_py_surf_intro.html
-3. https://www.ijtra.com/view/feature-extraction-using-surf-algorithm-for-object-recognition.pdf
+  2.[OpenCV Tutorial - Introduction to SURF (Speeded-Up Robust Features)] (https://docs.opencv.org/3.4/df/dd2/tutorial_py_surf_intro.html)
 
+3. [Journal Paper - Feature Extraction Using SURF Algorithm for Object Recognition](https://www.ijtra.com/view/feature-extraction-using-surf-algorithm-for-object-recognition.pdf)
