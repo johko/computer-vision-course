@@ -1,0 +1,30 @@
+## Overview
+
+### What is Hiera?
+
+Hiera is a hierarchical [vision transformer](https://arxiv.org/abs/2010.11929) that achieves high accuracy without the need for specialized components found in other models. The authors propose pretraining Hiera with a strong visual pretext task to remove unnecessary complexity and create a faster and more accurate model.
+
+![Hiera Architecture](https://pypi-camo.freetls.fastly.net/9c4e1fa765c6761fd8540ebe166f44f6c78c904a/68747470733a2f2f6769746875622e636f6d2f66616365626f6f6b72657365617263682f68696572612f7261772f6d61696e2f6578616d706c65732f696d672f68696572615f617263682e706e67)
+
+### From CNNs to ViTs
+
+CNNs and hierarchical models are well-suited for computer vision tasks because they can effectively capture the hierarchical and spatial structure of visual data. These models use fewer channels but higher spatial resolution in early stages to extract simpler features, and more channels but lower spatial resolution later in the model to extract more complex features.
+
+![CNNs](https://learnopencv.com/wp-content/uploads/2023/01/Convolutional-Neural-Networks.png)
+
+Vision Transformers (ViTs), on the other hand, turned out to be more accurate, scalable and architecturally simple models that took computer vision by storm when introduced. However, this simplicity comes at a cost: they lack this “vision inductive bias” (their architecture is not designed to work specifically with visual data).
+
+Many efforts have been made to adapt ViTs, generally by adding hierarchical components to compensate for this lack of inductive bias in their architecture. Unfortunately, all of the resulting models turned out to be slower, bigger and more difficult to scale.
+
+### Hiera's approach: Pretraining task is all you need
+
+Authors of the Hiera paper argue that a ViT model can learn spatial reasoning and perform well on computer vision tasks by using a strong visual pretext task called MAE and thus, they can remove unnecessary components and complexity from state-of-the-art multi-stage vision transformers to achieve greater accuracy and speed.
+
+### MAE
+MAE, which means “Masked AutoEncoder”, is an unsupervised training paradigm. As any other Autoencoder, it consists of encoding high dimensional data (images) into a lower dimension representation (“embedding”), in such a way that this data can be decoded into the original high dimensional data again. However, the visual MAE technique consists of dropping certain amount of patches (around 75%), encoding the rest of the patches, and then trying to predict the missing ones. This idea is based on the BERT model, and has been used a lot in recent years as a pre-training task for image encoders.
+
+![MAE](https://user-images.githubusercontent.com/11435359/146857310-f258c86c-fde6-48e8-9cee-badd2b21bd2c.png)
+
+## Why it matters?
+
+In the era dominated by Transformers models, there are still a lot of attempts to improve this simple architecture, adding the complexity of CNN to convert them into Hierarchical models again. Although Hierarchical models excel in computer vision, this study demonstrates that achieving hierarchical transformers doesn't necessitate intricate architectural modifications; instead, a concentrated emphasis on the training task alone can yield simple, fast, and precise models.
