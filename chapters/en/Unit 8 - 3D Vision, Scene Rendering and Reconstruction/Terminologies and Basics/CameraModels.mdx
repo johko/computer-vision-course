@@ -12,14 +12,14 @@ This simple model for a camera is commonly used in 3D graphics applications.
 
 ### Camera axes conventions
 
-![Blender camera axes conventions](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Pinhole-transform.png)
+![Blender camera axes conventions](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/axes_handedness.png)
 
 There are a number of different conventions for the direction of the camera axes. 
 Here we will follow the convention of Blender (see diagram), where the camera points along the negative Z-axis, the camera X-axis points to the left (looking from the camera) and the camera Y-axis points up.
 
 ### Pinhole camera coordinate transformation
 
-![Pinhole transformation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/axes_handedness.png)
+![Pinhole transformation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Pinhole_transform.png)
 
 Each point in 3D space maps to a single point on the 2D plane. To find the map between 3D and 2D coordinates, we first need to know the intrinsics of the camera, which for a pinhole camera are
  - the focal lengths, $f_x$ and $f_y$ 
