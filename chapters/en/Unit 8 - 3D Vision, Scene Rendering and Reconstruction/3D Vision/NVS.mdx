@@ -36,7 +36,7 @@ At each query point $x$ in the rendered volume, the corresponding point in the i
 The input image features at this point, $W(\pi x)$ are then found by bilinear interpolation.
 Like in the original NeRF, the query point $x$ is positionally encoded and concatentated with the viewing direction $d$.
 The NeRF network consists of a set of ResNet blocks; the input image features $W(\pi(x))$ pass through a linear layer, and are added to the features at the start of each of the first three residual blocks.
-There are then two further residual blocks to further process these features, before an output layer to reduce the number of channels to four (RGB+density).
+There are then two more residual blocks to further process these features, before an output layer reduces the number of channels to four (RGB+density).
 When multiple input views are supplied, these are processed independently for the first three residual blocks, and then the features are averaged before the last two blocks.
 
 The original PixelNeRF model was trained on a relatively small set of renderings from the [ShapeNet](https://huggingface.co/datasets/ShapeNet/ShapeNetCore) dataset.
