@@ -1,0 +1,116 @@
+
+# Basics of linear algebra for 3D data
+
+## Coordinate systems
+
+Most three-dimensional data consists of objects such as points which have a defined position in space, often represented by their three coordinates $[x,y,z]$.
+
+However, different systems have different conventions for these coordinate system. The most important difference is handedness, which is the relative orientation
+of the X, Y and Z axes. The easiest way to remember the difference is to point your middle finger inwards, such that your thumb, index and middle fingers are roughly at right-angles to each other. On your left hand, your thumb (X), index finger (Y) and middle finger (Z) form a left-handed coordinate system. Similarly, the fingers of your right hand make a right-handed coordinate system.
+
+In mathematics and physics, a right-handed system is usually used. However, in computer graphics, different libraries and environments have different conventions.
+Notably, Blender, Pytorch3d and OpenGL (mostly) use right-handed coordinates, whilst DirectX uses left-handed coordinates.
+
+Here we will use the right-handed convention, following Blender and NerfStudio.
+
+## Transformations
+
+It is useful to be able to rotate, scale, and translate these coordinates in space. For example, if an object is moving, or if we want to change these coordinates from world coordinates, relative to some fixed set of axes, to coordinates relative to our camera.
+
+These transformations can be represented by matrices. 
+To allow us to represent translation, rotation and scaling in a consistent manner, we take the three dimensional coordinates $[x,y,z]$, and add an extra coordinate $w=1$.
+
+(Note that these are known as homogeneous coordinates - more generally, w can take any value, and all points on the four dimensional line $[wx, wy, wz, w]$ correspond to the same point $[x,y,z]$ in three-dimensional space. However here w will always be 1).
+
+Libraries such as Pytorch3d provide a range of functions for generating and manipulating transformations.
+
+Yet another convention to note - OpenGL treats positions as column vectors x (of shape 4x1), and applies a transformation M by pre-multiplying the  vector by the matrix ( M @ x),
+whereas DirectX and Pytorch3d consider positions as row vectors of shape (1x4), and applies a transformation by post-multiplying the vector by the matrix ( x @ M ). To convert between the two conventions we need to take the transpose of the matrix M.T .
+
+### Translations
+
+Translations, moving all the points in space by the same distance and direction, can be represented as
+$$
+T = \begin{pmatrix}
+1 & 0 & 0 & u \\
+0 & 1 & 0 & v \\
+0 & 0 & 1 & w \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+where $u = [u,v,w]$ is the direction vector to translate all the points.
+
+
+### Scaling
+
+Scaling is the process of uniformly increasing or decreasing the size of an object. A scaling transformation is represented by a matrix that multiplies each coordinate by a scale factor. The scaling matrix is given by:
+
+$$
+S = \begin{pmatrix}
+s_x & 0 & 0 & 0 \\
+0 & s_y & 0 & 0 \\
+0 & 0 & s_z & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+
+where \(s_x\), \(s_y\), and \(s_z\) are the scaling factors along the X, Y, and Z axes, respectively.
+
+### Rotations
+
+Rotations around an axis are another commonly used transformation. There are a number of different ways of representing rotations, including Euler angles and quaternions, which can be very useful in some applications. However, as a simple example, we will just show how to construct rotations about each of the three axes.
+
+
+- **Rotation around the X-axis**:
+  $$
+  R_x(\alpha) = \begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & \cos\alpha & -\sin\alpha & 0 \\
+  0 & \sin\alpha & \cos\alpha & 0 \\
+  0 & 0 & 0 & 1
+  \end{pmatrix}
+  $$
+
+- **Rotation around the Y-axis**:
+  $$
+  R_y(\beta) = \begin{pmatrix}
+  \cos\beta & 0 & \sin\beta & 0 \\
+  0 & 1 & 0 & 0 \\
+  -\sin\beta & 0 & \cos\beta & 0 \\
+  0 & 0 & 0 & 1
+  \end{pmatrix}
+  $$
+
+- **Rotation around the Z-axis**:
+  $$
+  R_z(\gamma) = \begin{pmatrix}
+  \cos\gamma & -\sin\gamma & 0 & 0 \\
+  \sin\gamma & \cos\gamma & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1
+  \end{pmatrix}
+  $$
+
+Note that the standard convention is that a positive rotation angle corresponds to an anti-clockwise rotation when the axis of rotation is pointing towards the viewer. However, this might again vary.
+
+### Scaling
+
+Another key transformation is to be able to scale an object, increasing or decreasing its size. It is possible to write down a matrix corresponding to scaling along all three axes at the same time
+
+$$
+S = \begin{pmatrix}
+s_x & 0 & 0 & 0 \\
+0 & s_y & 0 & 0 \\
+0 & 0 & s_z & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+
+where \(s_x\), \(s_y\), and \(s_z\) are the scaling factors along the X, Y, and Z axes, respectively. Note that \(s=1) corresponds to no change in size along that axis.
+
+### Combining transformations
+
+Multiple transformations can be combined by multiplying together their matrices. Here we'll use @ to denote matrix multiplication.
+
+Note that the order that matricies are multiplied matters - with the the matrices being applied right to left. To make a matrix that applies the transforms P, Q, and R, in that order, the composite transformation is given by $C = R @ Q @ P $.
+
