@@ -25,7 +25,8 @@ If 'nh.nw' non-overlapping image patches are extracted from each frame, then a t
 This method extends the vision transformer's image embedding to 3D and corresponds to a 3D convolution. It is an alternative method in which non-overlapping, spatiotemporal "tubes" from input volume are extracted and linearly projected.
 
 
-First, we extract tubes from the video, these tubes contain patches of the frame and the temporal information as well. The tubes are then flattened to build video tokens. Intuitively, this method fuses spatiotemporal information during tokenization, in contrast to “Uniform frame sampling” where temporal information from different frames is fused by the transformer.
+First, we extract tubes from the video. These tubes contain patches of the frame and the temporal information as well. The tubes are then flattened to build video tokens. Intuitively, this method fuses spatiotemporal information during tokenization, in contrast to "uniform frame sampling", where temporal information from different frames is fused by the transformer.
+
 
 
 ## Importance of Temporal Information in Video Processing
