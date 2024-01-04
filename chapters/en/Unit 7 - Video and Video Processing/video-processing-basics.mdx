@@ -33,7 +33,6 @@ This method extends the vision transformer's image embedding to 3D and correspon
 First, we extract tubes from the video. These tubes contain patches of the frame and the temporal information as well. The tubes are then flattened to build video tokens. Intuitively, this method fuses spatiotemporal information during tokenization, in contrast to "uniform frame sampling", where temporal information from different frames is fused by the transformer.
 
 
-
 ## Importance of Temporal Information in Video Processing
 The inclusion of temporal information in video processing is crucial for several computer vision tasks. One such task is action recognition, which aims to classify the action in a video. Temporal information is also essential for tasks like video captioning, where the goal is to generate a textual description of the content in a video.
 
