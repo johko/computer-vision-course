@@ -1,15 +1,14 @@
 # GoogLeNet
 
-### 1. Introduction 
+### 1. Overview
 
-Inception is a convolution neural network (CNN) architecture, used for computer vision classification and detection tasks. It has less than 7 million parameters, which is 9 times smaller than AlexNet, and 22 times smaller than VGG16. In ImageNet 2014 challenge, the authors from Google submitted a version of Inception network callled GoogLeNet (an homage to LeNet), which achieved state-of-the-art results with less parameters than prior best methods.   
+The Inception architecture, a type of convolutional neural network (CNN) designed for tasks in computer vision such as classification and detection, stands out due to its efficiency. Containing fewer than 7 million parameters, it is significantly more compact than its predecessors, being 9 times smaller than AlexNet and 22 times smaller than VGG16. This architecture gained recognition in the ImageNet 2014 challenge, where Google's adaptation, named GoogLeNet (a tribute to LeNet), set new benchmarks in performance while utilizing fewer parameters compared to previous leading methods.
 
-### 2. Key Architecture 
+### 2. Architectural Innovations
 
-Before Inception, successful network architectures such as AlexNet or VGG have shown the importance of increasing network depth. However, increasing network depth also increases computation steps, and problems such as overfitting and vanishing gradient may occur. Inception network introduced a method to efficiently train complex CNNs wih less floating parameters.   
+Prior to the advent of the Inception architecture, models like AlexNet and VGG demonstrated the benefits of deeper network structures. However, deeper networks typically entail more computational steps and can lead to issues such as overfitting and the vanishing gradient problem. The Inception architecture offers a solution, enabling the training of complex CNNs with a reduced count of floating-point parameters.
 
-To design a CNN network, one typically selects each layer to be a pooling layer or a convolution layer, including the choice of convolution filter size. Stacking convolution filters of different sizes on top of one another is useful for various tasks, but the total number of parameters can grow very quickly. In Inception networks, convolution filters of different sizes (1X1, 3X3, 5X5) are connected in parallel, and combined with maxpooling into a single module, called the Inception module. GoogLeNet network is constructed by connecting 9 Inception module in series. With this structure, the network can be flexible and learn complex tasks without much incease in depth.  
-
+In conventional CNN design, layers are typically categorized as either pooling or convolution layers, with specific sizes for convolution filters. Although layering different sizes of convolution filters is beneficial for various tasks, it can rapidly increase the total number of parameters. The Inception architecture takes a different approach by running convolution filters of various sizes (1x1, 3x3, 5x5) in parallel. These are then integrated with max pooling into a unified component known as the Inception module. The GoogLeNet architecture is composed of a series of 9 such Inception modules. This configuration allows the network to maintain flexibility and learn complex tasks without a substantial increase in depth.
 
 ### 3. Code 
 
