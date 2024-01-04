@@ -26,7 +26,8 @@ It is a straightforward method of tokenizing the input video in which we uniform
 If $$n_h*n_w$$  non-overlapping image patches are extracted from each frame, then a total of $$n_t*n_h*n_w' tokens will be forwarded through the transformer encoder. Uniform frame sampling is a tokenization scheme in which we sample frames from the video clip and perform simple ViT tokenization.
 
 
-### Tubelet Embedding:
+### Tubelet Embedding
+
 This method extends the vision transformer's image embedding to 3D and corresponds to a 3D convolution. It is an alternative method in which non-overlapping, spatiotemporal "tubes" from input volume are extracted and linearly projected.
 
 
