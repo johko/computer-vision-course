@@ -10,7 +10,8 @@ Each patch is then fed through a series of self-attention layers and feed-forwar
 Since vision transformers process patches individually and transformers by default don't have any mechanism to track position of inputs, the spatial context of the image can be lost.
 To address this, vision transformers often include positional encodings that capture the relative position of each patch within the image. By incorporating positional information, the model can better understand the spatial relationships between different patches and enhance its ability to recognize objects and patterns.
 
-*__Note__: CNNs are designed to learn spatial features, while vision transformers are designed to learn both spatial and contextual features.*
+*Note:* CNNs are designed to learn spatial features, while vision transformers are designed to learn both spatial and contextual features.
+
 
 ## Key Differences Between Image and Video Processing
 Videos are essentially a sequence of frames, and processing them requires techniques to capture and incorporate motion information. In image processing, the transformer ignores the temporal (time) relations between frames i.e. it only focuses on spatial (space) information of a frame.
