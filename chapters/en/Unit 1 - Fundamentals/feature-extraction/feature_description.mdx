@@ -77,7 +77,7 @@ The basic workflow of SURF is given below:
 
 - **Scale Selection**: It determines the scale of the keypoints by identifying regions with significant changes in scale-space. It analyzes the determinant of the Hessian matrix across different scales to find robust keypoints at multiple scales.
 
-4. **Orientation Assignment:** For each detected keypoint, SURF assigns a dominant orientation. This is done by calculating Haar wavelet responses in different directions around the keypoint’s neighborhood. Unlike SIFT, SURF uses a set of rectangular filters (Haar wavelets) applied to subregions of the keypoint's neighborhood. The responses of these filters are used to create a feature vector representing the keypoint.
+- **Orientation Assignment:** For each detected keypoint, SURF assigns a dominant orientation. This is done by calculating Haar wavelet responses in different directions around the keypoint’s neighborhood. Unlike SIFT, SURF uses a set of rectangular filters (Haar wavelets) applied to subregions of the keypoint's neighborhood. The responses of these filters are used to create a feature vector representing the keypoint.
 
 5. **Descriptor Matching:** The generated descriptors are then used for matching keypoints between different images. Matching involves comparing the feature vectors of keypoints in one image to those in another image to find correspondences.
 
