@@ -22,13 +22,13 @@ Authors of the Hiera paper argue that a ViT model can learn spatial reasoning an
 
 What components are the paper authors actually removing? To understand this we first have to introduce [MViTv2](https://arxiv.org/abs/2112.01526) which is the base hierarchical architecture from which Hiera is derived. MViTv2 learns multi-scale representations over its four stages: it starts by modeling low level features with a small channel capacity but high spatial resolution, and then in each stage trades channel capacity for spatial resolution to model more complex high-level features in deeper layers.
 
-![MViTv2](image_link) # TODO: Add image here
+![MViTv2](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/hiera_images/mvitv2.png)
 
 Instead of digging deep into MViTv2's key features (since it's not our main topic), we will breifly explain them in the next section to illustrate how researchers create Hiera by simplyfing this base architecture.
 
 ### Simplifying MViTv2
 
-![Simplifying MViTv2](image_link) # TODO: Add image here
+![Simplifying MViTv2](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/hiera_images/hiera_changes.png)
 
 This table lists all the changes that authors made to MViTv2 in order to create Hiera and how each change affects accuracy and speed on images and video.
 
