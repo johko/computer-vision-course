@@ -1,6 +1,6 @@
 # Introduction to Stable Diffusion
 This chapter introduces the building blocks of Stable Diffusion which is a generative artificial intelligence (generative AI) model that produces unique photorealistic images from text and image prompts. It originally launched in 2022 and was made possible thanks to a collaboration with
-[Stability AI](https://stability.ai/), [RunawayML](https://runwayml.com/) and CompVis Group at LMU Munich following the [paper](https://arxiv.org/pdf/2112.10752.pdf).
+[Stability AI](https://stability.ai/), [RunwayML](https://runwayml.com/) and CompVis Group at LMU Munich following the [paper](https://arxiv.org/pdf/2112.10752.pdf).
 
 What will you learn from this chapter?
 - Fundamental components of Stable Diffusion
@@ -33,9 +33,9 @@ Since, we are trying to generate something new(e.g., a realistic Pokemon), we ne
 Each spatial location in the U-Net can 'attend' to different tokens in the text conditioning, bringing in relevant information from the prompt. 
 
 
-## How to use `text-to-image`, `image-to-image`, Inpainting in Diffusers
-This section introduces useful usecases and how can we use perform these tasks using Diffusers library.
-- `text-to-image`
+## How to use `text-to-image`, `image-to-image`, Inpainting Models in Diffusers
+This section introduces helpful usecases and how we can perform these tasks using the [Diffusers](https://github.com/huggingface/diffusers) library.
+- Steps for `text-to-image` inference
 The idea is to pass in the text prompt, which is converted to the output image.
 
 <iframe
@@ -48,7 +48,7 @@ The idea is to pass in the text prompt, which is converted to the output image.
 Using the `diffusers` library you can get `text-to-image` working in 2 steps.
 
 Let's install the `diffusers` library first.
-```python
+```bash
 pip install diffusers
 ```
 
@@ -64,7 +64,7 @@ image = pipeline("Astronaut in a jungle, cold color palette, muted colors, detai
 image
 ```
 
-- Steps for image-to-image
+- Steps for image-to-image inference
 ```python
 # Step 1
 import torch
