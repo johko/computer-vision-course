@@ -3,6 +3,27 @@
   - local: chapter0/1
     title: Introduction
 
+- title: Unit 1 - Fundamentals
+  sections:
+  - sub-title: Chapter 1 - Fundamentals of Computer Vision
+    sections:
+    - local: chapters/en/Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/motivation.mdx
+      title: Vision
+    - local: chapters/en/Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/definition.mdx
+      title: What Is Computer Vision
+    - local: chapters/en/Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/applications.mdx
+      title: Applications of Computer Vision
+  - sub-title: image_and_imaging
+    sections:
+    - local: chapters/en/Unit 1 - Fundamentals/image_and_imaging/image.mdx
+      title: Image
+    - local: chapters/en/Unit 1 - Fundamentals/image_and_imaging/imaging.mdx
+      title: Image Acquisition Fundamentals in Digital Processing
+    - local: chapters/en/Unit 1 - Fundamentals/image_and_imaging/extension-image.mdx
+      title: Imaging in Real-life
+    - local: chapters/en/Unit 1 - Fundamentals/image_and_imaging/examples-preprocess.mdx
+      title: Pre-processing for Computer Vision Tasks
+
 - title: Unit 4. Multimodal Models
   sections:
   - local: chapters/en/Unit 4 - Multimodal Models/pre-intro
