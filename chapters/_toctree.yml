@@ -5,6 +5,14 @@
 
 - title: Unit 4. Multimodal Models
   sections:
+  - local: chapters/en/Unit 4 - Multimodal Models/pre-intro
+    title: What you'll learn and what you'll build
+  - local: chapters/en/Unit 4 - Multimodal Models/introduction
+    title: Introduction
+  - local: chapters/en/Unit 4 - Multimodal Models/tasks-models-part1
+    title: Multimodal Tasks and Models
+  - local: chapters/en/Unit 4 - Multimodal Models/vlm-intro.mdx
+    title: Introduction to Vision Language Models
   - local: chapters/en/Unit 4 - Multimodal Models/transfer_learning
     title: Transfer learning
 
@@ -22,3 +30,5 @@
   sections:
   - local: chapters/en/Unit 12 - Ethics and Biases/pre-intro
     title: What you'll learn
+  - local: chapters/en/Unit 12 - Ethics and Biases/introduction
+    title: Introduction
