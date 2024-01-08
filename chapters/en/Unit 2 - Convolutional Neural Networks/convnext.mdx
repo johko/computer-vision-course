@@ -59,7 +59,7 @@ By using this technique, it improves the model accuracy from 80.5% to 80.6%.
 
 
 ## Large Kernel Sizes
-One of the reasons Vision Transformer do so well has to do with its non-local self-attention which enables a more global receptive field of image features.
+One of the reasons Vision Transformer does so well is its non-local self-attention which enables a more global receptive field of image features.
 Swin Transformers' attention block window size is at least 7×7, bigger than ResNext's 3x3 kernel size. ConvNext changes ResNext's original kernel size as follows.
 - Moving up the position of the depthwise convolution layer is a prerequisite to increasing the kernel size. By doing this, we can let the 1x1 layers do the efficient heavy lifting while the depthwise convolution layer focus as a more non-local receptor.
 - With the prerequisite set up, we can get the benefit of adopting larger kernel-sized convolutions. 
