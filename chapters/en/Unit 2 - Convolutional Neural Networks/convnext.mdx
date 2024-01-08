@@ -71,7 +71,7 @@ In addition to the modifications stated, ConvNext also considers micro design, f
 The changes are:
 - Replacing ReLU activation with GELU (Gaussian Error Linear Unit) (optional, accuracy stays unchanged) 
 - Fewer activation functions (eliminate all GELU layers from the residual block except for one between two 1×1 layers, replicating the style of a Transformer block)
-- Fewer normalization layers (remove two BatchNorm layers, leaving only one BN layerbefore the conv 1 × 1 layers)
+- Fewer normalization layers (remove two BatchNorm layers, leaving only one BN layer before the conv 1 × 1 layers)
 - Substituting Batch Normalization with Layer Normalization (LN improves the model after doing the previous modifications)
 - Separate downsampling layers (add a separate downsample layer in between ResNet stages, adding LN layers before each downsampling layer)
 With these final modifications, this improves the final model accuracy from 80.6% to 82.0%, exceeding Swin Transformer's accuracy (81.3%).
