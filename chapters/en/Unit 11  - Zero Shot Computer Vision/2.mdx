@@ -1,0 +1,37 @@
+# Zero-shot Learning
+
+## ZSL vs. Generalized ZSL
+
+Zero-shot learning (ZSL) and generalized zero-shot learning (GZSL) both belong to a type of machine learning methods, where the classification model needs to classify labels not included in training data. ZSL and GZSL are very similar, and the main difference is how the model is evlauated.
+
+For ZSL, the model is purely evaluated on its capability to classify unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes, which is considered more practical and closer to real-world usecases. Overall GZSL is more challenging, because the model needs to determine if an observation belongs to a novel class or a known class.
+
+Two papers that first introduced GZSL were published in 2013. Socher et al [1] integrated outlier detection into the image classificiation model, and classified whether a test sample be within to the manifold spanned by the seen classes.
+
+## Types of ZSL Based on Training Data
+
+Based on the types of training data, there are two kinds of zero-shot learning
+
+### inductive zero shot
+
+Training data includes labelled images of seen classes, and semantic descriptions/attributes of both seen and unseen classes. The main idea is to establish projections from observaed image space to semantic latent space, and the model can identify unseen classes at inference time.
+
+### transductive zero shot
+
+Training data includes labelled images of seen classes and unlabelled images of unseen classes, and semantic descriptions or attributes of both seen and unseen classes. The usecase for transductive learning is when we do not have enough labeling resource to label all images.
+
+## Semantic Information and Embeddings
+
+Semantic information refers to the meaning and interpretation of text. For example, the information described with spoken text transferred from one person to another is called semantic information. It does not only include the direct meanings of words, phrases, or sentences, but also the contextual and cultural meanings.
+
+Embeddings refers to methods in NLP to represent texts by vectors of real numbers. Any unit of text such as words, phrases, or sentences can be transformed into vectors by set rules. Traditionally words are represented as one-hot vectors [2]. Each word is independent and has no relationship to one another based on information represented in the one-hot vectors. Semantic embeddings place words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand language usage, synonyms, and context, vastly improving the ability for machines to process, interpret, and generate language.
+
+## Benchmarks and Evaluation
+
+The benchmarks and standard datasets are:
+
+1）Animal with Attributes（AwA）
+2）Caltech-UCSD-Birds-200-2011（CUB）
+3）Sun database（SUN）
+4）Attribute Pascal and Yahoo dataset（aPY）
+5）ILSVRC2012/ILSVRC2010（ImNet-2）
