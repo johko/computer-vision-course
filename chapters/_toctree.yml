@@ -15,7 +15,12 @@
     title: Introduction to Vision Language Models
   - local: chapters/en/Unit 4 - Multimodal Models/transfer_learning
     title: Transfer learning
- 
+
+- title: Unit 5. Multimodal Models
+  sections:
+  - local: chapters/en/Unit 5 - Generative Models/Diffusion models
+    title: stable_diffusion
+
 - title: Unit 10. Synthetic Data Creation
   sections:
   - local: chapter10/blenderProc
