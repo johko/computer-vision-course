@@ -50,7 +50,7 @@ The working of SIFT is given below:
 
 - **Scale Space Extrema detection:** It starts by detecting potential interest points in an image across multiple scales. It looks for locations in the image where the difference of Gaussian function reaches a maximum or minimum over space and scale. These keypoint locations are considered stable under various scale changes.
 - **Keypoint Localization:** Once potential keypoints are identified, SIFT refines their positions to sub-pixel accuracy and discards low-contrast keypoints and keypoints on edges to ensure accurate localization.
-3. **Orientation Assignment:** SIFT computes a dominant orientation for each keypoint based on local image gradient directions. This step makes the descriptor invariant to image rotation.
+- **Orientation Assignment:** SIFT computes a dominant orientation for each keypoint based on local image gradient directions. This step makes the descriptor invariant to image rotation.
 4. **Descriptor Generation:** A descriptor is computed for each keypoint region, capturing information about the local image gradients in the vicinity of the keypoint. This descriptor is a compact representation that encapsulates the key characteristics of the image patch surrounding the keypoint.
 5. **Descriptor Matching:** Finally, these descriptors are used for matching keypoints between different images. The descriptors from one image are compared to those in another image to find correspondences.
 
