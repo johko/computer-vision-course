@@ -52,7 +52,7 @@ The working of SIFT is given below:
 - **Keypoint Localization:** Once potential keypoints are identified, SIFT refines their positions to sub-pixel accuracy and discards low-contrast keypoints and keypoints on edges to ensure accurate localization.
 - **Orientation Assignment:** SIFT computes a dominant orientation for each keypoint based on local image gradient directions. This step makes the descriptor invariant to image rotation.
 - **Descriptor Generation:** A descriptor is computed for each keypoint region, capturing information about the local image gradients near the keypoint. This descriptor is a compact representation that encapsulates the key characteristics of the image patch surrounding the keypoint.
-5. **Descriptor Matching:** Finally, these descriptors are used for matching keypoints between different images. The descriptors from one image are compared to those in another image to find correspondences.
+- **Descriptor Matching:** Finally, these descriptors are used for matching keypoints between different images. The descriptors from one image are compared to those in another image to find correspondences.
 
 SIFT's robustness to various image transformations and its ability to find distinctive features in an image makes it valuable in applications like object recognition, image stitching, and 3D reconstruction.
 
