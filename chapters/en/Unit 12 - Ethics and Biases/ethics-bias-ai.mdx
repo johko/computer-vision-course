@@ -3,20 +3,20 @@
 We hope that you found the ImageNet Roulette case study interesting and learned what can go wrong with AI models in general. In this chapter, we will go through yet another example of a powerful technology that has cool applications but can also raise ethical concerns if kept unchecked. Let's first quickly summarize the ImageNet Roulette case study and its after-effects.
 1. ImageNet Roulette is a great example of an AI model gone wrong, due to the inherent biases and overlooking the labelling and data pre-processing stages.
 2. The experiment was hand-crafted just to demonstrate how things can go wrong if kept unchecked.
-3. This led to a great deal of corrections done by the ImageNet team in the dataset as well as take appropriate measures to  mitigate the problems like: face obfuscation, removal of harmful and triggering synsets, removal of corresponding images etc.
-4. Finally, it opened up an ongoing discussion, research work and steps that are being taken to mitigate the risks. 
+3. This project led to a great deal of corrections done by the ImageNet team in the dataset, as well as implementation of appropriate measures to mitigate problems like face obfuscation, removal of harmful and triggering synsets, removal of corresponding images, etc.
+4. Finally, it opened up an ongoing discussion and fuelled the research work on mitigating the risks. 
 
-Now let us take a look into another example of a powerful technology but before diving in, let's think on for a while on some questions. Is electricity good or bad? Is internet generally safe or harmful? In general, is technology good or bad? With these questions in mind, let's begin our journey.
+Before we take a look at another example of a powerful technology, let's step back and reflect on some questions. In general, is technology good or bad? Is electricity good or bad? Is the internet generally safe or harmful? Etc. Keep these questions in mind as we begin our journey.
 
 ## Deepfakes 🎥
 
-Imagine, you are a recent fresher who wants to learn about Deep Learning and you enroll to an the Course on Introduction to Deep Learning (MIT 6.S191)by MIT. To make things more interesting the course team released a really cool video on what things can be done using deep learning. Check the video here:
+Imagine you are a recent graduate who wants to learn about Deep Learning. You enroll in a course called "Introduction to Deep Learning (MIT 6.S191)" by MIT. To make things more interesting, the course team released a really cool video on things that can be done using deep learning. Check the video here:
 
 <Youtube id="l82PxsKHxYc"/>
 *An introduction to the course MIT 6.S191, where deepfakes were used to give an impression of a welcome by Barack Obama.*
 
 Yup, the introduction session was made in such a way that it puts an impression that the students are being welcomed by none other than Barack Obama himself. Really cool application, a course on deep learning with an introduction curated to showcase one of the usecases of deep generative models. For the first timers, this would be really engaging, making them interested in the technology and everyone would like to try it out. After all you can actually make such videos and images easily within a few minutes using a decent GPU and start posting memes, posts etc surrounding this.
-Let's see another example of this technology but with different after effects. Imagine, if we can come up with the same deepfake of an influential political leader or actor during times of elections or wars. The same fake video can be used to spread hatred, misinformation leading to marginalizing different people. Even though the person himself didnot actually spread misinformation, but due to the video there can be massive outrage. This can be horrifying and also the main problem lies in the fact that once the misinformation is spread, even after realizing the video was manipulated the harm is already done and people are divided. So the harm can only be reduced if the manipulated video is not made public in the first place. This makes this technology equally dangerous, so is this technology safe or harmful? Technology itself is never good or bad but the usage (who uses it and for what purpose) can cause good or bad effects.
+Let's see another example of this technology but with different after-effects. Imagine, if we can come up with the same deepfake of an influential political leader or actor during times of elections or wars. The same fake video can be used to spread hatred and misinformation, leading to marginalizing different people. Even though the person did not actually spread misinformation, the video itself can cause massive outrage. This can be horrifying. However, the main problem lies in the fact that once the misinformation is spread, the harm is already done, and people are divided, even if it later becomes clear that the video was manipulated. So the harm can only be avoided if the manipulated video is not made public in the first place. This makes this technology dangerous, but is the technology itself safe or harmful? Technology itself is never good or bad but the usage (who uses it and for what purpose) can cause good or bad effects.
 
 Deepfakes are synthetic media that are created using the help of deep generative CV models. You can actually manipulate images with a different person's image and also generate videos through it. Audio deepfake is another technology which can complement the CV counterpart by mimicing the exact voice of the subject in consideration. This was just one of the examples how deepfakes can cause havoc, but in reality the implications are far more dangerous as it can have life long impact on the lives of the victims.
 
@@ -26,16 +26,16 @@ From the previous example, a few aspects of this technology to keep in mind woul
 1. Consent of the subject before using the images/videos to manipulate and form new media.
 2. Algorithms that actually facilitate creation of synthetic media which can be used for manipulation.
 3. Algorithms that can be used to detect such synthetic media.
-4. Awareness about these algorithms and its after effects.
+4. Awareness about these algorithms and their after-effects.
 
 <Tip>
 💡Check out The Consentful Tech Project here: https://www.consentfultech.io/. This project raises awareness, develops strategies and shares skills to help people build and use technology consentfully.
 </Tip>
 
 Let us now formalize some definitions on the basis of these examples. So what is Ethics and Bias? Ethics can be defined in simple words as a set of moral principles which help us distinguish between wrong and right. Now, AI Ethics can be defined as the set of values, principles and techniques that employ widely accepted standards of right and wrong to guide moral conduct in the development and use of AI. AI Ethics is a multidisciplinary field that studies how to optimize AI's beneficial impact while reducing risks and adverse outcomes. This field involves a variety of stakeholders:
-1. *Researchers, Engineers and Developers:* people incharge of models, algorithms, datasets development and curation.
-2. *Government bodies, legal authorities (like lawyers), AI Ethicists:* bodies and people in charge of regulatory aspects of Ethical AI development.
-3. *Companies and organizations:* stakeholders that are in the fore front of delivering AI products and services.
+1. *Researchers, Engineers, Developers and AI Ethicists:* people in charge of models, algorithms, datasets development and curation.
+2. *Government bodies, legal authorities (like lawyers):* bodies and people in charge of regulatory aspects of Ethical AI development.
+3. *Companies and organizations:* stakeholders that are in the forefront of delivering AI products and services.
 4. *Citizens:* people who use AI services and products in their daily lives, and are largely affected by the technology.
 
 Bias in AI refers to the biases in output of the algorithms which might happen due to assumptions during model development or training data. These assumptions stem from the inherent biases that are inside humans who were responsible for the development. As a result AI models and algorithms start reflecting on these biases. These biases can lead to disrupting the ethical development or principles and therefore need attention and ways to mitigate them. We will be covering more about biases, how they creep in different AI models, their types, evaluation and mitigation (with focus on CV models) in detail in the upcoming chapters of the unit. To understand more about Ethics in AI, let us look closely into principles for Ethical AI.
@@ -51,7 +51,7 @@ There have been many historic works that reflect on development of ethics for te
 
 ### Asilomar AI Principles 🧑🏻‍⚖️🧑🏻‍🎓🧑🏻‍💻
 
-Asimov's laws of robotics were one of the earliest works in ethics for technology. In 2017, a conference was organized at Asilomar Conference Grounds, California. This conference was held to discuss about the impacts of AI on society. The outcome of this conference was the development of guidelines for the responsible development of AI. The guideline has 23 principles which was signed by around 5,000 individuals including 844 AI and robotics researchers. 
+Asimov's laws of robotics were one of the earliest works in ethics for technology. In 2017, a conference was organized at Asilomar Conference Grounds, California. This conference was held to discuss the impacts of AI on society. The outcome of this conference was the development of guidelines for the responsible development of AI. The guideline has 23 principles, which were signed by around 5,000 individuals, including 844 AI and robotics researchers.
 
 ![Asilomar AI Principles](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/asilomar-ai.png)
 *23 Asilomar AI Principles for Responsible AI Development*
