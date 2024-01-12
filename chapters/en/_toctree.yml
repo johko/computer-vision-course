@@ -26,22 +26,22 @@
 
 - title: Unit 4. Multimodal Models
   sections:
-  - local: chapters/en/Unit 4 - Multimodal Models/pre-intro
+  - local: Unit 4 - Multimodal Models/pre-intro
     title: What you'll learn and what you'll build
-  - local: chapters/en/Unit 4 - Multimodal Models/introduction
+  - local: Unit 4 - Multimodal Models/introduction
     title: Introduction
-  - local: chapters/en/Unit 4 - Multimodal Models/tasks-models-part1
+  - local: Unit 4 - Multimodal Models/tasks-models-part1
     title: Multimodal Tasks and Models
-  - local: chapters/en/Unit 4 - Multimodal Models/vlm-intro.mdx
+  - local: Unit 4 - Multimodal Models/vlm-intro
     title: Introduction to Vision Language Models
-  - local: chapters/en/Unit 4 - Multimodal Models/transfer_learning
+  - local: Unit 4 - Multimodal Models/transfer_learning
     title: Transfer learning
-  - local: chapters/en/Unit 4 - Mulitmodal Models/supplementary-material
+  - local: Unit 4 - Mulitmodal Models/supplementary-material
     title: Supplemental reading and resources
  
 - title: Unit 5. Multimodal Models
   sections:
-  - local: chapters/en/Unit 5 - Generative Models/Diffusion models
+  - local: Unit 5 - Generative Models/Diffusion models
     title: stable_diffusion
 
 - title: Unit 10. Synthetic Data Creation
@@ -51,13 +51,13 @@
 
 - title: Unit 12. Ethics and Bias
   sections:
-  - local: chapters/en/Unit 12 - Ethics and Biases/pre-intro
+  - local: Unit 12 - Ethics and Biases/pre-intro
     title: What you'll learn
-  - local: chapters/en/Unit 12 - Ethics and Biases/introduction
+  - local: Unit 12 - Ethics and Biases/introduction
     title: Introduction
-  - local: chapters/en/Unit 12 - Ethics and Biases/ethics-bias-ai
+  - local: Unit 12 - Ethics and Biases/ethics-bias-ai
     title: Ethics and Bias in AI 
-  - local: chapters/en/Unit 12 - Ethics and Biases/conclusion
+  - local: Unit 12 - Ethics and Biases/conclusion
     title: Hugging Face's efforts: Ethics and Society
-  - local: chapters/en/Unit 12 - Ethics and Biases/supplementary-material
+  - local: Unit 12 - Ethics and Biases/supplementary-material
     title: Supplementary reading and resources
