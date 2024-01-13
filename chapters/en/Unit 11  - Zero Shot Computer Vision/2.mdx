@@ -25,14 +25,14 @@ Training data includes labelled images of seen classes and unlabelled images of 
 
 Semantic information refers to the meaning and interpretation of text. For example, the information described with spoken text transferred from one person to another is called semantic information. It does not only include the direct meanings of words, phrases, or sentences, but also the contextual and cultural meanings.
 
-Embeddings refers to methods in NLP to represent texts by vectors of real numbers. Any unit of text such as words, phrases, or sentences can be transformed into vectors by set rules. Traditionally words are represented as one-hot vectors [2]. Each word is independent and has no relationship to one another based on information represented in the one-hot vectors. Semantic embeddings place words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand language usage, synonyms, and context, vastly improving the ability for machines to process, interpret, and generate language.
+Embeddings refers to methods in NLP to represent texts by vectors of real numbers. Any text such as words, phrases, or sentences can be transformed into numerical vectors based on set processes. Traditionally words are represented as one-hot vectors, where each word is independent and has no relationship to one another. Semantic embeddings describe words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand the usage, synonyms, and context of each word by mathematical operations on the word embeddings. 
 
 
 ## Zero Shot Learning Example 
 
 DeViSE - A Deep Visual-Semantic Embedding Model [1]
 
-Developed in 2013 by Frome et al., the authors from Google presented a method to leverage Word2Vec semantic information to train an image classifiction model on 1000-class ImageNet data. The model has 3 phases 
+Developed in 2013 by Frome et al., the authors from Google presented a method to leverage Word2Vec semantic information to train an image classifiction model on 1000-class ImageNet data. The model has 3 phases:
 
 - 1) Language Model Pretraining 
 
@@ -50,6 +50,11 @@ An image classification model - the core visual model - is trained with labels (
 
 DeViSE can successfully predict a wide range of labels outside of training data. The absolute accuracy is not high, and is only 9% under strict conditions. However, it should nonetheless be considered good since the number of test image labels is ~1000.  
 
+- Example Code 
+
+```
+
+```
 
 ## Benchmarks and Evaluation
 
@@ -67,3 +72,4 @@ Reference:
 - [1] Frome et al. (2013)
 - [2] Mikilov et al., Efficient estimation of word-representations in vector space, ICLR (2013). 
 - [3] Deng et al., Imagenet: A large-scale hierarchical image datbse, CVPR (2012). 
+- [4] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022). 
