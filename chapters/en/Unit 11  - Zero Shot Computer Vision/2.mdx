@@ -1,12 +1,12 @@
 # Zero-shot Learning
 
+
 ## ZSL vs. Generalized ZSL
 
-Zero-shot learning (ZSL) and generalized zero-shot learning (GZSL) both belong to a type of machine learning methods, where the classification model needs to classify labels not included in training data. ZSL and GZSL are very similar, and the main difference is how the model is evlauated.
+Zero-shot learning (ZSL) and generalized zero-shot learning (GZSL) both belong to a type of machine learning algorithm, where the image classification model needs to classify labels not included in training. ZSL and GZSL are very similar, and the main difference is how the model is evlauated.
 
-For ZSL, the model is purely evaluated on its capability to classify unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes, which is considered more practical and closer to real-world usecases. Overall GZSL is more challenging, because the model needs to determine if an observation belongs to a novel class or a known class.
+For ZSL, the model is purely evaluated for its capability to classify unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes - which is considered more practical and closer to real-world usecases. Overall, GZSL is more challenging, because the model needs to determine if an observation belongs to a novel class or a known class.
 
-Two papers that first introduced GZSL were published in 2013. Socher et al [1] integrated outlier detection into the image classificiation model, and classified whether a test sample be within to the manifold spanned by the seen classes.
 
 ## Types of ZSL Based on Training Data
 
@@ -20,11 +20,36 @@ Training data includes labelled images of seen classes, and semantic description
 
 Training data includes labelled images of seen classes and unlabelled images of unseen classes, and semantic descriptions or attributes of both seen and unseen classes. The usecase for transductive learning is when we do not have enough labeling resource to label all images.
 
+
 ## Semantic Information and Embeddings
 
 Semantic information refers to the meaning and interpretation of text. For example, the information described with spoken text transferred from one person to another is called semantic information. It does not only include the direct meanings of words, phrases, or sentences, but also the contextual and cultural meanings.
 
 Embeddings refers to methods in NLP to represent texts by vectors of real numbers. Any unit of text such as words, phrases, or sentences can be transformed into vectors by set rules. Traditionally words are represented as one-hot vectors [2]. Each word is independent and has no relationship to one another based on information represented in the one-hot vectors. Semantic embeddings place words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand language usage, synonyms, and context, vastly improving the ability for machines to process, interpret, and generate language.
+
+
+## Zero Shot Learning Example 
+
+DeViSE - A Deep Visual-Semantic Embedding Model [1]
+
+Developed in 2013 by Frome et al., the authors from Google presented a method to leverage Word2Vec semantic information to train an image classifiction model on 1000-class ImageNet data. The model has 3 phases 
+
+- 1) Language Model Pretraining 
+
+A skip-gram word embedding model of 500-1000 dimensions were trained with Wikipedia articles, similar to processes described in Word2Vec development [2].  
+
+- 2) Visual Model Pretraining 
+
+AlexNet was applied as starting model architecture for training an image classification model with ILSVRC data [3].  
+
+- 3) Deep Visual-Semantic Embedding Model 
+
+An image classification model - the core visual model - is trained with labels (Fig 1). Next, a transformation layer after the output of core visual model is trained along with the embedding vectors of image labels to incraese the dot product similarity. At inference time, when a new image arrives, the output of core visual model and the transformation layer is first computed, and the nearest label in semantic embedding space will be the predicted label for the image.  
+
+- Results
+
+DeViSE can successfully predict a wide range of labels outside of training data. The absolute accuracy is not high, and is only 9% under strict conditions. However, it should nonetheless be considered good since the number of test image labels is ~1000.  
+
 
 ## Benchmarks and Evaluation
 
@@ -35,3 +60,10 @@ The benchmarks and standard datasets are:
 3）Sun database（SUN）
 4）Attribute Pascal and Yahoo dataset（aPY）
 5）ILSVRC2012/ILSVRC2010（ImNet-2）
+
+
+Reference:
+
+- [1] Frome et al. (2013)
+- [2] Mikilov et al., Efficient estimation of word-representations in vector space, ICLR (2013). 
+- [3] Deng et al., Imagenet: A large-scale hierarchical image datbse, CVPR (2012). 
