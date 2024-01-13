@@ -1,0 +1,49 @@
+# Multimodal Text Generation (BLIP)
+## Introduction
+
+After the release of CLIP, the AI community recognized the immense potential of larger datasets and contrastive learning in deep learning. One significant development in this area is [BLIP (Bootstrapping Language-Image Pre-training)](https://arxiv.org/abs/2201.12086), which extends the capabilities of multimodal models to include text generation.
+
+## CapFilt: Caption and Filtering
+BLIP introduces a novel approach to handling the noise often present in large, web-scraped datasets necessary for multimodal training. It employs an innovative captioning and filtering mechanism using deep learning models, which are further fine-tuned for this purpose. The processed data is then merged with human-annotated datasets to form a comprehensive and cleaner training set. Further details on this process can be found in the [BLIP paper](https://arxiv.org/abs/2201.12086).
+
+## BLIP Architecture and Training
+BLIP's architecture comprises four distinct models, sharing some parameters. The first model is an image encoder transformer that generates embeddings. Following this, there are three text encoders: the first is a standalone text encoder for embeddings, trained alongside the image encoder using contrastive loss. The second text encoder incorporates a cross-attention block to interact with the image encoder's output, trained via an image-text matching loss—a binary classification task. The final text encoder begins with causal self-attention, followed by cross-attention to the image encoder, and is trained using standard cross-entropy loss for autoregressive language models. The diagram below illustrates BLIP's architecture, highlighting parameter sharing with color-coded blocks.
+![BLIP Architecture](https://huggingface.co/datasets/hf-vision/course-assets/resolve/ef192f94217c59e9dfffe31bd083adca154f0f23/BLIP.png)
+
+Post-training, the model can perform various tasks, selecting the appropriate text encoder based on the specific application.
+
+## Example Use Case: BLIP-2
+Following BLIP's success, Salesforce, its creators, introduced BLIP-2, an enhanced iteration. BLIP-2's advancements and capabilities are detailed in the [BLIP-2 paper](https://arxiv.org/abs/2301.12597) and the [Hugging Face documentation](https://huggingface.co/docs/transformers/model_doc/blip-2). Here, we utilize BLIP-2 for visual questioning answering.
+
+```python
+from PIL import Image
+import requests
+from transformers import Blip2Processor, Blip2ForConditionalGeneration
+import torch
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
+model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b", torch_dtype=torch.float16)
+model.to(device)
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = Image.open(requests.get(url, stream=True).raw)
+
+prompt = "Question: How many remotes are there? Answer:"
+inputs = processor(images=image, text=prompt, return_tensors="pt").to(device, torch.float16)
+outputs = model.generate(**inputs)
+text = processor.tokenizer.batch_decode(outputs, skip_special_tokens=True)
+print(text)
+```
+This code snippet illustrates the application of BLIP-2 for visual question answering. Experiment with more complex queries or explore this functionality further using the provided Gradio app:
+
+<iframe
+	src="https://hysts-BLIP2-with-transformers.hf.space"
+	frameborder="0"
+	width="850"
+	height="450">
+</iframe>
+
+## Conclusion
+
+BLIP marks a significant milestone in multimodal text generation, leveraging CLIP's strengths to create a robust model. It underscores the importance of dataset quality over quantity, contributing to the advancement of multimodal learning. For more details, refer to the [BLIP paper](https://arxiv.org/abs/2201.12086), [BLIP-2 paper](https://arxiv.org/abs/2301.12597), and the Hugging Face documentation for [BLIP](https://huggingface.co/docs/transformers/model_doc/blip) and [BLIP-2](https://huggingface.co/docs/transformers/model_doc/blip-2).
