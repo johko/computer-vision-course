@@ -8,7 +8,7 @@ BLIP introduces a novel approach to handling the noise often present in large, w
 
 ## BLIP Architecture and Training
 BLIP's architecture comprises four distinct models, sharing some parameters. The first model is an image encoder transformer that generates embeddings. Following this, there are three text encoders: the first is a standalone text encoder for embeddings, trained alongside the image encoder using contrastive loss. The second text encoder incorporates a cross-attention block to interact with the image encoder's output, trained via an image-text matching loss—a binary classification task. The final text encoder begins with causal self-attention, followed by cross-attention to the image encoder, and is trained using standard cross-entropy loss for autoregressive language models. The diagram below illustrates BLIP's architecture, highlighting parameter sharing with color-coded blocks.
-![BLIP Architecture](https://huggingface.co/datasets/hf-vision/course-assets/resolve/ef192f94217c59e9dfffe31bd083adca154f0f23/BLIP.png)
+![BLIP Architecture](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/BLIP.png)
 
 Post-training, the model can perform various tasks, selecting the appropriate text encoder based on the specific application.
 
