@@ -67,6 +67,7 @@ class GoogLeNet(nn.Module):
             InceptionModule(96, 24, 32, 48, 16, 12, 12),
             InceptionModule(96, 16, 32, 48, 16, 16, 16),
             InceptionModule(96, 16, 32, 48, 16, 16, 16),
+            InceptionModule(96, 16, 32, 48, 16, 16, 16),
             InceptionModule(96, 32, 32, 48, 16, 24, 24),
             nn.MaxPool2d(3, stride=2, padding=1),
             InceptionModule(128, 32, 48, 64, 16, 16, 16),
