@@ -44,7 +44,7 @@ Changing the stage compute ratio improves the model accuracy from 78.8% to 79.4%
 ### Changing stem to Patchify
 Typically, at the start of ResNet's architecture, the input is fed to a stem 7×7 convolution layer with stride 2, followed by a max pool, used to downsample the image by a factor of 4.
 However, the authors discovered that substituting the stem with a convolutional layer featuring a 4×4 kernel size and a stride of 4 is more effective, effectively convolving them through non-overlapping 4x4 patches. 
-Patchify serves the same purpose of downsampling the image by a factor of 4, while reducing the number of layers.
+Patchify serves the same purpose of downsampling the image by a factor of 4 while reducing the number of layers.
 This Patchifying step slightly improves the model accuracy from 79.4% to 79.5%.
 
 
