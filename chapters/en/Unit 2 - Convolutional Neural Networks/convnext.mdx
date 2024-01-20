@@ -26,7 +26,7 @@ The researchers first discerned that, while architectural design choices are cru
 Inspired by DeiT and Swin Transformers, ConvNext closely adapts their training techniques. Some of the notable changes are:
 - Epochs: Extending the epochs from the original 90 epochs to 300 epochs.
 - Optimizer: Using AdamW optimizer instead of Adam optimizer, which differs in how it handles weight decay.
-- Data augmentation: Using Mixup, Cutmix, RandAugment, Random Erasing to increase training data.
+- Data augmentation: Using Mixup, Cutmix, RandAugment, and Random Erasing to increase training data.
 - Regularization: Using Stochastic Depth and Label Smoothing as regularization techniques.
 Modifying these training procedures has improved ResNet-50's accuracy from 76.1% to 78.8%.
 
