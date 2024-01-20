@@ -76,7 +76,7 @@ Implementing a 7x7 kernel size maintains the accuracy at 80.6% but reduces the o
 
 
 ## Micro Design
-In addition to the modifications stated, the author adds some micro design changes to the model.
+In addition to the modifications stated, the author adds some micro-design changes to the model.
 Mico design refers to low-level structural decisions such as the choice of activation functions and layer details.
 Some of the notable micro changes are:
 - Activation: Replacing ReLU activation with GELU (Gaussian Error Linear Unit) and eliminating all GELU layers from the residual block except for one between two 1×1 layers.
