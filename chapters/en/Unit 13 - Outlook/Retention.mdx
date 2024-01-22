@@ -32,7 +32,7 @@ MaSA incorporates Self-Attention mechanism with a two-dimensional bidirectional 
 ![MaSAD](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MaSAD.png)
 This mechanism decomposes Self-Attention in images along horizontal and vertical axes of the image, maintaining the spatial decay matrix without losing prior information. This decomposition allows the Manhattan Self-Attention (MaSA) to model global information efficiently with linear complexity, while preserving the original MaSA's receptive field shape.
 
-However, unlike the original RetNet that performs training with parallel representation and inference with recurrent representation, RMT does both processes with MaSA mechanism. The authors have done comparisons between MaSA and other RetNet's representations, and they show that MaSA has the best throughput with the highest accuracy.
+However, unlike the original RetNet, which performs training with parallel representation and inference with recurrent representation, RMT does both processes with the MaSA mechanism. The authors have made comparisons between MaSA and other RetNet's representations, and they show that MaSA has the best throughput with the highest accuracy.
 ![MaSA vs Retention](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/MaSA%20vs%20Retention.png)
 
 ### ViR
