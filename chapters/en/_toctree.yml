@@ -46,8 +46,20 @@
 
 - title: Unit 10. Synthetic Data Creation
   sections:
-  - local: chapter10/blenderProc
+  - local: Unit 10 - Synthetic Data Creation/introduction
+    title: Introduction
+  - local: Unit 10 - Synthetic Data Creation/point_clouds
+    title: Introduction to Point Clouds
+  - local: Unit 10 - Synthetic Data Creation/blenderProc
     title: Using a 3D Renderer to Generate Synthetic Data
+  - local: Unit 10 - Synthetic Data Creation/synthetic-lung-images
+    title: Synthetic Data Generation Using DCGAN
+  - local: Unit 10 - Synthetic Data Creation/datagen-diffusion-models
+    title: Synthetic Data Generation with Diffusion Models
+  - local: Unit 10 - Synthetic Data Creation/challenges
+    title: Challenges and Opportunities Associated With Using Synthetic Data
+  - local: Unit 10 - Synthetic Data Creation/synthetic_datasets
+    title: Synthetic Datasets
 
 - title: Unit 12. Ethics and Bias
   sections:
