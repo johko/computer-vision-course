@@ -1,34 +1,35 @@
 # Zero-shot Learning
 
 
-## ZSL vs. Generalized ZSL
+## 1. ZSL vs. Generalized ZSL
 
 Zero-shot learning (ZSL) and generalized zero-shot learning (GZSL) both belong to a type of machine learning algorithm, where the image classification model needs to classify labels not included in training. ZSL and GZSL are very similar, and the main difference is how the model is evlauated.
 
-For ZSL, the model is purely evaluated for its capability to classify unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes - which is considered more practical and closer to real-world usecases. Overall, GZSL is more challenging, because the model needs to determine if an observation belongs to a novel class or a known class.
+For ZSL, the model is purely evaluated for its capability to classify images of unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes - which is considered more practical and closer to real-world usecases. Overall, GZSL is more challenging, because the model needs to determine if an observation belongs to a novel class or a known class. 
+
+As descrived in previous section, to develop a successful ZSL model requires more than just images and class labels. It is near impossible to classify unseen classes based on images alone. ZSL utilizes semantic embeddings to help classify images from unseen classes. 
+
+### Semantic Embeddings 
+
+Semantic embeddings are vector representations of semantic information - the meaning and interpretation of textual data. For example, the information transferred with spoken text is a type of semantic information. Semantic information does not include only the direct meanings of words or sentences, but also the contextual and cultural implications.
+
+Embeddings refers to the process to map semantic information into vectors of real numbers. Semantic embeddings are often learned with unsupervised machine learning models, such as Word2Vec [1] or GloVe [2]. All types of textual information such as words, phrases, or sentences can be transformed into numerical vectors based on set procedures. Semantic embeddings describe words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand the usage, synonyms, and context of each word by mathematical operations on the word embeddings. 
 
 
-## Types of ZSL Based on Training Data
+## 2. Types of ZSL Based on Training Data
 
-Based on the types of training data, there are two kinds of zero-shot learning
+Based on the types of training data, there are two kinds of zero-shot learning:
 
-### inductive zero shot
+### Inductive zero shot
 
 Training data includes labelled images of seen classes, and semantic descriptions/attributes of both seen and unseen classes. The main idea is to establish projections from observaed image space to semantic latent space, and the model can identify unseen classes at inference time.
 
-### transductive zero shot
+### Transductive zero shot
 
 Training data includes labelled images of seen classes and unlabelled images of unseen classes, and semantic descriptions or attributes of both seen and unseen classes. The usecase for transductive learning is when we do not have enough labeling resource to label all images.
 
 
-## Semantic Information and Embeddings
-
-Semantic information refers to the meaning and interpretation of text. For example, the information described with spoken text transferred from one person to another is called semantic information. It does not only include the direct meanings of words, phrases, or sentences, but also the contextual and cultural meanings.
-
-Embeddings refers to methods in NLP to represent texts by vectors of real numbers. Any text such as words, phrases, or sentences can be transformed into numerical vectors based on set processes. Traditionally words are represented as one-hot vectors, where each word is independent and has no relationship to one another. Semantic embeddings describe words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand the usage, synonyms, and context of each word by mathematical operations on the word embeddings. 
-
-
-## Zero Shot Learning Example 
+## 3. Zero Shot Learning Example 
 
 DeViSE - A Deep Visual-Semantic Embedding Model [1]
 
@@ -56,7 +57,8 @@ DeViSE can successfully predict a wide range of labels outside of training data.
 
 ```
 
-## Benchmarks and Evaluation
+
+## 4. Benchmarks and Evaluation
 
 The benchmarks and standard datasets are:
 
@@ -67,9 +69,10 @@ The benchmarks and standard datasets are:
 5）ILSVRC2012/ILSVRC2010（ImNet-2）
 
 
-Reference:
+## Reference
 
-- [1] Frome et al. (2013)
-- [2] Mikilov et al., Efficient estimation of word-representations in vector space, ICLR (2013). 
-- [3] Deng et al., Imagenet: A large-scale hierarchical image datbse, CVPR (2012). 
-- [4] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022). 
+- [1] Mikilov et al., Efficient estimation of word-representations in vector space, ICLR (2013). 
+- [2] Pennington et al., Glove: Global vectors for word representation, EMNLP (2014).
+- [3] Frome et al., DeViSE: A deep visualsemantic embedding model, NIPS, (2013)
+- [4] Deng et al., Imagenet: A large-scale hierarchical image datbse, CVPR (2012). 
+- [5] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022). 
