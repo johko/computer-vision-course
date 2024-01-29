@@ -15,7 +15,8 @@ In prior networks, such as AlexNet or VGG, the fundamental block is the Convolut
 
 The Inception Module insists on applying convolution filters of different kernel sizes for feature extraction at multiple scales. For any input feature map, it applies a $1 \times 1$ convolution, a 3x3 convolution, and a 5x5 convolution in parallel. In addition to convolution a max pooling operation is also applied. All four operations have padding and stride in such a way as to have the same spatial dimension. These features are concatenated and form the input to the next stage. See Figure 1.
 
-<!-- TODO: <<<Attach naive inception>>> -->
+
+![](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_naive.png)
 Figure 1
 
 As we can see applying multiple convolutions at multiple scales with bigger kernel sizes, like 5x5, can increase the number of parameters drastically. This problem is pronounced as the input feature size (channel size) increases. So as we go deep in the network stacking these "Inception Modules", the computation will increase drastically. The simple solution is to reduce the number of features wherever computational requirements seem to increase. The major pain points of high computation are the convolution layers. The feature dimension is reduced by a computationally inexpensive $1 \times 1$ convolution just before the 3x3 and 5x5 convolution. Let's see it with an example.
@@ -24,14 +25,16 @@ We want to convert a feature map of $S \times S \times 128$ to $S \times S \time
 
 We would also want to reduce the output features of max pooling before concatenating with the output feature map. So, we add one more $1\times 1$ convolution after the maxpooling layer. We also add a ReLU activation after each $1\times 1$ convolution increasing non linearity and complexity of the module. See Figure 2.
 
-<!-- TODO: <<<Attach inception with dimensionality reduction>>> -->
+![](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_reduced.png)
 Figure 2
 
 Also, because of the parallel operations of convolutions at multiple scales, we are ensuring more operations without going deeper into the network, essentially mitigating the vanishing gradient problem.
 
 #### 2.2 Average Pooling
 
-In prior networks, like AlexNet or VGG, the final layers would be a few fully connected layers. These fully connected layers, due to their large number of units would contribute to most of the parameters in a network. For example, 89% of the parameters of VGG16 are in the final three fully connected layers. 95% of parameters in AlexNet are in the final fully connected layers. This need can be attributed to the premise that a Convolutional layer is not necessarily complex enough. However, with an Inception block at our disposal, we do not need fully connected layers and a simple average pooling along the spatial dimensions should be enough. This was also derived from the Network in Network paper. However, GoogLeNet included one fully connected layer. They reported an increase of 0.6% in top-1 accuracy. 
+In prior networks, like AlexNet or VGG, the final layers would be a few fully connected layers. These fully connected layers, due to their large number of units would contribute to most of the parameters in a network. For example, 89% of the parameters of VGG16 are in the final three fully connected layers. 95% of parameters in AlexNet are in the final fully connected layers. This need can be attributed to the premise that a Convolutional layer is not necessarily complex enough. 
+
+However, with an Inception block at our disposal, we do not need fully connected layers and a simple average pooling along the spatial dimensions should be enough. This was also derived from the Network in Network paper. However, GoogLeNet included one fully connected layer. They reported an increase of 0.6% in top-1 accuracy. 
 
 GoogLeNet has only 15% of the parameters in the fully connected layers.
 
