@@ -3,17 +3,17 @@
 ## Overview
 
 The Image-based Joint-Embedding Predictive Architecture (I-JEPA) is a groundbreaking self-supervised learning model [introduced by Meta AI in 2023](https://ai.meta.com/blog/yann-lecun-ai-model-i-jepa/). It tackles the challenge of understanding images without relying on traditional labels or hand-crafted data augmentations.
-To get to know I-JEPA better, let’s first discuss some few concepts.
+To get to know I-JEPA better, let’s first discuss a few concepts.
 
 ### Invariance-based vs. Generative pretraining methods
 
 We can say that there are broadly two main approaches for self-supervised learning from images, Invariance-based methods and generative methods. Both approaches have their strengths and weaknesses.
 
-- **Invariance-based methods**: In these methods the model tries to reproduce similar embeddings for different views of the same image. And of course these different view are hand-crafted, the image augmentations that we’re all familiar with. For example: rotating, scaling, and cropping. These methods are good at producing representations at high semantic levels, but the problem is that they introduce strong biases which may be detrimental for certain downstream tasks. For example, image classification and instance segmentation do not require the data augmentations.
+- **Invariance-based methods**: In these methods, the model tries to reproduce similar embeddings for different views of the same image. And of course, these different views are hand-crafted, the image augmentations that we’re all familiar with. For example: rotating, scaling, and cropping. These methods are good at producing representations at high semantic levels, but the problem is that they introduce strong biases that may be detrimental to certain downstream tasks. For example, image classification and instance segmentation do not require data augmentations.
 
-- **Generative methods**: In these methods the model tries to reconstruct the input image. That’s why these methods are sometimes called reconstruction-based self-supervised learning. Masks are used to hide patches of the input image, and the model tries to reconstruct these corrupted patches either at the pixel or token level (let’s keep this point in mind). This masked approach can easily generalize beyond image modality, but dosent’t produce representations at the quality level of invariance-based methods. Also, these methods are computationally expensive and require large datasets for robust training.
+- **Generative methods**: In these methods, the model tries to reconstruct the input image. That’s why these methods are sometimes called reconstruction-based self-supervised learning. Masks are used to hide patches of the input image, and the model tries to reconstruct these corrupted patches either at the pixel or token level (let’s keep this point in mind). This masked approach can easily generalize beyond image modality but doesn’t produce representations at the quality level of invariance-based methods. Also, these methods are computationally expensive and require large datasets for robust training.
 
-Now let’s talk about Joint-Embedding Architectures.
+Now let’s talk about Joint-Embedding Architecture.
 
 ### Joint-Embedding Architectures
 
@@ -23,7 +23,7 @@ This is a recent and popular approach for self-supervised learning from images i
 
 - **Inputs compatibility criteria**: Finding good and appropriate compatibility measures can be challenging sometimes.
 
-An example of a Joint-Embedding Architecture is VICReg
+An example of a Joint-Embedding Architecture is [VICReg](https://arxiv.org/abs/2105.04906)
 
 <Tip>
 Different training methods can be employed to train Joint-Embedding Architectures, for example:
@@ -33,7 +33,7 @@ Different training methods can be employed to train Joint-Embedding Architecture
 - Clustering methods
 </Tip>
 
-So far so good, now to I-JEPA. As a start, the picture below from the I-JEPA paper show the difference between Joint-Embedding methods, generative methods, and I-JEPA.
+So far so good, now to I-JEPA. As a start, the picture below from the I-JEPA paper shows the difference between Joint-Embedding methods, generative methods, and I-JEPA.
 
 ![I-JEPA Comparisons](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/i-jepa-1.png?download=true)
 
@@ -49,13 +49,13 @@ I-JEPA tries to improve on both generative and joint-embedding methods. Conceptu
 
 The previous diagrams show and compare the I-JEPA architecture, below is a brief description of its main components:
 
-1. **Target Encoder**: Encodes target images, and the target blocks are produced by masking its output.
+1. **Target Encoder**: Encodes target images and the target blocks are produced by masking its output.
 
 2. **Context Encoder**: Encodes a randomly sampled context block from the image to obtain a corresponding patch-level representation.
 
 3. **Predictor**: Takes as input the output of the context encoder and a mask token for each patch we wish to predict and tries to predict the masked target blocks.
 
-The target-encoder, context-encoder, and the predictor are use a Vision Transformer (ViT) architecture. You have a refresher about them in unit 3 of this course.
+The target-encoder, context-encoder, and predictor all use a Vision Transformer (ViT) architecture. You have a refresher about them in unit 3 of this course.
 
 The image below from the paper illustrates how I-JEPA works.
 
@@ -67,7 +67,7 @@ So, why I-JEPA? I-JEPA introduced many new design features while still being a s
 
 1. I-JEPA outperforms pixel-reconstruction methods such as Masked autoencoders (MAE) on ImageNet-1K linear probing, semi-supervised 1% ImageNet-1K, and semantic transfer tasks.
 
-2. I-JEPA is competitive with view-invariant pretraining approaches on semantic tasks and achieves better performance on low-level visions tasks such as object counting and depth prediction.
+2. I-JEPA is competitive with view-invariant pretraining approaches on semantic tasks and achieves better performance on low-level vision tasks such as object counting and depth prediction.
 
 3. By using a simpler model with less rigid inductive bias, I-JEPA is applicable to a wider set of tasks.
 
@@ -79,7 +79,7 @@ So, why I-JEPA? I-JEPA introduced many new design features while still being a s
 
 - [Meta's blog post about I-JEPA](https://ai.meta.com/blog/yann-lecun-ai-model-i-jepa/)
 
-- [I-JEPA offical github repository](https://github.com/facebookresearch/ijepa)
+- [I-JEPA official GitHub repository](https://github.com/facebookresearch/ijepa)
 
 
 
