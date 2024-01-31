@@ -57,6 +57,20 @@ The target-encoder, context-encoder, and the predictor are use a Vision Transfor
 
 The image below from the paper illustrates how I-JEPA works.
 
+## Why It Matters
+
+So, why I-JEPA? I-JEPA introduced many new design features while still being a simple and efficient method for learning semantic image representations without relying on hand-crafted data augmentations. In brief:
+
+1. I-JEPA outperforms pixel-reconstruction methods such as Masked autoencoders (MAE) on ImageNet-1K linear probing, semi-supervised 1% ImageNet-1K, and semantic transfer tasks.
+
+2. I-JEPA is competitive with view-invariant pretraining approaches on semantic tasks and achieves better performance on low-level visions tasks such as object counting and depth prediction.
+
+3. By using a simpler model with less rigid inductive bias, I-JEPA is applicable to a wider set of tasks.
+
+4. I-JEPA is also scalable and efficient. Pretraining on ImageNet requires *less than 1200 GPU hours*.
+
+
+
 
 
 
