@@ -7,7 +7,7 @@ To get to know I-JEPA better, let’s first discuss a few concepts.
 
 ### Invariance-based vs. Generative Pretraining Methods
 
-We can say that there are broadly two main approaches for self-supervised learning from images, Invariance-based methods and generative methods. Both approaches have their strengths and weaknesses.
+We can say that there are broadly two main approaches for self-supervised learning from images: invariance-based methods and generative methods. Both approaches have their strengths and weaknesses.
 
 - **Invariance-based methods**: In these methods, the model tries to reproduce similar embeddings for different views of the same image. And of course, these different views are hand-crafted, the image augmentations that we’re all familiar with. For example: rotating, scaling, and cropping. These methods are good at producing representations at high semantic levels, but the problem is that they introduce strong biases that may be detrimental to certain downstream tasks. For example, image classification and instance segmentation do not require data augmentations.
 
