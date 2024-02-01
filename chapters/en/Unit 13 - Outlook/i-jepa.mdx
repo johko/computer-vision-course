@@ -19,7 +19,7 @@ Now let’s talk about Joint-Embedding Architecture.
 
 This is a recent and popular approach for self-supervised learning from images in which two networks are trained to produce similar embeddings for different views of the same image. Basically, they train two networks to "speak the same language" about different views of the same picture. A common choice is the Siamese network architecture where the two networks share the same weights. But like everything else, it has its own problems:
 
-- **Representation collapse**: A case in which the model produces the same representation regardless of the input. Or in tech-speak, the energy landscape is flat.
+- **Representation collapse**: A case in which the model produces the same representation regardless of the input.
 
 - **Inputs compatibility criteria**: Finding good and appropriate compatibility measures can be challenging sometimes.
 
