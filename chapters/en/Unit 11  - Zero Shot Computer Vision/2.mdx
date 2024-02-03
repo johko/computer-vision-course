@@ -31,9 +31,9 @@ Training data includes labelled images of seen classes and unlabelled images of 
 
 ## 3. Zero Shot Learning Example 
 
-DeViSE - A Deep Visual-Semantic Embedding Model [1]
-
-Developed in 2013 by Frome et al., the authors from Google presented a method to leverage Word2Vec semantic information to train an image classifiction model on 1000-class ImageNet data. The model has 3 phases:
+DeViSE - A Deep Visual-Semantic Embedding Model
+.
+Developed in 2013 by Frome et al. [3], the authors from Google presented a method to leverage Word2Vec semantic information to train an image classifiction model on 1000-class ImageNet data. The model has 3 phases:
 
 - 1) Language Model Pretraining 
 
@@ -41,7 +41,7 @@ A skip-gram word embedding model of 500-1000 dimensions were trained with Wikipe
 
 - 2) Visual Model Pretraining 
 
-AlexNet was applied as starting model architecture for training an image classification model with ILSVRC data [3].  
+AlexNet was applied as starting model architecture for training an image classification model with ILSVRC data [4].  
 
 - 3) Deep Visual-Semantic Embedding Model 
 
@@ -62,17 +62,33 @@ DeViSE can successfully predict a wide range of labels outside of training data.
 
 The benchmarks and standard datasets are:
 
-1）Animal with Attributes（AwA）
-2）Caltech-UCSD-Birds-200-2011（CUB）
-3）Sun database（SUN）
-4）Attribute Pascal and Yahoo dataset（aPY）
-5）ILSVRC2012/ILSVRC2010（ImNet-2）
+- 1. Animal with Attributes (AwA）
+
+Dataset to benchmark transfer-learning algorithms, in particular attribute based classification [6]. It consists of 30475 images of 50 animal classes with six feature representations for each image.  
+
+- 2. Caltech-UCSD-Birds-200-2011（CUB）
+
+Dataset for fine-grained visual categorization task. It contains 11788 images of 200 subcategories of birds. Each images has 1 subcategory label, 15 part locations, 312 binary attributes and 1 bounding box. Also, ten-sentence descriptions for each image. were collected through Mechanical Turk by Amazon, and the descriptions are carefully constructed to not contain any subcategory information.  
+
+- 3. Sun database（SUN）
+
+Scene categorization benchmarks. It consists of 130519 images of 899 categories. 
+
+- 4. Attribute Pascal and Yahoo dataset（aPY）
+
+A coarse-grained dataset composed of 15339 images from 3 broad categories (animals, objects and vehicles), further divided into a total of 32 subcategories. 
+
+- 5. ILSVRC2012/ILSVRC2010（ImNet-2）
+
+The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) evaluates algorithms for object detection and image classification at large scale. 
+
 
 
 ## Reference
 
-- [1] Mikilov et al., Efficient estimation of word-representations in vector space, ICLR (2013). 
-- [2] Pennington et al., Glove: Global vectors for word representation, EMNLP (2014).
-- [3] Frome et al., DeViSE: A deep visualsemantic embedding model, NIPS, (2013)
-- [4] Deng et al., Imagenet: A large-scale hierarchical image datbse, CVPR (2012). 
-- [5] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022). 
+- [1] Mikilov et al., Efficient Estimation of Word-Representations in Vector Space, ICLR (2013). 
+- [2] Pennington et al., Glove: Global Vectors for Word Representation, EMNLP (2014).
+- [3] Frome et al., DeViSE: A Deep Visual Semantic Embedding Model, NIPS, (2013)
+- [4] Deng et al., Imagenet: A Large-Scale Hierarchical Image Datbse, CVPR (2012). 
+- [5] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022).
+- [6] Lampert et al., Learning to Detect Unseen Object Classes by Between-Class Attribute Transfer, CVPR (2009).
