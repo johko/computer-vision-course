@@ -49,9 +49,9 @@ I-JEPA tries to improve on both generative and joint-embedding methods. Conceptu
 
 The previous diagrams show and compare the I-JEPA architecture, below is a brief description of its main components:
 
-1. **Target Encoder**: Encodes target images and the target blocks are produced by masking its output.
+1. **Target Encoder (y-encoder)**: Encodes target images and the target blocks are produced by masking its output.
 
-2. **Context Encoder**: Encodes a randomly sampled context block from the image to obtain a corresponding patch-level representation.
+2. **Context Encoder (x-encoder)**: Encodes a randomly sampled context block from the image to obtain a corresponding patch-level representation.
 
 3. **Predictor**: Takes as input the output of the context encoder and a mask token for each patch we wish to predict and tries to predict the masked target blocks.
 
