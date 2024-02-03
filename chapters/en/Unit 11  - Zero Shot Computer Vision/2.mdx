@@ -45,17 +45,18 @@ AlexNet was applied as starting model architecture for training an image classif
 
 - 3) Deep Visual-Semantic Embedding Model 
 
-An image classification model - the core visual model - is trained with labels (Fig 1). Next, a transformation layer after the output of core visual model is trained along with the embedding vectors of image labels to incraese the dot product similarity. At inference time, when a new image arrives, the output of core visual model and the transformation layer is first computed, and the nearest label in semantic embedding space will be the predicted label for the image.  
+First, an image classification model - the core visual model - is trained with labels (Fig 1). Next, a transformation layer after the output of core visual model is trained along with the embedding vectors of image labels to incraese the dot product similarity. At inference time, when a new image arrives, the output of core visual model and the transformation layer is first computed, and the nearest label in semantic embedding space will be the predicted label for the image.  
 
 - Results
 
-DeViSE can successfully predict a wide range of labels outside of training data. The absolute accuracy is not high, and is only 9% under strict conditions. However, it should nonetheless be considered good since the number of test image labels is ~1000.  
+On the flat metric, the softmax baseline showes higher accuracy for k = 1, 2. However,  for k = 5, 10 the 1000-D DeViSE model reached similar accuracy as baseline. The softmax model was expected to be the best model, given its training objective is aligned with the evaluation metric. It was surprising that the performance is so similar to the softmax performance.
 
-- Example Code 
 
-```
-
-```
+|Model|dim|Flat Hit @ 1 (%)|Flat Hit @ 2 (%)|Flat Hit @ 5 (%)|Flat Hit @ 10 (%)|
+|----------------|---|----------------|----------------|----------------|-----------------|
+|Softmax baseline|N/A|55.6%|67.4%|78.5%|85.0%|
+|DeViSE|500|53.2%|65.2%|76.7%|83.3%|
+|DeViSE|1000|54.9%|66.9%|78.4%|85.0%|
 
 
 ## 4. Benchmarks and Evaluation
