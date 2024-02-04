@@ -1,0 +1,36 @@
+# Knowledge Distillation with Vision Tranformers!
+
+We are going to learn about Knowledge Distillation, the method behind [distilGPT](https://huggingface.co/distilgpt2) and [distilbert](https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english), two of *the most downloaded models on the Huggingface Hub!*
+
+Presumably, we've all had teachers who "teach" by simply providing us the correct answers and then test us on questions we haven't seen before, analogous to Supervised Training
+of machine learning models where we provide a labelled dataset to train on. Instead of having a model train on labels, however,
+we can pursue [Knowledge Distillation](https://arxiv.org/abs/1503.02531) as an alternative to arrive at a much smaller model that can perform comparably to the larger model, and much faster to boot.
+
+## For some intuition, 
+
+Imagine you were given this multiple choice question:
+
+![Multiple Choice Question](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/multiple-choice-question.png)
+
+If you had someone just tell you "the answer is Dracoy Malfoy", that doesn't teach you a whole lot about each of the characters' relative relationships with Harry Potter.
+
+On the other hand, if someone tells you "I am very confident it is not Ron Weasley, I am somewhat confident it is not Neville Longbottom, and 
+I am very confident that it *is* Draco Malfoy", this gives you some information about each of these characters' relationships to Harry Potter! 
+This is precisely the kind of information that gets passed down to our student model under the Knowledge Distillation paradigm.
+
+## Distilling the Knowledge in a Neural Network
+In the paper [*Distilling the Knowledge in a Neural Network*](https://arxiv.org/abs/1503.02531), Hinton et al. introduced the training methodology known as Knowledge Distillation,
+taking inspiration *insects*, of all places. The analogy being that, just as insects transition from larval to adult forms optimized for different tasks, large-scale machine learning models can 
+initially be cumbersome, like larvae, for extracting structure from data, but can distill their knowledge into smaller, more efficient models for deployment.
+
+The essence of Knowledge Distillation is using the predicted logits from a teacher network to pass information to a smaller, more efficient, student model. We do this
+by re-writing the loss function to contain a *distillation loss*, which encourages the student model's distribution over the output space to approximate that of the teacher's.
+
+The distillation loss is formulated as:
+
+![Distillation Loss](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/KL-Loss.png)
+
+Where the KL loss refers to the Kullback-Leibler Divergence between the teacher and the student's output distributions. 
+The overall loss for the student model is then formulated as the sum of this distillation loss with the standard cross-entropy loss over the ground-truth labels.
+
+To see this loss function implemented in Python as well as a fully worked out example in Python, lets check out the notebook for this section, ```KnowledgeDistillation.ipynb```.
