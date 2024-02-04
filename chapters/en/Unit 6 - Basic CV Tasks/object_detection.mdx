@@ -1,0 +1,56 @@
+# Object Detection:
+
+In this guide, we'll explore the fascinating world of object detection—a vital component in modern computer vision systems. We'll demystify essential concepts, discuss popular methods, examine applications, and touch upon evaluation metrics. By the end, you'll have a solid foundation and be ready to venture further into advanced topics.
+
+|![Object Detection](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Object_Detection.png)|
+|:--:| 
+| *Image displaying the bounding boxes around multiple objects in the frame along with the confidence score of their classification* |
+## 1. Object Detection Overview
+
+### 1.1 Introduction
+
+Object detection empowers computers to identify and locate specific objects within digital images or video frames. It has far-reaching implications across diverse sectors, including self-driving cars, facial recognition systems, and medical diagnosis tools. 
+
+### 1.2 Classification vs Localization
+
+Classification distinguishes objects based on their unique attributes, while localization determines an object's location within an image. Object detection combines both approaches, encapsulating identified entities with bounding boxes and assigning corresponding class labels. Imagine recognizing different fruit types and pinpointing their exact locations in a single image. That's object detection at play!
+
+## 2. DETR Model
+
+### 2.1 DETR's Approach
+
+The DEtection TRansformer [(DETR)](https://huggingface.co/docs/transformers/model_doc/detr) model revolutionized object detection by treating it as a direct set prediction problem, discarding conventional anchor boxes and feature pyramids. Employing a Transformer architecture, DETR simplifies the process and enhances overall performance. Envision scanning a cluttered desk filled with random objects. Traditionally, we would inspect small regions meticulously. But with DETR, we quickly overview the entire scene, effortlessly identifying and locating every object—similar to human visual inspection!
+
+## 3. Object Detection Techniques
+
+### 3.1 YOLO: Single-Stage Detectors
+
+[YOLO](https://pjreddie.com/darknet/yolo/) (You Only Look Once) provides fast and accurate object detection by analyzing the entire input image simultaneously rather than observing fragments sequentially. Improved versions like YOLOv2, YOLOv3, YOLOv4, and YOLOv5 build upon predecessors to increase speed and accuracy. Ideal for monitoring high-speed processes, e.g., assembly lines, where rapid identification matters.
+
+### 3.2 Faster R-CNN: Two-Stage Detectors
+
+[Faster R-CNN](https://arxiv.org/abs/1506.01497) significantly improves earlier strategies such as Fast R-CNN and R-CNN. Organized into two primary stages (generating region proposals and then refining them), it integrates a Region Proposal Network (RPN) for efficient proposal generation. Unlike previous techniques, Faster R-CNN substantially reduces computational complexity, making it suited for complex tasks demanding increased precision. Perfect for challenging problems like reading handwriting where variations require sophisticated algorithms.
+
+## 4. Object Detection Applications
+
+Object detection impacts numerous industries, offering valuable insights and automation opportunities. Representative examples include autonomous vehicles navigating roads, surveillance systems covering vast public spaces, healthcare imaging systems detecting diseases, manufacturing plants maintaining output consistency, and augmented reality enriching user experiences.
+
+## 5. Evaluation Metrics
+
+Evaluating object detection performance requires proper metrics:
+
+### 5.1 Intersection over Union (IoU)
+
+Intersection over Union (IoU) measures the overlap between predicted and actual bounding boxes as a percentage ranging from 0% to 100%. Higher IoU percentages indicate better alignments, i.e., improved accuracy. Useful when assessing tracker performance under changing conditions, e.g., following wild animals during migration.
+
+### 5.2 Mean Average Precision (mAP)
+
+Mean Average Precision (mAP) estimates object detection efficiency using both precision (correct prediction ratio) and recall (true positive identification ability). Calculated across varying IoU thresholds, mAP functions as a holistic assessment tool for object detection algorithms. Helpful when measuring sentiment analysis models' effectiveness, e.g., processing extensive customer reviews.
+
+## 6. Hands-On Tutorial: Implementing DETR for Object Detection
+
+To get started with DETR, follow along with [this](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%203%20-%20Vision%20Transformers/Fine-tuning%20Vision%20Transformers%20for%20Object%20detection.ipynb) detailed tutorial, walking you through installation, dataset preparation, model training, and visualization steps.
+
+## 7. Conclusion and Future Work
+
+Understanding object detection lays the groundwork for mastering advanced computer vision techniques, enabling the construction of powerful and accurate solutions addressing rigorous needs. Some future research areas include developing lightweight object detection models which are fast and easily deployable. Exploration in the field of object detection in 3D space, e.g., for augmented reality applications, is another avenue to explore. 
