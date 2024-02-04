@@ -1,0 +1,95 @@
+# Zero-shot Learning
+
+
+## 1. ZSL vs. Generalized ZSL
+
+Zero-shot learning (ZSL) and generalized zero-shot learning (GZSL) both belong to a type of machine learning algorithm, where the image classification model needs to classify labels not included in training. ZSL and GZSL are very similar, and the main difference is how the model is evaluated.
+
+For ZSL, the model is purely evaluated for its capability to classify images of unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes - which is considered more practical and closer to real-world use cases. Overall, GZSL is more challenging, because the model needs to determine if an observation belongs to a novel class or a known class. 
+
+As described in the previous section, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes semantic embeddings to help classify images from unseen classes. 
+
+### Semantic Embeddings 
+
+Semantic embeddings are vector representations of semantic information - the meaning and interpretation of textual data. For example, the information transferred with spoken text is a type of semantic information. Semantic information does not include only the direct meanings of words or sentences, but also the contextual and cultural implications.
+
+Embeddings refer to the process of mapping semantic information into vectors of real numbers. Semantic embeddings are often learned with unsupervised machine learning models, such as Word2Vec [1] or GloVe [2]. All types of textual information such as words, phrases, or sentences can be transformed into numerical vectors based on set procedures. Semantic embeddings describe words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand the usage, synonyms, and context of each word by mathematical operations on the word embeddings. 
+
+
+## 2. Types of ZSL Based on Training Data
+
+Based on the types of training data, there are two kinds of zero-shot learning:
+
+### Inductive zero shot
+
+Training data includes labeled images of seen classes, and semantic descriptions/attributes of both seen and unseen classes. The main idea is to establish projections from observed image space to semantic latent space, and the model can identify unseen classes at inference time.
+
+### Transductive zero shot
+
+Training data includes labelled images of seen classes and unlabelled images of unseen classes, and semantic descriptions or attributes of both seen and unseen classes. The usecase for transductive learning is when we do not have enough labeling resource to label all images.
+
+
+## 3. Zero Shot Learning Example 
+
+DeViSE - A Deep Visual-Semantic Embedding Model
+.
+Developed in 2013 by Frome et al. [3], the authors from Google presented a method to leverage Word2Vec semantic information to train an image classification model on 1000-class ImageNet data. The model has 3 phases:
+
+- 1) Language Model Pretraining 
+
+A skip-gram word embedding model of 500-1000 dimensions was trained with Wikipedia articles, similar to processes described in Word2Vec development [2].  
+
+- 2) Visual Model Pretraining 
+
+AlexNet was applied as starting model architecture for training an image classification model with ILSVRC data [4].  
+
+- 3) Deep Visual-Semantic Embedding Model 
+
+First, an image classification model - the core visual model - is trained with labels (Fig 1). Next, a transformation layer after the output of core visual model is trained along with the embedding vectors of image labels to increase the dot product similarity. At inference time, when a new image arrives, the output of core visual model and the transformation layer is first computed, and the nearest label in semantic embedding space will be the predicted label for the image.  
+
+- Results
+
+On the flat metric, the softmax baseline shows higher accuracy for k = 1, 2. However,  for k = 5, 10 the 1000-D DeViSE model reached similar accuracy as baseline. The softmax model was expected to be the best model, given its training objective is aligned with the evaluation metric. It was surprising that the performance was so similar to the softmax performance.
+
+
+|Model|dim|Flat Hit @ 1 (%)|Flat Hit @ 2 (%)|Flat Hit @ 5 (%)|Flat Hit @ 10 (%)|
+|----------------|---|----------------|----------------|----------------|-----------------|
+|Softmax baseline|N/A|55.6%|67.4%|78.5%|85.0%|
+|DeViSE|500|53.2%|65.2%|76.7%|83.3%|
+|DeViSE|1000|54.9%|66.9%|78.4%|85.0%|
+
+
+## 4. Benchmarks and Evaluation
+
+The benchmarks and standard datasets are:
+
+- 1. Animal with Attributes (AwA）
+
+Dataset to benchmark transfer-learning algorithms, in particular attribute based classification [6]. It consists of 30475 images of 50 animal classes with six feature representations for each image.  
+
+- 2. Caltech-UCSD-Birds-200-2011（CUB）
+
+Dataset for fine-grained visual categorization task. It contains 11788 images of 200 subcategories of birds. Each image has 1 subcategory label, 15 part locations, 312 binary attributes and 1 bounding box. Also, ten-sentence descriptions for each image. were collected through Mechanical Turk by Amazon, and the descriptions are carefully constructed to not contain any subcategory information.  
+
+- 3. Sun database（SUN）
+
+Scene categorization benchmarks. It consists of 130519 images of 899 categories. 
+
+- 4. Attribute Pascal and Yahoo dataset（aPY）
+
+A coarse-grained dataset composed of 15339 images from 3 broad categories (animals, objects and vehicles), further divided into a total of 32 subcategories. 
+
+- 5. ILSVRC2012/ILSVRC2010（ImNet-2）
+
+The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) evaluates algorithms for object detection and image classification at large scale. 
+
+
+
+## Reference
+
+- [1] Mikilov et al., Efficient Estimation of Word-Representations in Vector Space, ICLR (2013). 
+- [2] Pennington et al., Glove: Global Vectors for Word Representation, EMNLP (2014).
+- [3] Frome et al., DeViSE: A Deep Visual Semantic Embedding Model, NIPS, (2013)
+- [4] Deng et al., Imagenet: A Large-Scale Hierarchical Image Datbse, CVPR (2012). 
+- [5] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022).
+- [6] Lampert et al., Learning to Detect Unseen Object Classes by Between-Class Attribute Transfer, CVPR (2009).
