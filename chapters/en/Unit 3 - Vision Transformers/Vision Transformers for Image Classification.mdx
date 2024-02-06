@@ -27,6 +27,8 @@ The idea of transfer learning is that we can leverage the features learned by th
 
 Since we are taking advantage of the learned features, we do not need to update the entire model either. By freezing the majority of the weights, we can just choose to train only certain layers to get excellent performance with less training time and low GPU consumption.
 
+### Multi-class Image Classification
+
 You can go through the transfer learning tutorial using ViTs for image classification in this notebook:
 
 <a
@@ -56,6 +58,8 @@ It might be that the domain of your dataset is not very similar to the pre-train
   However, in most scenarios, applying transfer learning is ample in the case of
   Vision Transformers.
 </Tip>
+
+### Multi-label Image Classification
 
 The tutorial above teaches multi-class image classification, where each image only has 1 class assigned to it. What about scenarios where each image has multiple labels in a multi-class dataset?
 
