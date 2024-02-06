@@ -17,16 +17,18 @@ The Inception Module insists on applying convolution filters of different kernel
 
 
 ![](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_naive.png)
-Figure 1
+
+Figure 1: Naive Inception Module
 
 As we can see applying multiple convolutions at multiple scales with bigger kernel sizes, like 5x5, can increase the number of parameters drastically. This problem is pronounced as the input feature size (channel size) increases. So as we go deep in the network stacking these "Inception Modules", the computation will increase drastically. The simple solution is to reduce the number of features wherever computational requirements seem to increase. The major pain points of high computation are the convolution layers. The feature dimension is reduced by a computationally inexpensive $1 \times 1$ convolution just before the 3x3 and 5x5 convolution. Let's see it with an example.
 
-We want to convert a feature map of $S \times S \times 128$ to $S \times S \times 256$ via a 5x5 convolution. The number of parameters(excluding biases) is 5x5x128x256 = 819,200. However, if we reduce the feature dimension first by a $1 \times 1$ convolution to 64, then the number of parameters(excluding biases) is $1\times 1\times 128\times 64 + 5\times 5\times 64\times 256 = 8,192 + 409,600 = 417,792$. That means the number of parameters were reduced by almost half!
+We want to convert a feature map of $S \times S \times 128$ to $S \times S \times 256$ via a 5x5 convolution. The number of parameters(excluding biases) is 5x5x128x256 = 819,200. However, if we reduce the feature dimension first by a $1 \times 1$ convolution to 64, then the number of parameters(excluding biases) is $1\times 1\times 128\times 64 + 5\times 5\times 64\times 256 = 8,192 + 409,600 = 417,792$. That means the number of parameters was reduced by almost half!
 
 We would also want to reduce the output features of max pooling before concatenating with the output feature map. So, we add one more $1\times 1$ convolution after the maxpooling layer. We also add a ReLU activation after each $1\times 1$ convolution increasing non linearity and complexity of the module. See Figure 2.
 
 ![](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_reduced.png)
-Figure 2
+
+Figure 2: Inception Module
 
 Also, because of the parallel operations of convolutions at multiple scales, we are ensuring more operations without going deeper into the network, essentially mitigating the vanishing gradient problem.
 
@@ -41,7 +43,7 @@ GoogLeNet has only 15% of the parameters in the fully connected layers.
 
 #### 2.3 Auxiliary Classifiers
 
-With the introduction of compute saving $1 \times 1$ convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of "vanishing gradient", where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
+With the introduction of compute saving $1 \times 1$ convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of vanishing gradient, where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
 
 The paper introduces the auxiliary classifiers - branch out a few small classifiers from the layers in between and add the loss from these classifiers to the total loss(with less weightage). This ensures that the layers close to the input also receive gradients of decent magnitude.
 
@@ -54,15 +56,16 @@ The auxiliary classifier consists of
 
 These auxiliary classifiers are removed at inference time. However, minimal gains are achieved from using auxiliary classifiers (0.5%).
 
-<!-- <<<maybe insert figure>> -->
-Figure 3
+![](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/googlenet_auxiliary_classifier.jpg)
+
+Figure 3: An Auxiliary Classifier
 
 ### 3. Architecture - GoogLeNet
 
-The complete architecture of GoogLeNet is shown in Figure <below>. All convolutions, including inside the inception block, use ReLU activation. It starts with two Convolution(s) + Max Pooling blocks. This is followed by a block of two inception modules (3a and 3b) followed by a max pooling. This follows a block of 5 inception blocks (4a, 4b, 4c, 4d, 4e) and a max pooling after. The auxiliary classifiers are taken out from outputs of 4a and 4d. Two inception blocks follow (5a and 5b). After this, an Average Pooling and a fully connected layer of 128 units is used. 
+The complete architecture of GoogLeNet is shown in Figure <below>. All convolutions, including inside the inception block, use ReLU activation. It starts with two Convolution(s) + Max Pooling blocks. This is followed by a block of two inception modules (3a and 3b) followed by a max pooling. This follows a block of 5 inception blocks (4a, 4b, 4c, 4d, 4e) and a max pooling after. The auxiliary classifiers are taken out from outputs of 4a and 4d. Two inception blocks follow (5a and 5b). After this, an average pooling and a fully connected layer of 128 units are used. 
 
-<!-- TODO: <<insert figure>> -->
-Figure 4
+![](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/googlenet_architecture.png)
+Figure 4: Complete GoogLeNet Architecture
 
 
 
