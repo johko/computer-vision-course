@@ -71,7 +71,19 @@ predicted_panoptic_map = result["segmentation"]
 With many pretrained segmentation models available, transfer learning or finetuning are used to adapt these models to specific use cases, especially since ViT-based segmentation models, like MaskFormer, are data-hungry and challenging to train from scratch.
 these techniques leverages pre-trained representations to adapt these models efficiently to new tasks. Typically for MaskFormer, the backbone, the pixel decoder and the transformer decoder are kept frozen to leverage their learned general features, while the transformer module is finetuned to adapt its class prediction and mask generation capabilities to new segmentation tasks.
 
+This notebook will walk you through a transfer learning tutorial on image segmentation using MaskFormer:
+
+<a
+  target="_blank"
+  href="https://colab.research.google.com/github/johko/computer-vision-course/blob/main/notebooks/Unit%203%20-%20Vision%20Transformers/transfer-learning-segmentation.ipynb"
+>
+  <img
+    src="https://colab.research.google.com/assets/colab-badge.svg"
+    alt="Open In Colab"
+  />
+</a>
+
 ## References
 
 1. [MaskFormer Hugging Face documentation](https://huggingface.co/docs/transformers/en/model_doc/maskformer)
-2. [Image segmentation Transfer learning tutorial](https://colab.research.google.com/drive/1Fn3apbFXBPn5lFccQCMLmiWyQ7ZqZYBk?usp=sharing)
+2. [Image Segmentation Hugging Face Task Guide](https://huggingface.co/docs/transformers/en/tasks/semantic_segmentation)
