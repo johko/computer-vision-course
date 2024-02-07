@@ -28,36 +28,6 @@ Training data includes labeled images of seen classes and semantic descriptions/
 Training data includes labeled images of seen classes, and unlabeled images of unseen classes, and semantic descriptions or attributes of both seen and unseen classes. The use case for transductive learning is when we do not have enough labeling resources to label all images.
 
 
-## Zero-shot Learning Example 
-
-DeViSE - A Deep Visual-Semantic Embedding Model
-.
-Developed in 2013 by Frome et al. [3], the authors from Google presented a method to leverage Word2Vec semantic information to train an image classification model on 1000-class ImageNet data. The model has 3 phases:
-
-- 1) Language Model Pretraining 
-
-A skip-gram word embedding model of 500-1000 dimensions was trained with Wikipedia articles, similar to processes described in Word2Vec development [2].  
-
-- 2) Visual Model Pretraining 
-
-AlexNet was applied as starting model architecture for training an image classification model with ILSVRC data [4].  
-
-- 3) Deep Visual-Semantic Embedding Model 
-
-First, an image classification model - the core visual model - is trained with labels (Fig 1). Next, a transformation layer after the output of core visual model is trained along with the embedding vectors of image labels to increase the dot product similarity. At inference time, when a new image arrives, the output of core visual model and the transformation layer is first computed, and the nearest label in semantic embedding space will be the predicted label for the image.  
-
-- Results
-
-On the flat metric, the softmax baseline shows higher accuracy for k = 1, 2. However,  for k = 5, 10 the 1000-D DeViSE model reached similar accuracy as the baseline. For its training objective aligns with the evaluation metric, the softmax model was expected to be the best model. The authors were suprised that the performance of DeVISE model was quite similar to the performance of softmax model.
-
-
-|Model|dim|Flat Hit @ 1 (%)|Flat Hit @ 2 (%)|Flat Hit @ 5 (%)|Flat Hit @ 10 (%)|
-|-----|---|----------------|----------------|----------------|-----------------|
-|Softmax baseline|N/A|55.6%|67.4%|78.5%|85.0%|
-|DeViSE|500|53.2%|65.2%|76.7%|83.3%|
-|DeViSE|1000|54.9%|66.9%|78.4%|85.0%|
-
-
 ## Benchmarks and Evaluation
 
 The benchmarks and standard datasets are:
