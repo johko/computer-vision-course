@@ -12,7 +12,7 @@ Yet, the saxophone player is not starting from zero. He is familiar with things 
 
 ## Transfer Learning and Fine Tuning
 
-Let's make a distinction between the concepts we are talking about. The trombone player needs no training to play the tannerin, he already knows how to do it unbeknownst to him. The saxophone player needs some training to fine-tune his skills to play the tannerin. In deep learning terms, what the trombone player does is use a model out-of-the-shelf. This is called transfer learning. The training of a model that needs more time to learn, like our saxophone player, is called fine-tuning. 
+Let's make a distinction between the concepts we are talking about. The trombone player needs no training to play the tannerin. He already knows how to do it unbeknownst to him. The saxophone player needs some training to fine-tune his skills to play the tannerin. In deep learning terms, the trombone player uses a model off-the-shelf. This is called transfer learning. The training of a model that needs more time to learn, like our saxophone player, is called fine-tuning. 
 
 When fine-tuning a model, we do not need to train all parts. We can train just the underperforming ones. Let’s take the example of a computer vision model that has three parts: [feature extraction, feature enhancement, and a final task](https://huggingface.co/docs/transformers/main/main_classes/backbones). In this case, you can use the same feature extraction and feature enhancement without any retraining.  So, we focus on retraining only the final task. 
 
