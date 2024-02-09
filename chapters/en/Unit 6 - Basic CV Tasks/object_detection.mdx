@@ -2,9 +2,7 @@
 
 In this chapter, we'll explore the fascinating world of object detection—a vital task in modern computer vision systems. We will demystify essential concepts, discuss popular methods, examine applications, and discuss evaluation metrics. By the end, you'll have a solid foundation and be ready to venture further into advanced topics.
 
-|![Object Detection](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Object_Detection.png)|
-|:--:| 
-| *Image displaying the bounding boxes around multiple objects in the frame along with the confidence score of their classification* |
+![Image displaying the bounding boxes around multiple objects in the frame along with the confidence score of their classification](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Object_Detection.png)
 ## Object Detection Overview
 
 ### Introduction
@@ -18,6 +16,17 @@ Classification distinguishes objects based on unique attributes, while localizat
 ## Use Cases
 
 Object detection impacts numerous industries, offering valuable insights and automation opportunities. Representative examples include autonomous vehicles navigating roads, surveillance systems covering vast public spaces, healthcare imaging systems detecting diseases, manufacturing plants maintaining output consistency, and augmented reality enriching user experiences.
+
+Here is an example of object detection using transformers:
+```python
+from transformers import pipeline
+from PIL import Image
+pipe = pipeline('object-detection', model="facebook/detr-resnet-50")
+
+image = Image.open("path/to/your/image.jpg").convert("RGB")
+
+bounding_boxes = pipe(image)
+```
 
 ## How to Evaluate an Object Detection Model? 
 You have now seen how to use an object detection model, but how can you evaluate it? As demonstrated in the previous section, object detection is primarily a supervised learning task. This means that the dataset is composed of images and their corresponding bounding boxes, which serve as the ground truth. A few metrics can be used to evaluate your model. The most common ones are:
