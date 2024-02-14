@@ -24,8 +24,8 @@ import numpy as np
 We will now load our images to have their features matched.
 
 ```python
-img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
-img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
+img1 = cv.imread("image1.png",cv.IMREAD_GRAYSCALE)
+img2 = cv.imread("image2.png",cv.IMREAD_GRAYSCALE)
 ```
 
 Initialize SIFT detector
@@ -70,8 +70,8 @@ img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=cv.DrawMatchesFlags_N
 Load images
 
 ```python
-    img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
-    img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
+    img1 = cv.imread("image1.png",cv.IMREAD_GRAYSCALE)
+    img2 = cv.imread("image2.png",cv.IMREAD_GRAYSCALE)
 ```
 
 Initialize the ORB descriptor
@@ -147,8 +147,8 @@ search_params = dict(checks=50)
 Load images
 
 ```python
-img1 = cv.imread('image1.png',cv.IMREAD_GRAYSCALE)
-img2 = cv.imread('image2.png',cv.IMREAD_GRAYSCALE)
+img1 = cv.imread("image1.png",cv.IMREAD_GRAYSCALE)
+img2 = cv.imread("image2.png",cv.IMREAD_GRAYSCALE)
 ```
 
 Initiate SIFT detector
