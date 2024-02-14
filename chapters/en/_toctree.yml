@@ -1,11 +1,11 @@
 - title: 0. Getting Started
   sections:
-  - local: chapter0/1
+  - local: chapter0/introduction
     title: Introduction
 
 - title: Unit 1. Fundamentals
   sections:
-  - sub-title: Chapter 1 - Fundamentals of Computer Vision
+  - sub-title: Fundamentals of Computer Vision
     sections:
     - local: Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/motivation
       title: Vision
@@ -99,11 +99,11 @@
     sections:
     - local: Unit 5 - Generative Models/Introduction/Introduction
       title: Introduction
-  - sub-title: PRACTICAL APPLICATIONS & CHALLENGES
+  - sub-title: Practical Applications & Challenges
     sections:
-    - local: Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/Ethical Issues
+    - local: Unit 5 - Generative Models/Practical Applications & Challenges/Ethical Issues
       title: Privacy, Bias and Societal Concerns
-    - local: Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/cycle_gan
+    - local: Unit 5 - Generative Models/Practical Applications & Challenges/cycle_gan
       title: CycleGAN Introduction
   sections:
   - local: Unit 5 - Generative Models/gans
@@ -124,10 +124,6 @@
     title: Video Processing Basics
 
 - title: Unit 8. 3D Vision, Scene Rendering and Reconstruction
-  - sub-title: 3D Vision
-    sections:
-    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3D Vision/NVS
-      title: Novel View Synthesis
   - sub-title: Introduction
     sections:
     - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/applications
@@ -142,6 +138,10 @@
       title: Basics of Linear Algebra for 3D Data
     - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies and Basics/Representations
       title: Representations for 3D Data
+  - sub-title: 3D Vision
+    sections:
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3D Vision/NVS
+      title: Novel View Synthesis
   sections:
   - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3d_measurements_stereo_vision
     title: Introduction
