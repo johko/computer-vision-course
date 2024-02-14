@@ -48,32 +48,81 @@ In summary, OneFormer represents a significant step towards universal and access
 from transformers import OneFormerProcessor, OneFormerForUniversalSegmentation
 from PIL import Image
 import requests
+import matplotlib.pyplot as plt
+
+def run_segmentation(image, task_type):
+    """Performs image segmentation based on the given task type.
+
+    Args:
+        image (PIL.Image): The input image.
+        task_type (str): The type of segmentation to perform ('semantic', 'instance', or 'panoptic').
+
+    Returns:
+        PIL.Image: The segmented image.
+
+    Raises:
+        ValueError: If the task type is invalid.
+    """
+
+    processor = OneFormerProcessor.from_pretrained("shi-labs/oneformer_ade20k_dinat_large")  # Load once here 
+    model = OneFormerForUniversalSegmentation.from_pretrained("shi-labs/oneformer_ade20k_dinat_large")
+
+    if task_type == "semantic":
+        inputs = processor(images=image, task_inputs=["semantic"], return_tensors="pt")
+        outputs = model(**inputs)
+        predicted_map = processor.post_process_semantic_segmentation(outputs, target_sizes=[image.size[::-1]])[0]
+
+    elif task_type == "instance":
+        inputs = processor(images=image, task_inputs=["instance"], return_tensors="pt")
+        outputs = model(**inputs)
+        predicted_map = processor.post_process_instance_segmentation(outputs, target_sizes=[image.size[::-1]])[0]["segmentation"]
+
+    elif task_type == "panoptic":
+        inputs = processor(images=image, task_inputs=["panoptic"], return_tensors="pt")
+        outputs = model(**inputs)
+        predicted_map = processor.post_process_panoptic_segmentation(outputs, target_sizes=[image.size[::-1]])[0]["segmentation"]
+
+    else:
+        raise ValueError("Invalid task type. Choose from 'semantic', 'instance', or 'panoptic'")
+
+    return predicted_map
+
+
+def show_image_comparison(image, predicted_map, segmentation_title):
+    """Displays the original image and the segmented image side-by-side.
+
+    Args:
+        image (PIL.Image): The original image.
+        predicted_map (PIL.Image): The segmented image.
+        segmentation_title (str): The title for the segmented image.
+    """
+
+    plt.figure(figsize=(12, 6))
+    plt.subplot(1, 2, 1)
+    plt.imshow(image)
+    plt.title("Original Image")
+    plt.axis("off")
+    plt.subplot(1, 2, 2)
+    plt.imshow(predicted_map)
+    plt.title(segmentation_title + " Segmentation")
+    plt.axis("off")
+    plt.show()
+
+
 url = "https://huggingface.co/datasets/shi-labs/oneformer_demo/resolve/main/ade20k.jpeg"
-image = Image.open(requests.get(url, stream=True).raw)
+response = requests.get(url, stream=True)
+response.raise_for_status()  # Check for HTTP errors
+image = Image.open(response.raw)
 
-# Loading a single model for all three tasks
-processor = OneFormerProcessor.from_pretrained("shi-labs/oneformer_ade20k_swin_tiny")
-model = OneFormerForUniversalSegmentation.from_pretrained("shi-labs/oneformer_ade20k_swin_tiny")
+task_to_run = "semantic" 
+predicted_map = run_segmentation(image, task_to_run) 
+show_image_comparison(image, predicted_map, task_to_run)
 
-# Semantic Segmentation
-semantic_inputs = processor(images=image, task_inputs=["semantic"], return_tensors="pt")
-semantic_outputs = model(**semantic_inputs)
-# pass through image_processor for postprocessing
-predicted_semantic_map = processor.post_process_semantic_segmentation(semantic_outputs, target_sizes=[image.size[::-1]])[0]
-
-# Instance Segmentation
-instance_inputs = processor(images=image, task_inputs=["instance"], return_tensors="pt")
-instance_outputs = model(**instance_inputs)
-# pass through image_processor for postprocessing
-predicted_instance_map = processor.post_process_instance_segmentation(instance_outputs, target_sizes=[image.size[::-1]])[0]["segmentation"]
-
-# Panoptic Segmentation
-panoptic_inputs = processor(images=image, task_inputs=["panoptic"], return_tensors="pt")
-panoptic_outputs = model(**panoptic_inputs)
-# pass through image_processor for postprocessing
-predicted_semantic_map = processor.post_process_panoptic_segmentation(panoptic_outputs, target_sizes=[image.size[::-1]])[0]["segmentation"]
 
 ```
+
+![semantic segmentation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/oneformer_semantic.png)
+
 ## References
 [1] [OneFormer Paper](https://arxiv.org/pdf/2211.06220.pdf)  
 [2] [HuggingFace OneFormer model](https://huggingface.co/shi-labs/oneformer_ade20k_dinat_large)
