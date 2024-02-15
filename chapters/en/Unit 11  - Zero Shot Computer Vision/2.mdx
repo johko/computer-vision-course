@@ -20,39 +20,41 @@ In inductive ZSL, the model is trained exclusively on datasets containing only s
 
 Transductive ZSL differs by allowing the model to have access to some information about the unseen classes during training, typically the attributes or unlabeled examples of the unseen classes, but not the labels. This approach leverages additional information about the structure of the unseen data to train a more generalizable model. 
 
-In the next section we will follow a classic research paper by Google [3] to introduce an inductive ZSL example with semantic embeddings. 
+In next section, we will follow the main concept of a classic research paper from Google [3], and give an example for inductive ZSL. 
 
 
 ## Zero-shot Learning Example with Semantic Embeddings
 
-As described in the previous chapter, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes auxiliary information, such as semantic attributes or embeddings to help classify images from unseen classes. Before we dive into details, here is a short intro on semantic embeddings, for readers unfamiliar with the term. 
+As described in the previous chapter, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes auxiliary information, such as semantic attributes or embeddings to help classify images from unseen classes. Before diving into details, the following is a short introduction on semantic embeddings for readers unfamiliar with the term. 
 
-### Semantic Embeddings 
+### What are Semantic Embeddings? 
 
-Semantic embeddings are vector representations of semantic information which carry the meaning and interpretation of data. For example, the information transferred with spoken text is a type of semantic information. Semantic information does not include only the direct meanings of words or sentences but also the contextual and cultural implications.
+Semantic embeddings are vector representations of semantic information which carry the meaning and interpretation of data. For example, the information transferred with spoken text is a type of semantic information. Semantic information does not include only the direct meanings of words or sentences, but also the contextual and cultural implications.
 
 Embeddings refer to the process of mapping semantic information into vectors of real numbers. Semantic embeddings are often learned with unsupervised machine learning models, such as Word2Vec [1] or GloVe [2]. All types of textual information, such as words, phrases, or sentences can be transformed into numerical vectors based on set procedures. Semantic embeddings describe words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand the usage, synonyms, and context of each word by mathematical operations on the word embeddings. 
 
-### How Does Semantic Information Help Classifiction? 
+### Enable ZSL with Semantic Embeddings  
 
+During training, a ZSL model learns to associate the visual features of images from seen classes with their corresponding semantic embeddings. The objective is to minimize the distance between the projected visual features of an image and the semantic embedding of its class. This process helps the model to learn the correspondence between images and semantic information.
 
+Since the model has learned to project image features onto semantic space, it can attempt to classify images of unseen classes by projecting their image features into the same space and comparing them to the embeddings of unseen classes. For an image of an unseen class, the model calculates its projected embedding and then searches for the nearest semantic embedding among the unseen classes. The unseen class with nearest embedding is the predicted label for the image.
+
+In summary, semantic embeddings are central to ZSL, enabling models to extend their classification capabilities. This approach allows for a more flexible and scalable way to classify the vast amount of real-world categories without needing labeled datasets.
 
 ## Comparison to CLIP 
 
-The relationship between ZSL and CLIP (Contrastive Language–Image Pre-training) stems from their shared goal of enabling models to accurately recognize and classify images of categories that were not present in their training data. However, CLIP represents a significant advancement and a broader application of the principles underlying ZSL, leveraging a novel approach to learning and generalization.
+The relationship between ZSL and CLIP (Contrastive Language–Image Pre-training) stems from their shared goal of enabling models to recognize and classify images of categories that were not present in the training data. However, CLIP represents a significant advancement and a broader application of the principles underlying ZSL, leveraging a novel approach to learning and generalization.
 
-The relationship between CLIP and ZSL can be described as follows:
+The relationship between CLIP and ZSL can be described as:
 
 - 1. Both ZSL and CLIP aim to classify images into classes that were not seen during training. However, while traditional ZSL approaches might rely on predefined semantic embeddings or attributes to bridge the gap between seen and unseen classes, CLIP directly learns from natural language descriptions, allowing it to generalize to a much broader range of tasks without the need for task-specific embeddings.
 
-- 2. CLIP is a prime example of multi-modal learning, where the model learns from both textual and visual data. This approach aligns with ZSL where auxiliary information (e.g., semantic embeddings from text) is used to improve classification performance. CLIP takes the concept further by directly learning from raw text and images, enabling it to understand and represent the relationships between visual content and descriptive language.
-
-- 3. CLIP inherently possesses zero-shot learning capabilities due to its training methodology. It can perform tasks without additional fine-tuning, thanks to its generalized understanding of images and text. This is a significant leap from traditional ZSL models, which might require carefully crafted semantic embeddings specific to the unseen classes.
+- 2. CLIP is a prime example of multi-modal learning, where the model learns from both textual and visual data. This approach aligns with ZSL where auxiliary information is used to improve classification performance. CLIP takes the concept further by directly learning from raw text and images, enabling it to understand and represent the relationships between visual content and descriptive language.
 
 
 ## Benchmarks and Evaluation
 
-The benchmarks and standard datasets for ZSL are:
+The standard benchmarks and datasets for ZSL are:
 
 - **Animal with Attributes (AwA)**
 
