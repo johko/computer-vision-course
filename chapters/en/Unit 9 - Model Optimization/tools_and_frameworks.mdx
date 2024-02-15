@@ -16,6 +16,9 @@ The Tensorflow Model Optimization Toolkit is available as a pip package, `tensor
 pip install -U tensorflow-model-optimization
 ```
 
+### Hands-on guide
+
+For a hands-on guide on how to use the Tensorflow Model Optimization Toolkit, refer this [notebook](https://colab.research.google.com/drive/1t1Tq6i0JZbOwloyhkSjg8uTTVX9iUkgj#scrollTo=D_MCHp6cwCFb)
 ## Pytorch Quantization
 
 ### Overview
@@ -35,6 +38,9 @@ Pytorch quantization is available as API in the pytorch package. To use it simpl
 pip install torch
 import torch.quantization
 ```
+## Hands-on guide
+
+For a hands-on guide on how to use the Pytorch Quantization, refer this [notebook](https://colab.research.google.com/drive/1toyS6IUsFvjuSK71oeLZZ51mm8hVnlZv
 
 ## ONNX Runtime
 
@@ -64,6 +70,10 @@ For GPU version, run the following command:
 pip install onnxruntime-gpu
 ```
 
+### Hands-on guide
+
+For a hands-on guide on how to use the ONNX Runtime, refer this [notebook](https://colab.research.google.com/drive/1A-qYPX52V2q-7fXHaLeNRJqPUk3a4Qkd)
+
 ## TensorRT
 
 ### Overview
@@ -79,6 +89,10 @@ TensorRT is available as a pip package, `tensorrt`. To install the package, run 
 pip install tensorrt
 ```
 for other installation methods, see [here](https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html#install) 
+
+### Hands-on guide
+
+For a hands-on guide on how to use the TensorRT, refer this [notebook](https://colab.research.google.com/drive/1b8ueEEwgRc9fGqky1f6ZPx5A2ak82FE1)
 
 ## OpenVINO
 
@@ -100,6 +114,40 @@ pip install openvino
 
 For other installation methods, see [here](https://docs.openvino.ai/2023.2/openvino_docs_install_guides_overview.html?VERSION=v_2023_2_0&OP_SYSTEM=LINUX&DISTRIBUTION=ARCHIVE)
 
+### Hands-on guide
+
+For a hands-on guide on how to use the OpenVINO, refer this [notebook](https://colab.research.google.com/drive/1FWD0CloFt6gIEd0WBSMBDDKzA7YUE8Wz)
+
+## Optimum
+
+### Overview
+
+Optimum serves as an extension of [Transformers](https://huggingface.co/docs/transformers), offering a suite of tools designed for optimizing performance in training and 
+running models on specific hardware, ensuring maximum efficiency. In the rapidly evolving AI landscape, specialized hardware and unique optimizations continue to emerge regularly. 
+Optimum empowers developers to seamlessly leverage these diverse platforms, maintaining the ease of use inherent in Transformers. 
+Platforms suppoerted by optimum as of now are:
+1. [Habana](https://huggingface.co/docs/optimum/habana/index) 
+2. [Intel](https://huggingface.co/docs/optimum/intel/index)
+3. [Nvidia](https://github.com/huggingface/optimum-nvidia)
+4. [AWS Trainium and Inferentia](https://huggingface.co/docs/optimum-neuron/index)
+5. [AMD](https://huggingface.co/docs/optimum/amd/index)
+8. [FuriosaAI](https://huggingface.co/docs/optimum/furiosa/index)
+9. [ONNX Runtime](https://huggingface.co/docs/optimum/onnxruntime/overview)
+10. [BetterTransformer](https://huggingface.co/docs/optimum/bettertransformer/overview)
+
+### Setup guide
+
+Optimum is available as a pip package, `optimum`. To install the package, run the following command:
+```
+pip install optimum
+``` 
+
+For installation of accelerator-specific features, see [here](https://huggingface.co/docs/optimum/installation)
+
+### Hands-on guide
+
+For a hands-on guide on how to use Optimum for quantization, refer this [notebook](https://colab.research.google.com/drive/1tz4eHqSZzGlXXS3oBUc2NRbuRCn2HjdN)
+
 ## EdgeTPU
 
 ### Overview
@@ -111,4 +159,7 @@ The benefits of using EdgeTPU includes:
 - Combined custom hardware, open software, and state-of-the-art AI algorithms to provide high-quality, easy to deploy AI solutions for the edge.
 
 For more details on EdgeTPU, see [here](https://cloud.google.com/edge-tpu)
+
+For guide on how to setup and use EdgeTPU, refer this [notebook](https://colab.research.google.com/drive/1aMEZE2sI9aMLLBVJNSS37ltMwmtEbMKl)
+
 
