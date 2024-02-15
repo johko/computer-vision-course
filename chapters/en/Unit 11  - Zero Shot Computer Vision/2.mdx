@@ -1,36 +1,58 @@
 # Zero-shot Learning
 
+Following the introductory chapter, we will next explain ZSL in more details. This chapter aims to:  
+- 1. Provide definitions for various types of ZSL and the differences between them.   
+- 2. Go through a detailed ZSL example which utilizes semantic embeddings. 
+
+
 ## Zero-shot Learning vs. Generalized Zero-shot Learning
 
-Zero-shot learning (ZSL) and generalized zero-shot learning (GZSL) belong to a machine learning algorithm type, where the image classification model needs to classify labels not included in training. ZSL and GZSL are very similar, and the main difference is how the model is evaluated.
+Zero-shot learning and generalized zero-shot learning (GZSL) belong to a machine learning algorithm type, where the image classification model needs to classify labels not included in training. ZSL and GZSL are very similar, and the main difference is how the model is evaluated.
 
-For ZSL, the model is purely evaluated for its capability to classify images of unseen classes - only observations of unseen classes are included in ZSL testing dataset. As for GZSL, the model is evaluated on both seen classes and unseen classes - which is considered more practical and closer to real-world use cases. Overall, GZSL is more challenging because the model needs to determine if an observation belongs to a novel class or a known class. 
+For ZSL, the model is purely evaluated for its capability to classify images of unseen classes - only observations of unseen classes are included in ZSL testing dataset. For GZSL, the model is evaluated on both seen classes and unseen classes - which is considered closer to real-world use cases. Overall, GZSL is more challenging because the model needs to determine if an observation belongs to a novel class or a known class. 
 
-As described in the previous section, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes semantic embeddings to help classify images from unseen classes. 
+
+## Inductive Zero-shot Learning vs. Transductive Zero-shot Learning
+
+Based on the type of training data, there are two kinds of zero-shot learning:
+
+In inductive ZSL, the model is trained exclusively on datasets containing only seen classes, without access to any data from the unseen classes. The learning process focuses on extracting and generalizing patterns from the training data, which are then applied to classify instances of unseen classes. The approach assumes a clear separation between seen and unseen data during training, emphasizing the model's ability to generalize from the training data to the unseen classes. 
+
+Transductive ZSL differs by allowing the model to have access to some information about the unseen classes during training, typically the attributes or unlabeled examples of the unseen classes, but not the labels. This approach leverages additional information about the structure of the unseen data to train a more generalizable model. 
+
+In the next section we will follow a classic research paper by Google [3] to introduce an inductive ZSL example with semantic embeddings. 
+
+
+## Zero-shot Learning Example with Semantic Embeddings
+
+As described in the previous chapter, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes auxiliary information, such as semantic attributes or embeddings to help classify images from unseen classes. Before we dive into details, here is a short intro on semantic embeddings, for readers unfamiliar with the term. 
 
 ### Semantic Embeddings 
 
-Semantic embeddings are vector representations of semantic information - the meaning and interpretation of textual data. For example, the information transferred with spoken text is a type of semantic information. Semantic information does not include only the direct meanings of words or sentences but also the contextual and cultural implications.
+Semantic embeddings are vector representations of semantic information which carry the meaning and interpretation of data. For example, the information transferred with spoken text is a type of semantic information. Semantic information does not include only the direct meanings of words or sentences but also the contextual and cultural implications.
 
 Embeddings refer to the process of mapping semantic information into vectors of real numbers. Semantic embeddings are often learned with unsupervised machine learning models, such as Word2Vec [1] or GloVe [2]. All types of textual information, such as words, phrases, or sentences can be transformed into numerical vectors based on set procedures. Semantic embeddings describe words in a high-dimensional space where the distance and direction between words reflect their semantic relationships. This enables machines to understand the usage, synonyms, and context of each word by mathematical operations on the word embeddings. 
 
+### How Does Semantic Information Help Classifiction? 
 
-## Types of ZSL Based on Training Data
 
-Based on the types of training data, there are two kinds of zero-shot learning.
 
-### Inductive  Zero-shot Learning
+## Comparison to CLIP 
 
-Training data includes labeled images of seen classes and semantic descriptions/attributes of both seen and unseen classes. The main idea is to establish projections from observed image space to semantic latent space, and the model can identify unseen classes at inference time.
+The relationship between ZSL and CLIP (Contrastive Language–Image Pre-training) stems from their shared goal of enabling models to accurately recognize and classify images of categories that were not present in their training data. However, CLIP represents a significant advancement and a broader application of the principles underlying ZSL, leveraging a novel approach to learning and generalization.
 
-### Transductive Zero-shot Learning
+The relationship between CLIP and ZSL can be described as follows:
 
-Training data includes labeled images of seen classes, and unlabeled images of unseen classes, and semantic descriptions or attributes of both seen and unseen classes. The use case for transductive learning is when we do not have enough labeling resources to label all images.
+- 1. Both ZSL and CLIP aim to classify images into classes that were not seen during training. However, while traditional ZSL approaches might rely on predefined semantic embeddings or attributes to bridge the gap between seen and unseen classes, CLIP directly learns from natural language descriptions, allowing it to generalize to a much broader range of tasks without the need for task-specific embeddings.
+
+- 2. CLIP is a prime example of multi-modal learning, where the model learns from both textual and visual data. This approach aligns with ZSL where auxiliary information (e.g., semantic embeddings from text) is used to improve classification performance. CLIP takes the concept further by directly learning from raw text and images, enabling it to understand and represent the relationships between visual content and descriptive language.
+
+- 3. CLIP inherently possesses zero-shot learning capabilities due to its training methodology. It can perform tasks without additional fine-tuning, thanks to its generalized understanding of images and text. This is a significant leap from traditional ZSL models, which might require carefully crafted semantic embeddings specific to the unseen classes.
 
 
 ## Benchmarks and Evaluation
 
-The benchmarks and standard datasets are:
+The benchmarks and standard datasets for ZSL are:
 
 - **Animal with Attributes (AwA)**
 
@@ -53,7 +75,6 @@ A coarse-grained dataset composed of 15339 images from 3 broad categories (anima
 The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) evaluates algorithms for object detection and image classification at large scale. 
 
 
-
 ## Reference
 
 - [1] Mikilov et al., Efficient Estimation of Word-Representations in Vector Space, ICLR (2013). 
@@ -62,3 +83,4 @@ The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) evaluates algorit
 - [4] Deng et al., Imagenet: A Large-Scale Hierarchical Image Datbse, CVPR (2012). 
 - [5] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022).
 - [6] Lampert et al., Learning to Detect Unseen Object Classes by Between-Class Attribute Transfer, CVPR (2009).
+- [7] Xian et al., Zero-Shot Learning - A Comprehensive Evaluation of the Good, the Bad and the Ugly, IEEE Transactions on Pattern Analysis and Machine Intelligence (2020).
