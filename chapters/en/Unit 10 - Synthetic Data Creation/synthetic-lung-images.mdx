@@ -64,11 +64,11 @@ We will preprocess the lung images by resizing and normalizing the pixel values.
 import torchvision.transforms as transforms
 from torchvision.transforms import CenterCrop, Compose, Normalize, Resize, ToTensor
 
-transform=Compose(
+transform = Compose(
     [
-          transforms.Resize(image_size),
-          transforms.CenterCrop(image_size),
-          transforms.ToTensor(),
+        transforms.Resize(image_size),
+        transforms.CenterCrop(image_size),
+        transforms.ToTensor(),
     ]
 )
 ```
