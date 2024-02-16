@@ -45,9 +45,11 @@ In general, both VQA and Visual Reasoning are treated as *Visual Question Answer
 from PIL import Image
 from transformers import pipeline
 
-vqa_pipeline = pipeline("visual-question-answering", model="Salesforce/blip-vqa-capfilt-large")
+vqa_pipeline = pipeline(
+    "visual-question-answering", model="Salesforce/blip-vqa-capfilt-large"
+)
 
-image =  Image.open("elephant.jpeg")
+image = Image.open("elephant.jpeg")
 question = "Is there an elephant?"
 
 vqa_pipeline(image, question, top_k=1)
@@ -58,13 +60,17 @@ from transformers import Pix2StructProcessor, Pix2StructForConditionalGeneration
 import requests
 from PIL import Image
 
-processor = Pix2StructProcessor.from_pretrained('google/deplot')
-model = Pix2StructForConditionalGeneration.from_pretrained('google/deplot')
+processor = Pix2StructProcessor.from_pretrained("google/deplot")
+model = Pix2StructForConditionalGeneration.from_pretrained("google/deplot")
 
 url = "https://raw.githubusercontent.com/vis-nlp/ChartQA/main/ChartQA%20Dataset/val/png/5090.png"
 image = Image.open(requests.get(url, stream=True).raw)
 
-inputs = processor(images=image, text="Generate underlying data table of the figure below:", return_tensors="pt")
+inputs = processor(
+    images=image,
+    text="Generate underlying data table of the figure below:",
+    return_tensors="pt",
+)
 predictions = model.generate(**inputs, max_new_tokens=512)
 print(processor.decode(predictions[0], skip_special_tokens=True))
 ```
@@ -126,7 +132,9 @@ pipe(image=image, question=question)
 from transformers import pipeline
 from PIL import Image
 
-pipe = pipeline("document-question-answering", model="naver-clova-ix/donut-base-finetuned-docvqa")
+pipe = pipeline(
+    "document-question-answering", model="naver-clova-ix/donut-base-finetuned-docvqa"
+)
 
 question = "What is the purchase amount?"
 image = Image.open("your-document.png")
@@ -151,7 +159,11 @@ model = VisionEncoderDecoderModel.from_pretrained("facebook/nougat-base")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
 # prepare PDF image for the model
-filepath = hf_hub_download(repo_id="hf-internal-testing/fixtures_docvqa", filename="nougat_paper.png", repo_type="dataset")
+filepath = hf_hub_download(
+    repo_id="hf-internal-testing/fixtures_docvqa",
+    filename="nougat_paper.png",
+    repo_type="dataset",
+)
 image = Image.open(filepath)
 pixel_values = processor(image, return_tensors="pt").pixel_values
 
@@ -197,10 +209,12 @@ from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
 
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
-model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
+model = BlipForConditionalGeneration.from_pretrained(
+    "Salesforce/blip-image-captioning-large"
+)
 
-img_url = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/demo.jpg' 
-raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
+img_url = "https://storage.googleapis.com/sfr-vision-language-research/BLIP/demo.jpg"
+raw_image = Image.open(requests.get(img_url, stream=True).raw).convert("RGB")
 
 # conditional image captioning
 text = "a photography of"
@@ -263,11 +277,18 @@ processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 url = "http://images.cocodataset.org/val2017/000000039769.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
 
-inputs = processor(text=["a photo of a cat", "a photo of a dog"], images=image, return_tensors="pt", padding=True)
+inputs = processor(
+    text=["a photo of a cat", "a photo of a dog"],
+    images=image,
+    return_tensors="pt",
+    padding=True,
+)
 
 outputs = model(**inputs)
 logits_per_image = outputs.logits_per_image  # this is the image-text similarity score
-probs = logits_per_image.softmax(dim=1)  # we can take the softmax to get the label probabilities
+probs = logits_per_image.softmax(
+    dim=1
+)  # we can take the softmax to get the label probabilities
 ```
 Learn more about how to use CLIP for Image-Text retrieval in HuggingFace [here](https://huggingface.co/docs/transformers/model_doc/clip#resources).
 
@@ -302,7 +323,9 @@ outputs = model(**inputs)
 # Target image sizes (height, width) to rescale box predictions [batch_size, 2]
 target_sizes = torch.Tensor([image.size[::-1]])
 # Convert outputs (bounding boxes and class logits) to COCO API
-results = processor.post_process_object_detection(outputs=outputs, threshold=0.1, target_sizes=target_sizes)
+results = processor.post_process_object_detection(
+    outputs=outputs, threshold=0.1, target_sizes=target_sizes
+)
 
 i = 0  # Retrieve predictions for the first image for the corresponding text queries
 text = texts[i]
@@ -311,7 +334,9 @@ boxes, scores, labels = results[i]["boxes"], results[i]["scores"], results[i]["l
 # Print detected objects and rescaled box coordinates
 for box, score, label in zip(boxes, scores, labels):
     box = [round(i, 2) for i in box.tolist()]
-    print(f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}")
+    print(
+        f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}"
+    )
 ```
 - **Grounding DINO[[3]](#grounding-dino):** It combines the Transformer-based object detector (DINO) with "grounded pre-training" to create a state-of-the-art, zero-shot object detection model. This means it can identify objects even if they weren't in its training data, thanks to its ability to understand both images and human language inputs (like category names or descriptions). Its architecture combines text and image backbones, a feature enhancer, language-guided query selection, and a cross-modality decoder, achieving impressive results on benchmarks like COCO and LVIS. Essentially, Grounding DINO takes visual information, links it to textual descriptions, and then uses that understanding to pinpoint objects even within completely new categories.
 You can try out the Grounding DINO model in the Google Colab [here](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/zero-shot-object-detection-with-grounding-dino.ipynb).
@@ -339,7 +364,12 @@ To just use the base model, you can run:
 from diffusers import DiffusionPipeline
 import torch
 
-pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
+pipe = DiffusionPipeline.from_pretrained(
+    "stabilityai/stable-diffusion-xl-base-1.0",
+    torch_dtype=torch.float16,
+    use_safetensors=True,
+    variant="fp16",
+)
 pipe.to("cuda")
 
 prompt = "An astronaut riding a unicorn"

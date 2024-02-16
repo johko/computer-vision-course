@@ -96,11 +96,15 @@ from transformers import AutoImageProcessor, MobileViTV2ForImageClassification
 from datasets import load_dataset
 from PIL import Image
 
-url = 'http://images.cocodataset.org/val2017/000000039769.jpg'
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
 
-image_processor = AutoImageProcessor.from_pretrained("apple/mobilevitv2-1.0-imagenet1k-256")
-model = MobileViTV2ForImageClassification.from_pretrained("apple/mobilevitv2-1.0-imagenet1k-256")
+image_processor = AutoImageProcessor.from_pretrained(
+    "apple/mobilevitv2-1.0-imagenet1k-256"
+)
+model = MobileViTV2ForImageClassification.from_pretrained(
+    "apple/mobilevitv2-1.0-imagenet1k-256"
+)
 
 inputs = image_processor(image, return_tensors="pt")
 
@@ -118,13 +122,20 @@ For an even lighter computer vision setup, you can use the Huggingface Inference
 ```py
 import json
 import requests
+
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
-API_URL = "https://api-inference.huggingface.co/models/apple/mobilevitv2-1.0-imagenet1k-256"
+API_URL = (
+    "https://api-inference.huggingface.co/models/apple/mobilevitv2-1.0-imagenet1k-256"
+)
+
+
 def query(filename):
     with open(filename, "rb") as f:
         data = f.read()
     response = requests.request("POST", API_URL, headers=headers, data=data)
     return json.loads(response.content.decode("utf-8"))
+
+
 data = query("cats.jpg")
 ```
 ```js
