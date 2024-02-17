@@ -3,6 +3,7 @@
 Following the introductory chapter, we will next explain ZSL in more details. This chapter aims to:  
 - 1. Provide definitions for various types of ZSL and the differences between them.   
 - 2. Go through a detailed ZSL example which utilizes semantic embeddings. 
+- 3. Present studied results of ZSL algorithm performance comparisons.  
 
 
 ## Zero-shot Learning vs. Generalized Zero-shot Learning
@@ -25,7 +26,7 @@ In next section, we will follow the main concept of a classic research paper fro
 
 ## Zero-shot Learning Example with Semantic Embeddings
 
-As described in the previous chapter, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes auxiliary information, such as semantic attributes or embeddings to help classify images from unseen classes. Before diving into details, the following is a short introduction on semantic embeddings for readers unfamiliar with the term. 
+As described in the previous chapter, developing a successful ZSL model requires more than just images and class labels. It is nearly impossible to classify unseen classes based on images alone. ZSL utilizes auxiliary information, such as semantic attributes or embeddings to help classify images from unseen classes. Here we follow  Before diving into details, the following is a short introduction on semantic embeddings for readers unfamiliar with the term. 
 
 ### What are Semantic Embeddings? 
 
@@ -41,9 +42,10 @@ Since the model has learned to project image features onto semantic space, it ca
 
 In summary, semantic embeddings are central to ZSL, enabling models to extend their classification capabilities. This approach allows for a more flexible and scalable way to classify the vast amount of real-world categories without needing labeled datasets.
 
+
 ## Comparison to CLIP 
 
-The relationship between ZSL and CLIP (Contrastive Language–Image Pre-training) stems from their shared goal of enabling models to recognize and classify images of categories that were not present in the training data. However, CLIP represents a significant advancement and a broader application of the principles underlying ZSL, leveraging a novel approach to learning and generalization.
+The relationship between ZSL and CLIP (Contrastive Language–Image Pre-training) [8] stems from their shared goal of enabling models to recognize and classify images of categories that were not present in the training data. However, CLIP represents a significant advancement and a broader application of the principles underlying ZSL, leveraging a novel approach to learning and generalization.
 
 The relationship between CLIP and ZSL can be described as:
 
@@ -54,7 +56,7 @@ The relationship between CLIP and ZSL can be described as:
 
 ## Benchmarks and Evaluation
 
-The standard benchmarks and datasets for ZSL are:
+New ZSL methods are proposed every year, and it is hard to determine which method worked best due to their distinct evaluation processes. In paper [7] the authors proposed a unified evaluation protocol to train and test various ZSL methods with identical datasets and provide a more objective comparison. The popular datasets used for ZSL benchmark and evaluation are:
 
 - **Animal with Attributes (AwA)**
 
@@ -76,6 +78,8 @@ A coarse-grained dataset composed of 15339 images from 3 broad categories (anima
 
 The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) evaluates algorithms for object detection and image classification at large scale. 
 
+### ZSL Algorithms Comparison
+
 
 ## Reference
 
@@ -85,4 +89,5 @@ The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) evaluates algorit
 - [4] Deng et al., Imagenet: A Large-Scale Hierarchical Image Datbse, CVPR (2012). 
 - [5] Pourpanah et al., A Review of Generalized Zero-Shot Learning Methods (2022).
 - [6] Lampert et al., Learning to Detect Unseen Object Classes by Between-Class Attribute Transfer, CVPR (2009).
-- [7] Xian et al., Zero-Shot Learning - A Comprehensive Evaluation of the Good, the Bad and the Ugly, IEEE Transactions on Pattern Analysis and Machine Intelligence (2020).
+- [7] Xian et al., Zero-Shot Learning - The Good, the Bad and the Ugly, CVPR (2017).
+- [8] Radford et al., Learning Transferable Visual Models From Natural Language Supervision, arXiv (2021). 
