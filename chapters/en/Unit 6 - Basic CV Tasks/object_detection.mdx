@@ -21,7 +21,8 @@ Here is an example of object detection using transformers:
 ```python
 from transformers import pipeline
 from PIL import Image
-pipe = pipeline('object-detection', model="facebook/detr-resnet-50")
+
+pipe = pipeline("object-detection", model="facebook/detr-resnet-50")
 
 image = Image.open("path/to/your/image.jpg").convert("RGB")
 
