@@ -31,7 +31,7 @@ The distillation loss is formulated as:
 
 ![Distillation Loss](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/KL-Loss.png)
 
-Where the KL loss refers to the Kullback-Leibler Divergence between the teacher and the student's output distributions. 
+Where the KL loss refers to the ![Kullback-Leibler Divergence](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence) between the teacher and the student's output distributions. 
 The overall loss for the student model is then formulated as the sum of this distillation loss with the standard cross-entropy loss over the ground-truth labels.
 
 To see this loss function implemented in Python as well as a fully worked out example in Python, let's check out the [notebook for this section](../notebooks/Unit 3 - Vision Transformers/KnowledgeDistillation.ipynb).
