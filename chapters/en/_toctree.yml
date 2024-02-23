@@ -1,11 +1,11 @@
 - title: 0. Getting Started
   sections:
-  - local: chapter0/1
+  - local: chapter0/introduction
     title: Introduction
 
-- title: Unit 1 - Fundamentals
+- title: Unit 1. Fundamentals
   sections:
-  - sub-title: Chapter 1 - Fundamentals of Computer Vision
+  - sub-title: Fundamentals of Computer Vision
     sections:
     - local: Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/motivation
       title: Vision
@@ -13,7 +13,7 @@
       title: What Is Computer Vision
     - local: Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/applications
       title: Applications of Computer Vision
-  - sub-title: image_and_imaging
+  - sub-title: Image and Imaging
     sections:
     - local: Unit 1 - Fundamentals/image_and_imaging/image
       title: Image
@@ -23,11 +23,54 @@
       title: Imaging in Real-life
     - local: Unit 1 - Fundamentals/image_and_imaging/examples-preprocess
       title: Pre-processing for Computer Vision Tasks
+  - sub-title: Feature Extraction
+    sections:
+    - local: Unit 1 - Fundamentals/feature-extraction/feature-matching
+      title: Feature Matching
+    - local: Unit 1 - Fundamentals/feature-extraction/feature_description
+      title: Feature Description
+    - local: Unit 1 - Fundamentals/feature-extraction/real-world-applications
+      title: Real-world Applications of Feature Extraction in Computer Vision
+
+
+- title: Unit 2. Convolutional Neural Networks
+  sections:
+  - local: Unit 2 - Convolutional Neural Networks/mobilenet
+    title: MobileNet
+  - local: Unit 2 - Convolutional Neural Networks/mobilenetextra
+    title: Let's Dive Further with MobileNet
+  - local: Unit 2 - Convolutional Neural Networks/vgg
+    title: Very Deep Convolutional Networks for Large Scale Image Recognition (2014)
+
+- title: Unit 3. Vision Transformers
+  sections:
+  - local: Unit 3 - Vision Transformers/Common Vision Transformers - DETR
+    title: DEtection TRansformer (DETR)
+  - local: Unit 3 - Vision Transformers/Convolutional Vision Transformer
+    title: Convolutional Vision Transformer (CvT)
+  - local: Unit 3 - Vision Transformers/Dinat Transformer
+    title: Dilated Neighborhood Attention Transformer (DINAT)
+  - local: Unit 3 - Vision Transformers/MobileVIT
+    title: MobileViT v2
+  - local: Unit 3 - Vision Transformers/Swin Transformer
+    title: Swin Transformer
 
 - title: Unit 4. Multimodal Models
+  - sub-title: CLIP and relatives
+    sections:
+    - local: Unit 4 - Multimodal Models/CLIP and relatives/Introduction
+      title: Introduction
+    - local: Unit 4 - Multimodal Models/CLIP and relatives/blip
+      title: Multimodal Text Generation (BLIP)
+    - local: Unit 4 - Multimodal Models/CLIP and relatives/clip
+      title: Contrastive Language-Image Pre-training (CLIP)
+    - local: Unit 4 - Multimodal Models/CLIP and relatives/losses
+      title: Losses
+    - local: Unit 4 - ultimodal Models/CLIP and relatives/owl_vit
+      title: Multimodal Object Detection (OWL-ViT)
   sections:
   - local: Unit 4 - Multimodal Models/pre-intro
-    title: What you'll learn and what you'll build
+    title: What you will learn and what you will build
   - local: Unit 4 - Multimodal Models/introduction
     title: Introduction
   - local: Unit 4 - Multimodal Models/tasks-models-part1
@@ -39,10 +82,80 @@
   - local: Unit 4 - Multimodal Models/supplementary-material
     title: Supplemental reading and resources
  
-- title: Unit 5. Multimodal Models
+- title: Unit 5. Generative Models
+  - sub-title: Diffusion models
+    sections:
+    - local: Unit 5 - Generative Models/Diffusion models/Introduction - Diffusions
+      title: Introduction to Diffusion Models
+    - local: Unit 5 - Generative Models/Diffusion models/Simple explanation and showcase of external resources
+      title: Extras
+    - local: Unit 5 - Generative Models/Diffusion models/stable_diffusion
+      title: Introduction to Stable Diffusion
+  - sub-title: GANs & VAEs
+    sections:
+    - local: Unit 5 - Generative Models/GANs & VAEs/StyleGAN
+      title: StyleGAN Variants
+  - sub-title: Introduction
+    sections:
+    - local: Unit 5 - Generative Models/Introduction/Introduction
+      title: Introduction
+  - sub-title: Practical Applications & Challenges
+    sections:
+    - local: Unit 5 - Generative Models/Practical Applications & Challenges/Ethical Issues
+      title: Privacy, Bias and Societal Concerns
+    - local: Unit 5 - Generative Models/Practical Applications & Challenges/cycle_gan
+      title: CycleGAN Introduction
   sections:
-  - local: Unit 5 - Generative Models/Diffusion models
-    title: stable_diffusion
+  - local: Unit 5 - Generative Models/gans
+    title: Generative Adversarial Networks
+  - local: Unit 5 - Generative Models/variational_autoencoders
+    title: Variational Autoencoders
+
+- title: Unit 6. Basic CV Tasks
+  sections:
+  - local: Unit 6 - Basic CV Tasks/segmentation
+    title: What is Image Segmentation?
+
+- title: Unit 7. Video and Video Processing
+  sections:
+  - local: Unit 7 - Video and Video Processing/introduction-to-video
+    title: Introduction to Video
+  - local: Unit 7 - Video and Video Processing/video-processing-basics
+    title: Video Processing Basics
+
+- title: Unit 8. 3D Vision, Scene Rendering and Reconstruction
+  - sub-title: Introduction
+    sections:
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/applications
+      title: Applications of 3D Vision
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/brief_history
+      title: A Brief History of 3D Vision
+  - sub-title: Terminologies and Basics
+    sections:
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies and Basics/CameraModels
+      title: Camera models
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies and Basics/LinearAlgebra
+      title: Basics of Linear Algebra for 3D Data
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies and Basics/Representations
+      title: Representations for 3D Data
+  - sub-title: 3D Vision
+    sections:
+    - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3D Vision/NVS
+      title: Novel View Synthesis
+  sections:
+  - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3d_measurements_stereo_vision
+    title: Introduction
+  - local: Unit 8 - 3D Vision, Scene Rendering and Reconstruction/nerf
+    title: Neural Radiance Fields (NeRFs)
+
+- title: Unit 9. Model Optimization
+  sections:
+  - local: Unit 9 - Model Optimization/intro_to_model_optimization
+    title: Introduction to model optimization for deployment
+  - local: Unit 9 - Model Optimization/model_deployment
+    title: Model Deployment Considerations
+  - local: Unit 9 - Model Optimization/tools_and_frameworks
+    title: Model optimization tools and frameworks
 
 - title: Unit 10. Synthetic Data Creation
   sections:
@@ -61,10 +174,15 @@
   - local: Unit 10 - Synthetic Data Creation/synthetic_datasets
     title: Synthetic Datasets
 
+- title: Unit 11. Zero Shot Computer Vision
+  sections:
+  - local: Unit 11  - Zero Shot Computer Vision/1
+    title: Introduction
+
 - title: Unit 12. Ethics and Bias
   sections:
   - local: Unit 12 - Ethics and Biases/pre-intro
-    title: What you'll learn
+    title: Ethics and Bias in Computer Vision - Exploring Ethical Foundations in CV Models
   - local: Unit 12 - Ethics and Biases/introduction
     title: Introduction
   - local: Unit 12 - Ethics and Biases/ethics-bias-ai
@@ -73,3 +191,14 @@
     title: Hugging Face's efforts - Ethics and Society
   - local: Unit 12 - Ethics and Biases/supplementary-material
     title: Supplementary reading and resources
+
+- title: Unit 13. Outlook
+  sections:
+  - local: Unit 13 - Outlook/Retention - overview
+    title: Retention In Vision
+  - local: Unit 13 - Outlook/hiera
+    title: Overview of Hiera
+  - local: Unit 13 - Outlook/hyena
+    title: Overview of Hyena
+  - local: Unit 13 - Outlook/i-jepa
+    title: Image-based Joint-Embedding Predictive Architecture (I-JEPA)
