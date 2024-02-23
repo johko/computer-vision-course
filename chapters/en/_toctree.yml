@@ -50,7 +50,7 @@
   sections:
   - title: Introduction
     local: "Unit 4 - Multimodal Models/introduction"
-  - title: Exploring Multimodal Text and Vision Models: Uniting Senses in AI
+  - title: Exploring Multimodal Text and Vision Models - Uniting Senses in AI
     local: "Unit 4 - Multimodal Models/pre-intro"
   - title: Multimodal Tasks and Models
     local: "Unit 4 - Multimodal Models/tasks-models-part1"
