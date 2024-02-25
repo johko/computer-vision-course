@@ -1,0 +1,53 @@
+You Only Look Once
+
+
+<!-- - [ ]  Difference with the previous methods
+- [ ]  Architecture Intuition
+- [ ]  Innovations -> Loss function, min-max suppression
+- [ ]  Evaluation methods --> 
+
+
+YOLO was a ground breaking innovation of its time. A real time object detector, end to end trainable with a single network. 
+
+### Before YOLO
+
+The detection systems before consisted of utilizing image classifiers on patches of images. Systems like deformable parts models (DPM) used a sliding window approach where the classifier is run at evenly spaced locations over the entire image
+
+Other works like R-CNN used a two step detection. First, detect many possible regions of interest, generated as bounding boxes by a Region Proposal Network. Then a classifier is ran through all proposed regions to make final predictions. Post-processing, such as, post refining the bounding boxes, eliminating duplicate detections, and re-scoring the boxes based on other objects in the scene needs to be done.
+
+These complex pipelines are slow and hard to optimise because each individual component must be trained separately.
+
+### YOLO
+YOLO is a single step detector where the bounding box and the class of the object is predicted in the same pass, simultaneously. This makes the system super fast - 45 frames per second fast.
+
+#### Reframing Object Detection
+YOLO reframes the Object Detection task as a single regression problem, which predicts bounding box coordinates and class probabilities. 
+
+
+
+In this design, we divide the image into an $S \times S$ grid. If the center of the object falls into a grid cell, that grid cell is responsible to detect that object. We can define $B$ as the maximum number of objects to be detected in each cell. So each grid cell predicts $B$ bounding boxes including confidence scores for each box. 
+
+#### Confidence
+
+This confidence score of a bounding box should reflect how accurately the box was predicted. It should be close IOU (intersection over union) of the truth box vs predicted box. If the grid was not supposed to predict a box, then it should be zero. So this should encode the probability of the center of box being present in the grid and the correctness of the bounding box. 
+
+Formally, 
+
+$$\text{confidence} := P(\text{Object}) \times \text{IOU}_{\text{pred}}^{\text{truth}}$$
+#### Coordinates
+The coordinates of a bounding box are encoded in 4 numbers $(x, y, w, h)$. The $(x, y)$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are normalized to image dimensions.
+#### Class
+The class probabilities is a $C$ long vector representing conditional class probabilities of each class given an object existed in the grid. Each grid only predicts one vector, i.e a single class will be assigned to the grid and so to all the $B$ bounding boxes it has predicted. 
+Formally,
+$$C_i = P(\text{class}_i \mid \text{Object})$$
+At test time, we multiply the conditional class probabilities and the individual box confidence predictions, which gives us class-specific confidence scores for each box. These scores encode both the probability of that class appearing in the box and how well the predicted box fits the object.
+
+$$\begin{align}
+C_i \times \text{confidence} &= P(\text{class}_i \mid \text{Object}) \times P(\text{Object}) \times \text{IOU}_{\text{pred}}^{\text{truth}}\\
+&=P(\text{class}_i) \times \text{IOU}_{\text{pred}}^{\text{truth}}
+\end{align}
+$$
+To recap, we have an image, divided into $S \times S$ grid. Each grid cell contains $B$ bounding boxes consisting of 5 values - confidence + 4 coordinates and $C$ long vector containing conditional probabilities of each class. So, each grid cell is a $B \times 5 + C$ long vector. The whole grid is $S \times S \times (B*5 + C)$.
+
+So if we have a learnable system which converts an image to a $S \times S \times (B*5 + C)$ feature map, we are one step closer to the task.
+
