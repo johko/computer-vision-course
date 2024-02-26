@@ -50,6 +50,7 @@ from PIL import Image
 import requests
 import matplotlib.pyplot as plt
 
+
 def run_segmentation(image, task_type):
     """Performs image segmentation based on the given task type.
 
@@ -64,26 +65,38 @@ def run_segmentation(image, task_type):
         ValueError: If the task type is invalid.
     """
 
-    processor = OneFormerProcessor.from_pretrained("shi-labs/oneformer_ade20k_dinat_large")  # Load once here 
-    model = OneFormerForUniversalSegmentation.from_pretrained("shi-labs/oneformer_ade20k_dinat_large")
+    processor = OneFormerProcessor.from_pretrained(
+        "shi-labs/oneformer_ade20k_dinat_large"
+    )  # Load once here
+    model = OneFormerForUniversalSegmentation.from_pretrained(
+        "shi-labs/oneformer_ade20k_dinat_large"
+    )
 
     if task_type == "semantic":
         inputs = processor(images=image, task_inputs=["semantic"], return_tensors="pt")
         outputs = model(**inputs)
-        predicted_map = processor.post_process_semantic_segmentation(outputs, target_sizes=[image.size[::-1]])[0]
+        predicted_map = processor.post_process_semantic_segmentation(
+            outputs, target_sizes=[image.size[::-1]]
+        )[0]
 
     elif task_type == "instance":
         inputs = processor(images=image, task_inputs=["instance"], return_tensors="pt")
         outputs = model(**inputs)
-        predicted_map = processor.post_process_instance_segmentation(outputs, target_sizes=[image.size[::-1]])[0]["segmentation"]
+        predicted_map = processor.post_process_instance_segmentation(
+            outputs, target_sizes=[image.size[::-1]]
+        )[0]["segmentation"]
 
     elif task_type == "panoptic":
         inputs = processor(images=image, task_inputs=["panoptic"], return_tensors="pt")
         outputs = model(**inputs)
-        predicted_map = processor.post_process_panoptic_segmentation(outputs, target_sizes=[image.size[::-1]])[0]["segmentation"]
+        predicted_map = processor.post_process_panoptic_segmentation(
+            outputs, target_sizes=[image.size[::-1]]
+        )[0]["segmentation"]
 
     else:
-        raise ValueError("Invalid task type. Choose from 'semantic', 'instance', or 'panoptic'")
+        raise ValueError(
+            "Invalid task type. Choose from 'semantic', 'instance', or 'panoptic'"
+        )
 
     return predicted_map
 
@@ -114,11 +127,9 @@ response = requests.get(url, stream=True)
 response.raise_for_status()  # Check for HTTP errors
 image = Image.open(response.raw)
 
-task_to_run = "semantic" 
-predicted_map = run_segmentation(image, task_to_run) 
+task_to_run = "semantic"
+predicted_map = run_segmentation(image, task_to_run)
 show_image_comparison(image, predicted_map, task_to_run)
-
-
 ```
 
 ![semantic segmentation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/oneformer_semantic.png)
