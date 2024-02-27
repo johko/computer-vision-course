@@ -378,7 +378,6 @@ The training procedure involves the following steps:
 > When loading the model from the same checkpoint that you used for the preprocessing, remember to pass the label2id and id2label maps that you created earlier from the dataset’s metadata. Additionally, we specify ignore_mismatched_sizes=True to replace the existing classification head with a new one.
 
 ```python
-
 from transformers import AutoModelForObjectDetection
 
 id2label = {0:'head', 1:'helmet', 2:'person'}
