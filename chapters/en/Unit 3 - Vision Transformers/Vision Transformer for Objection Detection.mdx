@@ -218,7 +218,7 @@ image_processor = AutoImageProcessor.from_pretrained(checkpoint)
 
 ## Preprocessing the Dataset
 
-In this section, we will preprocess the dataset. Basically, we will apply different types of augmentations to the images, along with their corresponding bounding boxes.
+Before passing the images to the `image_processor`, let's also apply different types of augmentations to the images along with their corresponding bounding boxes.
 
 In simple terms, augmentations are some set of random transformations like rotations, resizing etc. These are applied for the following reasons:
 
