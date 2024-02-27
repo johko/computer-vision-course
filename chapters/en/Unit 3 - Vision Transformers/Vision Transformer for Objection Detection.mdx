@@ -86,7 +86,7 @@ DatasetDict({
 ```
 
 Above is a [DatasetDict](https://huggingface.co/docs/datasets/v2.17.1/en/package_reference/main_classes#datasets.DatasetDict), which is an efficient dict-like structure containing the whole dataset in train and test splits. As you can see, under each split (train and test), we have `features` and `num_rows`. Under features, we have the `image`, a [Pillow Object](https://realpython.com/image-processing-with-the-python-pillow-library/), the id of the image, height and width, and objects. 
-Now let's see how does each datapoint (in train/test set) looks like. To do that, you just have to write this:
+Now let's see what each datapoint (in train/test set) looks like. To do that, run the following line:
 
 ```python
 dataset['train'][0]
