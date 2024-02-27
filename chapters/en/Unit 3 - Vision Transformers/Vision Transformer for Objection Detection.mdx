@@ -347,7 +347,7 @@ A `collate_fn` is responsible for taking a list of samples from a dataset and co
 
 In general a `DataCollator` typically performs tasks such as padding, truncating etc. In a custom collate function, we often define what and how we want to group the data into batches or simply, how to represent each batch.
 
-(BTW data collator is mainly puts the data together and then preprocesses them). Let's make our collate function. 
+Data collator mainly puts the data together and then preprocesses them. Let's make our collate function. 
 
 ```python
 def collate_fn(batch):
