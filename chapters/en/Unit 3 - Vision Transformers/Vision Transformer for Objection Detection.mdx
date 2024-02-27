@@ -205,7 +205,7 @@ plot_images(train_dataset, range(9))
 
 ## AutoImageProcessor
 
-Before fine-tuning the model, we must preprocess the data in such a way that it matches exactly with the approach it was used during the time if pre-training. HuggingFace [AutoImageProcessor](https://huggingface.co/docs/transformers/v4.36.0/en/model_doc/auto#transformers.AutoImageProcessor) takes care of processing the image data to create pixel_values, pixel_mask, and labels that a DETR model can train with.
+Before fine-tuning the model, we must preprocess the data in such a way that it matches exactly with the approach used during the time of pre-training. HuggingFace [AutoImageProcessor](https://huggingface.co/docs/transformers/v4.36.0/en/model_doc/auto#transformers.AutoImageProcessor) takes care of processing the image data to create `pixel_values`, `pixel_mask`, and `labels` that a DETR model can train with.
 
 Now, let us instantiate the image processor from the same checkpoint we want to use our model to fine-tune.
 
