@@ -244,7 +244,7 @@ transform = albumentations.Compose(
 
 Once we initialize all the transformations, we need to make a function which formats the annotations and returns the a list of annotation with a very specific format.
 
-This is because, The `image_processor` expects the annotations to be in the following format: `{'image_id': int, 'annotations': List[Dict]}`, where each dictionary is a COCO object annotation. 
+This is because the `image_processor` expects the annotations to be in the following format: `{'image_id': int, 'annotations': List[Dict]}`, where each dictionary is a COCO object annotation. 
 
 ```python
 def formatted_anns(image_id, category, area, bbox):
