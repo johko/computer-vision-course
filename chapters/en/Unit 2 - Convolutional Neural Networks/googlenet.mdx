@@ -17,6 +17,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class InceptionModule(nn.Module):
     def __init__(self, in_channels, n1x1, n3x3red, n3x3, n5x5red, n5x5, pool_proj):
         super(InceptionModule, self).__init__()
@@ -24,7 +25,7 @@ class InceptionModule(nn.Module):
             nn.Conv2d(in_channels, n1x1, kernel_size=1),
             nn.ReLU(True),
         )
-        
+
         self.b2 = nn.Sequential(
             nn.Conv2d(in_channels, n3x3red, kernel_size=1),
             nn.ReLU(True),
@@ -52,7 +53,7 @@ class InceptionModule(nn.Module):
         y4 = self.b4(x)
         return torch.cat([y1, y2, y3, y4], 1)
 
-    
+
 class GoogLeNet(nn.Module):
     def __init__(self):
         super(GoogLeNet, self).__init__()
@@ -60,7 +61,7 @@ class GoogLeNet(nn.Module):
             nn.Conv2d(3, 64, kernel_size=3, padding=1),
             nn.ReLU(True),
         )
-        
+
         self.inception_blocks = nn.Sequential(
             InceptionModule(64, 16, 32, 32, 16, 8, 8),
             InceptionModule(64, 24, 32, 48, 16, 12, 12),
@@ -72,13 +73,11 @@ class GoogLeNet(nn.Module):
             InceptionModule(96, 32, 32, 48, 16, 24, 24),
             nn.MaxPool2d(3, stride=2, padding=1),
             InceptionModule(128, 32, 48, 64, 16, 16, 16),
-            InceptionModule(128, 32, 48, 64, 16, 16, 16)
+            InceptionModule(128, 32, 48, 64, 16, 16, 16),
         )
-        
+
         self.output_net = nn.Sequential(
-            nn.AdaptiveAvgPool2d((1, 1)),
-            nn.Flatten(),
-            nn.Linear(128, 100)
+            nn.AdaptiveAvgPool2d((1, 1)), nn.Flatten(), nn.Linear(128, 100)
         )
 
     def forward(self, x):
