@@ -13,23 +13,23 @@ This section will describe how object detection tasks are achieved using Vision 
 
 ![Object detection example](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/object_detection_wiki.png)
 
-Object detection is a computer vision task that aims at identifying and localizing objects within an image or video. It involves two primary steps:
+Object detection is a computer vision task that involves identifying and localizing objects within an image or video. It consists of two main steps:
 
 - First, recognizing the types of objects present (such as cars, people, or animals),
 - Second, determining their precise locations by drawing bounding boxes around them.
 
-The input to these models is often an image (static or video frame) containing multiple objects. Example: An image containing objects like a car, a person, a cycle, etc. The output of these models is simply some set of numbers, which tells us the following:
+These models typically receive images (static or frames from videos) as their inputs, with multiple objects present in each image. For example, consider an image containing several objects such as cars, people, bicycles, and so on. Upon processing the input, these models produce a set of numbers that convey the following information:  
 
 - Location of the object (XY coordinates of the bounding box)
 - Class of the object.
 
 There are a lot of of applications around object detection. One most significant examples is in the field of autonomous driving, where object detection is used to detect different objects (like pedestrians, road signs, traffic lights, etc)  around the car that become one of the inputs for taking decisions.
 
-To deepen your understanding of the ins-and-outs of object detection, check out our [dedicated chapter](#) on Object Detection 🤗
+To deepen your understanding of the ins-and-outs of object detection, check out our [dedicated chapter](https://github.com/johko/computer-vision-course/blob/main/chapters/en/Unit%206%20-%20Basic%20CV%20Tasks/object_detection.mdx) on Object Detection 🤗
 
 ### The Need to Fine-tune Models in Object Detection? 🤔
 
-That is an awesome question. Before reading the answer, check out our definitions of fine-tuning and how it differs from transfer learning [here](#).
+That is an awesome question. Before reading the answer, check out our definitions of fine-tuning and how it differs from transfer learning [here](https://book.premai.io/state-of-open-source-ai/fine-tuning/#transfer-learning-versus-fine-tuning).
 
 Training an object detection model from scratch means:
 
@@ -37,7 +37,8 @@ Training an object detection model from scratch means:
 - Writing repetitive model code, training them, and maintaining different repositories for different use cases.
 - A lot of experimentation and waste of resources.
 
-So, instead, what we can do is take a superstar pre-trained model (a model that does an awesome job in recognizing general features) and tweak or re-tune their weights (or some part of their weights) to adapt it for our use case. We believe or assume that the pre-trained model has already learned enough to extract significant features inside an image to locate and classify objects. So, if new objects are introduced, then the same model can be trained for a small period and computed to start detecting those new objects with the help of already learned and new features.
+Rather than doing all this, take a well-performing pre-trained model (a model which that does an awesome job in recognizing general features), and tweak or re-tune its weights (or some part of its weights) to adapt it for your use case. We believe or assume that the pre-trained model has already learned enough to extract significant features inside an image to locate and classify objects. So, if new objects are introduced, then the same model can be trained for a small period of time and compute to start detecting those new objects with the help of already learned and new features.  
+
 
 
 By the end of this tutorial, you should be able to make a full pipeline (from loading datasets, fine-tuning a model and doing inference) for object detection use case.
@@ -56,12 +57,12 @@ To make this tutorial interesting, let's consider a real-world example. Consider
 
 But, if we can have a camera system that can detect persons and whether the person is wearing a helmet or not in real-time, that would be awesome, right?
 
-So, we will fine-tune a light weight object detection model for doing the same. Let's dive in.
+So, we are going to fine-tune a lightweight object detection model for doing just that. Let's dive in.  
 
 
 ### Dataset
 
-Keeping in mind for the above scenario, we will be using the [hardhat](https://huggingface.co/datasets/hf-vision/hardhat) dataset provided by [Northeaster University China](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/7CBGOS). We will be using `datasets` library to download and load this dataset.
+For the above scenario, we will use the [hardhat](https://huggingface.co/datasets/hf-vision/hardhat) dataset provided by [Northeaster University China](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/7CBGOS). We can download and load this dataset with  🤗 `datasets`.  
 
 ```python
 from datasets import load_dataset
@@ -105,7 +106,7 @@ And this will give you the following structure:
   'category': ['helmet', 'helmet']}}
 ```
 
-As seen, `objects` is another dict containing the object ids (which are the class ids here), the area of the objects, the bounding box coordinates (bbox), and the category, which is the label. Here is a more detailed explanation of each of the keys and values of a data element. 
+As you see, `objects` is an another dict containing the object ids (which are the class ids here), the area of the objects, and the bounding box coordinates (`bbox`) and the category (or the label). Here is a more detailed explaination of each of the keys and values of a data element. 
 
 
 - `image`: This is a Pillow Image object that helps to look into the image directly before even loading from the path.
@@ -118,7 +119,7 @@ As seen, `objects` is another dict containing the object ids (which are the clas
     - `bbox`: Denotes bounding box coordinates of the object.
     - `category`: The class (string) of the object.
 
-Now let's properly extract the train and test samples. We have around 5000 training samples and 1700 test samples for this example. 
+Now let's properly extract the train and test samples. For this tutorial, we have around 5000 training samples and 1700 test samples. 
 
 ```python
 # First, extract out the train and test set
@@ -127,17 +128,17 @@ train_dataset = dataset['train']
 test_dataset = dataset['test']
 ```
 
-Now, that we know what a sample data point contains, let's start plotting that sample. Here we are going first to draw the image and then also draw the corresponding bounding box associated.
+Now that we know what a sample data point contains, let's start by plotting that sample. Here we are going to first draw the image and then also draw the corresponding bounding box.  
 
 Here is what we are going to do:
 
-- Get the image and it's corresponding height and width.
-- Make a draw object that can easily draw text and lines on an image.
-- Get the annotations dict from the sample.
-- Iterate over it.
-- For each, get the bounding box coordinates, which are x (where the bounding box starts horizontally), y (where the bounding box starts vertically), w (width of the bounding box), h (height of the bounding box).
-- Now, if the bounding box measures are normalized, then scale it or leave it.
-- And finally, draw the rectangle and the class category text.
+1. Get the image and it's corresponding height and width.
+2. Make a draw object that can easily draw text and lines on image.
+3. Get the annotations dict from the sample.
+4. Iterate over it.
+5. For each, get the bounding box co-ordinates, which are x (where the bounding box starts horizontally), y (where the bounding box starts vertically), w (width of the bounding box), h (height of the bounding box).
+6. Now if the bounding box measures are normalized then scale it, else leave it.
+7. And finally draw the rectangle and the the class category text.
 
 ```python 
 import numpy as np
@@ -220,12 +221,9 @@ image_processor = AutoImageProcessor.from_pretrained(checkpoint)
 
 Before passing the images to the `image_processor`, let's also apply different types of augmentations to the images along with their corresponding bounding boxes.
 
-In simple terms, augmentations are some set of random transformations like rotations, resizing etc. These are applied for the following reasons:
+In simple terms, augmentations are some set of random transformations like rotations, resizing etc. These are applied to get more samples and to make the vision model more robust towards different conditions of the image.
 
-1. To get more samples.
-2. To make the vision model more robust towards different conditions of the image.
-
-We will use the [albumentations](https://github.com/albumentations-team/albumentations) library to achieve this. If you want to dig deeper into different types of augmentations, check out the corresponding unit to learn more. Let's create some random transformations using albumentations.
+We will use the [albumentations](https://github.com/albumentations-team/albumentations) library to achieve this. If you want to dig deeper into different types of augmentations, check out the [awesome tutorial on albumentations](https://albumentations.ai/docs/examples/example_bboxes/) to learn more. Let's create some random transformations using albumentations.
 
 ```python
 import albumentations
@@ -471,7 +469,7 @@ results = obj_detector(train_dataset[0]['image'])
 print(results)
 ```
 
-Now let's make a very simple function to plot the results. Simply what ever results, we get, parse each of the result instance. Get the score, label and corresponding bounding boxes. And finally draw that.
+Now let's make a very simple function to plot the results on our image. We get score, label and corresponding bounding boxes co-ordinates from results, which we will we use to draw in the image.
 
 ```python
 
