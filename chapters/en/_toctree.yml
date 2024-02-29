@@ -18,10 +18,10 @@
     local: "Unit 1 - Fundamentals/image_and_imaging/extension-image"
   - title: Pre-processing for Computer Vision Tasks
     local: "Unit 1 - Fundamentals/image_and_imaging/examples-preprocess"
-  - title: Feature Matching
-    local: "Unit 1 - Fundamentals/feature-extraction/feature-matching"
   - title: Feature Description
     local: "Unit 1 - Fundamentals/feature-extraction/feature_description"
+  - title: Feature Matching
+    local: "Unit 1 - Fundamentals/feature-extraction/feature-matching"
   - title: Real-world Applications of Feature Extraction in Computer Vision
     local: "Unit 1 - Fundamentals/feature-extraction/real-world-applications"
 - title: Unit 2 - Convolutional Neural Networks
