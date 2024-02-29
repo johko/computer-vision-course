@@ -90,7 +90,7 @@ Above is a [DatasetDict](https://huggingface.co/docs/datasets/v2.17.1/en/package
 Now let's see what each datapoint (in train/test set) looks like. To do that, run the following line:
 
 ```python
-dataset['train'][0]
+dataset["train"][0]
 ```
 
 And this will give you the following structure:
@@ -124,8 +124,8 @@ Now let's properly extract the train and test samples. For this tutorial, we hav
 ```python
 # First, extract out the train and test set
 
-train_dataset = dataset['train']
-test_dataset = dataset['test']
+train_dataset = dataset["train"]
+test_dataset = dataset["test"]
 ```
 
 Now that we know what a sample data point contains, let's start by plotting that sample. Here we are going to first draw the image and then also draw the corresponding bounding box.  
@@ -144,12 +144,13 @@ Here is what we are going to do:
 import numpy as np
 from PIL import Image, ImageDraw
 
+
 def draw_image_from_idx(dataset, idx):
     sample = dataset[idx]
     image = sample["image"]
-    annotations = sample['objects']
+    annotations = sample["objects"]
     draw = ImageDraw.Draw(image)
-    width, height = sample['width'], sample['height']
+    width, height = sample["width"], sample["height"]
 
     for i in range(len(annotations["id"])):
         box = annotations["bbox"][i]
@@ -176,6 +177,7 @@ We have a function to plot one single image, let's write a simple function using
 ```python
 import matplotlib.pyplot as plt
 
+
 def plot_images(dataset, indices):
     """
     Plot images and their annotations.
@@ -193,7 +195,7 @@ def plot_images(dataset, indices):
 
         # Display image on the corresponding subplot
         axes[row, col].imshow(image)
-        axes[row, col].axis('off')
+        axes[row, col].axis("off")
 
     plt.tight_layout()
     plt.show()
@@ -266,6 +268,7 @@ Here is the final code to do so:
 
 ```python
 # transforming a batch
+
 
 def transform_aug_ann(examples):
     image_ids = examples["image_id"]
@@ -378,7 +381,7 @@ The training procedure involves the following steps:
 ```python
 from transformers import AutoModelForObjectDetection
 
-id2label = {0:'head', 1:'helmet', 2:'person'}
+id2label = {0: "head", 1: "helmet", 2: "person"}
 label2id = {v: k for k, v in id2label.items()}
 
 
@@ -388,7 +391,6 @@ model = AutoModelForObjectDetection.from_pretrained(
     label2id=label2id,
     ignore_mismatched_sizes=True,
 )
-
 ```
 
 Before proceeding further, login to Hugging Face Hub to upload your model on the fly while training. In this way, you do not need to handle the checkpoints and save them somewhere. 
@@ -403,7 +405,6 @@ Once done, let's start training the model. We start by defining the training arg
 
 
 ```python
-
 from transformers import TrainingArguments
 from transformers import Trainer
 
@@ -424,7 +425,7 @@ training_args = TrainingArguments(
     push_to_hub=True,
 )
 
-# Define the trainer 
+# Define the trainer
 
 trainer = Trainer(
     model=model,
@@ -452,7 +453,6 @@ Now we will try to do inference of our new fine-tuned model. Here we first write
 And then we will club togather everything up and make a function out of it.
 
 ```python
-
 import requests
 from transformers import pipeline
 
@@ -463,8 +463,10 @@ image = Image.open(requests.get(url, stream=True).raw)
 
 # make the object detection pipeline
 
-obj_detector = pipeline("object-detection", model="anindya64/detr-resnet-50-dc5-hardhat-finetuned")
-results = obj_detector(train_dataset[0]['image'])
+obj_detector = pipeline(
+    "object-detection", model="anindya64/detr-resnet-50-dc5-hardhat-finetuned"
+)
+results = obj_detector(train_dataset[0]["image"])
 
 print(results)
 ```
@@ -472,22 +474,23 @@ print(results)
 Now let's make a very simple function to plot the results on our image. We get score, label and corresponding bounding boxes co-ordinates from results, which we will we use to draw in the image.
 
 ```python
-
-def plot_results(image, results, threshold = 0.7):
+def plot_results(image, results, threshold=0.7):
     image = Image.fromarray(np.uint8(image))
     draw = ImageDraw.Draw(image)
     for result in results:
-        score = result['score']
-        label = result['label']
-        box = list(result['box'].values())
+        score = result["score"]
+        label = result["label"]
+        box = list(result["box"].values())
         if score > threshold:
             x, y, x2, y2 = tuple(box)
             draw.rectangle((x, y, x2, y2), outline="red", width=1)
             draw.text((x, y), label, fill="white")
-            draw.text((x+0.5, y-0.5), text=str(score), fill='green' if score > 0.7 else 'red')
+            draw.text(
+                (x + 0.5, y - 0.5),
+                text=str(score),
+                fill="green" if score > 0.7 else "red",
+            )
     return image
-
-
 ```
 
 And finally use this function for the same test image we used.
@@ -505,9 +508,10 @@ def predict(image, pipeline, threshold=0.7):
     results = pipeline(image)
     return plot_results(image, results, threshold)
 
+
 # Let's test for another test image
 
-img = test_dataset[0]['image']
+img = test_dataset[0]["image"]
 predict(img, obj_detector)
 ```
 
@@ -515,6 +519,7 @@ Let's even plot multiple images using our inference function on a small test sam
 
 ```python 
 from tqdm.auto import tqdm
+
 
 def plot_images(dataset, indices):
     """
@@ -529,11 +534,11 @@ def plot_images(dataset, indices):
         col = i % num_cols
 
         # Draw image
-        image = predict(dataset[idx]['image'], obj_detector)
+        image = predict(dataset[idx]["image"], obj_detector)
 
         # Display image on the corresponding subplot
         axes[row, col].imshow(image)
-        axes[row, col].axis('off')
+        axes[row, col].axis("off")
 
     plt.tight_layout()
     plt.show()
