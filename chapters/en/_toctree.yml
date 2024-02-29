@@ -42,6 +42,8 @@
     local: "Unit 3 - Vision Transformers/Dinat Transformer"
   - title: MobileViT v2
     local: "Unit 3 - Vision Transformers/MobileVIT"
+  - title: FineTuning Vision Transformer for Object Detection
+    local: "Unit 3 - Vision Transformers/Vision Transformer for Objection Detection"
   - title: Swin Transformer
     local: "Unit 3 - Vision Transformers/Swin Transformer"
   - title: OneFormer
