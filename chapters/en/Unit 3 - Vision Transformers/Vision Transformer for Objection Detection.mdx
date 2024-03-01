@@ -23,22 +23,19 @@ These models typically receive images (static or frames from videos) as their in
 - Location of the object (XY coordinates of the bounding box)
 - Class of the object.
 
-There are a lot of of applications around object detection. One of the most significant examples is in the field of autonomous driving, where object detection is used to detect different objects (like pedestrians, road signs, traffic lights, etc)  around the car that become one of the inputs for taking decisions.
+There are a lot of of applications around object detection. One of the most significant examples is in the field of autonomous driving, where object detection is used to detect different objects (like pedestrians, road signs, traffic lights, etc)  around the car that become one of the inputs for taking decisions.  
 
-To deepen your understanding of the ins-and-outs of object detection, check out our [dedicated chapter](https://github.com/johko/computer-vision-course/blob/main/chapters/en/Unit%206%20-%20Basic%20CV%20Tasks/object_detection.mdx) on Object Detection 🤗
+To deepen your understanding of the ins-and-outs of object detection, check out our [dedicated chapter](/chapters/en/Unit%206%20-%20Basic%20CV%20Tasks/object_detection.mdx) on Object Detection 🤗
 
 ### The Need to Fine-tune Models in Object Detection? 🤔
 
-That is an awesome question. Before reading the answer, check out our definitions of fine-tuning and how it differs from transfer learning [here](https://book.premai.io/state-of-open-source-ai/fine-tuning/#transfer-learning-versus-fine-tuning).
-
-Training an object detection model from scratch means:
+That is an awesome question. Training an object detection model from scratch means:
 
 - Doing already done research over and over again.
 - Writing repetitive model code, training them, and maintaining different repositories for different use cases.
 - A lot of experimentation and waste of resources.
 
 Rather than doing all this, take a well-performing pre-trained model (a model which that does an awesome job in recognizing general features), and tweak or re-tune its weights (or some part of its weights) to adapt it for your use case. We believe or assume that the pre-trained model has already learned enough to extract significant features inside an image to locate and classify objects. So, if new objects are introduced, then the same model can be trained for a small period of time and compute to start detecting those new objects with the help of already learned and new features.  
-
 
 
 By the end of this tutorial, you should be able to make a full pipeline (from loading datasets, fine-tuning a model and doing inference) for object detection use case.
@@ -205,6 +202,9 @@ def plot_images(dataset, indices):
 
 plot_images(train_dataset, range(9))
 ```
+Running the function will give us a beautiful collage shown below.
+
+![input-image-plot](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/object_detection_train_image_with_annotation_plots.png)
 
 ## AutoImageProcessor
 
@@ -223,9 +223,7 @@ image_processor = AutoImageProcessor.from_pretrained(checkpoint)
 
 Before passing the images to the `image_processor`, let's also apply different types of augmentations to the images along with their corresponding bounding boxes.
 
-In simple terms, augmentations are some set of random transformations like rotations, resizing etc. These are applied to get more samples and to make the vision model more robust towards different conditions of the image.
-
-We will use the [albumentations](https://github.com/albumentations-team/albumentations) library to achieve this. If you want to dig deeper into different types of augmentations, check out the [awesome tutorial on albumentations](https://albumentations.ai/docs/examples/example_bboxes/) to learn more. Let's create some random transformations using albumentations.
+In simple terms, augmentations are some set of random transformations like rotations, resizing etc. These are applied to get more samples and to make the vision model more robust towards different conditions of the image. We will use the [albumentations](https://github.com/albumentations-team/albumentations) library to achieve this. It let's you to create random transformations of the images so that your sample size increases for training. 
 
 ```python
 import albumentations
@@ -394,7 +392,6 @@ model = AutoModelForObjectDetection.from_pretrained(
 ```
 
 Before proceeding further, log in to Hugging Face Hub to upload your model on the fly while training. In this way, you do not need to handle the checkpoints and save them somewhere. 
-
 ```python
 from huggingface_hub import notebook_login
 
@@ -448,9 +445,11 @@ torch.cuda.synchronize()
 
 ### Testing and Inference
 
-Now we will try to do inference of our new fine-tuned model. Here we first write a very simple code on doing inference for object detection for some new images. 
+Now we will try to do inference of our new fine-tuned model. For this tutorial, we will be testing for this image:
 
-And then we will club togather everything up and make a function out of it.
+![input-test-image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/test_input_for_od.png)
+
+Here we first write a very simple code on doing inference for object detection for some new images. We start of with inferencing for one single image and after that we will club togather everything up and make a function out of it.
 
 ```python
 import requests
@@ -500,6 +499,9 @@ And finally use this function for the same test image we used.
 plot_results(image, results)
 ```
 
+And this will plot the output below:
+
+![output-test-image-plot](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/test_output_for_od.png)
 
 Now, let's club everything together into a simple function.
 
@@ -546,5 +548,8 @@ def plot_images(dataset, indices):
 
 plot_images(test_dataset, range(6))
 ```
+Running this function will give us an output like this:
+
+![test-sample-output-plot](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/sample_od_test_set_inference_output.png)
 
 Well, that's not bad. We can improve the results if we fine-tune further. You can find this fine-tuned checkpoint [here](hf-vision/detr-resnet-50-dc5-harhat-finetuned). 
