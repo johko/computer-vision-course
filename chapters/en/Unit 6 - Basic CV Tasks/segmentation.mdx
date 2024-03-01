@@ -42,8 +42,9 @@ better you can play with the [model](https://huggingface.co/ybelkada/segment-any
 Here is an example of how to use the model in transformers:
 ```python
 from transformers import pipeline
+
 pipe = pipeline("mask-generation", model="facebook/sam-vit-base", device=0)
- 
+
 raw_image = Image.open("path/to/image").convert("RGB")
 
 masks = pipe(raw_image)
