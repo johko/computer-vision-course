@@ -50,7 +50,7 @@ However, with an Inception block at our disposal, we do not need fully connected
 GoogLeNet has only 15% of the parameters in the fully connected layers.
 
 
-#### 2.3 Auxiliary Classifiers
+#### Auxiliary Classifiers
 
 With the introduction of compute saving $1 \times 1$ convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of vanishing gradient, where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
 
