@@ -7,7 +7,7 @@ ConvNext represents a significant improvement to pure convolution models by inco
 
 
 ## Key Improvements
-The author starts with a regular ResNet (ResNet-50), then modernizes and improves the architecture step-by-step to imitate the hierarchical structure of Vision Transformers.
+The author of the ConvNeXT paper starts building the model with a regular ResNet (ResNet-50), then modernizes and improves the architecture step-by-step to imitate the hierarchical structure of Vision Transformers.
 The key improvements are:
 - Training Techniques
 - Macro Design
@@ -18,7 +18,7 @@ The key improvements are:
 We will go through each of the key improvements.
 These designs are not novel in itself. However, you can learn how researchers adapt and modify designs systematically to improve existing models.
 To show the effectiveness of each improvement, we will compare the model's accuracy before and after the modification on ImageNet-1K.
-[Block Comparison](./images/convnext/block_comparison.png)
+[Block Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/block_comparison.png)
 
 
 ## Training Techniques
@@ -64,7 +64,7 @@ One common idea in every Transformer block is the usage of an inverted bottlenec
 This idea has also been used and popularized in Computer Vision by MobileNetV2.
 ConvNext adopts this idea, having input layers with 96 channels and increasing the hidden layers to 384 channels.
 By using this technique, it improves the model accuracy from 80.5% to 80.6%.
-[Inverted Bottleneck Comparison](./images/convnext/inverted_bottleneck.png)
+[Inverted Bottleneck Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inverted_bottleneck.png)
 
 
 ## Large Kernel Sizes
@@ -74,7 +74,7 @@ However, before adjusting the kernel size, it is necessary to reposition the dep
 This repositioning enables the 1x1 layers to efficiently handle computational tasks, while the depthwise convolution layer functions as a more non-local receptor.
 With this, the network can harness the advantages of incorporating bigger kernel-sized convolutions. 
 Implementing a 7x7 kernel size maintains the accuracy at 80.6% but reduces the overall FLOPs efficiency of the model.
-[Moving up the Depth Conv Layer](./images/convnext/depthwise_moveup.png)
+[Moving up the Depth Conv Layer](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/depthwise_moveup.png)
 
 
 ## Micro Design

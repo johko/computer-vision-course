@@ -87,15 +87,20 @@ import torch
 import mediapy as media
 import numpy as np
 
+
 def positional_encoding(in_tensor, num_frequencies, min_freq_exp, max_freq_exp):
     """Function for positional encoding."""
     # Scale input tensor to [0, 2 * pi]
     scaled_in_tensor = 2 * np.pi * in_tensor
     # Generate frequency spectrum
-    freqs = 2 ** torch.linspace(min_freq_exp, max_freq_exp, num_frequencies, device=in_tensor.device)
+    freqs = 2 ** torch.linspace(
+        min_freq_exp, max_freq_exp, num_frequencies, device=in_tensor.device
+    )
     # Generate encodings
     scaled_inputs = scaled_in_tensor.unsqueeze(-1) * freqs
-    encoded_inputs = torch.cat([torch.sin(scaled_inputs), torch.cos(scaled_inputs)], dim=-1)
+    encoded_inputs = torch.cat(
+        [torch.sin(scaled_inputs), torch.cos(scaled_inputs)], dim=-1
+    )
     return encoded_inputs.view(*in_tensor.shape[:-1], -1)
 
 
@@ -108,8 +113,12 @@ def visualize_grid(grid, encoded_images, resolution):
     media.show_images([x_channel, y_channel], cmap="plasma", border=True)
     # Show the encoded grid
     print("Encoded Values:")
-    num_channels_to_visualize = min(8, encoded_images.shape[-1])  # Visualize up to 8 channels
-    encoded_images_to_show = encoded_images.view(resolution, resolution, -1).permute(2, 0, 1)[:num_channels_to_visualize]
+    num_channels_to_visualize = min(
+        8, encoded_images.shape[-1]
+    )  # Visualize up to 8 channels
+    encoded_images_to_show = encoded_images.view(resolution, resolution, -1).permute(
+        2, 0, 1
+    )[:num_channels_to_visualize]
     media.show_images(encoded_images_to_show, vmin=-1, vmax=1, cmap="plasma", border=True)
 
 
@@ -122,7 +131,9 @@ resolution = 128
 # Generate a 2D grid of points in the range [0, 1]
 x_samples = torch.linspace(0, 1, resolution)
 y_samples = torch.linspace(0, 1, resolution)
-grid = torch.stack(torch.meshgrid(x_samples, y_samples), dim=-1) # [resolution, resolution, 2]
+grid = torch.stack(
+    torch.meshgrid(x_samples, y_samples), dim=-1
+)  # [resolution, resolution, 2]
 
 # Apply positional encoding
 encoded_grid = positional_encoding(grid, num_frequencies, min_freq_exp, max_freq_exp)
