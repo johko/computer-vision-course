@@ -96,7 +96,6 @@ class BaseConv2d(nn.Module):
         return x
 
 
-
 class InceptionModule(nn.Module):
     def __init__(self, in_channels, n1x1, n3x3red, n3x3, n5x5red, n5x5, pool_proj):
         super(InceptionModule, self).__init__()
@@ -107,7 +106,6 @@ class InceptionModule(nn.Module):
             nn.Conv2d(in_channels, n1x1, kernel_size=1),
             nn.ReLU(True),
         )
-
 
         self.b2 = nn.Sequential(
             BaseConv2d(in_channels, n3x3red, kernel_size=1),
@@ -132,7 +130,6 @@ class InceptionModule(nn.Module):
         return torch.cat([y1, y2, y3, y4], 1)
 
 
-
 class AuxiliaryClassifier(nn.Module):
     def __init__(self, in_channels, num_classes, dropout=0.7):
         super(AuxiliaryClassifier, self).__init__()
@@ -153,8 +150,6 @@ class AuxiliaryClassifier(nn.Module):
         x = self.dropout(x)
         x = self.fc2(x)
         return x
-
-
 
 
 class GoogLeNet(nn.Module):
@@ -223,7 +218,6 @@ class GoogLeNet(nn.Module):
             nn.AdaptiveAvgPool2d((1, 1)), nn.Flatten(), nn.Linear(128, 100)
         )
 
-
     def forward(self, x):
         ## block 1
         x = self.conv1(x)
@@ -267,5 +261,4 @@ class GoogLeNet(nn.Module):
             return x, aux1, aux2
         else:
             return x
-
 ```
