@@ -27,7 +27,7 @@
 - title: Unit 2 - Convolutional Neural Networks
   sections:
   - title: Introduction to Convolutional Neural Networks
-    local: introduction
+    local: "Unit 2 - Convolutional Neural Networks/introduction"
   - title: MobileNet
     local: "Unit 2 - Convolutional Neural Networks/mobilenet"
   - title: Lets Dive Further with MobileNet
