@@ -69,7 +69,7 @@ These auxiliary classifiers are removed at inference time. However, minimal gain
 
 Figure 3: An Auxiliary Classifier
 
-### 3. Architecture - GoogLeNet
+### Architecture - GoogLeNet
 
 The complete architecture of GoogLeNet is shown in Figure <below>. All convolutions, including inside the inception block, use ReLU activation. It starts with two Convolution(s) + Max Pooling blocks. This is followed by a block of two inception modules (3a and 3b) followed by a max pooling. This follows a block of 5 inception blocks (4a, 4b, 4c, 4d, 4e) and a max pooling after. The auxiliary classifiers are taken out from outputs of 4a and 4d. Two inception blocks follow (5a and 5b). After this, an average pooling and a fully connected layer of 128 units are used. 
 
