@@ -139,7 +139,8 @@ If you want to refer to a section inside the text, you can do it like below 👇
 You can write codeblocks by wrapping it with three backticks. Please add the associated language code, e.g. `py` or `bash` after top backticks to enable language specific rendering of code blocks. 
 
 **LaTeX**
-You can write LaTeX by writing it like this: `$$...$$``
+You can write in-line LaTeX by writing it like this: ` \(X\)`
+You can write stand alone LaTeX by enclosing with $$.
 For example 👇 
 ```
 $$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
