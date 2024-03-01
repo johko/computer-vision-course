@@ -14,7 +14,7 @@ Diffusion models are a new and exciting area in computer vision that has shown i
 
 These generative models raised the bar to a new level in the area of generative modeling, particularly referring to models such as [Imagen](https://imagen.research.google/) and [Latent Diffusion Models](https://arxiv.org/abs/2112.10752)(LDMs). For instance consider the below images generated via such models
 
-![Example images generated using diffusion models](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/diffusion-eg.png)
+![Example images generated using diffusion models](https://huggingface.co/datasets/hwaseem04/Documentation-files/resolve/main/CV-Course/diffusion-eg.png)
 
 GANs were considered by many as state-of-the-art generative models in terms of the quality of the generated samples, before the recent rise of diffusion models. GANs are also known as being difficult to train due to their adversarial objective, and often suffer from mode collapse. Think of different modes as different categories. Consider cat and dog as two seperate mode. If the task of the generator is to produce cat and dog images, if mode collapse occurs it means the generator just produces plausible images of either cat or dog alone. One reason for this to happen is the failure of the discriminator to move from local minima ending up repeatatively classifying only one of the mode(either cat or dog) as fake. In contrast, diffusion models have a stable training process and provide more diversity because they are likelihood-based.
 
@@ -22,13 +22,13 @@ However, diffusion models tend to be computationally intensive and require longe
 
 In Science, Diffusion is a process where solute particles move from higher concentrated region of solute to lower concentrated region of solute in a solvent. Consider the below diffusion analogy for high-level intuition:
 
-![Diffusion analogy-drop of ink in water](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/diffusion-intuition.jpeg)
+![Diffusion analogy-drop of ink in water](https://huggingface.co/datasets/hwaseem04/Documentation-files/resolve/main/CV-Course/diffusion-intuition.jpeg)
 
 Above is the traditional diffusion process where the drop of ink completely merges after some time when dropped in a clean water glass. Practically reversing this is impossible, i.e., getting the drop from the mixture. But this is what is done in diffusion models, i.e., removing noise and hence producing a clean image.
 
 In diffusion models, Gaussian noise is added step-by-step to the training images to turn them completely into junk noisy images. Through this process, the model learns to remove the noise step-by-step, hence it is capable of turning any Gaussian noisy image into a new diverse image (can also be conditioned based on text prompts).
 
-![Reverse-process](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/diffusion-process.jpg)
+![Reverse-process](https://huggingface.co/datasets/hwaseem04/Documentation-files/resolve/main/CV-Course/diffusion-process.jpg)
 
 
 ## Major sub-categories of Diffusion models
@@ -41,7 +41,7 @@ There are 3 major diffusion modelling frameworks
 - Stochastic differential equations (SDEs):
 	- It represents an alternative way to model diffusion, forming the third subcategory of diffusion models. Modeling diffusion via forward and reverse SDEs leads to efficient generation strategies as well as strong theoretical results. This can be viewed as a generalization over DDPMs and NCSNs.
 
-![Sub categories of diffusion](https://huggingface.co/datasets/hwaseem04/Documentation-files/blob/main/CV-Course/diffusion-sub-categories.png)
+![Sub categories of diffusion](https://huggingface.co/datasets/hwaseem04/Documentation-files/resolve/main/CV-Course/diffusion-sub-categories.png)
 
 ## Use Cases of Diffusion Models
 

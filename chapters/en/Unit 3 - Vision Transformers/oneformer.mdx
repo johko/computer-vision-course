@@ -3,6 +3,7 @@
 <img align="center" width="1050" height="303" src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/teaser.svg">
 
 ## Introduction
+
 OneFormer is a groundbreaking approach to image segmentation, a computer vision task that involves dividing an image into meaningful segments. Traditional methods used separate models and architectures for different segmentation tasks, like identifying objects (instance segmentation) or labeling regions (semantic segmentation). More recent attempts aimed to unify these tasks using shared architectures but still required separate training for each task.
 
 Enter OneFormer, a universal image segmentation framework designed to overcome these challenges. It introduces a unique multi-task approach, allowing a single model to handle semantic, instance, and panoptic segmentation tasks without the need for separate training on each. The key innovation lies in a task-conditioned joint training strategy, where the model is guided by a task input, making it dynamic and adaptive to different tasks during both training and inference.
@@ -10,7 +11,9 @@ Enter OneFormer, a universal image segmentation framework designed to overcome t
 This breakthrough not only simplifies the training process but also outperforms existing models across various datasets. OneFormer achieves this by using panoptic annotations, unifying the ground truth information needed for all tasks. Additionally, the framework introduces query-text contrastive learning to better distinguish between tasks and improve overall performance.
 
 ## Background of OneFormer
+
 ![Oneformer Method](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/oneformer.svg)
+
 To understand OneFormer's significance, let's look into the background of image segmentation. In image processing, segmentation involves dividing an image into different parts, which is crucial for tasks like recognizing objects and understanding the content of a scene. Traditionally, two main types of segmentation tasks were semantic segmentation, where pixels are labeled with categories like "road" or "sky," and instance segmentation, which identifies objects with well-defined boundaries.
 
 Over time, researchers proposed panoptic segmentation as a way to unify semantic and instance segmentation tasks. However, even with these advancements, there were challenges. Existing models designed for panoptic segmentation still required separate training for each task, making them semi-universal at best.
@@ -18,7 +21,9 @@ Over time, researchers proposed panoptic segmentation as a way to unify semantic
 This is where OneFormer comes in as a game-changer. It introduces a novel approach – a multi-task universal architecture. The idea is to train this framework only once, using a single universal architecture, a lone model, and just one dataset. The magic happens as OneFormer outperforms specialized frameworks across semantic, instance, and panoptic segmentation tasks. This breakthrough is not just about improving accuracy; it's about making image segmentation more universal and efficient. With OneFormer, the need for extensive resources and separate training for different tasks becomes a thing of the past.
 
 ## Core Concepts of OneFormer
+
 ![Task Conditioned Joint Training](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/text_gen.svg)
+
 Now, let's break down the key features of OneFormer that make it stand out:
 
 ### Task-Dynamic Mask
@@ -43,6 +48,7 @@ In conclusion, the OneFormer framework represents a groundbreaking approach in t
 In summary, OneFormer represents a significant step towards universal and accessible image segmentation. By introducing a single model capable of handling diverse segmentation tasks, the framework streamlines the segmentation process and reduces resource requirements.
 
 ## Example use of model
+
 ```python
 !pip install -q natten # Dinat backbone requires Natten library, which may take a while to install.
 from transformers import OneFormerProcessor, OneFormerForUniversalSegmentation
@@ -131,9 +137,9 @@ task_to_run = "semantic"
 predicted_map = run_segmentation(image, task_to_run)
 show_image_comparison(image, predicted_map, task_to_run)
 ```
-
 ![semantic segmentation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/oneformer_semantic.png)
 
 ## References
-[1] [OneFormer Paper](https://arxiv.org/pdf/2211.06220.pdf)  
-[2] [HuggingFace OneFormer model](https://huggingface.co/shi-labs/oneformer_ade20k_dinat_large)
+
+- [OneFormer Paper](https://arxiv.org/pdf/2211.06220.pdf)  
+- [HuggingFace OneFormer model](https://huggingface.co/shi-labs/oneformer_ade20k_dinat_large)
