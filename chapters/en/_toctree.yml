@@ -26,6 +26,8 @@
     local: "Unit 1 - Fundamentals/feature-extraction/real-world-applications"
 - title: Unit 2 - Convolutional Neural Networks
   sections:
+  - title: Introduction to Convolutional Neural Networks
+    local: introduction
   - title: MobileNet
     local: "Unit 2 - Convolutional Neural Networks/mobilenet"
   - title: Lets Dive Further with MobileNet
