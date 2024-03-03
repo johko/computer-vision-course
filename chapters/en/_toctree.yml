@@ -155,6 +155,8 @@
   sections:
   - title: Introduction
     local: "Unit 11  - Zero Shot Computer Vision/1"
+  - title: Zero-shot Learning
+    local: "Unit 11  - Zero Shot Computer Vision/2"
 - title: Unit 12 - Ethics and Biases
   sections:
   - title: 'Unit 12. Ethics and Bias in Computer Vision: Exploring Ethical Foundations
