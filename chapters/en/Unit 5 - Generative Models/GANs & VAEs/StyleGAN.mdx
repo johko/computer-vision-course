@@ -42,7 +42,7 @@ Instead of passing the latent code (also known as the noise vector) z directly t
 AdaIN modifies the instance Normalization by allowing the normalization parameters (mean and standard deviation) to be dynamically adjusted based on the style information from a separate source. This style information is often derived from the latent code w. 
 
 In StyleGAN, the latent code is not directly passed on to synthesis network rather affine transformer w, i.e y is passed to different blocks. y is called the 'style' representation.
-Here,  (\\ y_{s,i} \\) and  (\\ y_{b,i} \\) are the mean and standard deviation of the style representation y, and (\\ mu(x_i) \\) and  (\\ sigma(x_i) \\) are the mean and standard deviation of the feature map x.
+Here,  \\( y_{s,i} \\) and  \\( y_{b,i} \\) are the mean and standard deviation of the style representation y, and \\( mu(x_i) \\) and  \\( sigma(x_i) \\) are the mean and standard deviation of the feature map x.
 
 AdaIN enables the generator to modulate its behavior during the generation process dynamically. This is particularly useful in scenarios where different parts of the generated output may require different styles or characteristics
 
