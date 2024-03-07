@@ -143,7 +143,7 @@ You can write in-line LaTeX by writing it like this: ` \\( X )\\`
 You can write stand alone LaTeX by enclosing with  $$.
 For example 👇 
 ```
-$$ Y = X * \textbf{dequantize}(W); \text{quantize}(W) $$
+$$Y = X * \textbf{dequantize}(W); \text{quantize}(W)$$
 ```
 
 
