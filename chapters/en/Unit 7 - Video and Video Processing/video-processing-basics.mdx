@@ -21,9 +21,9 @@ There are two main approaches for extracting tokens from a video or embedding a 
 
 ### Uniform Frame Sampling
 
-It is a straightforward method of tokenizing the input video in which we uniformly sample \(n_t\) frames from the input video clip, embed each 2D frame independently using the same method as used in image processing, and concatenate all these tokens together.
+It is a straightforward method of tokenizing the input video in which we uniformly sample (\\ n_t \\) frames from the input video clip, embed each 2D frame independently using the same method as used in image processing, and concatenate all these tokens together.
 
-If \(n_h*n_w\) non-overlapping image patches are extracted from each frame, then a total of \(n_t*n_h*n_w'\) tokens will be forwarded through the transformer encoder. Uniform frame sampling is a tokenization scheme in which we sample frames from the video clip and perform simple ViT tokenization.
+If (\\ n_h*n_w \\) non-overlapping image patches are extracted from each frame, then a total of (\\ n_t*n_h*n_w' \\) tokens will be forwarded through the transformer encoder. Uniform frame sampling is a tokenization scheme in which we sample frames from the video clip and perform simple ViT tokenization.
 
 
 ### Tubelet Embedding
