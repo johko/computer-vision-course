@@ -26,7 +26,7 @@ Notice anything? The filter gives the rate of change in the data (the derivative
 
 The convolved data (the result of the convolution) is called a feature map. And it makes sense, as it shows the features we can extract, the characteristics related to the data, and the rate of change.
 
-This is exactly the deal with edge detection filters as well! Let’s see it in 2-dimensional data. This time, our kernel will be different. It will be a 3x3 kernel (it could’ve been 2x2 too, just saying).
+This is exactly what edge detection filters do! Let’s see it in 2-dimensional data. This time, our kernel will be different. It will be a 3x3 kernel (just so you know it could’ve been a 2x2 too).
 ![2D Conv ](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/2d_conv.png)
 
 This filter is actually quite famous, but we won’t spoil it for you now :). The previous filter was [-1 1] meanwhile, this one is [-1 0 1]; it’s just 3x3 and nothing different; it gives changes on the horizontal axis as well. Let’s see an example and apply convolution. Below is our 2D data.
