@@ -13,6 +13,7 @@ This breakthrough not only simplifies the training process but also outperforms 
 ## Background of OneFormer
 
 ![Oneformer Method](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/oneformer.svg)
+_Image taken from OneFormer paper_
 
 To understand OneFormer's significance, let's look into the background of image segmentation. In image processing, segmentation involves dividing an image into different parts, which is crucial for tasks like recognizing objects and understanding the content of a scene. Traditionally, two main types of segmentation tasks were semantic segmentation, where pixels are labeled with categories like "road" or "sky," and instance segmentation, which identifies objects with well-defined boundaries.
 
@@ -39,9 +40,10 @@ Lastly, let's talk about "Query-Text Contrastive Loss." Think of it as a way for
 
 By combining these core concepts, OneFormer becomes a smart and efficient tool for image segmentation, making the process more universal and accessible. 
 
-## Conculison
+## Concluison
 
 ![result comperison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/oneformer/plots.svg)
+_Image taken from OneFormer paper_
 
 In conclusion, the OneFormer framework represents a groundbreaking approach in the field of image segmentation, aiming to simplify and unify the task across various domains. Unlike traditional methods that rely on specialized architectures for each segmentation task, OneFormer introduces a novel multi-task universal architecture that requires only a single model, trained once on a universal dataset, to outperform existing frameworks. Additionally, the incorporation of query-text contrastive loss during training enhances the model's ability to learn inter-task and inter-class differences. OneFormer utilizes transformer-based architectures, inspired by recent successes in computer vision, and introduces task-guided queries to improve task sensitivity. The results are impressive, as OneFormer surpasses state-of-the-art models across semantic, instance, and panoptic segmentation tasks on benchmark datasets like ADE20k, Cityscapes, and COCO. The framework's performance is further enhanced with new ConvNeXt and DiNAT backbones.
 
