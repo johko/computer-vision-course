@@ -52,7 +52,7 @@ GoogLeNet has only 15% of the parameters in the fully connected layers.
 
 #### Auxiliary Classifiers
 
-With the introduction of compute saving $1 \times 1$ convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of vanishing gradient, where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
+With the introduction of compute saving \\( 1 \times 1 \\) convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of vanishing gradient, where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
 
 The paper introduces the auxiliary classifiers - branch out a few small classifiers from the layers in between and add the loss from these classifiers to the total loss(with less weightage). This ensures that the layers close to the input also receive gradients of decent magnitude.
 
