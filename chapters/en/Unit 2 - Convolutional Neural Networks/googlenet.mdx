@@ -25,7 +25,7 @@ As we can see applying multiple convolutions at multiple scales with bigger kern
 
 We want to convert a feature map of $S \times S \times 128$ to $S \times S \times 256$ via a 5x5 convolution. The number of parameters(excluding biases) is 5x5x128x256 = 819,200. However, if we reduce the feature dimension first by a $1 \times 1$ convolution to 64, then the number of parameters(excluding biases) is $1\times 1\times 128\times 64 + 5\times 5\times 64\times 256 = 8,192 + 409,600 = 417,792$. That means the number of parameters was reduced by almost half!
 
-We would also want to reduce the output features of max pooling before concatenating with the output feature map. So, we add one more $1\times 1$ convolution after the maxpooling layer. We also add a ReLU activation after each $1\times 1$ convolution increasing non linearity and complexity of the module. See Figure 2.
+We would also want to reduce the output features of max pooling before concatenating with the output feature map. So, we add one more (\\ 1\times 1 \\) convolution after the max-pooling layer. We also add a ReLU activation after each (\\ 1\times 1 \\) convolution increasing non-linearity and complexity of the module. See Figure 2.
 
 ![inception_reduced](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_reduced.png)
 
