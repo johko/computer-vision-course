@@ -57,7 +57,7 @@ With the introduction of compute saving $1 \times 1$ convolution and the replace
 The paper introduces the auxiliary classifiers - branch out a few small classifiers from the layers in between and add the loss from these classifiers to the total loss(with less weightage). This ensures that the layers close to the input also receive gradients of decent magnitude.
 
 The auxiliary classifier consists of 
-- An average pooling layer with $5 \times 5$ filter size and stride 3.
+- An average pooling layer with \\( 5 \times 5 \\) filter size and stride 3.
 - A $1 \times 1$ convolution with 128 filters for dimension reduction and rectified linear activation.
 - A fully connected layer with 1024 units and rectified linear activation.
 - A dropout layer with 70% ratio of dropped outputs.
