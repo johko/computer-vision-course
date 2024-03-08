@@ -10,22 +10,22 @@ they are used to identify lanes, sidewalks, and other road users.
 ![Image segmentation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/segmentation-example.png)
 
 Different types of segmentations can be applied depending on the context and the intended goal.
-The most commonly defined segmentations are:
-- **Semantic Segmentation**  This involves assigning the most probable class to each pixel. For example, in semantic segmentation, 
+The most commonly defined segmentations are the following.
+- **Semantic Segmentation**:  This involves assigning the most probable class to each pixel. For example, in semantic segmentation, 
 the model does not distinguish between two individual cats but rather focuses on the pixel class. It's all about classification of 
 each pixel.
-- **Instance Segmentation** This type involves identifying each instance of an object with a unique mask. It combines aspects of 
+- **Instance Segmentation**: This type involves identifying each instance of an object with a unique mask. It combines aspects of 
 object detection and segmentation to differentiate between individual objects of the same class.
-- **Panoptic Segmentation** A hybrid approach that combines elements of semantic and instance segmentation. It assigns a class and 
+- **Panoptic Segmentation**: A hybrid approach that combines elements of semantic and instance segmentation. It assigns a class and 
 an instance to each pixel, effectively integrating the *what* and *where* aspects of the image.
 
-![Comparaison of segmentation types](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/segmentation-types.png)
+![Comparison of segmentation types](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/segmentation-types.png)
 
 Choosing the right segmentation type depends on the context and the intended goal. One cool thing is that recent models allow you to achieve the three 
 segmentation types with a single model. We recommend you to check out this [article](https://huggingface.co/blog/mask2former), which introduces Mask2former, 
-a new model by Meta that achieves the three segmentation types with only a Panoptic dataset
+a new model by Meta that achieves the three segmentation types with only a Panoptic dataset.
 
-### Modern approach: ViT-based Segmentation
+### Modern Approach: Vision Transformer-based Segmentation
 
 You've probably heard of U-Net, a popular network used for image segmentation. It's designed with several convolutional layers and works 
 in two main phases: the downsampling phase, which compresses the image to understand its features, and the upsampling phase, which expands 
@@ -39,7 +39,9 @@ zero-shot transfer on new images. The strength of the model comes from its train
 1 billion masks on 11 million images. I recommend you play with [Meta's demo](https://segment-anything.com/) on a few images and even 
 better you can play with the [model](https://huggingface.co/ybelkada/segment-anything) in transformers. 
 
-Here is an example of how to use the model in transformers:
+Here is an example of how to use the model in transformers. First, we will initialize the `mask-generation` pipeline. 
+Then, we will pass the image in pipeline for inference.
+
 ```python
 from transformers import pipeline
 
