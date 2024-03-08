@@ -15,10 +15,14 @@ As we already know, optimizing the model is important in before the deployment s
 ## Different types of model optimization techniques
 There are several techniques in the model optimization, which will be explained in the next section. However, this section will briefly describe several types:
 1. Pruning: Pruning is the process of eliminating redundant or unimportant connections in the model. This aims to reduce model size and complexity.
+
 ![Pruning](https://huggingface.co/datasets/hf-vision/course-assets/raw/main/pruning.png)
+
 2. Quantization: Quantization means converting model weights from high-precision formats (e.g., 32-bit floating-point) to lower-precision formats (e.g., 16-bit floating-point or 8-bit integers) to reduce memory footprint and increase inference speed.
 3. Knowledge Distillation: Knowledge distillation aims to transfer knowledge from a complex and larger model (teacher model) to a smaller model (student model) by mimicking the behavior of the teacher model.
+
 ![Knowledge Distillation](https://huggingface.co/datasets/hf-vision/course-assets/raw/main/knowledge_distillation.png)
+
 4. Low-rank approximation: Approximates large matrices with small ones, reducing memory consumption and computational costs.
 5. Model compression with hardware accelerators: This process is like pruning and quantization. But, running on specific hardware such as NVIDIA GPUs and Intel Hardware.
 

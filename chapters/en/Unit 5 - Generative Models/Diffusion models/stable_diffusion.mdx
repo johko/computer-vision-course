@@ -4,7 +4,7 @@ This chapter introduces the building blocks of Stable Diffusion which is a gener
 
 What will you learn from this chapter?
 - Fundamental components of Stable Diffusion
-- How to use `text-to-image`, `image2image`, inpainting
+- How to use `text-to-image`, `image2image`, inpainting pipelines 
 
 ## What Do We Need for Stable Diffusion to Work?
 To make this section interesting we will try to answer some questions to understand the basic components of the Stable Diffusion process. 
@@ -14,7 +14,7 @@ We will briefly discuss each component as they are already covered in our Diffus
     - It uses forward and reverse processes of diffusion models. In the forward process, we add Gaussian noise to an image until all that remains is the random noise. Usually we cannot identify the final noisy version of the image.
     - In the reserve process, we have a learned neural network trained to gradually denoise an image starting from pure noise, until you end up with an actual image.
 
-Both of these processes happens for a finite number of steps `T`(as per DDPM paper T=1000). You begin the process at time $t_0$ by sampling a real image from your data distribution, and the forward process samples some noise from a Gaussian distribution at each time step t, which is added to the image of the previous time step. To get more mathematical intuition, please read [Hugging Face Blog](https://huggingface.co/blog/annotated-diffusion) on Diffusion Models. 
+Both of these processes happens for a finite number of steps `T`(as per DDPM paper T=1000). You begin the process at time \\(t_0\\) by sampling a real image from your data distribution, and the forward process samples some noise from a Gaussian distribution at each time step t, which is added to the image of the previous time step. To get more mathematical intuition, please read [Hugging Face Blog](https://huggingface.co/blog/annotated-diffusion) on Diffusion Models. 
 
 - Since our images can be huge how can we compress it?
 
@@ -52,6 +52,7 @@ Let's install the `diffusers` library first.
 pip install diffusers
 ```
 
+We will now initialize the pipeline and pass our prompt inside and infer.
 ```python
 from diffusers import AutoPipelineForText2Image
 import torch
@@ -59,17 +60,16 @@ import torch
 pipeline = AutoPipelineForText2Image.from_pretrained(
     "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, variant="fp16"
 ).to("cuda")
-generator = torch.Generator("cuda").manual_seed(31)
+generator = torch.Generator(device="cuda").manual_seed(31)
 image = pipeline(
     "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k",
     generator=generator,
 ).images[0]
-image
 ```
 
 - Steps for image-to-image inference
+In similar fashion, we can initialize the pipeline, but pass an image and a text prompt instead.
 ```python
-# Step 1
 import torch
 from diffusers import AutoPipelineForImage2Image
 from diffusers.utils import load_image, make_image_grid
@@ -83,13 +83,11 @@ pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
 pipeline.enable_xformers_memory_efficient_attention()
 
-# Step 2
 # Load an image to pass to the pipeline:
 init_image = load_image(
     "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/cat.png"
 )
 
-# Step 3
 # Pass a prompt and image to the pipeline to generate an image:
 prompt = "cat wizard, gandalf, lord of the rings, detailed, fantasy, cute, adorable, Pixar, Disney, 8k"
 image = pipeline(prompt, image=init_image).images[0]
@@ -97,8 +95,9 @@ make_image_grid([init_image, image], rows=1, cols=2)
 ```
 
 - Steps for Inpainting
+For inpainting pipeline, we need to pass an image, a text prompt, and a mask based on an object in that image, which indicates what to inpaint in the image. 
+In this example we also pass a negative prompt to further influence the inference on what we want to avoid.
 ```python
-# Step 1
 # Load the pipeline
 import torch
 from diffusers import AutoPipelineForInpainting
@@ -111,7 +110,6 @@ pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
 pipeline.enable_xformers_memory_efficient_attention()
 
-# Step 2
 # Load the base and mask images:
 init_image = load_image(
     "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/inpaint.png"
@@ -120,7 +118,6 @@ mask_image = load_image(
     "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/inpaint_mask.png"
 )
 
-# Step 3
 # Create a prompt to inpaint the image with and pass it to the pipeline with the base and mask images:
 prompt = (
     "a black cat with glowing eyes, cute, adorable, disney, pixar, highly detailed, 8k"
@@ -134,5 +131,7 @@ image = pipeline(
 ).images[0]
 make_image_grid([init_image, mask_image, image], rows=1, cols=3)
 ```
-For more details and tutorials please checkout out diffusers [Documentation](https://huggingface.co/docs/diffusers/using-diffusers/pipeline_overview).
-For installing diffusers please checkout diffusers [installation](https://huggingface.co/docs/diffusers/installation) guide.
+
+### Further Reading
+- [Diffusers documentation](https://huggingface.co/docs/diffusers/using-diffusers/pipeline_overview)
+- [Diffusers installation](https://huggingface.co/docs/diffusers/installation)
