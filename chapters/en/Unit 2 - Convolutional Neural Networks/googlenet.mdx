@@ -85,3 +85,4 @@ class GoogLeNet(nn.Module):
         x = self.inception_blocks(x)
         x = self.output_net(x)
         return F.softmax(x, dim=1)
+```
