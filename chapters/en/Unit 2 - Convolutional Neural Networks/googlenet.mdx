@@ -12,7 +12,7 @@ Before the advent of the Inception architecture, models like AlexNet and VGG dem
 
 #### The Inception "Network In Network" Module 
 
-In prior networks, such as AlexNet or VGG, the fundamental block is the Convolution layer itself, but Lin et. al 2013, introduced the concept of Network In Network, arguing that a single convolution is not necessarily a correct fundamental building block. It ought to be more complex. So, inspired by that, the Inception model, decided to have a more complex building block called the Inception Module, aptly named after the famous movie - "The Inception" (dream in dream).
+In prior networks, such as AlexNet or VGG, the fundamental block is the convolution layer itself. However, Lin et al. 2013, introduced the concept of Network In Network, arguing that a single convolution is not necessarily a correct fundamental building block. It ought to be more complex. So, inspired by that, the Inception model authors decided to have a more complex building block called the Inception Module, aptly named after the famous movie - "The Inception" (dream in dream).
 
 The Inception Module insists on applying convolution filters of different kernel sizes for feature extraction at multiple scales. For any input feature map, it applies a $1 \times 1$ convolution, a 3x3 convolution, and a 5x5 convolution in parallel. In addition to convolution a max pooling operation is also applied. All four operations have padding and stride in such a way as to have the same spatial dimension. These features are concatenated and form the input to the next stage. See Figure 1.
 
