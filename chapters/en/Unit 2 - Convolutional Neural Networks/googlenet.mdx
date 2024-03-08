@@ -58,7 +58,7 @@ The paper introduces the auxiliary classifiers - branch out a few small classifi
 
 The auxiliary classifier consists of 
 - An average pooling layer with \\( 5 \times 5 \\) filter size and stride 3.
-- A $1 \times 1$ convolution with 128 filters for dimension reduction and rectified linear activation.
+- A \\( 1 \times 1 \\) convolution with 128 filters for dimension reduction and rectified linear activation.
 - A fully connected layer with 1024 units and rectified linear activation.
 - A dropout layer with 70% ratio of dropped outputs.
 - A linear layer with softmax loss as the classifier.
