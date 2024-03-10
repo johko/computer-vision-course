@@ -1,0 +1,40 @@
+You Only Look Once
+
+<!--  
+- [ ]  YOLOv1
+- [x]  YOLOv2 and YOLOv3
+- [x]  YOLOv4, YOLOv5
+- [ ]  YOLOv6-YOLOv8
+- [ ]  Yolov9
+Additional checks:
+- [ ] Add comment about licences difference between (up to) Yolov4 and rest
+- [ ] Recheck Yolov4 and Yolov5
+-->
+
+## Evolution of Yolo
+
+So far, we saw the basic characteristics of Yolo and how it allows it to perform high accurate and fast predictions. Yolov1 was released in 2015 and until today multiple versions have been released. 
+Yolov1 was groundbreaking in terms of accuracy and speed. However, it sufferend from poor localization and detecting multiple objects in small image area. 
+
+### **Yolov2 (2016)** 
+
+After a year of releasing the first version, Yolov2 came out. The improvements focused on both accuracy and speed but also dealing with the localization problem. There are many improvements that were made (image1).  First, YOLOv2 replaced YOLOv1’s backbone architecture with Darknet-19, which is a variant of the Darknet architecture. Darknet-19 is lighter than the previous version’s backbone and it consists of 19 convolutional layers followed by max-pooling layers. This led YOLOv2 having the ability to capture more information. Also, included batch normalization to all convolutional layers and removed the dropout layers dealing with the overfit problem and increased the mAP. It also introduced anchor boxes, which added prior knowledge to the detected width and height of the detected boxes (specifically they used). Additionally, to deal with the poor localization YOLOv2 predicted the class and objects for every anchor box and as previously grid (now 13x13). So we have maximum (for 5 anchor boxes): 13x13x5 = 845 boxes
+
+
+### **Yolov3 (2018)**
+
+Yolov3 again improved significantly the detection speed and the accuracy by replacing the Darknet-19 architecture with the more complex but efficient Darknet-53. Also, it dealt more with the localization problem by using three different scales for the object detection (13x13, 26x26, and 52x52 grids). This helped finding object with different sizes in the same area. This increased the bounding boxes to: 13 x 13 x 3 + 26 x 26 x 3 + 52 x 52 x 3 = 10,647. The Non-Maximum Suppression (NMS) was still used to filter out redundant-overlapping boxes.
+
+
+### **Yolov4 (2020)**
+
+Back in 2020 Yolov4 became a one of the best detection models in terms of speed and accuracy. Again, changed the backbone architecture to the faster and better at accuracy CSPDarknet53. An important improvement for this version was the optimization for efficient resource utilization, making it suitable for deployment on various hardware platforms, including edge devices. Also, It included a number of augmentation before training that further improved the model prediction accuracy on custom data.
+
+
+### **Yolov5 (2020)**
+
+Yolov5 translated the Darknet framework (written in C) to the more flexible and ease of use Pytorch framework. This version automated the previous anchor detection mechanism introducing the auto-anchors. Auto-anchors train the models anchors automatically to match your data. During training yolo automatically uses k-means initially and genetic methods to evolve the new better matched anchors and place them back to the yolo model. Also, it offered different types of models that depend on the hardware constrains with names similar to today’s Yolov8 models: YOLOv5s, YOLOv5m, YOLOv5l, and YOLOv5x.
+
+### **Note about the different versions**
+
+It's important to understand that the selection of the ‘best’ model version depends on the user requirements such as speed, accuracy, hardware limitations, and user-friendliness. Yolov2 is very good at speed. YOLOv3 provides a balance between accuracy and speed. Yolov4 has the best ability for adapting/being compatible across different hardware.
