@@ -17,7 +17,7 @@ These are lacking in Vision Transformers. Then how do they perform so well? It's
 
 ### Using pre-trained Vision Transformers
 
-It's not feasible for everyone to train a Vision Transformers on millions of images to get good performance. Instead, one can take advantage of openly available models from places such as the [Hugging Face Hub](https://huggingface.co/models?sort=trending).
+It's not feasible for everyone to train a Vision Transformer on millions of images to get good performance. Instead, one can use openly available models from places such as the [Hugging Face Hub](https://huggingface.co/models?sort=trending).
 
 What do you do with the pre-trained model? You can apply transfer learning and fine-tune it!
 
@@ -25,7 +25,7 @@ What do you do with the pre-trained model? You can apply transfer learning and f
 
 The idea of transfer learning is that we can leverage the features learned by the Vision Transformers trained on a very large dataset and apply these features to our dataset. This can lead to significant improvements in model performance, especially when our dataset has limited data available for training.
 
-Since we are taking advantage of the learned features, we do not need to update the entire model either. By freezing the majority of the weights, we can choose to train only certain layers to get excellent performance with less training time and low GPU consumption.
+Since we are taking advantage of the learned features, we do not need to update the entire model either. By freezing most of the weights, we can train only certain layers to get excellent performance with less training time and low GPU consumption.
 
 ### Multi-class Image Classification
 
@@ -52,7 +52,7 @@ This is what we'll be building: an image classifier to tell apart dog and cat br
 
 ---
 
-It might be that the domain of your dataset is not very similar to the pre-trained model's dataset. Yet, instead of training a Vision Transformer from scratch, we can choose to update the weights of the entire pre-trained model albeit with a lower learning rate which will "fine-tune" the model to perform well with our data.
+It might be that the domain of your dataset is not very similar to the pre-trained model's dataset. Yet, instead of training a Vision Transformer from scratch, we can choose to update the weights of the entire pre-trained model albeit with a lower learning rate, which will "fine-tune" the model to perform well with our data.
 
 <Tip>
   However, in most scenarios, applying transfer learning is ample in the case of
