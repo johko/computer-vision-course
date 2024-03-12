@@ -51,8 +51,13 @@ In summary, OneFormer represents a significant step towards universal and access
 
 ## Example use of model
 
+Let's see an example use of the model. Dinat backbone requires Natten library, which may take a while to install.
+```bash
+!pip install -q natten 
+```
+We can see an inference code below depending on different segmentation types.
+
 ```python
-!pip install -q natten # Dinat backbone requires Natten library, which may take a while to install.
 from transformers import OneFormerProcessor, OneFormerForUniversalSegmentation
 from PIL import Image
 import requests
