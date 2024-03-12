@@ -18,10 +18,10 @@
     local: "Unit 1 - Fundamentals/image_and_imaging/extension-image"
   - title: Pre-processing for Computer Vision Tasks
     local: "Unit 1 - Fundamentals/image_and_imaging/examples-preprocess"
-  - title: Feature Matching
-    local: "Unit 1 - Fundamentals/feature-extraction/feature-matching"
   - title: Feature Description
     local: "Unit 1 - Fundamentals/feature-extraction/feature_description"
+  - title: Feature Matching
+    local: "Unit 1 - Fundamentals/feature-extraction/feature-matching"
   - title: Real-world Applications of Feature Extraction in Computer Vision
     local: "Unit 1 - Fundamentals/feature-extraction/real-world-applications"
 - title: Unit 2 - Convolutional Neural Networks
@@ -32,6 +32,10 @@
     local: "Unit 2 - Convolutional Neural Networks/mobilenetextra"
   - title: Very Deep Convolutional Networks for Large Scale Image Recognition
     local: "Unit 2 - Convolutional Neural Networks/vgg"
+  - title: Googlenet
+    local: "Unit 2 - Convolutional Neural Networks/googlenet"
+  - title: ConvNext - A ConvNet for the 2020s (2022)
+    local: "Unit 2 - Convolutional Neural Networks/convnext"
 - title: Unit 3 - Vision Transformers
   sections:
   - title: DEtection TRansformer (DETR)
@@ -151,6 +155,8 @@
   sections:
   - title: Introduction
     local: "Unit 11  - Zero Shot Computer Vision/1"
+  - title: Zero-shot Learning
+    local: "Unit 11  - Zero Shot Computer Vision/2"
 - title: Unit 12 - Ethics and Biases
   sections:
   - title: 'Unit 12. Ethics and Bias in Computer Vision: Exploring Ethical Foundations
