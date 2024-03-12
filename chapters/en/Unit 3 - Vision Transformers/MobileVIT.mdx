@@ -57,7 +57,7 @@ This is a massive improvement!
 <Tip>
 There have been many other forms of Attention such that complexity has ranged from O(k), O(k*sqrt(k)), O(k*log(k)).
 
-Separable self-attention was also not the first paper to have O(k) complexity. In Linformer, O(k) complexity for Attention was also achived in Linformer (ADD PAPER LINK HERE) before separable self-attention.
+Separable self-attention was also not the first paper to have O(k) complexity. In Linformer, O(k) complexity for Attention was also achived in [Linformer](https://arxiv.org/abs/2006.04768) before separable self-attention.
 
 However, it still used costly operations like batch-wise matrix multiplications
 </Tip>
@@ -117,7 +117,9 @@ print(model.config.id2label[predicted_label])
 
 # Inference API
 
-For an even lighter computer vision setup, you can use the Huggingface Inference API with MobileViTv2!
+For an even lighter computer vision setup, you can use the Hugging Face Inference API with MobileViTv2.
+Inference API is an API to interact with many models available on Hugging Face Hub.
+We can query Inference API like following through Python.
 
 ```py
 import json
@@ -138,6 +140,7 @@ def query(filename):
 
 data = query("cats.jpg")
 ```
+We can do the same with javascript like following.
 ```js
 import fetch from "node-fetch";
 import fs from "fs";
@@ -158,6 +161,7 @@ query("cats.jpg").then((response) => {
     console.log(JSON.stringify(response));
 });
 ```
+Finally, we can query inference API through curl.
 ```bash
 curl https://api-inference.huggingface.co/models/apple/mobilevitv2-1.0-imagenet1k-256 \
         -X POST \
