@@ -1,0 +1,128 @@
+## Resnet Paper Summary
+
+### Observed Problem: Degradation with depth.
+
+Deeper network layers were assumed to be more effective because the performance of neural networks improved by deepening the layers.
+As the layers deepened, the extracted features could be further enriched, such as seen with VGG16 and VGG19.
+A question arose: "Is learning networks as easy as stacking more layers"?
+An obstacle to answering this question, the gradient vanishing problem, was addressed by normalized initializations and intermediate normalization layers.
+
+However, a new issue emerged: the degradation problem. As the neural networks deepened, accuracy saturated and degraded rapidly. An experiment comparing shallow and deep plain networks revealed that deeper models exhibited higher training and test errors, suggesting a fundamental challenge in training deeper architectures effectively. This degradation was not because of overfitting but because the training error increased when the network deepened. The added layers did not approximate the identity function.
+
+Resnet’s residual connections unlocked the potential of the extreme depth, propelling the accuracy upwards compared to the previous architectures.
+
+
+## Resnet Architecture
+
+- A Residual Block. Source: ResNet Paper
+
+Resnet’s building blocks designed as identity functions, preserve input information while enabling learning. This approach ensures efficient weight optimization and prevents degradation as the network deepens.
+
+To make H approximate the identity function, we do the following
+
+### Let H(x) - x = f(x)
+
+### F(x) := 0
+
+### H(x) = 0 + x
+
+### H(x) = x
+
+Shortcut connections perform identity mapping and their output is added to the output of the stacked layers. Identity shortcut connections add neither extra parameters nor
+computational complexity, these connections bypass layers, creating direct paths for information flow, and they enable neural networks to learn the residual function (F).
+
+Resnet Network = Plain Network + Shortcuts
+
+For operations F(x) + x, F(x) and x should have identical dimensions.
+ResNet employs two techniques to achieve this:
+
+- Zero-padding shortcuts that add channels with zero values, maintaining dimensions without introducing extra parameters to be learned.
+- Projection shortcuts that use 1x1 convolutions to adjust dimensions when necessary, involving some additional learnable parameters.
+
+In deeper ResNet architectures like ResNet 50, 101, and 152, a specialized "bottleneck building block" is employed to manage parameter complexity and maintain efficiency while enabling even deeper learning.
+
+## Resnet Code
+
+### Author: Pytorch Team
+
+### Deep residual networks pre-trained on ImageNet
+
+model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet18', pretrained=True)
+# or any of these variants
+# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet34', pretrained=True)
+# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet50', pretrained=True)
+# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet101', pretrained=True)
+# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet152', pretrained=True)
+model.eval()
+
+All pre-trained models expect input images normalized similarly, i.e. mini-batches of 3-channel RGB images of shape (3 x H x W), where H and W are expected to be at least 224. The images have to be loaded into a range of [0, 1] and then normalized using mean = [0.485, 0.456, 0.406] and std = [0.229, 0.224, 0.225].
+
+
+Here's a sample execution.
+
+# Download an example image from the Pytorch website
+
+
+import urllib
+url, filename = ("https://github.com/pytorch/hub/raw/master/images/dog.jpg", "dog.jpg")
+try: urllib.URLopener().retrieve(url, filename)
+except: urllib.request.urlretrieve(url, filename)
+
+# sample execution (requires torchvision)
+
+from PIL import Image
+from torchvision import transforms
+input_image = Image.open(filename)
+preprocess = transforms.Compose([
+transforms.Resize(256),
+transforms.CenterCrop(224),
+transforms.ToTensor(),
+transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+])
+input_tensor = preprocess(input_image)
+input_batch = input_tensor.unsqueeze(0) # create a mini-batch as expected by the model
+
+# move the input and model to GPU for speed if available
+
+if torch.cuda.is_available():
+input_batch = input_batch.to('cuda')
+model.to('cuda')
+
+with torch.no_grad():
+output = model(input_batch)
+
+# Tensor of shape 1000, with confidence scores over ImageNet's 1000 classes
+
+print(output[0])
+
+# The output has unnormalized scores. To get probabilities, you can run a softmax on it.
+
+probabilities = torch.nn.functional.softmax(output[0], dim=0)
+print(probabilities)
+
+# Download ImageNet labels
+
+!wget https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt
+
+# Read the categories
+
+with open("imagenet_classes.txt", "r") as f:
+categories = [s.strip() for s in f.readlines()]
+
+# Show top categories per image
+
+top5_prob, top5_catid = torch.topk(probabilities, 5)
+for i in range(top5_prob.size(0)):
+print(categories[top5_catid[i]], top5_prob[i].item())
+
+Model Demo https://huggingface.co/spaces/pytorch/ResNet
+
+## References
+
+- Pytorch team https://pytorch.org/hub/pytorch_vision_resnet/
+
+- Deep Residual Learning for Image Recognition https://arxiv.org/abs/1512.03385
+
+- A Residual Block image. Source: ResNet Paper
+
+- Resnet Architecture Source: ResNet Paper
