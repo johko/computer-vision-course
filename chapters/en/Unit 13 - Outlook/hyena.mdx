@@ -9,14 +9,18 @@ Hyena is a new type of operator that serves as a substitute for the attention me
 Developed by Hazy Research, it features a subquadratic computational efficiency, constructed by interleaving implicitly parametrized long convolutions and data-controlled gating.
 
 <Tip>
+
 Long convolutions are similar to standard convolutions except the kernel is the size of the input. 
 It is equivalent to having a global receptive field instead of a local one. 
 Having an implicitly parametrized convultion means that the convolution filters values are not directly learnt, instead, learning a function that can recover thoses values is prefered. 
+
 </Tip>
 
 <Tip>
+
 Gating mechanisms control the path through which information flows in the network. They help to define how long an information should be remembered. Usally they consist in elementwise multiplications.
 An interresting blog article about gating can be found [here](https://medium.com/autonomous-agents/a-math-deep-dive-on-gating-in-neural-architectures-b49775810dde) 
+
 </Tip>
 
 
@@ -124,7 +128,7 @@ The H3 mechanism serves as the foundation for many State Space Model based (SSM)
 Hyena, as an enhancement of this approach, has paved the way for even more efficient architectures such as Mamba and its derivatives for vision (Vision Mamba, VMamba etc...).
 
 ## Further Reading
-- Hyena offical repo : [Convolutions for Sequence Modeling](https://github.com/HazyResearch/safari)
+- Hyena offical repo: [Convolutions for Sequence Modeling](https://github.com/HazyResearch/safari)
 - On the landscape of subquadratic models: [The Safari of Deep Signal Processing: Hyena and Beyond · Hazy Research (stanford.edu)](https://hazyresearch.stanford.edu/blog/2023-06-08-hyena-safari)
 - On speeding up the FFT algorithm: [FlashFFTConv: Efficient Convolutions for Long Sequences with Tensor Cores · Hazy Research (stanford.edu)](https://hazyresearch.stanford.edu/blog/2023-11-13-flashfftconv)
 - On the subquadratic model landscape: [Zoology (Blogpost 1): Measuring and Improving Recall in Efficient Language Models · Hazy Research (stanford.edu)](https://hazyresearch.stanford.edu/blog/2023-12-11-zoology1-analysis)
