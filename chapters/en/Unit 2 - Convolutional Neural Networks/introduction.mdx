@@ -5,11 +5,11 @@
 Convolution is an operation used to extract features from data. The data can be 1D, 2D or 3D. We'll explain the operation with a solid example. All you need to know now is that the operation simply takes a matrix made of numbers, moves it through the data, and takes the sum of products between the data and that matrix. This matrix is called kernel or filter. You might say, "What does it have to do with the feature extraction, and how am I supposed to apply it?
 Don’t panic! We’re getting to it.
 
-To illustrate the intuition, let's take a look at this example. We have this 1D data, and we visualize it.
+To illustrate the intuition, let's take a look at this example. We have this 1D data, and we visualize it. Visualization will help understand the effects of convolution operation.
 
 ![Kernel Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/kernel_image.png)
 
-We have this kernel [-1, 1]. We’ll start from the left-most element, put the kernel, multiply the overlapping numbers, and sum them up. Kernels have centers; it’s one of the elements. Here, we pick the center as 1 (the element on the right). Now, the kernel’s center has to touch every single element, so we put a zero to the left of the element for convenience. If I don’t pad it, I’ll have to start multiplying -1 with the left-most element, and 1 will not touch the left-most element, so we apply padding. Let’s see what it looks like.
+We have this kernel [-1, 1]. We’ll start from the left-most element, put the kernel, multiply the overlapping numbers, and sum them up. Kernels have centers; it’s one of the elements. Here, we pick the center as 1 (the element on the right). We picked the center here as 1, assuming an imaginary zero on the left, it is called a pad, you will see later on. Now, the kernel’s center has to touch every single element, so we put a zero to the left of the element for convenience. If we don’t pad it, I’ll have to start multiplying -1 with the left-most element, and 1 will not touch the left-most element, so we apply padding. Let’s see what it looks like.
 
 ![1D Conv](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/1d_conv.jpg)
 
@@ -29,7 +29,7 @@ The convolved data (the result of the convolution) is called a feature map. And 
 This is exactly what edge detection filters do! Let’s see it in 2-dimensional data. This time, our kernel will be different. It will be a 3x3 kernel (just so you know it could’ve been a 2x2 too).
 ![2D Conv ](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/2d_conv.png)
 
-This filter is actually quite famous, but we won’t spoil it for you now :). The previous filter was [-1 1]. Meanwhile, this one is [-1 0 1]. It’s just 3x3 and nothing different, it gives changes on the horizontal axis. Let’s see an example and apply convolution. Below is our 2D data.
+This filter is actually quite famous, but we won’t spoil it for you now :). The previous filter was [-1 1]. Meanwhile, this one is [-1 0 1]. It’s just of shape 3x3 and nothing different, and it shows increments and decrements on the horizontal axis. Let’s see an example and apply convolution. Below is our 2D data.
 
 ![2D Conv Matrix](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/2d_conv_matrix.png)
 
@@ -49,7 +49,7 @@ Which shows us the horizontal changes (the edges). This filter is actually calle
 
 ![Prewitt Sobel](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/prewitt_sobel.png)
 
-You can flip the Prewitt filter to get the changes in vertical direction. The Sobel filter is another famous filter for edge detection.
+You can flip [the Prewitt filter](https://en.wikipedia.org/wiki/Prewitt_operator) to get the changes in vertical direction. [The Sobel filter](https://en.wikipedia.org/wiki/Sobel_operator) is another famous filter for edge detection.
 
 ## Convolutional Neural Networks
 
@@ -57,9 +57,10 @@ Fine, but what does it have to do with deep learning? Well, brute forcing filter
 
 The idea is, that we will use filters to extract information. We will randomly initialize multiple filters, create our feature maps, feed them to a classifier, and do backpropagation. Before diving into it, I’d like to introduce you to something we call “pooling”.
 
-As you can see above, there are many pixels that show the change in the feature map. To know that there’s an edge, we only need to see that there’s a change (an edge, a corner, anything), and that’s it. In the above example, we could have got only one of the two, and that would be enough. This way, we would store fewer parameters and still have the features. This operation of getting the most important element in the feature map is called pooling. With pooling, we lose the exact pixel location of where there’s an edge but we store fewer parameters. Also, this way, our feature extraction mechanism will be more robust to small changes, e.g., we only need to know that there are two eyes, a nose, and a mouth to know that there’s a face in an image, the distance between those elements and the size of those elements tend to change from face to face, and pooling enables the model to be more robust against these changes. Another good thing about pooling is that it helps us handle varying input sizes. We’d like you to watch this video to gain a better intuition. Below is the max pooling operation, where every four pixels, we get the maximum pixel. There are various types of pooling, e.g., average pooling, weighted pooling, or L2 pooling.
-
+As you can see above, there are many pixels that show the change in the feature map. To know that there’s an edge, we only need to see that there’s a change (an edge, a corner, anything), and that’s it. 
 ![Max Pooling](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/CNNs/max_pooling.png)
+
+In the above example, we could have got only one of the two, and that would be enough. This way, we would store fewer parameters and still have the features. This operation of getting the most important element in the feature map is called pooling. With pooling, we lose the exact pixel location of where there’s an edge but we store fewer parameters. Also, this way, our feature extraction mechanism will be more robust to small changes, e.g., we only need to know that there are two eyes, a nose, and a mouth to know that there’s a face in an image, the distance between those elements and the size of those elements tend to change from face to face, and pooling enables the model to be more robust against these changes. Another good thing about pooling is that it helps us handle varying input sizes. We’d like you to watch this video to gain a better intuition. Below is the max pooling operation, where every four pixels, we get the maximum pixel. There are various types of pooling, e.g., average pooling, weighted pooling, or L2 pooling.
 
 Let’s build a simple CNN architecture. We will use a Keras example (for the sake of illustration) and we will walk you through what’s happening. Below is our model (again, don’t panic, we will walk you through what’s happening).
 
