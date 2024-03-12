@@ -28,6 +28,8 @@
   sections:
   - title: Introduction to Convolutional Neural Networks
     local: "Unit 2 - Convolutional Neural Networks/introduction"
+  - title: Introduction to Transfer Learning
+    local: "Unit 2 - Convolutional Neural Networks/intro-transfer-learning"
   - title: MobileNet
     local: "Unit 2 - Convolutional Neural Networks/mobilenet"
   - title: Lets Dive Further with MobileNet
@@ -48,6 +50,8 @@
     local: "Unit 3 - Vision Transformers/Dinat Transformer"
   - title: MobileViT v2
     local: "Unit 3 - Vision Transformers/MobileVIT"
+  - title: FineTuning Vision Transformer for Object Detection
+    local: "Unit 3 - Vision Transformers/Vision Transformer for Objection Detection"
   - title: Swin Transformer
     local: "Unit 3 - Vision Transformers/Swin Transformer"
   - title: OneFormer
