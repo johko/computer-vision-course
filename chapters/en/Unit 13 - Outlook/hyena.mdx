@@ -9,14 +9,18 @@ Hyena is a new type of operator that serves as a substitute for the attention me
 Developed by Hazy Research, it features a subquadratic computational efficiency, constructed by interleaving implicitly parametrized long convolutions and data-controlled gating.
 
 <Tip>
+
 Long convolutions are similar to standard convolutions except the kernel is the size of the input. 
 It is equivalent to having a global receptive field instead of a local one. 
 Having an implicitly parametrized convultion means that the convolution filters values are not directly learnt, instead, learning a function that can recover thoses values is prefered. 
+
 </Tip>
 
 <Tip>
+
 Gating mechanisms control the path through which information flows in the network. They help to define how long an information should be remembered. Usally they consist in elementwise multiplications.
 An interresting blog article about gating can be found [here](https://medium.com/autonomous-agents/a-math-deep-dive-on-gating-in-neural-architectures-b49775810dde) 
+
 </Tip>
 
 
@@ -67,7 +71,7 @@ This network takes the positional index and potentially positional encodings as 
 This implies that instead of learning the values of the convolution filter directly, we learn a mapping from a temporal positional encoding to the values, which is more computationally efficient, especially for long sequences.
 
 <Tip>
-It's important to note that the mapping function  $\gamma_{\theta}$  can be conceptualized within various abstract models, such Neural Field or State Space Models (S4) as discussed in [H3 paper](https://arxiv.org/abs/2212.14052).
+It's important to note that the mapping function can be conceptualized within various abstract models, such Neural Field or State Space Models (S4) as discussed in [H3 paper](https://arxiv.org/abs/2212.14052).
 </Tip>
 
 ### Implicit convolutions
