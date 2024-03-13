@@ -6,7 +6,8 @@
 
 Neural networks with more layers were assumed to be more effective because adding more layers improves the model performance.
 
-As the layers deepened, the extracted features could be further enriched, such as seen with VGG16 and VGG19.
+As the networks became deeper, the extracted features could be further enriched, such as seen with VGG16 and VGG19.
+
 A question arose: "Is learning networks as easy as stacking more layers"?
 An obstacle to answering this question, the gradient vanishing problem, was addressed by normalized initializations and intermediate normalization layers.
 
@@ -21,11 +22,14 @@ ResNet’s residual connections unlocked the potential of the extreme depth, pro
 
 - A Residual Block. Source: ResNet Paper
 
-Resnet’s building blocks designed as identity functions, preserve input information while enabling learning. This approach ensures efficient weight optimization and prevents degradation as the network deepens.
+ResNet’s building blocks designed as identity functions, preserve input information while enabling learning. This approach ensures efficient weight optimization and prevents degradation as the network becomes deeper.
 
-To make H approximate the identity function, we do the following
 
-### Let H(x) - x = f(x)
+To make \\( H )\\ approximate the identity function, we do the following:
+
+
+Let \\(H(x) - x = f(x))\\
+
 
 ### F(x) := 0
 
@@ -46,11 +50,11 @@ ResNet employs two techniques to achieve this:
 
 In deeper ResNet architectures like ResNet 50, 101, and 152, a specialized "bottleneck building block" is employed to manage parameter complexity and maintain efficiency while enabling even deeper learning.
 
-## Resnet Code
+## ResNet Code
 
-### Author: Pytorch Team
 
-### Deep residual networks pre-trained on ImageNet
+
+### Deep Residual Networks Pre-trained on ImageNet
 
 model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet18', pretrained=True)
 # or any of these variants
@@ -67,7 +71,7 @@ Here's a sample execution.
 
 # Download an example image from the Pytorch website
 
-
+```python
 import urllib
 url, filename = ("https://github.com/pytorch/hub/raw/master/images/dog.jpg", "dog.jpg")
 try: urllib.URLopener().retrieve(url, filename)
