@@ -53,7 +53,7 @@ You can flip [the Prewitt filter](https://en.wikipedia.org/wiki/Prewitt_operator
 
 ## Convolutional Neural Networks
 
-Fine, but what does it have to do with deep learning? Well, brute forcing filters to extract features does not work well with every image. We could somehow find the optimal filters to extract important information or even detect objects in the images. That’s where convolutional neural networks come into play. We convolve images with various filters, and these pixels in the feature maps will eventually become the parameters that we will optimize, and in the end, we will find the best filters for our problem.
+Fine, but what does it have to do with deep learning? Well, brute forcing filters to extract features does not work well with every image. Imagine if we could somehow find the optimal filters to extract important information or even detect objects in the images. That’s where convolutional neural networks come into play. We convolve images with various filters, and these pixels in the feature maps will eventually become the parameters that we will optimize, and in the end, we will find the best filters for our problem.
 
 The idea is, that we will use filters to extract information. We will randomly initialize multiple filters, create our feature maps, feed them to a classifier, and do backpropagation. Before diving into it, I’d like to introduce you to something we call “pooling”.
 
