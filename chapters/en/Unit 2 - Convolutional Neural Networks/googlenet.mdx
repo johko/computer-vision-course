@@ -183,7 +183,6 @@ class GoogLeNet(nn.Module):
         self.dropout = nn.Dropout(0.4)
         self.fc = nn.Linear(1024, 1000)
 
-
     def forward(self, x):
         ## block 1
         x = self.conv1(x)
