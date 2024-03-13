@@ -54,6 +54,12 @@
     local: "Unit 3 - Vision Transformers/Swin Transformer"
   - title: OneFormer
     local: "Unit 3 - Vision Transformers/oneformer"
+  - title: Vision Transformers for Image Classification
+    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Classification"
+  - title: Vision Transformers for Image Segmentation
+    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Segmentation"
+  - title: Knowledge Distillation with Vision Transformers
+    local: "Unit 3 - Vision Transformers/KnowledgeDistillation"
 - title: Unit 4 - Multimodal Models
   sections:
   - title: Introduction
