@@ -10,7 +10,8 @@ As the layers deepened, the extracted features could be further enriched, such a
 A question arose: "Is learning networks as easy as stacking more layers"?
 An obstacle to answering this question, the gradient vanishing problem, was addressed by normalized initializations and intermediate normalization layers.
 
-However, a new issue emerged: the degradation problem. As the neural networks deepened, accuracy saturated and degraded rapidly. An experiment comparing shallow and deep plain networks revealed that deeper models exhibited higher training and test errors, suggesting a fundamental challenge in training deeper architectures effectively. This degradation was not because of overfitting but because the training error increased when the network deepened. The added layers did not approximate the identity function.
+However, a new issue emerged: the degradation problem. As the neural networks became deeper, accuracy saturated and degraded rapidly. An experiment comparing shallow and deep plain networks revealed that deeper models exhibited higher training and test errors, suggesting a fundamental challenge in training deeper architectures effectively. This degradation was not because of overfitting but because the training error increased when the network became deeper. The added layers did not approximate the identity function.
+
 
 Resnet’s residual connections unlocked the potential of the extreme depth, propelling the accuracy upwards compared to the previous architectures.
 
