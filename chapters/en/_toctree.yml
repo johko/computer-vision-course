@@ -56,6 +56,12 @@
     local: "Unit 3 - Vision Transformers/Swin Transformer"
   - title: OneFormer
     local: "Unit 3 - Vision Transformers/oneformer"
+  - title: Vision Transformers for Image Classification
+    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Classification"
+  - title: Vision Transformers for Image Segmentation
+    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Segmentation"
+  - title: Knowledge Distillation with Vision Transformers
+    local: "Unit 3 - Vision Transformers/KnowledgeDistillation"
 - title: Unit 4 - Multimodal Models
   sections:
   - title: Introduction
@@ -96,7 +102,7 @@
     local: "Unit 5 - Generative Models/GANs & VAEs/StyleGAN"
   - title: CycleGAN Introduction
     local: "Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/cycle_gan"
-  - title: Extras
+  - title: Control over Diffusion Models
     local: "Unit 5 - Generative Models/Diffusion models/Simple explanation and showcase of external resources"
   - title: Privacy, Bias and Societal Concerns
     local: "Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/Ethical Issues"
@@ -165,8 +171,7 @@
     local: "Unit 11  - Zero Shot Computer Vision/2"
 - title: Unit 12 - Ethics and Biases
   sections:
-  - title: 'Unit 12. Ethics and Bias in Computer Vision: Exploring Ethical Foundations
-      in CV Models'
+  - title: 'Exploring Ethical Foundations in CV Models'
     local: "Unit 12 - Ethics and Biases/pre-intro"
   - title: Introduction
     local: "Unit 12 - Ethics and Biases/introduction"
