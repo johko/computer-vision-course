@@ -7,7 +7,9 @@ or [Unity](https://unity.com) help to create images that are super realistic and
 Imagine you're creating an image of a shiny apple. Now, when you color that apple, you want it to look realistic, right?
 That's where something called PBR comes in.
 
-![apple](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/apple.jpg)
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/apple.jpg" alt="Apple">
+</div>
 
 Okay, let's break it down:
 
@@ -65,7 +67,9 @@ Here are the essential steps:
 
 Here is the elephant image generated in Blender:
 
-![elephant image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/rendered_elephant.png)
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/rendered_elephant.png" alt="Synthetic Elephant Image">
+</div>
 
 It is not completely photorealistic, but probably close enough to train a model to monitor elephant populations. Of course, to do
 that we need to create a large dataset of synthetic elephant images! You can use the Blender python environment
@@ -109,12 +113,21 @@ BlenderProc must be run inside the blender python environment (bpy), as this is 
 
 `blenderproc run <your_python_script>`
 
-You can check out this notebook to try BlenderProc in Google Colab, demos the basic examples provided [here](https://github.com/DLR-RM/BlenderProc/tree/main/examples/basics).
+You can check out this notebook to try BlenderProc in Google Colab, or the demos with basic examples provided [here](https://github.com/DLR-RM/BlenderProc/tree/main/examples/basics).
+
 Here are some images rendered with the basic example:
 
-![colors](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/colors.png)
-![normals](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/normals.png)
-![depth](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/depth.png)
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/colors.png" alt="Colors">
+</div>
+
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/normals.png" alt="Normals">
+</div>
+
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/synthetic-data-creation-PBR/depth.png" alt="Depth">
+</div>
 
 ## Blender Resources
 
@@ -148,7 +161,7 @@ Here are some images rendered with the basic example:
 
 ## Papers
 
-- [3D Menagerie: Modeling the 3D Shape and Pose of Animals]()
-- [Fake It Till You Make It: Face analysis in the wild using synthetic data alone]()
+- [3D Menagerie: Modeling the 3D Shape and Pose of Animals](https://arxiv.org/abs/1611.07700)
+- [Fake It Till You Make It: Face analysis in the wild using synthetic data alone](https://arxiv.org/pdf/2109.15102.pdf)
 - [Object Detection and Autoencoder-Based 6D Pose Estimation for Highly Cluttered Bin Picking](https://arxiv.org/pdf/2106.08045.pdf)
 - [Learning from Synthetic Animals](https://arxiv.org/abs/1912.08265)
