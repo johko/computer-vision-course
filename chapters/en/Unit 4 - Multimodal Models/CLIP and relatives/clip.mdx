@@ -9,6 +9,7 @@ CLIP is a neural network adept at grasping visual concepts through natural langu
 Given a batch of image-text pairs, CLIP computes the dense cosine similarity matrix between all possible (image, text) candidates within this batch. The core idea is to maximize the similarity between the correct pairs (shown in blue in the figure below) and minimize the similarity for incorrect pairs (shown in grey in the image). To do it, they optimize a symmetric cross-entropy loss over these similarity scores. 
 
 ![CLIP contrastive pre-training](https://images.openai.com/blob/fbc4f633-9ad4-4dc2-bd94-0b6f1feee22f/overview-a.svg)
+_Image taken from OpenAI_
 
 Explaining in simple terms, we want to make the similarity between the image and its corresponding caption as high as we can, while the similarity between the image and the other captions should be small. We apply this logic to the caption too, so we want to maximize the similarity of the caption with its corresponding image, and minimize between all other images.
 
