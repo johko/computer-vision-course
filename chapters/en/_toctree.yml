@@ -2,6 +2,8 @@
   sections:
   - title: Welcome to the Community Computer Vision Course
     local: "Unit 0 - Welcome/welcome"
+  - title: Table of Contents for Notebooks
+    local: "Unit 0 - Welcome/TableOfContents"
 - title: Unit 1 - Fundamentals
   sections:
   - title: Vision
