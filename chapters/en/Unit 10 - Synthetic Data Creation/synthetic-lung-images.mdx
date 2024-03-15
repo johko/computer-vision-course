@@ -35,7 +35,7 @@ First, we need to obtain a [dataset](https://data.mendeley.com/datasets/rscbjbr9
 
 Here is some information about the dataset:
 
-    >From [Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning](https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867418301545%3Fshowall%3Dtrue):
+    * From [Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning](https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867418301545%3Fshowall%3Dtrue):
 
     * The dataset is organized into 3 folders (train, test, val) and contains subfolders for each image category (Pneumonia/Normal). There are 5,863 X-Ray images (JPEG) and 2 categories (Pneumonia/Normal).
 
@@ -45,8 +45,9 @@ Here is some information about the dataset:
 
 We will start by logging into the Hugging Face hub.
 
-```bash
+```python
 from huggingface_hub import notebook_login
+
 notebook_login()
 ```
 
@@ -86,8 +87,6 @@ Here are 64 "good" synthetic images, defined as receiving a "real" label from th
 ![lung-images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/good_images.png)
 
 We can see that some of the synthetic lung images look good, but others are hazy. There are some important things to mention. First, researchers generating synthetic medical images typically employ a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with the real data to train the model. Second, the generated images that appear to look OK (at least to an amateur) look very similar. This is another known issue with GANs - they can suffer from "mode collapse." Essentially, this happens when the generator starts producing the same type of output. Think of it as someone who has gotten a lot of praise for making chocolate chip cookies, and therefore, gets _really, really_ good at making those cookies but can't make any other type of cookies.
-
-[[./Synthetic_lung_images_hf_course.ipynb]]
 
 Given the known challenges associated with employing GANs to train high-quality medical images, some researchers have explored the use of diffusion models to generate lung images. Medfusion, a conditional latent DDPM for medical images, was proposed in [Diffusion Probabilistic Models Beat GAN On Medical 2D Images](https://arxiv.org/pdf/2212.07501.pdf). [Synthetically Enhanced: Unveiling Synthetic Data's Potential In Medical Imaging Research](https://arxiv.org/pdf/2311.09402.pdf), Khosravi et. al find that using a mix of real and synthetically generated lung images using a diffusion process improved model performance.
 

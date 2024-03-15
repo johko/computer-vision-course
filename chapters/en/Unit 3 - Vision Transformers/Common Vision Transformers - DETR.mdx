@@ -42,6 +42,56 @@ _Left: DETR Decoder Layer. Right: Deformable DETR Decoder Layer_
 The original DETR and Deformable DETR decoder layers are compared in the figure above, with the main difference being the query input of the cross-attention block. The authors make a distinction between content query c<sub>q</sub> (decoder self attention output) and spatial query p<sub>q</sub>. The original DETR simply adds them together. In Deformable DETR, they are concatenated, with c<sub>q</sub> focusing on the content of the object and p<sub>q</sub> focusing on the bounding box regions.   
 The spatial query p<sub>q</sub> is the result of both the decoder embeddings and object queries projecting to the same space (to become T and p<sub>s</sub> respectively) and multiplied together. The previous layers' decoder embeddings contain information for the bounding box regions, and the object queries contains information of learned reference points for each bounding box. Thus, their projections combine into a representation that allows for cross-attention to measure their similarities with the encoder input and sinusoidal positional embedding. This is more effective than DETR which only uses object queries and fixed reference points.
 
+## DETR Inference 
+
+You can infer with existing DETR models on Hugging Face Hub like below:
+
+```python
+from transformers import DetrImageProcessor, DetrForObjectDetection
+import torch
+from PIL import Image
+import requests
+
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = Image.open(requests.get(url, stream=True).raw)
+
+# initialize the model
+processor = DetrImageProcessor.from_pretrained(
+    "facebook/detr-resnet-101", revision="no_timm"
+)
+model = DetrForObjectDetection.from_pretrained(
+    "facebook/detr-resnet-101", revision="no_timm"
+)
+
+# preprocess the inputs and infer
+inputs = processor(images=image, return_tensors="pt")
+outputs = model(**inputs)
+
+# convert outputs (bounding boxes and class logits) to COCO API
+# non max supression above 0.9
+target_sizes = torch.tensor([image.size[::-1]])
+results = processor.post_process_object_detection(
+    outputs, target_sizes=target_sizes, threshold=0.9
+)[0]
+
+for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
+    box = [round(i, 2) for i in box.tolist()]
+    print(
+        f"Detected {model.config.id2label[label.item()]} with confidence "
+        f"{round(score.item(), 3)} at location {box}"
+    )
+```
+
+Outputs are below.
+
+```bash 
+Detected cat with confidence 0.998 at location [344.06, 24.85, 640.34, 373.74]
+Detected remote with confidence 0.997 at location [328.13, 75.93, 372.81, 187.66]
+Detected remote with confidence 0.997 at location [39.34, 70.13, 175.56, 118.78]
+Detected cat with confidence 0.998 at location [15.36, 51.75, 316.89, 471.16]
+Detected couch with confidence 0.995 at location [-0.19, 0.71, 639.73, 474.17]
+```
+
 ## PyTorch Implementation of DETR
 The implementation of DETR from the original paper is shown below:
 ```python
@@ -51,7 +101,6 @@ from torchvision.models import resnet50
 
 
 class DETR(nn.Module):
-
     def __init__(
         self, num_classes, hidden_dim, nheads, num_encoder_layers, num_decoder_layers
     ):
