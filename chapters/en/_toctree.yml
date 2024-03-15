@@ -90,18 +90,18 @@
   sections:
   - title: Introduction
     local: "Unit 5 - Generative Models/Introduction/Introduction"
-  - title: Introduction to Diffusion Models
-    local: "Unit 5 - Generative Models/Diffusion models/Introduction - Diffusions"
-  - title: Introduction to Stable Diffusion
-    local: "Unit 5 - Generative Models/Diffusion models/stable_diffusion"
-  - title: Generative Adversarial Networks
-    local: "Unit 5 - Generative Models/gans"
   - title: Variational Autoencoders
     local: "Unit 5 - Generative Models/variational_autoencoders"
+  - title: Generative Adversarial Networks
+    local: "Unit 5 - Generative Models/gans"
   - title: StyleGAN Variants
     local: "Unit 5 - Generative Models/GANs & VAEs/StyleGAN"
   - title: CycleGAN Introduction
     local: "Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/cycle_gan"
+  - title: Introduction to Diffusion Models
+    local: "Unit 5 - Generative Models/Diffusion models/Introduction - Diffusions"
+  - title: Introduction to Stable Diffusion
+    local: "Unit 5 - Generative Models/Diffusion models/stable_diffusion"
   - title: Control over Diffusion Models
     local: "Unit 5 - Generative Models/Diffusion models/Simple explanation and showcase of external resources"
   - title: Privacy, Bias and Societal Concerns
