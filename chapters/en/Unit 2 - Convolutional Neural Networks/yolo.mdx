@@ -35,6 +35,17 @@ Back in 2020 Yolov4 became a one of the best detection models in terms of speed 
 
 Yolov5 translated the Darknet framework (written in C) to the more flexible and ease of use Pytorch framework. This version automated the previous anchor detection mechanism introducing the auto-anchors. Auto-anchors train the models anchors automatically to match your data. During training yolo automatically uses k-means initially and genetic methods to evolve the new better matched anchors and place them back to the yolo model. Also, it offered different types of models that depend on the hardware constrains with names similar to today’s Yolov8 models: YOLOv5s, YOLOv5m, YOLOv5l, and YOLOv5x.
 
+### **Yolov6 (2022)**
+
+The next version, YOLOv6, was released by the Meituan Vision AI Department under the article title: "YOLOv6: A Single-Stage Object Detection Framework for Industry." This team made further improvements in terms of speed and accuracy by focusing on five aspects:
+1) Reparameterization using the RepVGG technique.
+2) Quantization of reparameterization-based detectors.
+3) Recognition of the importance of considering different hardware costs and capabilities for model deployment.
+4) Further verification of label assignment and loss function design after architectural improvements.
+5) Accuracy improvements during training using knowledge distillation.
+In 2023, YOLOv6 v3 was released with the title: "YOLOv6 v3.0: A Full-Scale Reload," which introduced enhancements to the network architecture and training scheme, once again advancing speed and accuracy (evaluated on the COCO dataset) compared to previously released versions.
+
+
 ### **Note about the different versions**
 
 It's important to understand that the selection of the ‘best’ model version depends on the user requirements such as speed, accuracy, hardware limitations, and user-friendliness. Yolov2 is very good at speed. YOLOv3 provides a balance between accuracy and speed. Yolov4 has the best ability for adapting/being compatible across different hardware.
