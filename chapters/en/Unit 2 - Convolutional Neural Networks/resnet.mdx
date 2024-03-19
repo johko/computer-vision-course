@@ -31,18 +31,18 @@ To make \\( H )\\ approximate the identity function, we do the following:
 Let \\(H(x) - x = f(x))\\
 
 
-### F(x) := 0
+\\F(x) := 0\\
 
-### H(x) = 0 + x
+\\H(x) = 0 + x\\
 
-### H(x) = x
+\\H(x) = x\\
 
 Shortcut connections perform identity mapping and their output is added to the output of the stacked layers. Identity shortcut connections add neither extra parameters nor
 computational complexity, these connections bypass layers, creating direct paths for information flow, and they enable neural networks to learn the residual function (F).
 
 Resnet Network = Plain Network + Shortcuts
 
-For operations F(x) + x, F(x) and x should have identical dimensions.
+For operations \\F(x) + x, F(x)\\ and x should have identical dimensions.
 ResNet employs two techniques to achieve this:
 
 - Zero-padding shortcuts that add channels with zero values, maintaining dimensions without introducing extra parameters to be learned.
@@ -56,14 +56,12 @@ In deeper ResNet architectures like ResNet 50, 101, and 152, a specialized "bott
 
 ### Deep Residual Networks Pre-trained on ImageNet
 
-model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet18', pretrained=True)
-# or any of these variants
-# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet34', pretrained=True)
-# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet50', pretrained=True)
-# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet101', pretrained=True)
-# model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet152', pretrained=True)
-model.eval()
+```python
+from transformers import ResNetForImageClassification
+model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50")
 
+model.eval()
+```
 All pre-trained models expect input images normalized similarly, i.e. mini-batches of 3-channel RGB images of shape (3 x H x W), where H and W are expected to be at least 224. The images have to be loaded into a range of [0, 1] and then normalized using mean = [0.485, 0.456, 0.406] and std = [0.229, 0.224, 0.225].
 
 
