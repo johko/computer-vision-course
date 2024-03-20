@@ -59,22 +59,16 @@ Figure 2: Image formation using 2 cameras
 
 With the above configuration in place, we have the below equations which map a point in 3D to the image plane in 2D. 
 
-1. Left camera
-    1. \\(u\_left = f\_x * \frac{x}{z} + O\_x\\)
-    2. \\(v\_left = f\_y * \frac{y}{z} + O\_y\\) 
-    3. \\(u\_left = f\_x * \frac{x}{z} + O\_x)\\ 
-    4.    \\(u\_left = f\_x * \frac{x}{z} + O\_x)\\
-
+1. Left camera   
+    1. \\(u\_left = f\_x * \frac{x}{z} + O\_x\\)   
+    2. \\(v\_left = f\_y * \frac{y}{z} + O\_y\\)   
+  
 2. Right camera 
-    1. \\(u\_right = f\_x * \frac{x-b}{z} + O\_x\\)
-    2. \\(v\_right = f\_y * \frac{y}{z} + O\_y\\)
+    1. \\(u\_right = f\_x * \frac{x-b}{z} + O\_x\\)   
+    2. \\(v\_right = f\_y * \frac{y}{z} + O\_y\\)    
 
 Different symbols used in above equations are defined below: 
-
 *  \\(u\_left\\), \\(v\_left\\) refer to pixel coordinates of point P in the left image 
-
-*  \\(u\_left\\), \\(v\_left)\\ refer DELME to pixel coordinates of point P in the left image 
-
 * \\(u\_right\\), \\(v\_right\\) refer to pixel coordinates of point P in the right image 
 * \\(f\_x\\) refers to the focal length (in pixels) in x direction and \\(f\_y\\) refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.
 * x,y,z are 3D coordinates of the point P (any unit like cm, feet, etc can be used)
