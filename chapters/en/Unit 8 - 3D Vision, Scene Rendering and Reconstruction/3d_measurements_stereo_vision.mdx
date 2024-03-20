@@ -67,11 +67,11 @@ With the above configuration in place, we have the below equations which map a p
     2. \\(v\_right = f\_y * \frac{y}{z} + O\_y\\)
 
 Different symbols used in above equations are defined below: 
-* \\(u_left\\), \\(v_left\\) refer to pixel coordinates of point P in the left image 
-* \\(u_right\\), \\(v_right\\) refer to pixel coordinates of point P in the right image 
-* \\(f_X\\) refers to the focal length (in pixels) in x direction and \\(f_y\\) refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (/ optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.
+* \\(u\_left\\), \\(v\_left\\) refer to pixel coordinates of point P in the left image 
+* \\(u\_right\\), \\(v\_right\\) refer to pixel coordinates of point P in the right image 
+* \\(f\_X\\) refers to the focal length (in pixels) in x direction and \\(f\_y\\) refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (/ optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.
 * x,y,z are 3D coordinates of the point P (any unit like cm, feet, etc can be used)
-* \\(0_X\\) and \\(0_y\\) refer to pixel coordinates of the principal point 
+* \\(0\_X\\) and \\(0\_y\\) refer to pixel coordinates of the principal point 
 * b is called the baseline and refers to the distance between the left and right cameras. Same units are used for both b and x,y,z coordinates (any unit like cm, feet, etc can be used)
 
 We have 4 equations above and 3 unknowns - x, y and z coordinates of a 3D point P. Intrinsic camera parameters - focal lengths and principal point are assumed to be known. Equations 1.2 and 2.2 indicate that the v coordinate value in the left and right images is the same. 
