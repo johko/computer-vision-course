@@ -60,23 +60,27 @@ Figure 2: Image formation using 2 cameras
 With the above configuration in place, we have the below equations which map a point in 3D to the image plane in 2D. 
 
 1. Left camera
+
     1. \\(u\_left = f\_x * \frac{x}{z} + O\_x\\)
     2. \\(v\_left = f\_y * \frac{y}{z} + O\_y\\) 
+
 2. Right camera 
+
     1. \\(u\_right = f\_x * \frac{x-b}{z} + O\_x\\)
     2. \\(v\_right = f\_y * \frac{y}{z} + O\_y\\)
 
 Different symbols used in above equations are defined below: 
+
 * \\(u\_left\\), \\(v\_left\\) refer to pixel coordinates of point P in the left image 
 * \\(u\_right\\), \\(v\_right\\) refer to pixel coordinates of point P in the right image 
-* \\(f\_X\\) refers to the focal length (in pixels) in x direction and \\(f\_y\\) refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (/ optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.
+* \\(f\_x\\) refers to the focal length (in pixels) in x direction and \\(f\_y\\) refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.
 * x,y,z are 3D coordinates of the point P (any unit like cm, feet, etc can be used)
-* \\(0\_X\\) and \\(0\_y\\) refer to pixel coordinates of the principal point 
+* \\(0\_x\\) and \\(0\_y\\) refer to pixel coordinates of the principal point 
 * b is called the baseline and refers to the distance between the left and right cameras. Same units are used for both b and x,y,z coordinates (any unit like cm, feet, etc can be used)
 
 We have 4 equations above and 3 unknowns - x, y and z coordinates of a 3D point P. Intrinsic camera parameters - focal lengths and principal point are assumed to be known. Equations 1.2 and 2.2 indicate that the v coordinate value in the left and right images is the same. 
 
-3. \\(v\_left = v\_right\\)
+3.  \\(v\_left = v\_right\\)
 
 Using equations 1.1, 1.2 and 2.1 we can derive the x,y,z coordinates of point P. 
 
@@ -139,7 +143,7 @@ Annotated Right Image
 ### 3D Coordinate Calculations  
 Twelve points are selected in the scene, and their (u,v) values in the left and right images are tabulated below. Using equations 4, 5, and 6, (x,y,z) coordinates for these points are also calculated and tabulated below. X and Y coordinates concerning the left camera, and the origin is at the left camera's pinhole (or optical center of the lens). Therefore, 3D points left and above the pinhole have negative X and Y values, respectively.
 
-| point    |   \\(u_left\\)  |   \\(v_left\\)  |   \\(u_right\\)  |   \\(v_right\\)  |   depth/z(cm)  |   \\(x_wrt_left\\)|   \\(y_wrt_left\\)  |
+| point    |   \\(u\_left\\)  |   \\(v\_left\\)  |   \\(u\_right\\)  |   \\(v\_right\\)  |   depth/z(cm)  |   \\(x\_wrt\_left\\)|   \\(y\_wrt\_left\\)  |
 |:--------:|:---------:|:---------:|:----------:|:----------:|:--------------:|:-----------------:|:-----------------:|
 | pt1     |      138 |      219 |       102 |       219 |         94.36 |           -33.51 |            -5.53 |
 | pt2     |      264 |      216 |       234 |       217 |        113.23 |            -8.72 |            -7.38 |
