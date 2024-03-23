@@ -78,13 +78,17 @@ During training, the generator aims to produce synthetic lung images that are in
 
 Let's visualize the progress:
 
-![trainig-gif](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/dcgan_training_animation.gif)
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/dcgan_training_animation.gif" alt="Training GIF">
+</div>
 
 ## How did we do?
 
 Here are 64 "good" synthetic images, defined as receiving a "real" label from the discriminator with a 70% probability.
 
-![lung-images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/good_images.png)
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/good_images.png" alt="Synthetic Lung Images">
+</div>
 
 We can see that some of the synthetic lung images look good, but others are hazy. There are some important things to mention. First, researchers generating synthetic medical images typically employ a "human in the middle"--in this case, a expert radiologist--to evaluate the synthetic images. Then, only the images that fool the expert are included with the real data to train the model. Second, the generated images that appear to look OK (at least to an amateur) look very similar. This is another known issue with GANs - they can suffer from "mode collapse." Essentially, this happens when the generator starts producing the same type of output. Think of it as someone who has gotten a lot of praise for making chocolate chip cookies, and therefore, gets _really, really_ good at making those cookies but can't make any other type of cookies.
 
@@ -95,7 +99,7 @@ Given the known challenges associated with employing GANs to train high-quality 
 - [A Novel COVID-19 Detection Model Based on DCGAN and Deep Transfer Learning](https://www.sciencedirect.com/science/article/pii/S1877050922007463)
 - [Augmentation_Gan](https://github.com/rossettisimone/AUGMENTATION_GAN)
 - [BrainGAN: Brain MRI Image Generation and Classification Framework Using GAN Architectures and CNN Models](https://www.mdpi.com/1424-8220/22/11/4297)
-- [dentifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning](https://www.cell.com/action/showPdf?pii=S0092-8674%2818%2930154-5)
+- [Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning](https://www.cell.com/action/showPdf?pii=S0092-8674%2818%2930154-5)
 - [Diffusion Probabilistic Models beat GANs on Medical Images](https://arxiv.org/abs/2212.07501)
 - [DR-DCGAN: A Deep Convolutional Generative Adversarial Network (DC-GAN) for Diabetic Retinopathy Image Synthesis](<https://www.webology.org/data-cms/articles/20220204053948pmwebology%2019%20(2)%20-%2077%20.pdf>)
 - [Deepfake Image Generation for Improved Brain Tumor Segmentation](https://aps.arxiv.org/abs/2307.14273)
