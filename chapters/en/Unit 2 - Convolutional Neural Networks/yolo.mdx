@@ -1,14 +1,14 @@
 You Only Look Once
 
 <!--  
-- [ ]  YOLOv1
 - [x]  YOLOv2 and YOLOv3
 - [x]  YOLOv4, YOLOv5
-- [ ]  YOLOv6-YOLOv8
-- [ ]  Yolov9
+- [x]  YOLOv6-YOLOv7
+- [ ]  YOLOv8-Yolov9
 Additional checks:
 - [ ] Add comment about licences difference between (up to) Yolov4 and rest
 - [ ] Recheck Yolov4 and Yolov5
+- [ ] Add in the introduction the the evolution of yolo is not a linear story.
 -->
 
 ## Evolution of Yolo
@@ -44,6 +44,9 @@ The next version, YOLOv6, was released by the Meituan Vision AI Department under
 4) Further verification of label assignment and loss function design after architectural improvements. Yolov6 uses Varifocal Loss for Classification. For Box Regression, it uses IoU Series Loss and Distribution Focal Loss.
 5) Accuracy improvements during training using knowledge distillation.
 In 2023, YOLOv6 v3 was released with the title: "YOLOv6 v3.0: A Full-Scale Reload," which introduced enhancements to the network architecture and training scheme, once again advancing speed and accuracy (evaluated on the COCO dataset) compared to previously released versions.
+
+### **Yolov7 (2022)**
+Yolov7 was released with the paper name: “YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors”. Trainable bag-of-freebies refer to optimization methods that aim to increase the model's accuracy in real-time detection without increasing the inference cost. These methods refer mostly to optimizations in the training process. Specifically, they include a new label assignment method called coarse-to-fine lead guided label assignment and use gradient flow propagation paths to analyze how re-parameterized convolution should be combined with different networks. They also, proposed  “extend” and “compound scaling” methods for the real-time object detector that can effectively utilize parameters and computation. Again, all these improvements took the real-time-object detection to a new state-of-the-art outperfoming previous releases.
 
 
 ### **Note about the different versions**
