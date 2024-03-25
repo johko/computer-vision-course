@@ -24,25 +24,16 @@ ResNet’s residual connections unlocked the potential of the extreme depth, pro
 
 ResNet’s building blocks designed as identity functions, preserve input information while enabling learning. This approach ensures efficient weight optimization and prevents degradation as the network becomes deeper.
 
+The building block of ResNet can be shown in the picture 
 
-To make \\( H )\\ approximate the identity function, we do the following:
-
-
-Let \\(H(x) - x = f(x))\\
-
-
-\\F(x) := 0\\
-
-\\H(x) = 0 + x\\
-
-\\H(x) = x\\
+![resnet_building_block](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/ResnetBlock.png)
 
 Shortcut connections perform identity mapping and their output is added to the output of the stacked layers. Identity shortcut connections add neither extra parameters nor
 computational complexity, these connections bypass layers, creating direct paths for information flow, and they enable neural networks to learn the residual function (F).
 
 Resnet Network = Plain Network + Shortcuts
 
-For operations \\F(x) + x, F(x)\\ and x should have identical dimensions.
+For operations \\F(x) + x\\, \\F(x)\\ and \\x\\ should have identical dimensions.
 ResNet employs two techniques to achieve this:
 
 - Zero-padding shortcuts that add channels with zero values, maintaining dimensions without introducing extra parameters to be learned.
