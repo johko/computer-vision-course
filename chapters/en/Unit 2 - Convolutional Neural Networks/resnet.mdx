@@ -60,7 +60,7 @@ All pre-trained models expect input images normalized similarly, i.e. mini-batch
 Here's a sample execution.Sample execution like below . This example is avaialble in [Huggingface documentation](https://huggingface.co/docs/transformers/v4.18.0/en/model_doc/resnet)
 
 ```python
-ffrom transformers import AutoFeatureExtractor, ResNetForImageClassification
+from transformers import AutoFeatureExtractor, ResNetForImageClassification
 import torch
 from datasets import load_dataset
 
@@ -87,4 +87,4 @@ print(model.config.id2label[predicted_label])
 - [ResNet: Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 
 - Resnet Architecture Source: ResNet Paper
-- Huggingface Documentation on ResizeObserverEntry.
+- Huggingface Documentation on ResNet
