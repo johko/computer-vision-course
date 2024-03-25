@@ -57,66 +57,29 @@ model.eval()
 All pre-trained models expect input images normalized similarly, i.e. mini-batches of 3-channel RGB images of shape (3 x H x W), where H and W are expected to be at least 224. The images have to be loaded into a range of [0, 1] and then normalized using mean = [0.485, 0.456, 0.406] and std = [0.229, 0.224, 0.225].
 
 
-Here's a sample execution.
-
-# Download an example image from the Pytorch website
+Here's a sample execution.Sample execution like below . This example is avaialble in [Huggingface documentation](https://huggingface.co/docs/transformers/v4.18.0/en/model_doc/resnet)
 
 ```python
-import urllib
+ffrom transformers import AutoFeatureExtractor, ResNetForImageClassification
+import torch
+from datasets import load_dataset
 
-url, filename = ("https://github.com/pytorch/hub/raw/master/images/dog.jpg", "dog.jpg")
-try:
-    urllib.URLopener().retrieve(url, filename)
-except:
-    urllib.request.urlretrieve(url, filename)
+dataset = load_dataset("huggingface/cats-image")
+image = dataset["test"]["image"][0]
 
-# sample execution (requires torchvision)
+feature_extractor = AutoFeatureExtractor.from_pretrained("microsoft/resnet-50")
+model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50")
 
-from PIL import Image
-from torchvision import transforms
-
-input_image = Image.open(filename)
-preprocess = transforms.Compose(
-    [
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ]
-)
-input_tensor = preprocess(input_image)
-input_batch = input_tensor.unsqueeze(0)  # create a mini-batch as expected by the model
-
+inputs = feature_extractor(image, return_tensors="pt")
 
 with torch.no_grad():
-    output = model(input_batch)
+    logits = model(**inputs).logits
 
-# Tensor of shape 1000, with confidence scores over ImageNet's 1000 classes
-
-print(output[0])
-
-# The output has unnormalized scores. To get probabilities, you can run a softmax on it.
-
-probabilities = torch.nn.functional.softmax(output[0], dim=0)
-print(probabilities)
-
-# Download ImageNet labels
-
-!wget https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt
-
-# Read the categories
-
-with open("imagenet_classes.txt", "r") as f:
-    categories = [s.strip() for s in f.readlines()]
-
-# Show top categories per image
-
-top5_prob, top5_catid = torch.topk(probabilities, 5)
-for i in range(top5_prob.size(0)):
-    print(f"{categories[top5_catid[i]]}, {top5_prob[i].item()}")
+# model predicts one of the 1000 ImageNet classes
+predicted_label = logits.argmax(-1).item()
+print(model.config.id2label[predicted_label])
 ```
 
-Model Demo https://huggingface.co/spaces/pytorch/ResNet
 
 ## References
 
@@ -124,3 +87,4 @@ Model Demo https://huggingface.co/spaces/pytorch/ResNet
 - [ResNet: Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 
 - Resnet Architecture Source: ResNet Paper
+- Huggingface Documentation on ResizeObserverEntry.
