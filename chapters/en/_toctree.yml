@@ -8,16 +8,16 @@
   sections:
   - title: Vision
     local: "Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/motivation"
+  - title: Image
+    local: "Unit 1 - Fundamentals/image_and_imaging/image"
+  - title: Imaging in Real-life
+    local: "Unit 1 - Fundamentals/image_and_imaging/extension-image"
   - title: What Is Computer Vision
     local: "Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/definition"
   - title: Applications of Computer Vision
     local: "Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/applications"
-  - title: Image
-    local: "Unit 1 - Fundamentals/image_and_imaging/image"
   - title: Image Acquisition Fundamentals in Digital Processing
     local: "Unit 1 - Fundamentals/image_and_imaging/imaging"
-  - title: Imaging in Real-life
-    local: "Unit 1 - Fundamentals/image_and_imaging/extension-image"
   - title: Pre-processing for Computer Vision Tasks
     local: "Unit 1 - Fundamentals/image_and_imaging/examples-preprocess"
   - title: Feature Description
@@ -30,38 +30,38 @@
   sections:
   - title: Introduction to Convolutional Neural Networks
     local: "Unit 2 - Convolutional Neural Networks/introduction"
-  - title: Introduction to Transfer Learning
-    local: "Unit 2 - Convolutional Neural Networks/intro-transfer-learning"
-  - title: MobileNet
-    local: "Unit 2 - Convolutional Neural Networks/mobilenet"
-  - title: Lets Dive Further with MobileNet
-    local: "Unit 2 - Convolutional Neural Networks/mobilenetextra"
   - title: Very Deep Convolutional Networks for Large Scale Image Recognition
     local: "Unit 2 - Convolutional Neural Networks/vgg"
   - title: Googlenet
     local: "Unit 2 - Convolutional Neural Networks/googlenet"
+  - title: MobileNet
+    local: "Unit 2 - Convolutional Neural Networks/mobilenet"
   - title: ConvNext - A ConvNet for the 2020s (2022)
     local: "Unit 2 - Convolutional Neural Networks/convnext"
+  - title: Introduction to Transfer Learning
+    local: "Unit 2 - Convolutional Neural Networks/intro-transfer-learning"
 - title: Unit 3 - Vision Transformers
   sections:
-  - title: DEtection TRansformer (DETR)
-    local: "Unit 3 - Vision Transformers/Common Vision Transformers - DETR"
+  - title: Vision Transformers for Image Classification
+    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Classification"
+  - title: Swin Transformer
+    local: "Unit 3 - Vision Transformers/Swin Transformer"
   - title: Convolutional Vision Transformer (CvT)
     local: "Unit 3 - Vision Transformers/Convolutional Vision Transformer"
   - title: Dilated Neighborhood Attention Transformer (DINAT)
     local: "Unit 3 - Vision Transformers/Dinat Transformer"
   - title: MobileViT v2
     local: "Unit 3 - Vision Transformers/MobileVIT"
+  - title: Lets Dive Further with MobileNet
+    local: "Unit 2 - Convolutional Neural Networks/mobilenetextra"
   - title: FineTuning Vision Transformer for Object Detection
     local: "Unit 3 - Vision Transformers/Vision Transformer for Objection Detection"
-  - title: Swin Transformer
-    local: "Unit 3 - Vision Transformers/Swin Transformer"
-  - title: OneFormer
-    local: "Unit 3 - Vision Transformers/oneformer"
-  - title: Vision Transformers for Image Classification
-    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Classification"
+  - title: DEtection TRansformer (DETR)
+    local: "Unit 3 - Vision Transformers/Common Vision Transformers - DETR"
   - title: Vision Transformers for Image Segmentation
     local: "Unit 3 - Vision Transformers/Vision Transformers for Image Segmentation"
+  - title: OneFormer
+    local: "Unit 3 - Vision Transformers/oneformer"
   - title: Knowledge Distillation with Vision Transformers
     local: "Unit 3 - Vision Transformers/KnowledgeDistillation"
 - title: Unit 4 - Multimodal Models
@@ -70,6 +70,8 @@
     local: "Unit 4 - Multimodal Models/introduction"
   - title: Exploring Multimodal Text and Vision Models - Uniting Senses in AI
     local: "Unit 4 - Multimodal Models/pre-intro"
+  - title: Introduction to Vision Language Models
+    local: "Unit 4 - Multimodal Models/vlm-intro"
   - title: Multimodal Tasks and Models
     local: "Unit 4 - Multimodal Models/tasks-models-part1"
   - title: Introduction to CLIP
@@ -84,8 +86,6 @@
     local: "Unit 4 - Multimodal Models/CLIP and relatives/owl_vit"
   - title: Transfer Learning of Multimodal Models
     local: "Unit 4 - Multimodal Models/transfer_learning"
-  - title: Introduction to Vision Language Models
-    local: "Unit 4 - Multimodal Models/vlm-intro"
   - title: Supplementary Reading and Resources
     local: "Unit 4 - Multimodal Models/supplementary-material"
 - title: Unit 5 - Generative Models
@@ -153,8 +153,8 @@
   sections:
   - title: Introduction
     local: "Unit 10 - Synthetic Data Creation/introduction"
-  - title: Introduction to Point Clouds
-    local: "Unit 10 - Synthetic Data Creation/point_clouds"
+  - title: Synthetic Datasets
+    local: "Unit 10 - Synthetic Data Creation/synthetic_datasets"
   - title: Using a 3D Renderer to Generate Synthetic Data
     local: "Unit 10 - Synthetic Data Creation/blenderProc"
   - title: Synthetic Data Generation Using DCGAN
@@ -163,8 +163,8 @@
     local: "Unit 10 - Synthetic Data Creation/datagen-diffusion-models"
   - title: Challenges and Opportunities Associated With Using Synthetic Data
     local: "Unit 10 - Synthetic Data Creation/challenges"
-  - title: Synthetic Datasets
-    local: "Unit 10 - Synthetic Data Creation/synthetic_datasets"
+  - title: Introduction to Point Clouds
+    local: "Unit 10 - Synthetic Data Creation/point_clouds"
 - title: Unit 11  - Zero Shot Computer Vision
   sections:
   - title: Introduction
