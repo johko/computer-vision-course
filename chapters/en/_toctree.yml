@@ -66,13 +66,15 @@
     local: "Unit 3 - Vision Transformers/KnowledgeDistillation"
 - title: Unit 4 - Multimodal Models
   sections:
-  - title: Introduction
-    local: "Unit 4 - Multimodal Models/introduction"
   - title: Exploring Multimodal Text and Vision Models - Uniting Senses in AI
     local: "Unit 4 - Multimodal Models/pre-intro"
+  - title: A Multimodal World
+    local: "Unit 4 - Multimodal Models/a_multimodal_world.mdx"
+  - title: Introduction to Vision Language Models
+    local: "Unit 4 - Multimodal Models/vlm-intro"
   - title: Multimodal Tasks and Models
     local: "Unit 4 - Multimodal Models/tasks-models-part1"
-  - title: Introduction to CLIP
+  - title: CLIP and Relatives
     local: "Unit 4 - Multimodal Models/CLIP and relatives/Introduction"
   - title: Losses
     local: "Unit 4 - Multimodal Models/CLIP and relatives/losses"
@@ -84,8 +86,6 @@
     local: "Unit 4 - Multimodal Models/CLIP and relatives/owl_vit"
   - title: Transfer Learning of Multimodal Models
     local: "Unit 4 - Multimodal Models/transfer_learning"
-  - title: Introduction to Vision Language Models
-    local: "Unit 4 - Multimodal Models/vlm-intro"
   - title: Supplementary Reading and Resources
     local: "Unit 4 - Multimodal Models/supplementary-material"
 - title: Unit 5 - Generative Models
