@@ -4,6 +4,17 @@
 
 As the Transformers architecture scaled well in Natural Language Processing, the same architecture was applied to images by creating small patches of the image and treating them as tokens. The result was a Vision Transformer (Vision Transformers). Before we get started with transfer learning / fine-tuning concepts, let's compare Convolutional Neural Networks (CNNs) with Vision Transformers.
 
+### CNN vs Vision Transformers: Inductive Bias
+
+Inductive bias is a term used in machine learning to describe the set of assumptions that a learning algorithm uses to make predictions. In simpler terms, inductive bias is like a shortcut that helps a machine learning model make educated guesses based on the information it has seen so far.
+
+Here's a couple of inductive biases we observe in CNNs:
+
+- Translational Equivariance: an object can appear anywhere in the image, and CNNs can detect its features.
+- Locality: pixels in an image interact mainly with its surrounding pixels to form features.
+
+These are lacking in Vision Transformers. Then how do they perform so well? It's because they're highly scalable and they're trained on massive amounts of images. Hence, they overcome the need for these inductive biases.
+
 ### Using pre-trained Vision Transformers
 
 It's not feasible for everyone to train a Vision Transformer on millions of images to get good performance. Instead, one can use openly available models from places such as the [Hugging Face Hub](https://huggingface.co/models?sort=trending).
