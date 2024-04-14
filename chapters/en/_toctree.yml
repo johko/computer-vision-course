@@ -69,7 +69,7 @@
   - title: Exploring Multimodal Text and Vision Models - Uniting Senses in AI
     local: "Unit 4 - Multimodal Models/pre-intro"
   - title: A Multimodal World
-    local: "Unit 4 - Multimodal Models/a_multimodal_world.mdx"
+    local: "Unit 4 - Multimodal Models/a_multimodal_world"
   - title: Introduction to Vision Language Models
     local: "Unit 4 - Multimodal Models/vlm-intro"
   - title: Multimodal Tasks and Models
