@@ -28,7 +28,7 @@ CLIP, can be leveraged for a variety of applications. Here are some notable use 
 
 For practical applications, one typically uses an image, and pre-defined classes as input. The provided Python example demonstrates how to use the transformers library for running CLIP. In this example, we want to zero-shot classify the image below between `dog` or `cat`.
 
-![A photo of cats](http://images.cocodataset.org/val2017/000000039769.jpg)
+![A photo of cats](https://images.cocodataset.org/val2017/000000039769.jpg)
 
 ```python
 from PIL import Image
@@ -55,8 +55,8 @@ probs = logits_per_image.softmax(dim=1)
 ```
 
 After executing this code, we got the following probabilities:
-- "a photo of a cat": 99.49%
-- "a photo of a dog": 0.51% 
+- "a photo of a cat": 99.49%.
+- "a photo of a dog": 0.51%.
 
 ## Limitations
 

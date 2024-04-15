@@ -7,7 +7,7 @@
 The TensorFlow Model Optimization Toolkit is a suite of tools for optimizing machine learning models for deployment. 
 The TensorFlow Lite post-training quantization tool enable users to convert weights to 8 bit precision which reduces the trained model size by about 4 times. 
 The tools also include API for pruning and quantization during training is post-training quantization is insufficient.
-These help user to reduce latency and inference cost, deploy models to edge devices with restricted resources and optimized execution for existing hardware or new special purpose accelerators
+These help user to reduce latency and inference cost, deploy models to edge devices with restricted resources and optimized execution for existing hardware or new special purpose accelerators.
 
 ### Setup guide
 
@@ -18,7 +18,7 @@ pip install -U tensorflow-model-optimization
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the Tensorflow Model Optimization Toolkit, refer this [notebook](https://colab.research.google.com/drive/1t1Tq6i0JZbOwloyhkSjg8uTTVX9iUkgj#scrollTo=D_MCHp6cwCFb)
+For a hands-on guide on how to use the Tensorflow Model Optimization Toolkit, refer this [notebook](https://colab.research.google.com/drive/1t1Tq6i0JZbOwloyhkSjg8uTTVX9iUkgj#scrollTo=D_MCHp6cwCFb).
 ## Pytorch Quantization
 
 ### Overview
@@ -40,7 +40,7 @@ import torch.quantization
 ```
 ## Hands-on guide
 
-For a hands-on guide on how to use the Pytorch Quantization, refer this [notebook](https://colab.research.google.com/drive/1toyS6IUsFvjuSK71oeLZZ51mm8hVnlZv
+For a hands-on guide on how to use the Pytorch Quantization, refer this [notebook](https://colab.research.google.com/drive/1toyS6IUsFvjuSK71oeLZZ51mm8hVnlZv).
 
 ## ONNX Runtime
 
@@ -49,12 +49,12 @@ For a hands-on guide on how to use the Pytorch Quantization, refer this [noteboo
 ONNX Runtime is a cross-platform machine-learning model accelerator, with a flexible interface to integrate hardware-specific libraries. 
 ONNX Runtime can be used with models from PyTorch, Tensorflow/Keras, TFLite, scikit-learn, and other frameworks.
 The benefits of using ONNX Runtime for Inferencing are as follows:
-- Improve inference performance for a wide variety of ML models
-- Run on different hardware and operating systems
-- Train in Python but deploy into a C#/C++/Java app
-- Train and perform inference with models created in different frameworks
+- Improve inference performance for a wide variety of ML models.
+- Run on different hardware and operating systems.
+- Train in Python but deploy into a C#/C++/Java app.
+- Train and perform inference with models created in different frameworks.
 
-For more details on ONNX Runtime, see [here](https://onnxruntime.ai/docs/)
+For more details on ONNX Runtime, see [here](https://onnxruntime.ai/docs/).
 
 ### Setup guide
 
@@ -72,7 +72,7 @@ pip install onnxruntime-gpu
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the ONNX Runtime, refer this [notebook](https://colab.research.google.com/drive/1A-qYPX52V2q-7fXHaLeNRJqPUk3a4Qkd)
+For a hands-on guide on how to use the ONNX Runtime, refer this [notebook](https://colab.research.google.com/drive/1A-qYPX52V2q-7fXHaLeNRJqPUk3a4Qkd).
 
 ## TensorRT
 
@@ -88,11 +88,11 @@ TensorRT is available as a pip package, `tensorrt`. To install the package, run 
 ```
 pip install tensorrt
 ```
-for other installation methods, see [here](https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html#install) 
+for other installation methods, see [here](https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html#install).
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the TensorRT, refer this [notebook](https://colab.research.google.com/drive/1b8ueEEwgRc9fGqky1f6ZPx5A2ak82FE1)
+For a hands-on guide on how to use the TensorRT, refer this [notebook](https://colab.research.google.com/drive/1b8ueEEwgRc9fGqky1f6ZPx5A2ak82FE1).
 
 ## OpenVINO
 
@@ -100,10 +100,10 @@ For a hands-on guide on how to use the TensorRT, refer this [notebook](https://c
 
 The OpenVINO™ toolkit enables user to optimize a deep learning model from almost any framework and deploy it with best-in-class performance on a range of Intel® processors and other hardware platforms.
 The benefits of using OpenVINO includes:
-- link directly with OpenVINO Runtime to run inference locally or use OpenVINO Model Server to serve model inference from a separate server or within Kubernetes environment
+- link directly with OpenVINO Runtime to run inference locally or use OpenVINO Model Server to serve model inference from a separate server or within Kubernetes environment.
 - Write an application once, deploy it anywhere on your preferred device, language and OS.
-- has minimal external dependencies 
-- Reduces first-inference latency by using the CPU for initial inference and then switching to another device once the model has been compiled and loaded to memory
+- has minimal external dependencies.
+- Reduces first-inference latency by using the CPU for initial inference and then switching to another device once the model has been compiled and loaded to memory.
 
 ### Setup guide
 
@@ -112,11 +112,11 @@ Openvino is available as a pip package, `openvino`. To install the package, run 
 pip install openvino
 ```
 
-For other installation methods, see [here](https://docs.openvino.ai/2023.2/openvino_docs_install_guides_overview.html?VERSION=v_2023_2_0&OP_SYSTEM=LINUX&DISTRIBUTION=ARCHIVE)
+For other installation methods, see [here](https://docs.openvino.ai/2023.2/openvino_docs_install_guides_overview.html?VERSION=v_2023_2_0&OP_SYSTEM=LINUX&DISTRIBUTION=ARCHIVE).
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the OpenVINO, refer this [notebook](https://colab.research.google.com/drive/1FWD0CloFt6gIEd0WBSMBDDKzA7YUE8Wz)
+For a hands-on guide on how to use the OpenVINO, refer this [notebook](https://colab.research.google.com/drive/1FWD0CloFt6gIEd0WBSMBDDKzA7YUE8Wz).
 
 ## Optimum
 
@@ -142,11 +142,11 @@ Optimum is available as a pip package, `optimum`. To install the package, run th
 pip install optimum
 ``` 
 
-For installation of accelerator-specific features, see [here](https://huggingface.co/docs/optimum/installation)
+For installation of accelerator-specific features, see [here](https://huggingface.co/docs/optimum/installation).
 
 ### Hands-on guide
 
-For a hands-on guide on how to use Optimum for quantization, refer this [notebook](https://colab.research.google.com/drive/1tz4eHqSZzGlXXS3oBUc2NRbuRCn2HjdN)
+For a hands-on guide on how to use Optimum for quantization, refer this [notebook](https://colab.research.google.com/drive/1tz4eHqSZzGlXXS3oBUc2NRbuRCn2HjdN).
 
 ## EdgeTPU
 
@@ -154,12 +154,12 @@ For a hands-on guide on how to use Optimum for quantization, refer this [noteboo
 
 Edge TPU is Google’s purpose-built ASIC designed to run AI at the edge. It delivers high performance in a small physical and power footprint, enabling the deployment of high-accuracy AI at the edge.
 The benefits of using EdgeTPU includes:
-- Complements Cloud TPU and Google Cloud services to provide an end-to-end, cloud-to-edge, hardware + software infrastructure for AI-based solutions deployment
-- High performance in a small physical and power footprint
+- Complements Cloud TPU and Google Cloud services to provide an end-to-end, cloud-to-edge, hardware + software infrastructure for AI-based solutions deployment.
+- High performance in a small physical and power footprint.
 - Combined custom hardware, open software, and state-of-the-art AI algorithms to provide high-quality, easy to deploy AI solutions for the edge.
 
 For more details on EdgeTPU, see [here](https://cloud.google.com/edge-tpu)
 
-For guide on how to setup and use EdgeTPU, refer this [notebook](https://colab.research.google.com/drive/1aMEZE2sI9aMLLBVJNSS37ltMwmtEbMKl)
+For guide on how to setup and use EdgeTPU, refer this [notebook](https://colab.research.google.com/drive/1aMEZE2sI9aMLLBVJNSS37ltMwmtEbMKl).
 
 
