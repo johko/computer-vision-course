@@ -23,12 +23,17 @@ For training purpose, the paper proposed following steps
 - Fine tune Alexnet model on the regions dataset . 
 - Then use the fine tuned model on the object detection dataset . 
 
-
+The following is a basic pipeline of RCNN 
+![rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/RCNN.png)
 
 
 ## Fast RCNN 
 
-TBC 
+Fast RCNN is nothing but an improvization over RCNN. They added these three improvements
+
+- Training in Single-stage instead of Multi-stage like RCNN. Uses Multi-task loss
+- No feature storage requiored
+- Introduces ROI pooling layer to get the Region of Interest.
 
 ### Faster RCNN 
 
@@ -38,3 +43,4 @@ It introduces RPN , regional proposal network .
 ## Reference 
 
 [1] [Rich feature hierarchies for accurate object detection and semantic segmentation](https://arxiv.org/abs/1311.2524v5)
+[2] [Fast R-CNN](https://arxiv.org/abs/1504.08083)
