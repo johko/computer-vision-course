@@ -32,8 +32,11 @@ The following is a basic pipeline of RCNN
 Fast RCNN is nothing but an improvization over RCNN. They added these three improvements
 
 - Training in Single-stage instead of Multi-stage like RCNN. Uses Multi-task loss
-- No feature storage requiored
+- No disk storage required
 - Introduces ROI pooling layer to get the Region of Interest.
+- Trains an end-to-end model in contrary to multi-step RCNN / SPPnet models using multi-task loss.
+
+![fast_rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Fast%20R-CNN.png)
 
 ### Faster RCNN 
 
