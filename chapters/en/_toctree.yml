@@ -110,6 +110,8 @@
     local: "Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/Ethical Issues"
 - title: Unit 6 - Basic CV Tasks
   sections:
+  - title: Introduction
+    local: "Unit 6 - Basic CV Tasks/introduction"
   - title: Object Detection
     local: "Unit 6 - Basic CV Tasks/object_detection"
   - title: Image Segmentation
@@ -122,6 +124,8 @@
     local: "Unit 7 - Video and Video Processing/video-processing-basics"
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
   sections:
+  - title: Introduction
+    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/introduction"
   - title: Applications of 3D Vision
     local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/applications"
   - title: A Brief History of 3D Vision
