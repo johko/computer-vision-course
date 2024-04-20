@@ -38,3 +38,5 @@ Some other metrics you might come across are SSIM, PSNR, IS(Inception Score), an
 * Inception score was introduced in [Improved Techniques for Training GANs](https://arxiv.org/pdf/1606.03498.pdf). It is calculated using the features on the inceptionv3 model. The higher the better. It is a mathematically very interesting metric, but has recently fallen out of favor.
 
 * CLIP Score, this metric was introduced in [CLIPScore: A Reference-free Evaluation Metric for Image Captioning](https://arxiv.org/pdf/2104.08718.pdf) is used to evaluate the quality of text to image models. It is calculated by using the CLIP model to calculate the cosine similarity between the generated image and the text prompt. Its range is [0, 100], the higher the better.
+
+ If you're *really curious* about FID. [The Role of ImageNet Classes in Fréchet Inception Distance](https://arxiv.org/pdf/2203.06026.pdf) tries to analyze what FID considers important in an image, and how the features pretrained on imagenet affect the FID score. It is a very interesting read.
