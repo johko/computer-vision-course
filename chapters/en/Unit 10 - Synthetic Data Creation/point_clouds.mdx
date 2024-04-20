@@ -85,3 +85,64 @@ The type of file is inferred from its file extension. Some of the extensions sup
 - This file format is based on the COLLADA (COLLAborative Design Activity) XML schema which is an open standard XML schema for the exchange of digital assets among graphics software applications
 - The format's biggest selling point is its compatibility across multiple platforms.
 - COLLADA files aren't restricted to one program or manufacturer. Instead, they offer a standard way to store 3D assets.
+
+# Let's Start working on Point-Clouds
+
+We can load different styles of Point-Clouds using the [point-cloud-utils](https://github.com/fwilliams/point-cloud-utils) library, like this:
+
+There is more information also available in the [point-cloud-utils](https://github.com/fwilliams/point-cloud-utils) library itself!
+
+```bash
+
+import point_cloud_utils as pcu
+
+# Load mesh vertices and faces
+vertices, faces = pcu.load_mesh_vf("path/to/mesh")
+
+# Load mesh vertices and per-vertex normals
+vertices, normals = pcu.load_mesh_vn("path/to/mesh")
+
+# Load mesh vertices, per-vertex normals, and per-vertex colors
+vertices, normals, colors = pcu.load_mesh_vnc("path/to/mesh")
+
+# Load mesh vertices, faces, and per-vertex normals
+vertices, faces, normals = pcu.load_mesh_vfn("path/to/mesh")
+
+# Load mesh vertices, faces, per-vertex normals, and per-vertex colors
+vertices, faces, normals, colors = pcu.load_mesh_vfnc("path/to/mesh")
+```
+
+Why dont you, as practice, try to load some 
+
+
+In general, the [Barycentric Coordinate System](https://en.wikipedia.org/wiki/Barycentric_coordinate_system) is a pretty important FileSystem, due to:
+- ** Homogeneous **
+    - Barycentric coordinates represent a point's position within a triangle. If you multiply these coordinates by any non-zero number, you still get the same point's position. 
+    - It's like saying if you know how far along each side you are, it doesn't matter if you measure in meters, centimeters, or any other unit; your position relative to the triangle's vertices remains the same.
+
+- ** Unique ** 
+    - For every point inside a triangle, there's only one set of barycentric coordinates that tells you how far along each side you are. 
+    - Again, it's like saying if you're somewhere inside a triangle, there's only one combination of distances to each vertex that describes exactly where you are.
+
+- ** Affine-Invariant **
+    - Barycentric coordinates don't change even if you move, rotate, or resize the triangle.
+    -  So, if you're at the same position inside a triangle, your barycentric coordinates won't change no matter how you move or change the triangle's shape.
+
+So, here we see that we can use the barycentric Coordinates, to generate random samples on a mesh, just as an example
+```bash 
+
+import point_cloud_utils as pcu
+import numpy as np
+
+# Load mesh vertices, faces, and per-vertex normals
+vertices, faces, normals = pcu.load_mesh_vfn("my_model.ply")
+
+# Generate random samples on the mesh (vertices, faces, normals)
+# f_indices: Face indices of each sample, bary_coords: Barycentric coordinates of the samples within each face
+f_indices, bary_coords = pcu.sample_mesh_random(vertices, faces, num_samples=vertices.shape[0] * 40)
+
+# Interpolate to compute sample positions and normals using face indices and barycentric coordinates
+sampled_vertices = pcu.interpolate_barycentric_coords(faces, f_indices, bary_coords, vertices)
+sampled_normals = pcu.interpolate_barycentric_coords(faces, f_indices, bary_coords, normals)
+```
+
