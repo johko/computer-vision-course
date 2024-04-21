@@ -2,7 +2,7 @@
 
 Hey 👋, great that you want to contribute to the Community Computer Vision Course! We're happy to hear your suggestions and ideas!
 
-## Adding content to the course
+### Adding content to the course
 *Important Note: If you’ve never contributed to open-source projects on GitHub, kindly read [this document](https://www.notion.so/19411c29298644df8e9656af45a7686d?pvs=25) which shows to do so with an example for the skops repository.*
 
 1. First go to the [discussion section](https://github.com/johko/computer-vision-course/discussions/).
@@ -14,19 +14,22 @@ Hey 👋, great that you want to contribute to the Community Computer Vision Cou
    3. When you feel like you are ready, create a pull request to this repository. See [How to Create a Pull Request](#how-to-create-a-pull-reques)
 
 
-## Typos/Bug fixes
+### Typos/Bug fixes
 1. Open an [Issue](https://github.com/johko/computer-vision-course/issues) describing which content you want to add, change or fix
 2. Wait for an approval from the repository maintainers
 3. Follow the steps below to create a PR
 
 
-## How to Create a Pull Request (PR)
+### How to Create a Pull Request (PR)
 1. Fork the repository
 2. Create a new branch for your changes
 3. Make your changes
 4. Create a pull request to the [stage](https://github.com/johko/computer-vision-course/tree/stage) branch of the main repository
 5. Wait for the maintainers to approve your PR
 6. Celebrate your contribution 🥳🎉
+
+### Releases
+We will collect contributions in the *stage* branch and publish new releases of the course in regular time intervals.
 
 
 ## 📝 Content Guidelines
