@@ -33,17 +33,22 @@ Fast RCNN is nothing but an improvization over RCNN. They added these three impr
 
 - Training in Single-stage instead of Multi-stage like RCNN. Uses Multi-task loss
 - No disk storage required
-- Introduces ROI pooling layer to get the Region of Interest.
+- Introduces ROI pooling layer to only get the features from the  Region of Interests.
 - Trains an end-to-end model in contrary to multi-step RCNN / SPPnet models using multi-task loss.
 
 ![fast_rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Fast%20R-CNN.png)
 
 ### Faster RCNN 
 
-It introduces RPN , regional proposal network . 
+- It introduces RPN , regional proposal network . The RPN is an attention based model which trains the model to give "attention" to the region of the image 
+containing the object . 
+- It merges RPN with Fast RCNN , making it as the End-to-End object detection model. 
+
+
 
 
 ## Reference 
 
 [1] [Rich feature hierarchies for accurate object detection and semantic segmentation](https://arxiv.org/abs/1311.2524v5)
 [2] [Fast R-CNN](https://arxiv.org/abs/1504.08083)
+[3] [Faster R-CNN](https://arxiv.org/pdf/1506.01497.pdf)
