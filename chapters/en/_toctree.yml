@@ -167,8 +167,6 @@
     local: "Unit 10 - Synthetic Data Creation/datagen-diffusion-models"
   - title: Challenges and Opportunities Associated With Using Synthetic Data
     local: "Unit 10 - Synthetic Data Creation/challenges"
-  - title: Introduction to Point Clouds
-    local: "Unit 10 - Synthetic Data Creation/point_clouds"
 - title: Unit 11  - Zero Shot Computer Vision
   sections:
   - title: Introduction
