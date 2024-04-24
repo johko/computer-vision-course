@@ -1,199 +1,196 @@
 - title: Unit 0 - Welcome
   sections:
   - title: Welcome to the Community Computer Vision Course
-    local: "Unit 0 - Welcome/welcome"
+    local: "unit0/welcome/welcome"
   - title: Table of Contents for Notebooks
-    local: "Unit 0 - Welcome/TableOfContents"
+    local: "unit0/welcome/TableOfContents"
 - title: Unit 1 - Fundamentals
   sections:
   - title: Vision
-    local: "Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/motivation"
+    local: "unit1/chapter1/motivation"
   - title: Image
-    local: "Unit 1 - Fundamentals/image_and_imaging/image"
+    local: "unit1/image_and_imaging/image"
+  - title: Imaging
+    local: "unit1/image_and_imaging/imaging"
   - title: Imaging in Real-life
-    local: "Unit 1 - Fundamentals/image_and_imaging/extension-image"
+    local: "unit1/image_and_imaging/extension-image"
   - title: What Is Computer Vision
-    local: "Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/definition"
+    local: "unit1/chapter1/definition"
   - title: Applications of Computer Vision
-    local: "Unit 1 - Fundamentals/Chapter 1 - Fundamentals of Computer Vision/applications"
-  - title: Image Acquisition Fundamentals in Digital Processing
-    local: "Unit 1 - Fundamentals/image_and_imaging/imaging"
+    local: "unit1/chapter1/applications"
   - title: Pre-processing for Computer Vision Tasks
-    local: "Unit 1 - Fundamentals/image_and_imaging/examples-preprocess"
+    local: "unit1/image_and_imaging/examples-preprocess"
   - title: Feature Description
-    local: "Unit 1 - Fundamentals/feature-extraction/feature_description"
+    local: "unit1/feature-extraction/feature_description"
   - title: Feature Matching
-    local: "Unit 1 - Fundamentals/feature-extraction/feature-matching"
+    local: "unit1/feature-extraction/feature-matching"
   - title: Real-world Applications of Feature Extraction in Computer Vision
-    local: "Unit 1 - Fundamentals/feature-extraction/real-world-applications"
+    local: "unit1/feature-extraction/real-world-applications"
 - title: Unit 2 - Convolutional Neural Networks
   sections:
   - title: Introduction to Convolutional Neural Networks
-    local: "Unit 2 - Convolutional Neural Networks/introduction"
+    local: "unit2/cnns/introduction"
   - title: Very Deep Convolutional Networks for Large Scale Image Recognition
-    local: "Unit 2 - Convolutional Neural Networks/vgg"
+    local: "unit2/cnns/vgg"
   - title: Googlenet
-    local: "Unit 2 - Convolutional Neural Networks/googlenet"
+    local: "unit2/cnns/googlenet"
   - title: MobileNet
-    local: "Unit 2 - Convolutional Neural Networks/mobilenet"
+    local: "unit2/cnns/mobilenet"
   - title: ConvNext - A ConvNet for the 2020s (2022)
-    local: "Unit 2 - Convolutional Neural Networks/convnext"
+    local: "unit2/cnns/convnext"
   - title: Introduction to Transfer Learning
-    local: "Unit 2 - Convolutional Neural Networks/intro-transfer-learning"
+    local: "unit2/cnns/intro-transfer-learning"
+  - title: Lets Dive Further with MobileNet
+    local: "unit2/cnns/mobilenetextra"
 - title: Unit 3 - Vision Transformers
   sections:
   - title: Vision Transformers for Image Classification
-    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Classification"
+    local: "unit3/vision-transformers/vision-transformers-for-image-classification"
   - title: Swin Transformer
-    local: "Unit 3 - Vision Transformers/Swin Transformer"
+    local: "unit3/vision-transformers/swin-transformer"
   - title: Convolutional Vision Transformer (CvT)
-    local: "Unit 3 - Vision Transformers/Convolutional Vision Transformer"
+    local: "unit3/vision-transformers/cvt"
   - title: Dilated Neighborhood Attention Transformer (DINAT)
-    local: "Unit 3 - Vision Transformers/Dinat Transformer"
+    local: "unit3/vision-transformers/dinat"
   - title: MobileViT v2
-    local: "Unit 3 - Vision Transformers/MobileVIT"
-  - title: Lets Dive Further with MobileNet
-    local: "Unit 2 - Convolutional Neural Networks/mobilenetextra"
+    local: "unit3/vision-transformers/mobilevit"
   - title: FineTuning Vision Transformer for Object Detection
-    local: "Unit 3 - Vision Transformers/Vision Transformer for Objection Detection"
+    local: "unit3/vision-transformers/vision-transformer-for-objection-detection"
   - title: DEtection TRansformer (DETR)
-    local: "Unit 3 - Vision Transformers/Common Vision Transformers - DETR"
+    local: "unit3/vision-transformers/detr"
   - title: Vision Transformers for Image Segmentation
-    local: "Unit 3 - Vision Transformers/Vision Transformers for Image Segmentation"
+    local: "unit3/vision-transformers/vision-transformers-for-image-segmentation"
   - title: OneFormer
-    local: "Unit 3 - Vision Transformers/oneformer"
+    local: "unit3/vision-transformers/oneformer"
   - title: Knowledge Distillation with Vision Transformers
-    local: "Unit 3 - Vision Transformers/KnowledgeDistillation"
+    local: "unit3/vision-transformers/knowledge-distillation"
 - title: Unit 4 - Multimodal Models
   sections:
   - title: Exploring Multimodal Text and Vision Models - Uniting Senses in AI
-    local: "Unit 4 - Multimodal Models/pre-intro"
+    local: "unit4/multimodal-models/pre-intro"
   - title: A Multimodal World
-    local: "Unit 4 - Multimodal Models/a_multimodal_world"
+    local: "unit4/multimodal-models/a_multimodal_world"
   - title: Introduction to Vision Language Models
-    local: "Unit 4 - Multimodal Models/vlm-intro"
+    local: "unit4/multimodal-models/vlm-intro"
   - title: Multimodal Tasks and Models
-    local: "Unit 4 - Multimodal Models/tasks-models-part1"
+    local: "unit4/multimodal-models/tasks-models-part1"
   - title: CLIP and Relatives
-    local: "Unit 4 - Multimodal Models/CLIP and relatives/Introduction"
+    local: "unit4/multimodal-models/clip-and-relatives/Introduction"
   - title: Losses
-    local: "Unit 4 - Multimodal Models/CLIP and relatives/losses"
+    local: "unit4/multimodal-models/clip-and-relatives/losses"
   - title: Contrastive Language-Image Pre-training (CLIP)
-    local: "Unit 4 - Multimodal Models/CLIP and relatives/clip"
+    local: "unit4/multimodal-models/clip-and-relatives/clip"
   - title: Multimodal Text Generation (BLIP)
-    local: "Unit 4 - Multimodal Models/CLIP and relatives/blip"
+    local: "unit4/multimodal-models/clip-and-relatives/blip"
   - title: Multimodal Object Detection (OWL-ViT)
-    local: "Unit 4 - Multimodal Models/CLIP and relatives/owl_vit"
+    local: "unit4/multimodal-models/clip-and-relatives/owl_vit"
   - title: Transfer Learning of Multimodal Models
-    local: "Unit 4 - Multimodal Models/transfer_learning"
+    local: "unit4/multimodal-models/transfer_learning"
   - title: Supplementary Reading and Resources
-    local: "Unit 4 - Multimodal Models/supplementary-material"
+    local: "unit4/multimodal-models/supplementary-material"
 - title: Unit 5 - Generative Models
   sections:
   - title: Introduction
-    local: "Unit 5 - Generative Models/Introduction/Introduction"
+    local: "unit5/generative-models/introduction/introduction"
   - title: Variational Autoencoders
-    local: "Unit 5 - Generative Models/variational_autoencoders"
+    local: "unit5/generative-models/variational_autoencoders"
   - title: Generative Adversarial Networks
-    local: "Unit 5 - Generative Models/gans"
+    local: "unit5/generative-models/gans"
   - title: StyleGAN Variants
-    local: "Unit 5 - Generative Models/GANs & VAEs/StyleGAN"
+    local: "unit5/generative-models/gans-vaes/stylegan"
   - title: CycleGAN Introduction
-    local: "Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/cycle_gan"
+    local: "unit5/generative-models/practical-applications/cycle_gan"
   - title: Introduction to Diffusion Models
-    local: "Unit 5 - Generative Models/Diffusion models/Introduction - Diffusions"
+    local: "unit5/generative-models/diffusion-models/introduction"
   - title: Introduction to Stable Diffusion
-    local: "Unit 5 - Generative Models/Diffusion models/stable_diffusion"
+    local: "unit5/generative-models/diffusion-models/stable-diffusion"
   - title: Control over Diffusion Models
-    local: "Unit 5 - Generative Models/Diffusion models/Simple explanation and showcase of external resources"
+    local: "unit5/generative-models/diffusion-models/simple-explanation"
   - title: Privacy, Bias and Societal Concerns
-    local: "Unit 5 - Generative Models/PRACTICAL APPLICATIONS & CHALLENGES/Ethical Issues"
+    local: "unit5/generative-models/practical-applications/ethical-issues"
 - title: Unit 6 - Basic CV Tasks
   sections:
   - title: Introduction
-    local: "Unit 6 - Basic CV Tasks/introduction"
+    local: "unit6/basic-cv-tasks/introduction"
   - title: Object Detection
-    local: "Unit 6 - Basic CV Tasks/object_detection"
+    local: "unit6/basic-cv-tasks/object_detection"
   - title: Image Segmentation
-    local: "Unit 6 - Basic CV Tasks/segmentation"
+    local: "unit6/basic-cv-tasks/segmentation"
 - title: Unit 7 - Video and Video Processing
   sections:
   - title: Introduction
-    local: "Unit 7 - Video and Video Processing/introduction-to-video"
+    local: "unit7/video-processing/introduction-to-video"
   - title: Video Processing Basics
-    local: "Unit 7 - Video and Video Processing/video-processing-basics"
+    local: "unit7/video-processing/video-processing-basics"
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
   sections:
   - title: Introduction
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/introduction"
+    local: "unit8/introduction/introduction"
   - title: Applications of 3D Vision
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/applications"
+    local: "unit8/introduction/applications"
   - title: A Brief History of 3D Vision
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Introduction/brief_history"
+    local: "unit8/introduction/brief_history"
   - title: Camera models
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies
-      and Basics/CameraModels"
+    local: "unit8/terminologies/camera-models"
   - title: Basics of Linear Algebra for 3D Data
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies
-      and Basics/LinearAlgebra"
+    local: "unit8/terminologies/linear-algebra"
   - title: Representations for 3D Data
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/Terminologies
-      and Basics/Representations"
+    local: "unit8/terminologies/representations"
   - title: Novel View Synthesis
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3D Vision/NVS"
+    local: "unit8/3d-vision/nvs"
   - title: Introduction to Stereo Vision
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/3d_measurements_stereo_vision"
+    local: "unit8/3d_measurements_stereo_vision"
   - title: Neural Radiance Fields (NeRFs)
-    local: "Unit 8 - 3D Vision, Scene Rendering and Reconstruction/nerf"
+    local: "unit8/nerf"
 - title: Unit 9 - Model Optimization
   sections:
   - title: Introduction to Model Optimization for Deployment
-    local: "Unit 9 - Model Optimization/intro_to_model_optimization"
+    local: "unit9/intro_to_model_optimization"
   - title: Model Deployment Considerations
-    local: "Unit 9 - Model Optimization/model_deployment"
+    local: "unit9/model_deployment"
   - title: Model Optimization Tools and Frameworks
-    local: "Unit 9 - Model Optimization/tools_and_frameworks"
+    local: "unit9/tools_and_frameworks"
 - title: Unit 10 - Synthetic Data Creation
   sections:
   - title: Introduction
-    local: "Unit 10 - Synthetic Data Creation/introduction"
+    local: "unit10/introduction"
   - title: Synthetic Datasets
-    local: "Unit 10 - Synthetic Data Creation/synthetic_datasets"
+    local: "unit10/synthetic_datasets"
   - title: Using a 3D Renderer to Generate Synthetic Data
-    local: "Unit 10 - Synthetic Data Creation/blenderProc"
+    local: "unit10/blenderProc"
   - title: Synthetic Data Generation Using DCGAN
-    local: "Unit 10 - Synthetic Data Creation/synthetic-lung-images"
+    local: "unit10/synthetic-lung-images"
   - title: Synthetic Data Generation with Diffusion Models
-    local: "Unit 10 - Synthetic Data Creation/datagen-diffusion-models"
+    local: "unit10/datagen-diffusion-models"
   - title: Challenges and Opportunities Associated With Using Synthetic Data
-    local: "Unit 10 - Synthetic Data Creation/challenges"
+    local: "unit10/challenges"
   - title: Introduction to Point Clouds
-    local: "Unit 10 - Synthetic Data Creation/point_clouds"
+    local: "unit10/point_clouds"
 - title: Unit 11  - Zero Shot Computer Vision
   sections:
   - title: Introduction
-    local: "Unit 11  - Zero Shot Computer Vision/1"
+    local: "unit11/1"
   - title: Zero-shot Learning
-    local: "Unit 11  - Zero Shot Computer Vision/2"
+    local: "unit11/2"
 - title: Unit 12 - Ethics and Biases
   sections:
   - title: 'Exploring Ethical Foundations in CV Models'
-    local: "Unit 12 - Ethics and Biases/pre-intro"
+    local: "unit12/pre-intro"
   - title: Introduction
-    local: "Unit 12 - Ethics and Biases/introduction"
+    local: "unit12/introduction"
   - title: "Ethics and Bias in AI"
-    local: "Unit 12 - Ethics and Biases/ethics-bias-ai"
+    local: "unit12/ethics-bias-ai"
   - title: "Hugging Face's efforts: Ethics and Society"
-    local: "Unit 12 - Ethics and Biases/conclusion"
+    local: "unit12/conclusion"
   - title: "Supplementary reading and resources"
-    local: "Unit 12 - Ethics and Biases/supplementary-material"
+    local: "unit12/supplementary-material"
 - title: Unit 13 - Outlook
   sections:
   - title: Retention In Vision
-    local: "Unit 13 - Outlook/Retention - overview"
+    local: "unit13/retention"
   - title: Overview of Hiera
-    local: "Unit 13 - Outlook/hiera"
+    local: "unit13/hiera"
   - title: Overview of Hyena
-    local: "Unit 13 - Outlook/hyena"
+    local: "unit13/hyena"
   - title: Overview of I-JEPA
-    local: "Unit 13 - Outlook/i-jepa"
+    local: "unit13/i-jepa"
