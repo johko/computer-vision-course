@@ -97,7 +97,7 @@
   - title: Generative Adversarial Networks
     local: "unit5/generative-models/gans"
   - title: StyleGAN Variants
-    local: "unit5/generative-models/gans-vaes/stylegan
+    local: "unit5/generative-models/gans-vaes/stylegan"
   - title: CycleGAN Introduction
     local: "unit5/generative-models/practical-applications/cycle_gan"
   - title: Introduction to Diffusion Models
