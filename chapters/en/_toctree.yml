@@ -18,8 +18,6 @@
     local: "unit1/chapter1/definition"
   - title: Applications of Computer Vision
     local: "unit1/chapter1/applications"
-  - title: Image Acquisition Fundamentals in Digital Processing
-    local: "unit1/chapter1/image_and_imaging/imaging"
   - title: Pre-processing for Computer Vision Tasks
     local: "unit1/image_and_imaging/examples-preprocess"
   - title: Feature Description
