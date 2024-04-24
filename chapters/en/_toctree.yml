@@ -10,6 +10,8 @@
     local: "unit1/chapter1/motivation"
   - title: Image
     local: "unit1/image_and_imaging/image"
+  - title: Imaging
+    local: "unit1/image_and_imaging/imaging"
   - title: Imaging in Real-life
     local: "unit1/image_and_imaging/extension-image"
   - title: What Is Computer Vision
