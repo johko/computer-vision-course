@@ -9,7 +9,7 @@
   - title: Vision
     local: "unit1/chapter1/motivation"
   - title: Image
-    local: "unit1/image_and_imaging/image"
+    local: "unit1/image_and_imaging/imaging"
   - title: Imaging in Real-life
     local: "unit1/image_and_imaging/extension-image"
   - title: What Is Computer Vision
@@ -125,7 +125,7 @@
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
   sections:
   - title: Introduction
-    local: "unit8/3d-vision/Introduction/introduction"
+    local: "unit8/Introduction/introduction"
   - title: Applications of 3D Vision
     local: "unit8/introduction/applications"
   - title: A Brief History of 3D Vision
@@ -139,9 +139,9 @@
   - title: Novel View Synthesis
     local: "unit8/3d-vision/nvs"
   - title: Introduction to Stereo Vision
-    local: "unit8/3d-vision/3d_measurements_stereo_vision"
+    local: "unit8/3d_measurements_stereo_vision"
   - title: Neural Radiance Fields (NeRFs)
-    local: "unit8/3d-vision/nerf"
+    local: "unit8/nerf"
 - title: Unit 9 - Model Optimization
   sections:
   - title: Introduction to Model Optimization for Deployment
