@@ -10,14 +10,14 @@
     local: "unit1/chapter1/motivation"
   - title: Image
     local: "unit1/image_and_imaging/image"
+  - title: Imaging
+    local: "unit1/image_and_imaging/imaging"
   - title: Imaging in Real-life
     local: "unit1/image_and_imaging/extension-image"
   - title: What Is Computer Vision
     local: "unit1/chapter1/definition"
   - title: Applications of Computer Vision
     local: "unit1/chapter1/applications"
-  - title: Image Acquisition Fundamentals in Digital Processing
-    local: "unit1/chapter1/image_and_imaging/imaging"
   - title: Pre-processing for Computer Vision Tasks
     local: "unit1/image_and_imaging/examples-preprocess"
   - title: Feature Description
@@ -97,7 +97,7 @@
   - title: Generative Adversarial Networks
     local: "unit5/generative-models/gans"
   - title: StyleGAN Variants
-    local: "unit5/generative-models/gans-vaes/stylegan
+    local: "unit5/generative-models/gans-vaes/stylegan"
   - title: CycleGAN Introduction
     local: "unit5/generative-models/practical-applications/cycle_gan"
   - title: Introduction to Diffusion Models
@@ -125,7 +125,7 @@
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
   sections:
   - title: Introduction
-    local: "unit8/3d-vision/Introduction/introduction"
+    local: "unit8/introduction/introduction"
   - title: Applications of 3D Vision
     local: "unit8/introduction/applications"
   - title: A Brief History of 3D Vision
@@ -139,9 +139,9 @@
   - title: Novel View Synthesis
     local: "unit8/3d-vision/nvs"
   - title: Introduction to Stereo Vision
-    local: "unit8/3d-vision/3d_measurements_stereo_vision"
+    local: "unit8/3d_measurements_stereo_vision"
   - title: Neural Radiance Fields (NeRFs)
-    local: "unit8/3d-vision/nerf"
+    local: "unit8/nerf"
 - title: Unit 9 - Model Optimization
   sections:
   - title: Introduction to Model Optimization for Deployment
