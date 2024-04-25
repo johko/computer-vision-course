@@ -16,12 +16,12 @@ As we already know, optimizing the model is important in before the deployment s
 There are several techniques in the model optimization, which will be explained in the next section. However, this section will briefly describe several types:
 1. Pruning: Pruning is the process of eliminating redundant or unimportant connections in the model. This aims to reduce model size and complexity.
 
-![Pruning](https://huggingface.co/datasets/hf-vision/course-assets/raw/main/pruning.png)
+![Pruning](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/pruning.png)
 
 2. Quantization: Quantization means converting model weights from high-precision formats (e.g., 32-bit floating-point) to lower-precision formats (e.g., 16-bit floating-point or 8-bit integers) to reduce memory footprint and increase inference speed.
 3. Knowledge Distillation: Knowledge distillation aims to transfer knowledge from a complex and larger model (teacher model) to a smaller model (student model) by mimicking the behavior of the teacher model.
 
-![Knowledge Distillation](https://huggingface.co/datasets/hf-vision/course-assets/raw/main/knowledge_distillation.png)
+![Knowledge Distillation](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/knowledge_distillation.png)
 
 4. Low-rank approximation: Approximates large matrices with small ones, reducing memory consumption and computational costs.
 5. Model compression with hardware accelerators: This process is like pruning and quantization. But, running on specific hardware such as NVIDIA GPUs and Intel Hardware.
@@ -34,9 +34,9 @@ A trade-off exists between accuracy, performance, and resource usage when deploy
 
 Image below shows a common computer vision model in terms of model size, accuracy, and latency. Bigger model has high accuracy, but needs more time for inference and big size.
 
-![Model Size VS Accuracy](https://huggingface.co/datasets/hf-vision/course-assets/raw/main/model_size_vs_accuracy.png)
+![Model Size VS Accuracy](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/model_size_vs_accuracy.png)
 
-![Accuracy VS Latency](https://huggingface.co/datasets/hf-vision/course-assets/raw/main/accuracy_vs_latency.png)
+![Accuracy VS Latency](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/accuracy_vs_latency.png)
 
 These are the three things we must consider: where do we focus on the model we trained? For example, focusing on high accuracy will result in a slower model during inference or require extensive resources. To overcome this, we apply one of the optimization methods as explained so that the model we get can maximize or balance the trade-off between the three components mentioned above.
 
