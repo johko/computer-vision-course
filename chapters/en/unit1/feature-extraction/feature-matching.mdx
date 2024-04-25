@@ -15,7 +15,7 @@ First install and load libraries
 ```
 
 ```python
-import cv2
+import cv2 as cv
 import numpy as np
 ```
 
@@ -207,7 +207,7 @@ We can use [Kornia](https://github.com/kornia/kornia) to find matching features 
 Import the necessary libraries.
 
 ```python
-import cv2
+import cv2 as cv
 import kornia as K
 import kornia.feature as KF
 import matplotlib.pyplot as plt
@@ -255,7 +255,7 @@ Clean up the correspondences using Random Sample Consensus ([RANSAC](https://en.
 ```python
 mkpts0 = correspondences["keypoints0"].cpu().numpy()
 mkpts1 = correspondences["keypoints1"].cpu().numpy()
-Fm, inliers = cv2.findFundamentalMat(mkpts0, mkpts1, cv2.USAC_MAGSAC, 0.5, 0.999, 100000)
+Fm, inliers = cv.findFundamentalMat(mkpts0, mkpts1, cv.USAC_MAGSAC, 0.5, 0.999, 100000)
 inliers = inliers > 0
 ```
 
