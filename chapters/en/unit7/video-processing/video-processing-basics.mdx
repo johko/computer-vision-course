@@ -1,0 +1,44 @@
+# Video Processing Basics
+With the rise of transformers, vision transformers have become essential tools for various computer vision tasks. Vision transformers are great at computer vision tasks involving both images and videos.
+
+However, understanding how these models handle images and videos differently is crucial for optimal performance and accurate results.
+
+## Understanding Image Processing for Vision Transformers
+When it comes to image data, vision transformers typically process individual still images by splitting them into non-overlapping patches and then transforming these patches individually.
+Suppose we have a 224x224 image, split the image into 16x16 patches where each patch consists of 14x14 pixels. This patch-based processing not only reduces computation but it also allows the model to capture local features in the image effectively.
+Each patch is then fed through a series of self-attention layers and feed-forward neural networks to extract semantic information. Thanks to this hierarchical processing technique, vision transformers are able to capture both high-level and low-level features in the image.
+Since vision transformers process patches individually and transformers by default don't have any mechanism to track position of inputs, the spatial context of the image can be lost.
+To address this, vision transformers often include positional encodings that capture the relative position of each patch within the image. By incorporating positional information, the model can better understand the spatial relationships between different patches and enhance its ability to recognize objects and patterns.
+
+*Note:* CNNs are designed to learn spatial features, while vision transformers are designed to learn both spatial and contextual features.
+
+
+## Key Differences Between Image and Video Processing
+Videos are essentially a sequence of frames, and processing them requires techniques to capture and incorporate motion information. In image processing, the transformer ignores the temporal (time) relations between frames, i.e., it only focuses on a frame's spatial (space) information.
+
+Temporal relations are the main factors for developing a strong understanding of content in a video, thus we require a separate algorithm for videos. One of the main differences between image and video processing is the inclusion of an additional axis, time to the input. 
+There are two main approaches for extracting tokens from a video or embedding a video clip.
+
+
+### Uniform Frame Sampling
+
+It is a straightforward method of tokenizing the input video in which we uniformly sample \\(n_t\\) frames from the input video clip, embed each 2D frame independently using the same method as used in image processing, and concatenate all these tokens together.
+
+If \\(n_h*n_w\\) non-overlapping image patches are extracted from each frame, then a total of \\(n_t*n_h*n_w'\\) tokens will be forwarded through the transformer encoder. Uniform frame sampling is a tokenization scheme in which we sample frames from the video clip and perform simple ViT tokenization.
+
+
+### Tubelet Embedding
+
+This method extends the vision transformer's image embedding to 3D and corresponds to a 3D convolution. It is an alternative method in which non-overlapping, spatiotemporal "tubes" from input volume are extracted and linearly projected.
+
+
+First, we extract tubes from the video. These tubes contain patches of the frame and the temporal information as well. The tubes are then flattened to build video tokens. Intuitively, this method fuses spatiotemporal information during tokenization, in contrast to "uniform frame sampling", where temporal information from different frames is fused by the transformer.
+
+
+## Importance of Temporal Information in Video Processing
+The inclusion of temporal information in video processing is crucial for several computer vision tasks. One such task is action recognition, which aims to classify the action in a video. Temporal information is also essential for tasks like video captioning, where the goal is to generate a textual description of the content in a video.
+
+By considering the temporal relationships between frames, vision transformers can generate more contextually relevant captions. For example, if a person is shown running in one frame and then jumping in the next, the model can generate a caption that reflects this sequence of action. Furthermore, temporal processing is important for tasks like video object detection and tracking. 
+
+In conclusion, the presence of temporal information and the particular difficulties posed by video data, such as higher memory and storage needs, are the main processing distinctions between video and image. The choice between image and video processing depends on the specific computer vision task and the characteristics of the data.
+
