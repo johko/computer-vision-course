@@ -18,7 +18,7 @@ These transformations can be represented by matrices. Here we'll use `@` to deno
 
 Libraries such as [Pytorch3d](https://pytorch3d.org/) provide a range of functions for generating and manipulating transformations.
 
-Yet another convention to note - OpenGL treats positions as column vectors `x` (of shape 4x1), and applies a transformation `M` by pre-multiplying the vector by the matrix (`M @ x`), whereas DirectX and Pytorch3d consider positions as row vectors of shape (1x4), and apply a transformation by post-multiplying the vector by the matrix ( `x @ M` ). To convert between the two conventions we need to take the transpose of the matrix `M.T`. We will show how a cube transforms under different transfotmation matrices in a few code snippets. For these code snippets, we will use the OpenGL convention.
+Yet another convention to note - OpenGL treats positions as column vectors `x` (of shape 4x1), and applies a transformation `M` by pre-multiplying the vector by the matrix (`M @ x`), whereas DirectX and Pytorch3d consider positions as row vectors of shape (1x4), and apply a transformation by post-multiplying the vector by the matrix ( `x @ M` ). To convert between the two conventions we need to take the transpose of the matrix `M.T`. We will show how a cube transforms under different transformation matrices in a few code snippets. For these code snippets, we will use the OpenGL convention.
 
 ### Translations
 
@@ -137,7 +137,7 @@ Rotations around an axis are another commonly used transformation. There are a n
 
 - Rotation around the X-axis
 
-  $$ R_x(\alpha) = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos\alpha & -\sin\alpha & 0 \\ 0 & \sin\alpha & \cos\alpha & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+$$ R_x(\alpha) = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos \alpha & -\sin \alpha & 0 \\ 0 & \sin \alpha & \cos \alpha & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
 
 A little example for a positive 20 degree roation around the X-axis is given below:
 
@@ -172,13 +172,13 @@ The output should look something like this:
 
 - Rotation around the Y-axis
 
-  $$ R_y(\beta) = \begin{pmatrix} \cos\beta & 0 & \sin\beta & 0 \\ 0 & 1 & 0 & 0 \\ -\sin\beta & 0 & \cos\beta & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+$$ R_y(\beta) = \begin{pmatrix} \cos \beta & 0 & \sin \beta & 0 \\ 0 & 1 & 0 & 0 \\ -\sin \beta & 0 & \cos \beta & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
 
 We are sure you can use the example snippet above and figure out how to implement a rotation around the Y-axis.😎😎
 
 - Rotation around the Z-axis
 
-  $$ R_z(\gamma) = \begin{pmatrix} \cos\gamma & -\sin\gamma & 0 & 0 \\ \sin\gamma & \cos\gamma & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+$$ R_y(\beta) = \begin{pmatrix} \cos \beta & 0 & \sin \beta & 0 \\ 0 & 1 & 0 & 0 \\ -\sin \beta & 0 & \cos \beta & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
 
 Again, can you use the last code snippet and implement a rotation around the Z-axis❓
 
@@ -187,7 +187,7 @@ degrees to radians, multiply by \\(pi/180\\).
 
 ### Combining transformations
 
-Multiple transformations can be combined by multiplying together their matrices. Note that the order that matricies are multiplied matters - with the the matrices being applied right to left. To make a matrix that applies the transforms P, Q, and R, in that order, the composite transformation is given by \\(X = R @ Q @ P\\).
+Multiple transformations can be combined by multiplying together their matrices. Note that the order that matrices are multiplied matters - with the matrices being applied right to left. To make a matrix that applies the transforms P, Q, and R, in that order, the composite transformation is given by \\(X = R @ Q @ P\\).
 
 If we want to do first the translation, then the rotation, and then the scaling that we did above in one operation, it looks as follows:
 
@@ -199,7 +199,7 @@ ax = fig.add_subplot(111, projection="3d")
 # plot original cube
 plot_cube(ax, cube, label="Original", color="blue")
 
-# combination of transoforms
+# combination of transforms
 combination_transform = rotation_matrix.dot(scaling_matrix.dot(translation_matrix))
 final_result = combination_transform.dot(cube)
 plot_cube(ax, final_result, label="Combined", color="violet")
