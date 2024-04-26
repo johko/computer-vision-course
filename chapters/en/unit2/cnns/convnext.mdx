@@ -20,7 +20,8 @@ We will go through each of the key improvements.
 These designs are not novel in itself. However, you can learn how researchers adapt and modify designs systematically to improve existing models.
 To show the effectiveness of each improvement, we will compare the model's accuracy before and after the modification on ImageNet-1K.
 
-[Block Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/block_comparison.png)
+
+![Block Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/block_comparison.png)
 
 
 ## Training Techniques
@@ -67,7 +68,8 @@ This idea has also been used and popularized in Computer Vision by MobileNetV2.
 ConvNext adopts this idea, having input layers with 96 channels and increasing the hidden layers to 384 channels.
 By using this technique, it improves the model accuracy from 80.5% to 80.6%.
 
-[Inverted Bottleneck Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inverted_bottleneck.png)
+
+![Inverted Bottleneck Comparison](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inverted_bottleneck.png)
 
 
 ## Large Kernel Sizes
@@ -78,7 +80,8 @@ This repositioning enables the 1x1 layers to efficiently handle computational ta
 With this, the network can harness the advantages of incorporating bigger kernel-sized convolutions. 
 Implementing a 7x7 kernel size maintains the accuracy at 80.6% but reduces the overall FLOPs efficiency of the model.
 
-[Moving up the Depth Conv Layer](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/depthwise_moveup.png)
+
+![Moving up the Depth Conv Layer](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/depthwise_moveup.png)
 
 
 ## Micro Design
