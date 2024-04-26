@@ -114,27 +114,27 @@ Let's focus on a single point - the top left corner of the laptop. As per equati
 ### Rectified Left and Right Images 
 We can perform image rectification/post-processing to correct for differences in intrinsic parameters and orientations of the left and right cameras. This process involves performing 3x3 matrix transformations. In the OAK-D Lite API, a stereo node performs these calculations and outputs the rectified left and right images. Details and source code can be viewed [here](https://github.com/luxonis/depthai-experiments/blob/master/gen2-stereo-on-host/main.py). In this specific implementation, correction for intrinsic parameters is performed using intrinsic camera matrices, and correction for orientation is performed using rotation matrices(part of calibration parameters) for the left and right cameras. The rectified left image is transformed as if the left camera had the same intrinsic parameters as the right one. Therefore, in all our following calculations, we'll use the intrinsic parameters for the right camera i.e. focal length of 452.9 and principal point at (298.85, 245.52). In the rectified and stacked images below, notice that the red line at constant v touches the top-left corner of the laptop in both the left and right images.
 
-Rectified Left Image.
+Rectified Left Image
 ![Rectified Left Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_left_frame.jpg?download=true)
 
-Rectified Right Image. 
+Rectified Right Image
 ![Rectified Right Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_right_frame.jpg?download=true)
 
-Rectified and Stacked Left and Right Images. 
+Rectified and Stacked Left and Right Images
 ![Rectified and Stacked Left and Right Images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_stacked_frames.jpg?download=true)
 
 Let's also overlap the rectified left and right images to see the difference. We can see that the v values for different points remain mostly constant in the left and right images. However, the u values change, and this difference in the u values helps us find the depth information for different points in the scene, as shown in Equation 6 above. This difference in 'u' values \\(u\_left - u\_right\\) is called disparity, and we can notice that the disparity for points near the camera is greater compared to points further away. Depth z and disparity  \\(u\_left - u\_right\\)  are inversely proportional, as shown in equation 6.
 
-Rectified and Overlapped Left and Right Images. 
+Rectified and Overlapped Left and Right Images
 ![Rectified and Overlapped Left and Right Images](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/rectified_overlapping_frames.jpg?download=true)
 
 ### Annotated Left and Right Rectified Images
 Let's find the 3D coordinates for some points in the scene. A few points are selected and manually annotated with their (u,v) values, as shown in the figures below. Instead of manual annotations, we can also use template-based matching, feature detection algorithms like SIFT, etc for finding corresponding points in left and right images. 
 
-Annotated Left Image. 
+Annotated Left Image
 ![Annotated Left Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/annotated_left_img.jpg?download=true)
 
-Annotated Right Image. 
+Annotated Right Image
 ![Annotated Right Image](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/annotated_right_img.jpg?download=true)
 
 ### 3D Coordinate Calculations  
@@ -168,7 +168,7 @@ We can also compute 3D distances between different points using their (x,y,z) va
 | d5(9-10)    |           16.9 |         16.7 |               1.2  |
 | d6(9-11)    |           23.8 |         24   |               0.83 |
 
-Calculated Dimension Results.   
+Calculated Dimension Results  
 ![Calculated Dimension Results](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/3d_stereo_vision_images/calculated_dim_results.png?download=true)
 
 ## Conclusion

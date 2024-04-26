@@ -50,7 +50,7 @@ The four main highlights of CvT that helped achieve superior performance and com
 
 Time to get hands-on! Let's explore how to code each major blocks of the CvT architecture in PyTorch shown in the official implementation [[8]](#cvt-imp).
 
-1. Importing required libraries.
+1. Importing required libraries
 
 ```python
 from collections import OrderedDict
@@ -61,7 +61,7 @@ from einops import rearrange
 from einops.layers.torch import Rearrange
 ```
 
-2. Implementation of **Convolutional Projection**.
+2. Implementation of **Convolutional Projection**
 
 ```python
 def _build_projection(self, dim_in, dim_out, kernel_size, padding, stride, method):
@@ -121,7 +121,7 @@ The method takes several parameters related to a convolutional layer (such as in
 
 The rearrangement of dimensions is performed using the `Rearrange` operation, which reshapes the input tensor. The resulting projection block is then returned.
 
-3. Implementation of **Convolutional Token Embedding**.
+3. Implementation of **Convolutional Token Embedding**
 
 ```python
 class ConvEmbed(nn.Module):
@@ -161,7 +161,7 @@ This code defines a ConvEmbed module that performs patch-wise embedding on an in
 
 In summary, this module is designed for patch-wise embedding of images, where each patch is processed independently through a convolutional layer, and optional normalization is applied to the embedded features.
 
-4. Implementation of **Vision Transformer** Block.
+4. Implementation of **Vision Transformer** Block
 
 ```python
 class VisionTransformer(nn.Module):
@@ -277,7 +277,7 @@ This code defines a Vision Transformer module. Here's a brief overview of the co
 
 - **Forward Method:** The forward method processes the input through the patch embedding, rearranges the dimensions, adds the classification token if present, applies dropout, and then passes the data through the stack of transformer blocks. Finally, the output is rearranged back to the original shape, and the classification token (if present) is separated from the rest of the sequence before returning the output.
 
-5. Implementation of Convolutional Vision Transformer Block (**Hierarchy of Transformers**).
+5. Implementation of Convolutional Vision Transformer Block (**Hierarchy of Transformers**)
 
 ```python
 class ConvolutionalVisionTransformer(nn.Module):

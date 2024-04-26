@@ -21,7 +21,7 @@ The Inception Module insists on applying convolution filters of different kernel
 
 ![inception_naive](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_naive.png)
 
-Figure 1: Naive Inception Module.
+Figure 1: Naive Inception Module
 
 As we can see applying multiple convolutions at multiple scales with bigger kernel sizes, like 5x5, can increase the number of parameters drastically. This problem is pronounced as the input feature size (channel size) increases. So as we go deep in the network stacking these "Inception Modules", the computation will increase drastically. The simple solution is to reduce the number of features wherever computational requirements seem to increase. The major pain points of high computation are the convolution layers. The feature dimension is reduced by a computationally inexpensive $1 \times 1$ convolution just before the 3x3 and 5x5 convolution. Let's see it with an example.
 
@@ -31,7 +31,7 @@ We would also want to reduce the output features of max pooling before concatena
 
 ![inception_reduced](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_reduced.png)
 
-Figure 2: Inception Module.
+Figure 2: Inception Module
 
 Also, because of the parallel operations of convolutions at multiple scales, we are ensuring more operations without going deeper into the network, essentially mitigating the vanishing gradient problem.
 
@@ -68,14 +68,14 @@ These auxiliary classifiers are removed at inference time. However, minimal gain
 
 ![googlenet_aux_clf](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/googlenet_auxiliary_classifier.jpg)
 
-Figure 3: An Auxiliary Classifier.
+Figure 3: An Auxiliary Classifier
 
 ### Architecture - GoogLeNet
 
 The complete architecture of GoogLeNet is shown in Figure below. All convolutions, including inside the inception block, use ReLU activation. It starts with two convolution(s) and max-pooling blocks. This is followed by a block of two inception modules (3a and 3b) and a max pooling. This follows a block of 5 inception blocks (4a, 4b, 4c, 4d, 4e) and a max pooling after. The auxiliary classifiers are taken out from outputs of 4a and 4d. Two inception blocks follow (5a and 5b). After this, an average pooling and a fully connected layer of 128 units are used. 
 
 ![googlenet_arch](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/googlenet_architecture.png)
-Figure 4: Complete GoogLeNet Architecture.
+Figure 4: Complete GoogLeNet Architecture
 
 ### Code 
 

@@ -2,10 +2,10 @@
 
 What you will learn in this chapter:
 
-- What is missing in Vanilla GAN.
+- What is missing in Vanilla GAN
 - StyleGAN1 components and benefits
-- Drawback of StyleGAN1 and the need for StyleGAN2.
-- Drawback of StyleGAN2 and the need for StyleGAN3.
+- Drawback of StyleGAN1 and the need for StyleGAN2
+- Drawback of StyleGAN2 and the need for StyleGAN3
 - Use cases of StyleGAN
 
 ## What is missing in Vanilla GAN
@@ -23,9 +23,9 @@ Let us just dive into the special components introduced in StyleGAN that give St
 
 As I already said, StyleGAN only modifies Generator and the Discriminator remains the same, hence it is not mentioned above. Diagram (a) corresponds to the structure of ProgessiveGAN. ProgessiveGAN is just a Vanilla GAN, but instead of generating images of a fixed resolution, it progressively generates images of higher resolution in aim of generating realistic high resolution images, i.e., block 1 of generator generates image of resolution 4 by 4, block 2 of generator generates image of resolution 8 by 8 and so on. 
 Diagram (b) is the proposed StyleGAN architecture. It has the following main components:
-1. A mapping network.
-2. AdaIN (Adaptive Instance Normalisation).
-3. Concatenation of Noise vector.
+1. A mapping network
+2. AdaIN (Adaptive Instance Normalisation)
+3. Concatenation of Noise vector
 
 Let's break it down one by one. 
 
