@@ -25,9 +25,9 @@ Figure 1: Naive Inception Module
 
 As we can see applying multiple convolutions at multiple scales with bigger kernel sizes, like 5x5, can increase the number of parameters drastically. This problem is pronounced as the input feature size (channel size) increases. So as we go deep in the network stacking these "Inception Modules", the computation will increase drastically. The simple solution is to reduce the number of features wherever computational requirements seem to increase. The major pain points of high computation are the convolution layers. The feature dimension is reduced by a computationally inexpensive $1 \times 1$ convolution just before the 3x3 and 5x5 convolution. Let's see it with an example.
 
-We want to convert a feature map of (\\ S \times S \times 128 \\) to (\\ S \times S \times 256 \\) via a 5x5 convolution. The number of parameters (excluding biases) is 5*5*128*256 = 819,200. However, if we reduce the feature dimension first by a $1 \times 1$ convolution to 64, then the number of parameters(excluding biases) is (\\ 1\times 1\times 128\times 64 + 5\times 5\times 64\times 256 = 8,192 + 409,600 = 417,792 \\). That means the number of parameters was reduced by almost half!
+We want to convert a feature map of \( S \times S \times 128 \) to \( S \times S \times 256 \) via a 5x5 convolution. The number of parameters (excluding biases) is 5\*5\*128\*256 = 819,200. However, if we reduce the feature dimension first by a $1 \times 1$ convolution to 64, then the number of parameters(excluding biases) is \( 1\times 1\times 128\times 64 + 5\times 5\times 64\times 256 = 8,192 + 409,600 = 417,792 \). That means the number of parameters was reduced by almost half!
 
-We would also want to reduce the output features of max pooling before concatenating with the output feature map. So, we add one more (\\ 1\times 1 \\) convolution after the max-pooling layer. We also add a ReLU activation after each (\\ 1\times 1 \\) convolution increasing non-linearity and complexity of the module. See Figure 2.
+We would also want to reduce the output features of max pooling before concatenating with the output feature map. So, we add one more \( 1\times 1 \) convolution after the max-pooling layer. We also add a ReLU activation after each \( 1\times 1 \) convolution increasing non-linearity and complexity of the module. See Figure 2.
 
 ![inception_reduced](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/inception_reduced.png)
 
@@ -53,13 +53,13 @@ GoogLeNet has only 15% of the parameters in the fully connected layers.
 
 #### Auxiliary Classifiers
 
-With the introduction of compute saving \\( 1 \times 1 \\) convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of vanishing gradient, where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
+With the introduction of compute saving \( 1 \times 1 \) convolution and the replacement of multiple fully connected layers with average pooling, the parameters of this network are reduced significantly, which means we can add more layers and go deeper into the network. However, stacking layers can cause the problem of vanishing gradient, where the gradients get smaller and close to zero while propagating back to the initial layers of the network.
 
 The paper introduces the auxiliary classifiers - branch out a few small classifiers from the layers in between and add the loss from these classifiers to the total loss(with less weightage). This ensures that the layers close to the input also receive gradients of decent magnitude.
 
 The auxiliary classifier consists of 
-- An average pooling layer with \\( 5 \times 5 \\) filter size and stride 3.
-- A \\( 1 \times 1 \\) convolution with 128 filters for dimension reduction and rectified linear activation.
+- An average pooling layer with \( 5 \times 5 \) filter size and stride 3.
+- A \( 1 \times 1 \) convolution with 128 filters for dimension reduction and rectified linear activation.
 - A fully connected layer with 1024 units and rectified linear activation.
 - A dropout layer with 70% ratio of dropped outputs.
 - A linear layer with softmax loss as the classifier.
