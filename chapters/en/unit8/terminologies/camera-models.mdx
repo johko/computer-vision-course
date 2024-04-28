@@ -27,7 +27,7 @@ f_x & 0 & c_x  \\
 \end{pmatrix}
 $$
  
-In order to apply this to a point \\(p=[x,y,z]\\) to a point in 3D space, we multiply the point by the camera matrix $K @ p$ to give a new 3x1 vector \\([u,v,w]\\). This is a homogeneous vector in 2D, but where the last component isn't 1. To find the position of the point in the image plane we have to divide  the first two coordinates by the last one, to give the point \\([u/w, v/w]\\).
+In order to apply this to a point \\( p=[x,y,z]\\) to a point in 3D space, we multiply the point by the camera matrix \\( K @ p \\) to give a new 3x1 vector \\( [u,v,w]\\). This is a homogeneous vector in 2D, but where the last component isn't 1. To find the position of the point in the image plane we have to divide  the first two coordinates by the last one, to give the point \\([u/w, v/w]\\).
 
 Whilst this is the textbook definition of the camera matrix, if we use the Blender camera convention it will flip the image left to right and up-down (as points in front of the camera will have negative z-values). One potential way to fix this is to change the signs of some of the elements of the camera matrix
 
