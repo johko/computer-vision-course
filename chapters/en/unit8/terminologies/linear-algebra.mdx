@@ -178,16 +178,16 @@ We are sure you can use the example snippet above and figure out how to implemen
 
 - Rotation around the Z-axis
 
-$$ R_y(\beta) = \begin{pmatrix} \cos \beta & 0 & \sin \beta & 0 \\ 0 & 1 & 0 & 0 \\ -\sin \beta & 0 & \cos \beta & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+$$ R_z(\beta) = \begin{pmatrix} \cos \beta & -\sin \beta & 0 & 0 \\ \sin \beta & \cos \beta & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
 
 Again, can you use the last code snippet and implement a rotation around the Z-axis❓
 
 Note that the standard convention is that a positive rotation angle corresponds to an anti-clockwise rotation when the axis of rotation is pointing toward the viewer. Also note that in most libraries the cosine function requires the angle to be in radians. To convert from
-degrees to radians, multiply by \\(pi/180\\).
+degrees to radians, multiply by \\( pi/180\\).
 
 ### Combining transformations
 
-Multiple transformations can be combined by multiplying together their matrices. Note that the order that matrices are multiplied matters - with the matrices being applied right to left. To make a matrix that applies the transforms P, Q, and R, in that order, the composite transformation is given by \\(X = R @ Q @ P\\).
+Multiple transformations can be combined by multiplying together their matrices. Note that the order that matrices are multiplied matters - with the matrices being applied right to left. To make a matrix that applies the transforms P, Q, and R, in that order, the composite transformation is given by \\( X = R @ Q @ P\\).
 
 If we want to do first the translation, then the rotation, and then the scaling that we did above in one operation, it looks as follows:
 
