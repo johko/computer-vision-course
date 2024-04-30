@@ -25,12 +25,9 @@ PixelNeRF is a method that directly generates the parameters of a NeRF from one 
 In other words, it conditions the NeRF on the input images.
 Unlike the original NeRF, which trains a MLP which takes spatial points to a density and color, PixelNeRF uses spatial features generated from the input images.
 
-![PixelNeRF diagram](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/PixelNeRF_pipeline.png)
-image from https://alexyu.net/pixelnerf
-
 <div style="display: flex; flex-direction: column; align-items: center;">
   <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/PixelNeRF_pipeline.png" alt="PixelNeRF diagram" />
-  <p>image from https://alexyu.net/pixelnerf</p>
+  <p>Image from: <a href="https://alexyu.net/pixelnerf">PixelNeRF</a></p>
 </div>
 
 The method first passes the input images through a convolutional neural network (ResNet34), bilinearly upsampling features from multiple layers to the same resolution as the input images.  
