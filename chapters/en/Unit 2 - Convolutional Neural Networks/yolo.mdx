@@ -4,7 +4,7 @@ You Only Look Once
 <!--  
 - [x]  Difference with the previous methods
 - [x]  Architecture Intuition
-- [ ]  Innovations -> Loss function, min-max suppression
+- [x]  Innovations -> Loss function, min-max suppression
 - [ ]  Evaluation methods --> 
 
 
@@ -12,18 +12,17 @@ YOLO was a ground breaking innovation of its time. A real time object detector, 
 
 ### Before YOLO
 
-The detection systems before consisted of utilizing image classifiers on patches of images. Systems like deformable parts models (DPM) used a sliding window approach where the classifier is run at evenly spaced locations over the entire image
+The detection systems before consisted of utilizing image classifiers on patches of images. Systems like deformable parts models (DPM) used a sliding window approach where the classifier is run at evenly spaced locations over the entire image.
 
 Other works like R-CNN used a two step detection. First, detect many possible regions of interest, generated as bounding boxes by a Region Proposal Network. Then a classifier is ran through all proposed regions to make final predictions. Post-processing, such as, post refining the bounding boxes, eliminating duplicate detections, and re-scoring the boxes based on other objects in the scene needs to be done.
 
 These complex pipelines are slow and hard to optimise because each individual component must be trained separately.
 
 ### YOLO
-YOLO is a single step detector where the bounding box and the class of the object is predicted in the same pass, simultaneously. This makes the system super fast - 45 frames per second fast.
+YOLO is a single step detector where the bounding box and the class of the object is predicted in the same pass, simultaneously. This makes the system super fast - 45-frames-per-second fast.
 
 #### Reframing Object Detection
 YOLO reframes the Object Detection task as a single regression problem, which predicts bounding box coordinates and class probabilities. 
-
 
 
 In this design, we divide the image into an $S \times S$ grid. If the center of the object falls into a grid cell, that grid cell is responsible to detect that object. We can define $B$ as the maximum number of objects to be detected in each cell. So each grid cell predicts $B$ bounding boxes including confidence scores for each box. 
@@ -53,16 +52,16 @@ C_i \times \text{confidence} &= P(\text{class}_i \mid \text{Object}) \times P(\t
 \end{align}
 $$
 
-To recap, we have an image, divided into $S \times S$ grid. Each grid cell contains $B$ bounding boxes consisting of 5 values - confidence + 4 coordinates and $C$ long vector containing conditional probabilities of each class. So, each grid cell is a $B \times 5 + C$ long vector. The whole grid is $S \times S \times (B*5 + C)$.
+To recap, we have an image, divided into $S \times S$ grid. Each grid cell contains $B$ bounding boxes consisting of 5 values - confidence + 4 coordinates and $C$ long vector containing conditional probabilities of each class. So, each grid cell is a $B \times 5 + C$ long vector. The whole grid is $S \times S \times (B \times 5 + C)$.
 
-So if we have a learnable system which converts an image to a $S \times S \times (B*5 + C)$ feature map, we are one step closer to the task.
+So if we have a learnable system which converts an image to an $S \times S \times (B \times 5 + C)$ feature map, we are one step closer to the task.
 
 <!-- TODO:  maybe insert a figure here -->
 
 #### Network Architecture
 In the original YOLOv1 design the input is an RGB image of size $448 \times 448$. The image is divided into a $S \times S = 7 \times 7$ grid, where each grid cell is responsible for detecting $B=2$ bounding boxes and $C=20$ classes. 
 
-The network architecture is a simple convolutional neural network. The input image is passed through a series of convolutional layers, followed by a fully connected layer. The final layer outputs are reshaped to $7 \times 7 \times (2*5 + 20) = 7 \times 7 \times 30$.
+The network architecture is a simple convolutional neural network. The input image is passed through a series of convolutional layers, followed by a fully connected layer. The final layer outputs are reshaped to $7 \times 7 \times (2 \times 5 + 20) = 7 \times 7 \times 30$.
 
 The YOLOv1 design took inspiration from GoogLeNet, which used 1x1 convolutions to reduce the depth of the feature maps. This was done to reduce the number of parameters and computation in the network. The network has 24 convolutional layers followed by 2 fully connected layers. It uses a linear activation function for the final layer and all other layers use the leaky rectified linear activation:
 
@@ -84,7 +83,7 @@ YOLO predicts multiple bounding boxes per grid cell. At training time we only wa
 
 
 ##### Loss Function
-Now that we have a learnable system which converts an image to a $S \times S \times (B*5 + C)$ feature map, we need to train it.
+Now that we have a learnable system which converts an image to a $S \times S \times (B\times5 + C)$ feature map, we need to train it.
 
 A simple function to train such a system is to use a sum of squared error loss. We can use the squared error between the predicted values and the true values, i.e for bounding box coordinates, confidence and class probabilities. 
 
@@ -94,7 +93,7 @@ $$
 \mathcal{L}^{i} = \mathcal{L}^{i}_{\text{coord}} + \mathcal{L}^{i}_{\text{conf}} + \mathcal{L}^{i}_{\text{class}}\\
 $$
 
-$$\begin{align}
+$$\begin{align*}
 \mathcal{L}^{i}_{\text{coord}} &= \sum_{b=0}^{B} \mathbb{1}_{ib}^{\text{obj}} \left[ \left( \hat{x}_{ib} - x_{ib} \right)^2 + \left( \hat{y}_{ib} - y_{ib} \right)^2 + 
 \left( 
     \hat{w}_{ib} - w_{ib}
@@ -105,7 +104,7 @@ $$\begin{align}
 \right]\\
 \mathcal{L}^{i}_{\text{conf}} &= \sum_{b=0}^{B} (\hat{\text{conf}}_{i} - \text{conf}_{i})^2\\
 \mathcal{L}^{i}_{\text{class}} &= \mathbb{1}_i^\text{obj}\sum_{c=0}^{C} (\hat{P}_{i} - P_{i})^2
-\end{align}
+\end{align*}
 $$
 
 where
@@ -151,3 +150,15 @@ $$
 \right)^2
 \right]
 $$
+
+#### Inference
+
+Inference is simple. We pass the image through the network and get the $S \times S \times (B \times 5 + C)$ feature map. We then filter out the boxes which have confidence scores less than a threshold. 
+
+##### Non-Maximum Suppression
+In rare cases, for large objects, the network tends to predict multiple boxes from multiple grid cells. To eliminate duplicate detections, we use a technique called non-maximum suppression (NMS). NMS works by selecting the box with the highest confidence score and eliminating all other boxes with an IOU greater than a threshold. This is done iteratively until no overlapping boxes remain.
+
+
+It looks like this:
+<insert gif>
+
