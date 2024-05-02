@@ -9,19 +9,19 @@ another big task to solve. Object detection. Object detection not only requires 
 ## RCNN , Fast RCNN , Faster RCNN
 
 ### RCNN
-RCNN is the simplest way possible to use Convolutional neural network for Object detection. to be as simple as possible , the basic idea is to 
+RCNN is the simplest way possible to use a Convolutional neural network for Object detection. To be as simple as possible , the basic idea is to 
 detect a "region" and then use CNN to classify the region . So this is a multi-step process . Based on this idea the RCNN paper was shared in 2012[1]
 
-The RCNN uses following steps , 
+The RCNN uses the following steps, 
 
-- Use Selective Search algorithm to select a region. 
-- Use CNN based classifier to classify an object from the region. 
+1.  Use Selective Search algorithm to select a region. 
+2. Use CNN based classifier to classify an object from the region. 
 
 For training purpose, the paper proposed following steps 
 
-- Make a dataset of regions detected from the Object detection dataset. 
-- Fine tune Alexnet model on the regions dataset . 
-- Then use the fine tuned model on the object detection dataset . 
+3. Make a dataset of regions detected from the Object detection dataset. 
+4. Fine tune Alexnet model on the regions dataset . 
+5. Then use the fine tuned model on the object detection dataset . 
 
 The following is a basic pipeline of RCNN 
 ![rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/RCNN.png)
@@ -29,7 +29,7 @@ The following is a basic pipeline of RCNN
 
 ## Fast RCNN 
 
-Fast RCNN is nothing but an improvization over RCNN. They added these three improvements
+The biggest limitations of R-CNN was the speed of training and inference. The same authors addressed them by reducing the complexity of the steps. Specifically, they introduced the following three improvements:
 
 - Training in Single-stage instead of Multi-stage like RCNN. Uses Multi-task loss
 - No disk storage required
