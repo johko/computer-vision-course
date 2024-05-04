@@ -14,7 +14,8 @@ YOLOv3[2] again improved significantly the detection speed and accuracy by repla
 
 ### **YOLOv4 (2020)**
 
-Back in 2020, YOLOv4[3] became one of the best detection models in terms of speed and accuracy. The authors changed again the backbone architecture to the faster and better accuracy CSPDarknet53[4]. An important improvement of this version was the optimization for efficient resource utilization, making it suitable for deployment on various hardware platforms, including edge devices. Also, It included a number of augmentations before training that further improved the model prediction accuracy on custom data.
+Back in 2020, YOLOv4[3] became one of the best detection models in terms of speed and accuracy. The authors changed again the backbone architecture to the faster and better accuracy CSPDarknet53[4]. An important improvement of this version was the optimization for efficient resource utilization, making it suitable for deployment on various hardware platforms, including edge devices. Also, It included a number of augmentations before training that further improved the model generalization. The authors include this improvement in a set of methodologies called bag-of-freebies. Bag-of-freebies are optimization methods that have a cost to the training process but aim to increase the model's accuracy in real-time detection without increasing the inference time.
+
 
 ### **YOLOv5 (2020)**
 
@@ -31,7 +32,8 @@ The next version, YOLOv6[6][7], was released by the Meituan Vision AI Department
 In 2023, YOLOv6 v3[8] was released with the title: "YOLOv6 v3.0: A Full-Scale Reload," which introduced enhancements to the network architecture and training scheme, once again advancing speed and accuracy (evaluated on the COCO dataset) compared to previously released versions.
 
 ### **YOLOv7 (2022)**
-YOLOv7 was released with the paper name: “YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors”[9][10] by the authors of YOLOv4. Trainable bag-of-freebies refer to optimization methods that aim to increase the model's accuracy in real-time detection without increasing the inference cost. These methods refer mostly to optimizations in the training process. Specifically, they include a new label assignment method called coarse-to-fine lead guided label assignment and use gradient flow propagation paths to analyze how re-parameterized convolution should be combined with different networks. They also, proposed  “extend” and “compound scaling” methods for the real-time object detector that can effectively utilize parameters and computation. Again, all these improvements took the real-time-object detection to a new state-of-the-art outperforming previous releases.
+
+YOLOv7 was released with the paper name: “YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors”[9][10] by the authors of YOLOv4.Specifically, this version of bag-of-freebies includes a new label assignment method called coarse-to-fine lead guided label assignment and uses gradient flow propagation paths to analyze how re-parameterized convolution should be combined with different networks. They also, proposed  “extend” and “compound scaling” methods for the real-time object detector that can effectively utilize parameters and computation. Again, all these improvements took the real-time-object detection to a new state-of-the-art outperforming previous releases.
 
 ### **YOLOv8 (2023)**
 
