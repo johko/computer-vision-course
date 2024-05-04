@@ -25,7 +25,7 @@ YOLOv5[5] translated the Darknet framework (written in C) to the more flexible a
 The next version, YOLOv6[6][7], was released by the Meituan Vision AI Department under the article title: "YOLOv6: A Single-Stage Object Detection Framework for Industry." This team made further improvements in terms of speed and accuracy by focusing on five aspects:
 1) Reparameterization using the RepVGG technique. Which is a modified version of VGG with skip connections. During inference, these connections are fused to improve the speed.
 2) Quantization of reparameterization-based detectors. Which added blocks that are called Rep-PANs.
-3) Recognition of the importance of considering different hardware costs and capabilities for model deployment.
+3) Recognition of the importance of considering different hardware costs and capabilities for model deployment. Specifically, the authors tested the latency with lowpower GPUs (like Tesla T4) compared to the previous works which mostly used high-cost machines (like V100).
 4) Introducttion to new types of loss functions such as, Varifocal Loss for Classification. IoU Series Loss  for Boundig Box Regression, and Distribution Focal Loss.
 5) Accuracy improvements during training using knowledge distillation.
 In 2023, YOLOv6 v3[8] was released with the title: "YOLOv6 v3.0: A Full-Scale Reload," which introduced enhancements to the network architecture and training scheme, once again advancing speed and accuracy (evaluated on the COCO dataset) compared to previously released versions.
