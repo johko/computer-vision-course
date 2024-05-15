@@ -48,7 +48,10 @@ containing the object .
 
 ## Feature Pyramid Network (FPN)
 - Trying to get Feature Pyramid network
-- 
+- The Feature Pyramid network can be visualized like an autoencoder. There are some differences.
+- Like the autoencoder, after certain layers, the images are decoded or upsampled from the previous lower dimensional features
+- But there is also skip connections from the similar dimensional features in the encoder side, which gives the feature more information
+- From every upsampling features a separate prediction is generated.
 
 ## Reference 
 
