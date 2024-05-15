@@ -143,7 +143,7 @@ The input image is first put through a ResNet backbone and then a convolution la
 x = self.backbone(inputs)
 h = self.conv(x)
 ```
-they are declared in the `__init__` function.
+They are declared in the `__init__` function.
 ```python
 self.backbone = nn.Sequential(*list(resnet50(pretrained=True).children())[:-2])
 self.conv = nn.Conv2d(2048, hidden_dim, 1)

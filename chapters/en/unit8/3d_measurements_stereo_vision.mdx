@@ -16,8 +16,8 @@ We aim to solve the problem of determining the 3D structure of objects. In our p
 ## Solution 
 Let's assume we are given the following information:
 
-1. Single image of a scene point P.
-2. Pixel coordinates of point P in the image.
+1. Single image of a scene point P
+2. Pixel coordinates of point P in the image
 3. Position and orientation of the camera used to capture the image. For simplicity, we can also place an XYZ coordinate system at the location of the pinhole, with the z-axis perpendicular to the image place and the x-axis, and y-axis parallel to the image plane like in Figure 1.
 4. Internal parameters of the camera, such as focal length and location of principal point. The principal point is where the optical axis intersects the image plane. Its location in the image plane is usually denoted as (Ox,Oy).
 
@@ -73,7 +73,7 @@ Different symbols used in above equations are defined below:
 *  \\(u\_left\\), \\(v\_left\\) refer to pixel coordinates of point P in the left image.
 *  \\(u\_right\\),  \\(v\_right\\) refer to pixel coordinates of point P in the right image.   
 *  \\(f\_x\\) refers to the focal length (in pixels) in x direction and \\(f\_y\\) refers to the focal length (in pixels) in y direction. Actually, there is only 1 focal length for a camera which is the distance between the pinhole (optical center of the lens) to the image plane. However, pixels may be rectangular and not perfect squares, resulting in different fx and fy values when we represent f in terms of pixels.    
-*  x,y,z are 3D coordinates of the point P (any unit like cm, feet, etc can be used).
+*  x, y, z are 3D coordinates of the point P (any unit like cm, feet, etc can be used).
 *  \\(O\_x\\)  and  \\(O\_y\\)  refer to pixel coordinates of the principal point.   
 *  b is called the baseline and refers to the distance between the left and right cameras. Same units are used for both b and x,y,z coordinates (any unit like cm, feet, etc can be used).   
   
