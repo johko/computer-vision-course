@@ -76,7 +76,7 @@ class VGG19(nn.Module):
         self.classifier = nn.Sequential(
             nn.Linear(
                 512 * 14 * 14, 4096
-            ),  # 512 channels, 7x7 spatial dimensions after max pooling
+            ),  # 512 channels, 14x14 spatial dimensions after max pooling
             nn.ReLU(),
             nn.Dropout(0.5),  # Dropout layer with 0.5 dropout probability
             nn.Linear(4096, 4096),
