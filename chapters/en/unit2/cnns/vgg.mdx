@@ -70,13 +70,22 @@ class VGG19(nn.Module):
             nn.Conv2d(512, 512, kernel_size=3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(512, 512, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(512, 512, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(512, 512, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(512, 512, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
         )
 
         # Fully connected layers for classification
         self.classifier = nn.Sequential(
             nn.Linear(
-                512 * 14 * 14, 4096
-            ),  # 512 channels, 14x14 spatial dimensions after max pooling
+                512 * 7 * 7, 4096
+            ),  # 512 channels, 7x7 spatial dimensions after max pooling
             nn.ReLU(),
             nn.Dropout(0.5),  # Dropout layer with 0.5 dropout probability
             nn.Linear(4096, 4096),
