@@ -1,0 +1,58 @@
+# YOLO 
+
+## A short introduction to Object Detection
+
+Convolutional Neural Networks has taken a big step towards the image classifcation problem. But there remains
+another big task to solve. Object detection. Object detection not only requires to categorize the object from the image but also to accurately predict the location (in this case the co-ordinates of the bounding boxes of the object) from the image. Here came the big breakthrough of YOLO. Before delving into the depth of YOLO, lets get through the history of object detection algorithms using CNN.
+
+
+## RCNN , Fast RCNN , Faster RCNN
+
+### RCNN
+RCNN is the simplest way possible to use Convolutional neural network for Object detection. to be as simple as possible , the basic idea is to 
+detect a "region" and then use CNN to classify the region . So this is a multi-step process . Based on this idea the RCNN paper was shared in 2012[1]
+
+The RCNN uses following steps , 
+
+- Use Selective Search algorithm to select a region. 
+- Use CNN based classifier to classify an object from the region. 
+
+For training purpose, the paper proposed following steps 
+
+- Make a dataset of regions detected from the Object detection dataset. 
+- Fine tune Alexnet model on the regions dataset . 
+- Then use the fine tuned model on the object detection dataset . 
+
+The following is a basic pipeline of RCNN 
+![rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/RCNN.png)
+
+
+## Fast RCNN 
+
+Fast RCNN is nothing but an improvization over RCNN. They added these three improvements
+
+- Training in Single-stage instead of Multi-stage like RCNN. Uses Multi-task loss
+- No disk storage required
+- Introduces ROI pooling layer to only get the features from the  Region of Interests.
+- Trains an end-to-end model in contrary to multi-step RCNN / SPPnet models using multi-task loss.
+
+![fast_rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Fast%20R-CNN.png)
+
+## Faster RCNN 
+
+- It introduces RPN , regional proposal network . The RPN is an attention based model which trains the model to give "attention" to the region of the image 
+containing the object . 
+- It merges RPN with Fast RCNN , making it as the End-to-End object detection model. 
+
+![Faster RCNN](https://cdn-uploads.huggingface.co/production/uploads/6141a88b3a0ec78603c9e784/n8eDqnlEvDS5SIKGoSUpz.png)
+
+## Feature Pyramid Network (FPN)
+- Trying to get Feature Pyramid network
+- 
+
+## Reference 
+
+[1] [Rich feature hierarchies for accurate object detection and semantic segmentation](https://arxiv.org/abs/1311.2524v5)
+[2] [Fast R-CNN](https://arxiv.org/abs/1504.08083)
+[3] [Faster R-CNN](https://arxiv.org/pdf/1506.01497.pdf)
+[4] [Feature Pyramid Network](https://arxiv.org/pdf/1612.03144.pdf)
