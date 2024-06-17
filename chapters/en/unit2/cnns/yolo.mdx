@@ -47,8 +47,13 @@ containing the object .
 ![Faster RCNN](https://cdn-uploads.huggingface.co/production/uploads/6141a88b3a0ec78603c9e784/n8eDqnlEvDS5SIKGoSUpz.png)
 
 #### Feature Pyramid Network (FPN)
-- Trying to get Feature Pyramid network
-- watched the video: https://www.youtube.com/watch?v=FKsgO0U7CUw , need to summarize.
+- Feature Pyramid network is kind of Inception model for Object detection.
+- It first downscales the image into lower representations.
+- Then it it upscalses them again. From every upscaled images it tries to predict the output (in this case the categories.)
+- But there are also skip connections between the similar dimensional features as well! Please refer to the following images which are taken from the paper.[20]
+
+   [FPN](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/FPN.png)
+   [FPN2](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/FPN_2.png)
 
 ## Evolution of YOLO
 
@@ -125,3 +130,4 @@ Also, It is important to understand that the selection of the ‘best’ model v
 [17] [YOLOv9 GitHub repo](https://github.com/WongKinYiu/yolov9) <br />
 [18] [YOLOvX](https://yolovx.com/) <br />
 [19] [You Only Learn One Representation: Unified Network for Multiple Tasks](https://arxiv.org/abs/2105.04206)
+[20] [Feature Pyramid network Paper](https://arxiv.org/abs/1612.03144)
