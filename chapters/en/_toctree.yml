@@ -166,8 +166,6 @@
     local: "unit10/datagen-diffusion-models"
   - title: Challenges and Opportunities Associated With Using Synthetic Data
     local: "unit10/challenges"
-  - title: Introduction to Point Clouds
-    local: "unit10/point_clouds"
 - title: Unit 11  - Zero Shot Computer Vision
   sections:
   - title: Introduction
