@@ -28,9 +28,19 @@ The proposed architecture is called Two-Stream Network. It uses two separate pat
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail..png" alt="Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail.">
 </div>
 
-Standard 3D CNNs extend the concept to capture spatial and temporal information simultaneously using 3D kernels (2D spatial information + temporal information). A downfall of this model is that the large number of parameters of the 3D CNNs makes it slower than 2D CNNs. Therefore, 3D CNNs typically are relatively shallow compared to the architecture of 2D CNNs. 
+Standard 3D CNNs extend the concept to capture spatial and temporal information simultaneously using 3D kernels (2D spatial information + temporal information). A drawback of this model is that the large number of parameters in 3D CNNs makes them slower and more computationally intensive than 2D CNNs. Therefore, 3D CNNs typically have fewer layers compared to the deeper architectures of 2D CNNs.
 
-In this paper, they applied the architecture of ResNets to 3D CNNs. This model introduces deeper models for the 3D CNNs and achieves a lower loss value.
+In this paper, the authors applied the ResNet architecture to 3D CNNs. This approach introduces deeper models for 3D CNNs and achieves higher accuracy, thereby improving performance.
+
+Experiments showed that 3D ResNets, especially deeper ones like ResNet-34, outperform models like C3D, particularly on larger datasets. Pretrained models like Sports-1M C3D can help mitigate overfitting on smaller datasets. Overall, 3D ResNets effectively leverage deeper architectures to capture complex spatiotemporal patterns in video data.
+
+| Method                | Validation set |             |            | Testing set |             |            |
+|-----------------------|----------------|-------------|------------|-------------|-------------|------------|
+|                       | Top-1          | Top-5       | Average    | Top-1       | Top-5       | Average    |
+| 3D ResNet-34   | 58.0           | 81.3        | **69.7**   | -           | -           | **68.9**   |
+| C3D*                  | 55.6           | 79.1        | 67.4       | 56.1        | 79.5        | 67.8       |
+| C3D w/ BN         | 56.1           | 79.5        | 67.8       | -           | -           | -          |
+| RGB-I3D w/o ImageNet | -          | -           | 68.4       | 88.0        | **78.2**    |
 
 ## (2+1)D ResNets(2017):
 
@@ -48,10 +58,26 @@ This model can learn spatiotemporal features directly from video data, potential
 - Benefits:
     - The addition of nonlinear rectification (ReLU) between two operations doubles the number of non-linearities compared to a network using full 3D convolution for the same number of parameters, thus rendering the model capable of representing more complex functions.
     - Decomposition facilitates the optimization, yielding in practice both a lower training loss and a lower testing loss.
-
+| Method                        | Clip@1 Accuracy | Video@1 Accuracy | Video@5 Accuracy |
+|-------------------------------|--------|---------|---------|
+| DeepVideo [16]                | 41.9   | 60.9    | 80.2    |
+| C3D [36]                      | 46.1   | 61.1    | 85.2    |
+| 2D ResNet-152 [13]            | 46.5  | 64.6    | 86.4    |
+| Conv pooling [42]             | -      | 71.7    | 90.4    |
+| P3D [25]                      | 47.9  | 66.4   | 87.4   |
+| R3D-RGB-8frame                | 53.8   | -       | -       |
+| R(2+1)D-RGB-8frame            | 56.1   | 72.0    | 91.2    |
+| R(2+1)D-Flow-8frame           | 44.5   | 65.5    | 87.2    |
+| R(2+1)D-Two-Stream-8frame     | -      | 72.2    | 91.4    |
+| R(2+1)D-RGB-32frame           | **57.0**   | **73.0**    | **91.5**    |
+| R(2+1)D-Flow-32frame          | 46.4   | 68.4    | 88.7    |
+| R(2+1)D-Two-Stream-32frame    | -      | **73.3**    | **91.9**    |
 # Current Research
 
-Currently, researchers are exploring deeper 3D CNN architectures. Another promising approach is combining 3D CNNs with other techniques like attention mechanisms. Alongside that, there is a push for developing larger video datasets like Kinetics.
+Currently, researchers are exploring deeper 3D CNN architectures. Another promising approach is combining 3D CNNs with other techniques like attention mechanisms. Alongside that, there is a push for developing larger video datasets like [Kinetics](https://github.com/google-deepmind/kinetics-i3d).
+
+> The Kinetics dataset is a large-scale, high-quality video dataset commonly used for human action recognition research. It contains hundreds of thousands of video clips that cover a wide range of human activities.
+>
 
 <Tip>
 
