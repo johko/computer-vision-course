@@ -58,13 +58,14 @@ This model can learn spatiotemporal features directly from video data, potential
 - Benefits:
     - The addition of nonlinear rectification (ReLU) between two operations doubles the number of non-linearities compared to a network using full 3D convolution for the same number of parameters, thus rendering the model capable of representing more complex functions.
     - Decomposition facilitates the optimization, yielding in practice both a lower training loss and a lower testing loss.
+
 | Method                        | Clip@1 Accuracy | Video@1 Accuracy | Video@5 Accuracy |
 |-------------------------------|--------|---------|---------|
-| DeepVideo [16]                | 41.9   | 60.9    | 80.2    |
-| C3D [36]                      | 46.1   | 61.1    | 85.2    |
-| 2D ResNet-152 [13]            | 46.5  | 64.6    | 86.4    |
-| Conv pooling [42]             | -      | 71.7    | 90.4    |
-| P3D [25]                      | 47.9  | 66.4   | 87.4   |
+| DeepVideo                | 41.9   | 60.9    | 80.2    |
+| C3D                     | 46.1   | 61.1    | 85.2    |
+| 2D ResNet-152            | 46.5  | 64.6    | 86.4    |
+| Conv pooling             | -      | 71.7    | 90.4    |
+| P3D                      | 47.9  | 66.4   | 87.4   |
 | R3D-RGB-8frame                | 53.8   | -       | -       |
 | R(2+1)D-RGB-8frame            | 56.1   | 72.0    | 91.2    |
 | R(2+1)D-Flow-8frame           | 44.5   | 65.5    | 87.2    |
@@ -72,6 +73,7 @@ This model can learn spatiotemporal features directly from video data, potential
 | R(2+1)D-RGB-32frame           | **57.0**   | **73.0**    | **91.5**    |
 | R(2+1)D-Flow-32frame          | 46.4   | 68.4    | 88.7    |
 | R(2+1)D-Two-Stream-32frame    | -      | **73.3**    | **91.9**    |
+
 # Current Research
 
 Currently, researchers are exploring deeper 3D CNN architectures. Another promising approach is combining 3D CNNs with other techniques like attention mechanisms. Alongside that, there is a push for developing larger video datasets like [Kinetics](https://github.com/google-deepmind/kinetics-i3d).
