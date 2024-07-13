@@ -1,15 +1,11 @@
-# Overview of Previous SOTA Models – Including 3D CNNs like (2+1)D Resnets and Two Stream Nets 
+# Overview of the previous SOTA models
 
-## What does SOTA mean in the context of ML?
 
-State-Of-The-Art(SOTA) refers to the best models that can be used to achieve results in a task.
+### General trend:
 
-### General Trend:
+The success of deep learning, particularly CNNs trained on massive datasets like ImageNet,  revolutionized image recognition. This trend continues in video processing. However, video data introduces another dimension compared to static images: time. This simple change introduced a new set of challenges that CNN trained in static images were not built to deal with. 
 
-- The success of deep learning, particularly CNNs trained on massive datasets like ImageNet, has revolutionized image recognition.
-- Researchers are applying this approach to video understanding, but video data introduces an additional temporal dimension compared to static images.
-
-# Previous SOTA Models in Video Processing
+# Previous SOTA models in Video Processing
 
 ## Two-Stream Network(2014):
 
@@ -17,15 +13,14 @@ State-Of-The-Art(SOTA) refers to the best models that can be used to achieve res
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Two-Stream architecture for video classification.png" alt="Two-Stream architecture for video classification">
 </div>
 
-This paper aimed at extending deep Convolution Networks(ConvNets), a state-of-the art still image representation, to action recognition in video data. 
+This paper extended deep Convolution Networks(ConvNets) to perform action-recognition in video data. 
 
-They proposed architecture called Two-Stream Network utilizes two separate pathways within a neural network:
+The proposed architecture is called Two-Stream Network. It uses two separate pathways within a neural network:
 
 - **Spatial Stream:** A standard 2D CNN processes individual frames to capture appearance information.
-- **Temporal Stream:** A 2D CNN or another network processes sequences of frames (optical flow) to capture motion information.
+- **Temporal Stream:** A 2D CNN, or another network, that processes several frame sequences (optical flow) to capture motion information.
 - **Fusion:** The outputs from both streams are then combined to leverage both appearance and motion cues for tasks like action recognition.
 
-Two-Stream architecture had achieved SOTA accuracy on video classification.
 
 ## 3D ResNets(2017):
 
@@ -33,9 +28,9 @@ Two-Stream architecture had achieved SOTA accuracy on video classification.
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail..png" alt="Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail.">
 </div>
 
-Standard 3D CNNs extend concept to capture spatial(2D) and temporal information simultaneously using 3D kernels. The large number of parameters of the 3D CNNs makes slower than 2D CNNs. Therefore, 3D CNNs are relatively shallow compared to the architecture of 2D CNNs. 
+Standard 3D CNNs extend the concept to capture spatial and temporal information simultaneously using 3D kernels (2D spatial information + temporal information). A downfall of this model is that the large number of parameters of the 3D CNNs makes it slower than 2D CNNs. Therefore, 3D CNNs typically are relatively shallow compared to the architecture of 2D CNNs. 
 
-In this paper, they applied the architecture of ResNets to 3D CNNs. This model introduces deeper models for the 3D CNNs and achieving lower loss at convergence.
+In this paper, they applied the architecture of ResNets to 3D CNNs. This model introduces deeper models for the 3D CNNs and achieves a lower loss value.
 
 ## (2+1)D ResNets(2017):
 
@@ -43,7 +38,7 @@ In this paper, they applied the architecture of ResNets to 3D CNNs. This model i
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models 3D vs (2+1)D convolution..png" alt="3D vs (2+1)D convolution.">
 </div>
 
-(2+1)D ResNets is inspired by 3D ResNets. This architecture introduces a combination of 2D convolution and 1D convolution:
+(2+1)D ResNets is inspired by 3D ResNets. Howver, a key difference is how the layers are structured. This architecture introduces a combination of 2D convolution and 1D convolution:
 
 - 2D convolution capture spatial features within a frame.
 - 1D convolution capture motion information across consecutive frames.
@@ -51,13 +46,12 @@ In this paper, they applied the architecture of ResNets to 3D CNNs. This model i
 This model can learn spatiotemporal features directly from video data, potentially leading to better performance in video analysis tasks like action recognition.
 
 - Benefits:
-    - The addition of nonlinear rectification(ReLU) between two operations effectively doubles the number of non-linearities compared to a network using full 3D convolution for the same number of parameters, thus rendering the model capable of representing more complex functions.
+    - The addition of nonlinear rectification (ReLU) between two operations doubles the number of non-linearities compared to a network using full 3D convolution for the same number of parameters, thus rendering the model capable of representing more complex functions.
     - Decomposition facilitates the optimization, yielding in practice both a lower training loss and a lower testing loss.
 
 # Current Research
 
-- Researchers are exploring deeper 3D CNN architectures along with the development of larger video datasets like Kinetics.
-- New approaches that combine 3D CNNs with other techniques like attention mechanisms are also being investigated.
+Currently, researchers are exploring deeper 3D CNN architectures. Another promising approach is combining 3D CNNs with other techniques like attention mechanisms. Alongside that, there is a push for developing larger video datasets like Kinetics.
 
 <Tip>
 
@@ -67,4 +61,4 @@ This model can learn spatiotemporal features directly from video data, potential
 
 # Conclusion
 
-The evolution of video analysis models has been fascinating to witness. These models influenced by the other models which were the state-of-the-art models in the past. For example, Two-StreamNets motivated by ConvNets and (2+1)D ResNets inspired by 3D ResNets. As research progresses, one can expect even more advanced architectures and techniques to emerge in the future.
+The evolution of video analysis models has been fascinating to witness. These models were heavily influenced by other models which once were the state-of-the-art. For example, Two-StreamNets motivated by ConvNets and (2+1)D ResNets inspired by 3D ResNets. As research progresses, one can expect even more advanced architectures and techniques to emerge in the future.
