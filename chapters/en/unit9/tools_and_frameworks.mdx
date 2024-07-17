@@ -18,12 +18,12 @@ pip install -U tensorflow-model-optimization
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the Tensorflow Model Optimization Toolkit, refer this [notebook](https://colab.research.google.com/drive/1t1Tq6i0JZbOwloyhkSjg8uTTVX9iUkgj#scrollTo=D_MCHp6cwCFb).
-## Pytorch Quantization
+For a hands-on guide on how to use the Tensorflow Model Optimization Toolkit, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/tmo.ipynb)
+## PyTorch Quantization
 
 ### Overview
 
-For optimizing model, pyTorch supports INT8 quantization compared to typical FP32 models which leads to 4x reduction in the model size and a 4x reduction in memory bandwidth requirements. 
+For optimizing model, PyTorch supports INT8 quantization compared to typical FP32 models which leads to 4x reduction in the model size and a 4x reduction in memory bandwidth requirements. 
 PyTorch supports multiple approaches to quantizing a deep learning model which are as follows:
 1. Model is trained in FP32 and then the model is converted to INT8. 
 2. Quantization aware training, where models quantization errors in both the forward and backward passes using fake-quantization modules. 
@@ -33,14 +33,14 @@ For more details on quantization in PyTorch, see [here](https://pytorch.org/docs
 
 ### Setup guide
 
-Pytorch quantization is available as API in the pytorch package. To use it simple install pytorch and import the quantization API as follows: 
+PyTorch quantization is available as API in the PyTorch package. To use it simple install PyTorch and import the quantization API as follows: 
 ```
 pip install torch
 import torch.quantization
 ```
 ## Hands-on guide
 
-For a hands-on guide on how to use the Pytorch Quantization, refer this [notebook](https://colab.research.google.com/drive/1toyS6IUsFvjuSK71oeLZZ51mm8hVnlZv).
+For a hands-on guide on how to use the Pytorch Quantization, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/torch.ipynb)
 
 ## ONNX Runtime
 
@@ -72,7 +72,7 @@ pip install onnxruntime-gpu
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the ONNX Runtime, refer this [notebook](https://colab.research.google.com/drive/1A-qYPX52V2q-7fXHaLeNRJqPUk3a4Qkd).
+For a hands-on guide on how to use the ONNX Runtime, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/onnx.ipynb)
 
 ## TensorRT
 
@@ -92,7 +92,7 @@ for other installation methods, see [here](https://docs.nvidia.com/deeplearning/
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the TensorRT, refer this [notebook](https://colab.research.google.com/drive/1b8ueEEwgRc9fGqky1f6ZPx5A2ak82FE1).
+For a hands-on guide on how to use the TensorRT, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/tensorrt.ipynb)
 
 ## OpenVINO
 
@@ -116,7 +116,7 @@ For other installation methods, see [here](https://docs.openvino.ai/2023.2/openv
 
 ### Hands-on guide
 
-For a hands-on guide on how to use the OpenVINO, refer this [notebook](https://colab.research.google.com/drive/1FWD0CloFt6gIEd0WBSMBDDKzA7YUE8Wz).
+For a hands-on guide on how to use the OpenVINO, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/openvino.ipynb)
 
 ## Optimum
 
@@ -125,7 +125,7 @@ For a hands-on guide on how to use the OpenVINO, refer this [notebook](https://c
 Optimum serves as an extension of [Transformers](https://huggingface.co/docs/transformers), offering a suite of tools designed for optimizing performance in training and 
 running models on specific hardware, ensuring maximum efficiency. In the rapidly evolving AI landscape, specialized hardware and unique optimizations continue to emerge regularly. 
 Optimum empowers developers to seamlessly leverage these diverse platforms, maintaining the ease of use inherent in Transformers. 
-Platforms suppoerted by optimum as of now are:
+Platforms supported by optimum as of now are:
 1. [Habana](https://huggingface.co/docs/optimum/habana/index) 
 2. [Intel](https://huggingface.co/docs/optimum/intel/index)
 3. [Nvidia](https://github.com/huggingface/optimum-nvidia)
@@ -146,7 +146,7 @@ For installation of accelerator-specific features, see [here](https://huggingfac
 
 ### Hands-on guide
 
-For a hands-on guide on how to use Optimum for quantization, refer this [notebook](https://colab.research.google.com/drive/1tz4eHqSZzGlXXS3oBUc2NRbuRCn2HjdN).
+For a hands-on guide on how to use Optimum for quantization, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/optimum.ipynb)
 
 ## EdgeTPU
 
@@ -160,6 +160,6 @@ The benefits of using EdgeTPU includes:
 
 For more details on EdgeTPU, see [here](https://cloud.google.com/edge-tpu)
 
-For guide on how to setup and use EdgeTPU, refer this [notebook](https://colab.research.google.com/drive/1aMEZE2sI9aMLLBVJNSS37ltMwmtEbMKl).
+For guide on how to setup and use EdgeTPU, refer this [notebook](https://github.com/johko/computer-vision-course/blob/main/notebooks/Unit%209%20-%20Model%20Optimization/edge_tpu.ipynb)
 
 
