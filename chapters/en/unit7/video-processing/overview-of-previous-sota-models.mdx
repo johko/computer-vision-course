@@ -1,9 +1,9 @@
 # Overview of the previous SOTA models
-### General trend:
+### General Trend:
 
-The success of deep learning, particularly CNNs trained on massive datasets like ImageNet, revolutionized image recognition. This trend continues in video processing. However, video data introduces another dimension compared to static images: time. This simple change introduced a new set of challenges that CNN trained in static images were not built to deal with. 
+The success of Deep Learning, particularly CNNs trained on massive datasets like ImageNet, revolutionized image recognition. This trend continues in video processing. However, video data introduces another dimension compared to static images: time. This simple change introduced a new set of challenges that CNN trained in static images were not built to deal with. 
 
-# Previous SOTA models in Video Processing
+# Previous SOTA Models in Video Processing
 
 ## Two-Stream Network(2014):
 
@@ -11,7 +11,7 @@ The success of deep learning, particularly CNNs trained on massive datasets like
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Two-Stream architecture for video classification.png" alt="Two-Stream architecture for video classification">
 </div>
 
-This paper extended deep Convolution Networks(ConvNets) to perform action-recognition in video data. 
+This paper extended Deep Convolutional Networks(ConvNets) to perform action-recognition in video data. 
 
 The proposed architecture is called Two-Stream Network. It uses two separate pathways within a neural network:
 
@@ -25,11 +25,11 @@ The proposed architecture is called Two-Stream Network. It uses two separate pat
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail..png" alt="Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail.">
 </div>
 
-Standard 3D CNNs extend the concept to capture spatial and temporal information simultaneously using 3D kernels (2D spatial information + temporal information). A drawback of this model is that the large number of parameters in 3D CNNs makes them slower and more computationally intensive than 2D CNNs. Therefore, 3D CNNs typically have fewer layers compared to the deeper architectures of 2D CNNs.
+Standard 3D CNNs extend the concept to simultaneously capture spatial and temporal information using 3D kernels (2D spatial information + temporal information). A drawback of this model is that the large number of parameters result the training being more computationally intensive and hence slower than the 2D version. Therefore, the 3D version of the ConvNets typically has fewer layers than the deeper architectures of 2D CNNs.
 
-In this paper, the authors applied the ResNet architecture to 3D CNNs. This approach introduces deeper models for 3D CNNs and achieves higher accuracy, thereby improving performance.
+In this paper, the authors applied the ResNet architecture to the 3D CNNs. This approach introduces deeper models for 3D CNNs and achieves higher accuracy.
 
-Experiments showed that 3D ResNets (especially deeper ones like ResNet-34) outperform models like C3D, particularly on larger datasets. Pretrained models like Sports-1M C3D can help mitigate overfitting on smaller datasets. Overall, 3D ResNets effectively leverage deeper architectures to capture complex spatiotemporal patterns in video data.
+Experiments showed that the 3D ResNets (especially deeper ones like the ResNet-34) outperform models like the C3D, particularly on larger datasets. Pretrained models like Sports-1M C3D can help mitigate overfitting on smaller datasets. Overall, 3D ResNets effectively leverage deeper architectures to capture complex spatiotemporal patterns in the video data.
 
 | Method                | Validation set |             |            | Testing set |             |            |
 |-----------------------|----------------|-------------|------------|-------------|-------------|------------|
@@ -45,16 +45,16 @@ Experiments showed that 3D ResNets (especially deeper ones like ResNet-34) outpe
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models 3D vs (2+1)D convolution..png" alt="3D vs (2+1)D convolution.">
 </div>
 
-(2+1)D ResNets is inspired by 3D ResNets. Howver, a key difference is how the layers are structured. This architecture introduces a combination of 2D convolution and 1D convolution:
+(2+1)D ResNets are inspired by the 3D ResNets. However, a key difference lies in how the layers are structured. This architecture introduces a combination of 2D convolution and 1D convolution:
 
-- 2D convolution capture spatial features within a frame.
-- 1D convolution capture motion information across consecutive frames.
+- The 2D convolution captures the spatial features within a frame.
+- The 1D convolution captures the motion information across the consecutive frames.
 
 This model can learn spatiotemporal features directly from video data, potentially leading to better performance in video analysis tasks like action recognition.
 
 - Benefits:
     - The addition of nonlinear rectification (ReLU) between two operations doubles the number of non-linearities compared to a network using full 3D convolution for the same number of parameters, thus rendering the model capable of representing more complex functions.
-    - Decomposition facilitates the optimization, yielding in practice both a lower training loss and a lower testing loss.
+    - Decomposition facilitates the optimization, yielding in lower train loss and test loss in practice.
 
 | Method                        | Clip@1 Accuracy | Video@1 Accuracy | Video@5 Accuracy |
 |-------------------------------|--------|---------|---------|
@@ -78,10 +78,9 @@ The Kinetics dataset is a large-scale high-quality video dataset commonly used f
 
 <Tip>
 
-[Papers with Code](https://paperswithcode.com/) is a free and open resource that provides access to research papers in the field of machine learning, along with the code implementations of the methods and algorithms described in these papers. One of its key features is the ability to see the state-of-the-art (SOTA) models for various machine learning tasks and benchmarks. This makes it an invaluable tool for researchers and practitioners who want to stay updated with the latest advancements and implement cutting-edge models.
 
 </Tip>
 
 # Conclusion
 
-The evolution of video analysis models has been fascinating to witness. These models were heavily influenced by other models which once were the state-of-the-art. For example, Two-StreamNets motivated by ConvNets and (2+1)D ResNets inspired by 3D ResNets. As research progresses, one can expect even more advanced architectures and techniques to emerge in the future.
+The evolution of video analysis models has been fascinating to witness. These models were heavily influenced by other SOTA models. For example, Two-StreamNets was motivated by the  ConvNets and (2+1)D ResNets were inspired by the 3D ResNets. As the research progresses, one can expect even more advanced architectures and techniques to emerge in the future.
