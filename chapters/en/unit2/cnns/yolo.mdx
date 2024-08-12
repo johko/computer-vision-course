@@ -1,13 +1,3 @@
-You Only Look Once
-
-
-<!--  
-- [x]  Difference with the previous methods
-- [x]  Architecture Intuition
-- [x]  Innovations -> Loss function, min-max suppression
-- [ ]  Evaluation methods --> 
-
-
 # YOLO 
 
 ## A short introduction to Object Detection
@@ -217,8 +207,8 @@ Inference is simple. We pass the image through the network and get the $S \times
 In rare cases, for large objects, the network tends to predict multiple boxes from multiple grid cells. To eliminate duplicate detections, we use a technique called non-maximum suppression (NMS). NMS works by selecting the box with the highest confidence score and eliminating all other boxes with an IOU greater than a threshold. This is done iteratively until no overlapping boxes remain.
 
 
-It looks like this:
-<insert gif>
+The end to end flow looks like this:
+![nms](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/object-detection-gif.gif)
 
 ## Evolution of YOLO
 
