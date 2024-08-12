@@ -1,0 +1,31 @@
+# Pre-processing for Computer Vision Tasks
+
+Now that we have seen what are images, how they are acquired, and their impact, it is time to understand what operations we can perform and how they are used during the model-building process. 
+
+## Operations in Digital Image Processing
+In digital image processing, operations on images are diverse and can be categorized into:
+
+- Logical
+- Statistical
+- Geometrical
+- Mathematical
+- Transform operations
+ 
+Each category encompasses different techniques, such as morphological operations under logical operations or fourier transforms and principal component analysis (PCA) under transforms. In this context, we refer to morphology as the group of operations that use structuring elements to generate images of the same size by looking into the values of the pixel neighborhood. Understanding the distinction between element-wise and matrix operations is important in image manipulation. Element-wise operations, such as raising an image to a power or dividing it by another image, involve processing each pixel individually. This pixel-based approach contrasts with matrix operations, which utilize matrix theory for image manipulation. Having said that, you can do whatever you want with images, as they are matrices containing numbers!
+
+## Mathematical Tools in Image Processing
+Mathematical tools are indispensable in digital image processing. Set theory, for instance, is crucial for understanding and performing operations on images, particularly binary images. In these images, pixels are typically categorized as either foreground (1) or background (0). In set theory, operations such as union and intersection determine relationships between features represented by pixel coordinates. Intensity transformations and spatial filtering are other mathematical tools. They focus on manipulating pixel values within an image, where operators are applied to single images or a set of images for various purposes, like noise reduction.
+
+## Spatial Filtering Techniques and Image Enhancement
+Spatial filtering encompasses a broad range of applications in image processing, primarily modifying images by altering each pixel's value based on its neighboring pixels' values. Techniques include linear spatial filters, which can blur (low pass filters) or sharpen (high pass filters) an image. The properties and applications of different filter kernels, such as the Gaussian and box filters, are contrasted. Sharpening filters emphasize transitions in intensity and are often implemented through digital differentiation techniques like the Laplacian, highlighting edges and discontinuities in an image.
+
+## Data Augmentation
+Data augmentation plays a crucial role in enhancing the performance and generalization of Convolutional Neural Networks (CNNs) used in image classification. This process involves artificially expanding a training dataset by creating modified versions of data points, either through minor alterations or by generating new data using deep learning techniques. 
+
+Augmented data is created by applying modifications such as geometric and color space transformations to existing data, thereby enriching the original dataset with varied forms. Conversely, synthetic data is entirely new and generated from scratch using advanced techniques like Deep Neural Networks (DNNs) and Generative Adversarial Networks (GANs), adding further diversity and volume to the dataset. Both methods significantly expand the quantity and variety of data available for training machine learning models. Data augmentation is applicable not only to images but also to audio, video, text, and other data types. This is good for scenarios with limited training data. It enhances model accuracy, prevents overfitting, and reduces costs associated with data labelling and cleaning. However, challenges such as the persistence of original dataset biases and the high cost of quality assurance remain.
+
+In practice, data augmentation techniques vary across data types. For audio, this includes noise injection and pitch adjustments; for text, methods like word shuffling and syntax-tree manipulation are used. Image augmentation involves transformations like flipping, cropping, and applying kernel filters. Advanced techniques like Neural Style Transfer and the use of GANs for new data point generation further extend its capabilities. These methods are instrumental in fields like healthcare for medical imaging, self-driving cars using synthetic data, and natural language processing, particularly in low-resource language scenarios. Specific image augmentation practices, such as random rotations, brightness adjustments, shifts, flips, and zoom, are implemented using tools like Pytorch, Augmentor, Albumentations, Imgaug, and OpenCV. These tools facilitate a range of augmentations, from Gaussian noise to perspective skewing, catering to diverse machine learning needs.
+
+The significance of data augmentation becomes particularly evident in the context of image classification with CNNs. Standardized datasets, often used in initial CNN training, set high expectations due to their ample sample sizes and resultant model accuracy. However, when these models are applied to real-world problems, a gap in performance is frequently observed, underscoring the need for more extensive and varied data. Data augmentation addresses this gap by multiplying the number of images in a dataset, potentially by significant factors, without the need for additional data collection. This not only increases dataset size but also introduces variability, enhancing the robustness of the training process. By implementing batch-wise augmentation during model training, it also conserves disk space, as there's no need to store transformed images.
+
+Overall, data augmentation is not merely a method for dataset expansion: it's a vital component in developing effective and practical CNN models for image classification tasks. By improving model performance and its ability to generalize from training data to real-world applications, data augmentation stands as a cornerstone technique in the field of deep learning, addressing the perpetual demand for more comprehensive and diverse data.
