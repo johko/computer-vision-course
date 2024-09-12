@@ -24,7 +24,7 @@ For training purpose, the paper proposed following steps
 - Then use the fine tuned model on the object detection dataset . 
 
 The following is a basic pipeline of RCNN 
-![rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/RCNN.png)
+![rcnn](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Fast%20R-CNN.png)
 
 
 #### Fast RCNN 
@@ -36,7 +36,7 @@ Fast RCNN is focused on improvisation over the original RCNN. They added these t
 - Introduces ROI pooling layer to only get the features from the  Region of Interests.
 - Trains an end-to-end model in contrary to multi-step RCNN / SPPnet models using multi-task loss.
 
-![fast_rcnn](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Fast%20R-CNN.png)
+![fast_rcnn](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Fast%20R-CNN.png)
 
 #### Faster RCNN 
 
@@ -104,7 +104,6 @@ To recap, we have an image, divided into $S \times S$ grid. Each grid cell conta
 
 So if we have a learnable system which converts an image to an $S \times S \times (B \times 5 + C)$ feature map, we are one step closer to the task.
 
-<!-- TODO:  maybe insert a figure here -->
 
 #### Network Architecture
 In the original YOLOv1 design the input is an RGB image of size $448 \times 448$. The image is divided into a $S \times S = 7 \times 7$ grid, where each grid cell is responsible for detecting $B=2$ bounding boxes and $C=20$ classes. 
@@ -121,7 +120,7 @@ x & \text{if } x > 0\\
 
 See figure below for the architecture of YOLOv1.
 
-<!-- TODO:  insert arch figure here -->
+![v1_arch](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/yolov1_arch.png)
 
 #### Training
 The network is trained end-to-end on the image and the ground truth bounding boxes. The loss function is a sum of squared error loss. The loss function is designed to penalize the network for incorrect predictions of bounding box coordinates, confidence and class probabilities. We will discuss the loss function in the next section.
