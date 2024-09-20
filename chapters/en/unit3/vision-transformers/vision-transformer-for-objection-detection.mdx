@@ -3,7 +3,7 @@
 This section will describe how object detection tasks are achieved using Vision Transformers. We will understand how to fine-tune existing pre-trained object detection models for our use case. Before starting, check out this HuggingFace Space, where you can play around with the final output.
 
 <iframe
-	src="https://huggingface.co/spaces/hf-vision/finetuning_demo_for_object_detection"
+	src="https://hf-vision-finetuning-demo-for-object-detection.hf.space/"
 	frameborder="0"
 	width="850"
 	height="450">
@@ -395,7 +395,7 @@ Before proceeding further, log in to Hugging Face Hub to upload your model on th
 ```python
 from huggingface_hub import notebook_login
 
-notebook_login
+notebook_login()
 ```
 
 Once done, let's start training the model. We start by defining the training arguments and defining a trainer object that uses those arguments to do the training, as shown here:
@@ -457,7 +457,7 @@ from transformers import pipeline
 
 # download a sample image
 
-url = "https://huggingface.co/datasets/hf-vision/course-assets/blob/main/test-helmet-object-detection.jpg"
+url = "https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/test-helmet-object-detection.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
 
 # make the object detection pipeline
@@ -496,6 +496,7 @@ And finally use this function for the same test image we used.
 
 
 ```
+results = obj_detector(image)
 plot_results(image, results)
 ```
 
