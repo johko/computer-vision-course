@@ -12,6 +12,8 @@ An obstacle to answering this question, the gradient vanishing problem, was addr
 
 However, a new issue emerged: the degradation problem. As the neural networks became deeper, accuracy saturated and degraded rapidly. An experiment comparing shallow and deep plain networks revealed that deeper models exhibited higher training and test errors, suggesting a fundamental challenge in training deeper architectures effectively. This degradation was not because of overfitting but because the training error increased when the network became deeper. The added layers did not approximate the identity function.
 
+<img src="https://i.sstatic.net/xDLez.jpg" alt="Degradation-error" width="512" height="512">
+
 
 ResNet’s residual connections unlocked the potential of the extreme depth, propelling the accuracy upwards compared to the previous architectures.
 
@@ -65,9 +67,9 @@ computational complexity, these connections bypass layers, creating direct paths
 * Easier to Optimize: By learning residuals, the network is essentially breaking down the learning process into easier, incremental steps. It’s easier for the network to learn the residual R(x) = F(x) − x than it is to learn F(x) directly, especially in very deep networks.
 
 
+### Summarizing:
 
-
-We can summarize ResNet Network ->  Plain Network + Shortcuts!
+We can conclude that ResNet Network ->  Plain Network + Shortcuts!
 
 For operations  \(F(x) + x\), \(F(x)\) and \(x\) should have identical dimensions.
 ResNet employs two techniques to achieve this:
