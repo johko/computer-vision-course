@@ -203,7 +203,7 @@ $$
 Inference is simple. We pass the image through the network and get the $S \times S \times (B \times 5 + C)$ feature map. We then filter out the boxes which have confidence scores less than a threshold. 
 
 ##### Non-Maximum Suppression
-In rare cases, for large objects, the network tends to predict multiple boxes from multiple grid cells. To eliminate duplicate detections, we use a technique called non-maximum suppression (NMS). NMS works by selecting the box with the highest confidence score and eliminating all other boxes with an IOU greater than a threshold. This is done iteratively until no overlapping boxes remain.
+In rare cases, for large objects, the network tends to predict multiple boxes from multiple grid cells. To eliminate duplicate detections, we use a technique called Non-Maximum Suppression (NMS). NMS works by selecting the box with the highest confidence score and eliminating all other boxes with an IOU greater than a threshold. This is done iteratively until no overlapping boxes remain.
 
 
 The end to end flow looks like this:
