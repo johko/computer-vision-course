@@ -77,7 +77,7 @@ In this design, we divide the image into an $S \times S$ grid. If the center of 
 
 #### Confidence
 
-This confidence score of a bounding box should reflect how accurately the box was predicted. It should be close to IOU (intersection over union) of the truth box vs predicted box. If the grid was not supposed to predict a box, then it should be zero. So this should encode the probability of the center of box being present in the grid and the correctness of the bounding box. 
+The confidence score of a bounding box should reflect how accurately the box was predicted. It should be close to the IOU (Intersection over Union) of the ground truth box versus the predicted box. If the grid was not supposed to predict a box, then it should be zero. So this should encode the probability of the center of the box being present in the grid and the correctness of the bounding box.
 
 Formally, 
 
