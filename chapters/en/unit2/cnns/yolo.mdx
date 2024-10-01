@@ -110,7 +110,7 @@ In the original YOLOv1 design the input is an RGB image of size $448 \times 448$
 
 The network architecture is a simple convolutional neural network. The input image is passed through a series of convolutional layers, followed by a fully connected layer. The final layer outputs are reshaped to $7 \times 7 \times (2 \times 5 + 20) = 7 \times 7 \times 30$.
 
-The YOLOv1 design took inspiration from GoogLeNet, which used 1x1 convolutions to reduce the depth of the feature maps. This was done to reduce the number of parameters and computation in the network. The network has 24 convolutional layers followed by 2 fully connected layers. It uses a linear activation function for the final layer and all other layers use the leaky rectified linear activation:
+The YOLOv1 design took inspiration from GoogLeNet, which used 1x1 convolutions to reduce the depth of the feature maps. This was done to reduce the number of parameters and the amount of computation in the network. The network has 24 convolutional layers followed by 2 fully connected layers. It uses a linear activation function for the final layer, and all other layers use the leaky rectified linear activation:
 
 $$\text{LeakyReLU}(x) = \begin{cases}
 x & \text{if } x > 0\\
