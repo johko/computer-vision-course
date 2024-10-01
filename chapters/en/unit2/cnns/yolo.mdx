@@ -62,7 +62,7 @@ YOLO was a ground breaking innovation of its time. A real time object detector, 
 
 The detection systems before consisted of utilizing image classifiers on patches of images. Systems like deformable parts models (DPM) used a sliding window approach where the classifier is run at evenly spaced locations over the entire image.
 
-Other works like R-CNN used a two step detection. First, detect many possible regions of interest, generated as bounding boxes by a Region Proposal Network. Then a classifier is ran through all proposed regions to make final predictions. Post-processing, such as, post refining the bounding boxes, eliminating duplicate detections, and re-scoring the boxes based on other objects in the scene needs to be done.
+Other works like R-CNN used a two-step detection. First, they detected many possible regions of interest, generated as bounding boxes by a Region Proposal Network. Then a classifier is run through all proposed regions to make final predictions. Post-processing, such as refining the bounding boxes, eliminating duplicate detections, and re-scoring the boxes based on other objects in the scene, needs to be done.
 
 These complex pipelines are slow and hard to optimise because each individual component must be trained separately.
 
