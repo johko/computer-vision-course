@@ -33,7 +33,7 @@ Let's break this down:
 
 In a typical neural network layer, we aim to learn a mapping F(x), where x is the input and F is the transformation the network applies. Without residual learning, the transformation at a layer is: y = F(x). In ResNets, instead of learning F(x) directly, the network is designed to learn the residual R(x), where: R(x) = F(x) − x. Thus, the transformation in a residual block is written as: y = F(x) + x.
 
-Here, x is the input to the residual block, and F(x) is the output of the block's stacked layers (usually convolutions, batch normalization, and ReLU). The identity mappingx is directly added to the output of F(x) (through the skip connection). So the block is learning the residual R(x) = F(x), and the final output is F(x) + x. This residual function is easier to optimize compared to the original mapping. If the optimal transformation is close to the identity (i.e., no transformation is needed), the network can easily set F(x) ≈ 0 to pass through the input as it is.
+Here, x is the input to the residual block, and F(x) is the output of the block's stacked layers (usually convolutions, batch normalization, and ReLU). The identity mapping x is directly added to the output of F(x) (through the skip connection). So the block is learning the residual R(x) = F(x), and the final output is F(x) + x. This residual function is easier to optimize compared to the original mapping. If the optimal transformation is close to the identity (i.e., no transformation is needed), the network can easily set F(x) ≈ 0 to pass through the input as it is.
 
 
 
