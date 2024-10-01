@@ -171,7 +171,7 @@ $$
 
 In addition, many grid cells do not contain objects, the confidence is close to zero and thus the grid cells containing the objects often overpower the gradients. This makes the network unstable during training.
 
-To rectify, we also weigh the loss from the confidence predictions in the grid cells which do not contain objects less than the grid cells which contain objects. We use a separate weight for the confidence loss called $\lambda_{\text{noobj}}$. It is usually set to 0.5.
+To rectify, we also weigh the loss from the confidence predictions in the grid cells that do not contain objects lower than in the grid cells that contain objects. We use a separate weight for the confidence loss called $\lambda_{\text{noobj}}$, which is usually set to 0.5.
 
 So the confidence loss for each grid cell $(i)$ can look like this:
 $$
