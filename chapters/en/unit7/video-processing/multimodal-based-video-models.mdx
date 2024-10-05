@@ -4,7 +4,7 @@ As discussed in previous chapters, a video can be simply defined as a sequence o
 
 ## What Modalities Are Present in Video?[[what-modalities-in-video]]
 
-Videos encompasses a variety of modalities beyond just sequences of images. Understanding these different modalities is crucial for comprehensive video analysis and processing. The primary modalities present in videos include:
+Videos encompass a variety of modalities beyond just sequences of images. Understanding these different modalities is crucial for comprehensive video analysis and processing. The primary modalities present in videos include:
 
 1. Visual Modality(Frames/Images): The most common modality, consisting of a sequence of images that provides the visual information for the video.
 2. Audio Modality(Sound): Includes dialogue, background music, and environmental sounds that can convey contextual information about the video.
@@ -13,7 +13,7 @@ Videos encompasses a variety of modalities beyond just sequences of images. Unde
 5. Depth Modality: Represents the 3D spatial information of the video.
 6. Sensor Modality: In some applications, videos may include modalities like temperature or biometric data.
     
-<!-- Modality Overview Image -->
+/* Modality Overview Image */
 Beyond the modalities mentioned above, videos can incorporate even more diverse types of modalities. Be sure to consider which modalities are necessary for your specific work or project. In the next section, we will explore video architectures that can align and represent these modalities jointly.
 
 ## Video and Text[[video-and-text]]
@@ -22,7 +22,7 @@ Beyond the modalities mentioned above, videos can incorporate even more diverse 
 
 - **Overview**
 
-<!-- VideoBERT Overview Image -->
+/* VideoBERT Overview Image */
 [VideoBERT](https://arxiv.org/abs/1904.01766) is an attempt to apply the BERT architecture directly to video data. Just like BERT in language models, the goal is to learn good visual-linguistic representation without any supervsion. For the text modality, VideoBERT uses ASR (Automatic Speech Recognition) to convert audio into text, and then obtains BERT token embeddings. For the video, it uses S3D to get token embeddings for each frame. 
 
 - **Key Features**
@@ -52,7 +52,7 @@ Unlike previous methods, VideoBERT does not use a detection model for image-text
 
 While the model architecture and training method are not entirely new, MERLOT achieves performance improvements by training on **YT-Temporal-180M**, a large-scale visual-text dataset. This extensive dataset enables the model to better understand temporal dynamics and multimodal interactions, leading to enhanced reasoning and prediction capabilities in video-language tasks.
     
-<U>Note</U>: If you're looking the detailed training process of MERLOT, make sure to reference the MERLOT paper as well as earlier works like [HERO](https://aclanthology.org/2020.emnlp-main.161.pdf), [CBT](https://arxiv.org/pdf/1906.05743) and [HAMMER](https://aclanthology.org/2020.emnlp-main.161.pdf).
+<u>Note</u>: If you're looking the detailed training process of MERLOT, make sure to reference the MERLOT paper as well as earlier works like [HERO](https://aclanthology.org/2020.emnlp-main.161.pdf), [CBT](https://arxiv.org/pdf/1906.05743) and [HAMMER](https://aclanthology.org/2020.emnlp-main.161.pdf).
 
 ## Video and Audio, Text[[video-and-audio-text]]
 
@@ -60,7 +60,7 @@ While the model architecture and training method are not entirely new, MERLOT ac
 
 - **Overview**
 
-<!-- VATT Overview Image -->    
+/* VATT Overview Image */ 
 [VATT](https://arxiv.org/abs/2104.11178) is a model designed for self-supervised learning from raw video, audio, and text. Different tokenization and positional encoding methods were applied to each modality, and VATT used the Transformer Encoder to effectively integrate the representations from the raw multimodal data. As a result, it achieved strong performance in various downstream tasks such as action recognition and text-to-video retrieval.
 
 - **Key Features**
@@ -83,8 +83,8 @@ Previous models using transformers for video multimodal tasks tended to rely hea
     
 Video-LLaMA has two branches
 
-1. <U>Vision-language branch</U> for processing video frames 
-2. <U>Audio-language branch</U> for handling audio signals. 
+1. <u>Vision-language branch</u> for processing video frames 
+2. <u>Audio-language branch</u> for handling audio signals. 
 
 These branches are trained separately, undergoing both pre-training and fine-tuning phases. In the pre-training phase, the model learns to integrate different modalities, while in the fine-tuning phase, it focuses on improving its ability to follow instructions accurately.
 
@@ -100,7 +100,7 @@ Previous models struggled to handle both visual and auditory content together. V
 
 - **Overview**
 
-<!-- ImageBind Overview Image -->
+/* ImageBind Overview Image */
 ImageBind utilizes paired data between images and other modalities to integrate diverse modality representations, centering around image data.
 
 - **Key Features**
@@ -115,6 +115,6 @@ ImageBind's key contribution is its ability to integrate various modalities with
 ## Conclusion[[conclusion]]
 
 We have briefly examined the different modalities present in videos and then explored models that integrate visual information with various other modalities. 
-As time goes on, there is a growing body of research focused on integrating an wide range of modalities all at once. 
+As time goes on, there is a growing body of research focused on integrating a wide range of modalities all at once. 
 
 I'm excited to see what future models will emerge, integrating even more diverse modalities within the video content. The potential for advancing multimodal representation learning through videos feels limitless!
