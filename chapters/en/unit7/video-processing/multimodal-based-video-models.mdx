@@ -1,4 +1,4 @@
-# Multimodal Based Video Models [[mutilmodal-based-video-models]]
+# Multimodal Based Video Models[[mutilmodal-based-video-models]]
 
 As discussed in previous chapters, a video can be simply defined as a sequence of images. However, unlike simple images, videos contain various modalities such as sound, text, and movement. From this perspective, to properly understand a video, we must consider multiple modalities at the same time. In this chapter, we first briefly explain what modalities can exist in a video. Then, we introduce architectures that can learn by aligning videos with different modalities.
 
@@ -16,9 +16,9 @@ Videos encompasses a variety of modalities beyond just sequences of images. Unde
 <!-- Modality Overview Image -->
 Beyond the modalities mentioned above, videos can incorporate even more diverse types of modalities. Be sure to consider which modalities are necessary for your specific work or project. In the next section, we will explore video architectures that can align and represent these modalities jointly.
 
-## Video and Text [[video-and-text]]
+## Video and Text[[video-and-text]]
 
-### VideoBERT [[videobert]]
+### VideoBERT[[videobert]]
 
 - **Overview**
 
@@ -36,7 +36,7 @@ Beyond the modalities mentioned above, videos can incorporate even more diverse 
 VideoBERT was one of the first models to effectively integrate video-language understanding by learning joint representations.
 Unlike previous methods, VideoBERT does not use a detection model for image-text labeling. Instead, it uses *clustering algorithm* to enable Masked Frame modeling, allowing the model to predict masked frames without needing explicit labeled data.
 
-### MERLOT [[merlot]]
+### MERLOT[[merlot]]
 
 - **Overview**
 
@@ -73,7 +73,7 @@ While the model architecture and training method are not entirely new, MERLOT ac
     
 Previous models using transformers for video multimodal tasks tended to rely heavily on visual data and required extensive training time and computational complexity. In contrast, VATT utilizes **Droptoken** and **weight sharing** to learn powerful multimodal representations from raw visual, audio, and text data with relatively lower computational complexity.
 
-### Video-Llama [[video-llama]]
+### Video-Llama[[video-llama]]
 
 - **Overview**
 
@@ -96,7 +96,7 @@ Previous models struggled to handle both visual and auditory content together. V
 
 ## Video and Multiple Modalities [[video-and-multiple-modalities]]
 
-### ImageBind [[imagebind]]
+### ImageBind[[imagebind]]
 
 - **Overview**
 
@@ -112,7 +112,7 @@ Additionally, the training process of ImageBind is relatively simpler compared t
 
 ImageBind's key contribution is its ability to integrate various modalities without the need for specific modality-paired datasets. Using images as a reference, it aligns and combines up to six different modalities—such as audio, text, depth, and more—into a unified representation space. The significance lies in its capacity to achieve this alignment across multiple modalities simultaneously, without requiring direct pairing for each combination, making it highly efficient for multimodal learning.
 
-## Conclusion [[conclusion]]
+## Conclusion[[conclusion]]
 
 We have briefly examined the different modalities present in videos and then explored models that integrate visual information with various other modalities. 
 As time goes on, there is a growing body of research focused on integrating an wide range of modalities all at once. 
