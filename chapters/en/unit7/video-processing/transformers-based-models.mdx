@@ -41,7 +41,7 @@ Although ViT outperformed other state-of-the-art models, training the ViT model 
 
 ## Video Vision Transformer (ViViT)[[video-vision-transformer-vivit]]
 
-As mentioned earlier, the important issue for ViViT, which extending the image processing of ViT to video classification task, was how to train the model more quickly and efficiently. Also, unlike images, video contains not only spatial information, but also temporal information, and how to handle this “temporal information” is a key consideration and exploration.
+As mentioned earlier, the important issue for ViViT, which extends the image processing of ViT to video classification task, was how to train the model more quickly and efficiently. Also, unlike images, video contains not only spatial information, but also temporal information, and how to handle this “temporal information” is a key consideration and exploration.
 
 The abstract from the [paper](https://arxiv.org/abs/2103.15691) is the as follows:
 
@@ -78,7 +78,7 @@ The previously introduced methods, such as Uniform Frame Sampling and Tubelet Em
 ### Transformer models for video in ViViT[[transformer-models-for-video-in-vivit]]
 #### Model 1 : Spatio-temporal attention[[model-1-spatio-temporal-attention]]
 
-Simply forwards all spatio-temporal tokens extracted from the video, throught the transformer encoder. Each frame is split n_w x n_h image patches, so total n_t x n_w x n_h pathces contextualize from each other using transformer encoder. (n_h : # of rows, n_w : # of columns, n_t : # of frames)
+Simply forwards all spatio-temporal tokens extracted from the video, through the transformer encoder. Each frame is split n_w x n_h image patches, so total n_t x n_w x n_h patches contextualize from each other using transformer encoder. (n_h : # of rows, n_w : # of columns, n_t : # of frames)
 
 **complexity : O(n_h^2 x n_w^2 x n_t^2)**
 #### Model 2 : Factorised encoder[[model-2-factorised-encoder]]
@@ -101,7 +101,7 @@ First, only spatial interactions are contextualized through Spatial Transformer 
 </div>
 <small>Factorised self-attention (Model 3). Taken from the <a href = "https://arxiv.org/abs/2103.15691">original paper</a>.</small>
 
-In model 3, instead of computing multi-headed self-attention accross all pairs of tokens, first only compute self-attention spatially (among all tokens extracted from the same temporal index). Then compute self-attention temporally(among all tokens extracted from the same spatial index). Because of the ambiguities no CLS(classification) token is used.
+In model 3, instead of computing multi-headed self-attention across all pairs of tokens, first only compute self-attention spatially (among all tokens extracted from the same temporal index). Then compute self-attention temporally(among all tokens extracted from the same spatial index). Because of the ambiguities no CLS(classification) token is used.
 
 **complexity : same as model 2**
 #### Model 4 : Factorized dot-product attention[[model-4-factorized-dot-product-attention]]
@@ -138,7 +138,7 @@ TimeSFormer is a concurrent work with ViViT, applying Transformer on video class
 - **Joint Space-Time Attention** is the same as ViViT Model 1; the blue patch is the query and contextualizes other patches across multiple frames.
 - **Divided Space-Time Attention** is similar to ViViT Model 3; the blue patch first contextualizes temporally with the green patches at the same position, and then spatially contextualizes with other image patches at the same time index.
 - **Sparse Local Global Attention**: selectively combines local and global information.
-- **Axial Attention**: processes spatial and temporal dimensions seperately along their axes.
+- **Axial Attention**: processes spatial and temporal dimensions separately along their axes.
 
 ### Performance Discussion[[performance-discussion]]
 
