@@ -101,7 +101,7 @@ First, only spatial interactions are contextualized through Spatial Transformer 
 </div>
 <small>Factorised self-attention (Model 3). Taken from the <a href = "https://arxiv.org/abs/2103.15691">original paper</a>.</small>
 
-In model 3, instead of computing multi-headed self-attention across all pairs of tokens, first only compute self-attention spatially (among all tokens extracted from the same temporal index). Then compute self-attention temporally(among all tokens extracted from the same spatial index). Because of the ambiguities no CLS(classification) token is used.
+In model 3, instead of computing multi-headed self-attention across all pairs of tokens, first only compute self-attention spatially(among all tokens extracted from the same temporal index). Then compute self-attention temporally(among all tokens extracted from the same spatial index). Because of the ambiguities, no CLS(classification) token is used.
 
 **complexity : same as model 2**
 #### Model 4 : Factorized dot-product attention[[model-4-factorized-dot-product-attention]]
