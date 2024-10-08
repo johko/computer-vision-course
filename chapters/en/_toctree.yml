@@ -126,6 +126,8 @@
     local: "unit7/video-processing/video-processing-basics"
   - title: Overview of the previous SOTA models
     local: "unit7/video-processing/overview-of-previous-sota-models"
+  - title: Transformers based models
+    local: "unit7/video-processing/transformers-based-models"
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
   sections:
   - title: Introduction
