@@ -6,7 +6,9 @@ Videos are made up of a series of images called frames that are played one after
 Because of this combination of space and time, videos contain more complex information than single images. To analyze videos effectively, we need models that can understand both the spatial and temporal aspects.
 
 ## The Role and Need for RNNs in Video Processing[[the-role-and-need-for-rnns-in-video-processing]]
-
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/rnn.png" alt="RNN architecture">
+</div>
 Convolutional Neural Networks (CNNs) are excellent at analyzing spatial features in images. 
 However, they aren't designed to handle sequences where temporal relationships matter. This is where Recurrent Neural Networks (RNNs) come in. 
 RNNs are specialized for processing sequential data because they have a "memory" that captures information from previous steps. This makes them well-suited for understanding how video frames relate to each other over time.
@@ -20,7 +22,9 @@ By combining these two, we can understand the full context of a video. Technique
 
 ## Long-term Recurrent Convolutional Networks(LRCN)[[lrcn]]
 
-/* A image of the model architecture will be here */
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/lrcn.png" alt="LRCN model architecture">
+</div>
 
 **Overview**
 Long-term Recurrent Convolutional Networks (LRCN) are models introduced by researchers Donahue et al. in 2015. 
@@ -36,7 +40,9 @@ LRCN was one of the first models to effectively handle both spatial and temporal
 
 ## Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting(ConvLSTM)[[convlstm]]
 
-/* A image of the model architecture will be here */
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/convlstm.png" alt="ConvLSTM model architecture">
+</div>
 
 **Overview**
 
@@ -62,7 +68,9 @@ This approach showed that it's possible to learn useful video representations wi
 
 ## Describing Videos by Exploiting Temporal Structure[[temporal-structure]]
 
-/* A image of the model architecture will be here */
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/attention_model.png">
+</div>
 
 **Overview**
 In 2015, Yao et al. introduced attention mechanisms in video models, specifically for video captioning tasks. This approach leverages attention to selectively focus on important temporal and spatial features within the video, allowing the model to generate more accurate and contextually relevant descriptions.
