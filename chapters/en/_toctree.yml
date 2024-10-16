@@ -44,7 +44,7 @@
     local: "unit2/cnns/mobilenetextra"
   - title: Resnet 
     local: "unit2/cnns/resnet"
-  - title: YOLO; You only Look once
+  - title: YOLO; You Only Look Once
     local: "unit2/cnns/yolo"
 - title: Unit 3 - Vision Transformers
   sections:
