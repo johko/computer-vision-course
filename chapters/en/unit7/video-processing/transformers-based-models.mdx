@@ -76,7 +76,7 @@ An alternate method, extracting spatio-temporal "tubes" from the input volume an
 The previously introduced methods, such as Uniform Frame Sampling and Tubelet Embedding, are effective but relatively simple approaches. The upcoming methods to be introduced are more advanced.
 
 ### Transformer Models for Video in ViViT[[transformer-models-for-video-in-vivit]]
-#### Model 1 : Spatio-temporal attention[[model-1-spatio-temporal-attention]]
+#### Model 1 : Spatio-Temporal Attention[[model-1-spatio-temporal-attention]]
 
 Simply forwards all spatio-temporal tokens extracted from the video, through the transformer encoder. Each frame is split n_w x n_h image patches, so total n_t x n_w x n_h patches contextualize from each other using transformer encoder. (n_h : # of rows, n_w : # of columns, n_t : # of frames)
 
