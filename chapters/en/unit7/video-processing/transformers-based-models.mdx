@@ -1,6 +1,6 @@
 # Transformers in Video Processing (Part 1)
 
-## Introduction[[introduction]]
+## Introduction
 
 In this chapter, we will cover how the Transformers model is utilized in video processing. In particular, we will introduce the Vision Transformer, a successful application of the Transformers model in the field of vision. We will then explain the additional considerations made for the Video Vision Transformer (ViViT) model used in video, as opposed to the Vision Transformer model used in images. Finally, we will briefly discuss about the TimeSFormer model. 
 
@@ -9,7 +9,7 @@ In this chapter, we will cover how the Transformers model is utilized in video p
 - [computer vision course / unit3 / vision transformers for image classification](https://huggingface.co/learn/computer-vision-course/unit3/vision-transformers/vision-transformers-for-image-classification)
 - [transformers / model documentation: ViT](https://huggingface.co/docs/transformers/main/en/model_doc/vit)
 
-## Recap about ViT[[recap-about-vit]]
+## Recap about ViT
 
 First, let's take a quick look at Vision Transformers: [An image is worth 16x16 words: Transformers for image recognition at scale](https://arxiv.org/abs/2010.11929), the most basic of the successful applications of Transformers to vision.
 
@@ -30,7 +30,7 @@ The key techniques proposed in the ViT paper are as follows:
 
 - The model is pre-trained on large-scale datasets and fine-tuned for downstream vision tasks, achieving high performance.
 
-### Performance & Limitation[[performance-and-limitation]]
+### Performance & Limitation
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_2_vit_performance.JPG" alt="Vision transformer performance"></img>
@@ -39,7 +39,7 @@ The key techniques proposed in the ViT paper are as follows:
 
 Although ViT outperformed other state-of-the-art models, training the ViT model required a large amount of computational power. Training the ViT model took 2,500 days on TPU-v3. Assuming a TPU-v3 core costs approximately $2 per hour (you can find more detailed pricing information [here](https://cloud.google.com/tpu/pricing)), it would cost $2 x 24 hours x 2,500 days = $120,000 to train the model once.
 
-## Video Vision Transformer (ViViT)[[video-vision-transformer-vivit]]
+## Video Vision Transformer (ViViT)
 
 As mentioned earlier, the important issue for ViViT, which extends the image processing of ViT to video classification task, was how to train the model more quickly and efficiently. Also, unlike images, video contains not only spatial information, but also temporal information, and how to handle this “temporal information” is a key consideration and exploration.
 
@@ -52,9 +52,9 @@ The abstract from the [paper](https://arxiv.org/abs/2103.15691) is as follows:
 </div>
 <small>ViViT architecture. Taken from the <a href = "https://arxiv.org/abs/2103.15691">original paper</a>.</small>
 
-### Embedding Video Clips[[embedding-video-clips]]
+### Embedding Video Clips
 
-#### Uniform Frame Sampling[[uniform-frame-sampling]]
+#### Uniform Frame Sampling
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_4_uniform_sampling_1JPG.JPG" alt="Uniform frame sampling"></img>
@@ -64,7 +64,7 @@ The abstract from the [paper](https://arxiv.org/abs/2103.15691) is as follows:
 In this mapping method, the model uniformly samples some frames across the time domain,
 e. g. one frame per every 2 frames. 
 
-#### Tubelet Embedding[[tubelet-embedding]]
+#### Tubelet Embedding
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_5_tubelet_embedding.JPG" alt="Tubelet embedding"></img>
@@ -75,13 +75,13 @@ An alternate method, extracting spatio-temporal "tubes" from the input volume an
 
 The previously introduced methods, such as Uniform Frame Sampling and Tubelet Embedding, are effective but relatively simple approaches. The upcoming methods to be introduced are more advanced.
 
-### Transformer Models for Video in ViViT[[transformer-models-for-video-in-vivit]]
-#### Model 1 : Spatio-Temporal Attention[[model-1-spatio-temporal-attention]]
+### Transformer Models for Video in ViViT
+#### Model 1 : Spatio-Temporal Attention
 
 Simply forwards all spatio-temporal tokens extracted from the video, through the transformer encoder. Each frame is split n_w x n_h image patches, so total n_t x n_w x n_h patches contextualize from each other using transformer encoder. (n_h : # of rows, n_w : # of columns, n_t : # of frames)
 
 **complexity : O(n_h^2 x n_w^2 x n_t^2)**
-#### Model 2 : Factorised encoder[[model-2-factorised-encoder]]
+#### Model 2 : Factorised encoder
 
 The approach in Model 1 was somewhat inefficient, as it contextualized all patches simultaneously. To improve upon this, Model 2 separates the spatial and temporal encoders sequentially.
 
@@ -94,7 +94,7 @@ First, only spatial interactions are contextualized through a Spatial Transforme
 
 **complexity : O(n_h^2 x n_w^2 + n_t^2)**
 
-#### Model 3 : Factorised Self-Attention[[model-3-factorised-self-attention]]
+#### Model 3 : Factorised Self-Attention
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_7_vivit_model3.JPG" alt="ViViT model 3"></img>
@@ -104,7 +104,7 @@ First, only spatial interactions are contextualized through a Spatial Transforme
 In model 3, instead of computing multi-headed self-attention across all pairs of tokens, we first only compute self-attention spatially (among all tokens extracted from the same temporal index). Next, we compute self-attention temporally (among all tokens extracted from the same spatial index). Because of the ambiguities, no CLS (classification) token is used.
 
 **complexity : same as model 2**
-#### Model 4 : Factorized dot-product attention[[model-4-factorized-dot-product-attention]]
+#### Model 4 : Factorized dot-product attention
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_8_vivit_model4.JPG" alt="ViViT model 4"></img>
@@ -114,7 +114,7 @@ In model 3, instead of computing multi-headed self-attention across all pairs of
 In model 4, half of the attention heads are designed to operate with keys and values from spatial indices, the other half operate with keys and values from same temporal indices.
 
 **complexity : same as model 2, 3**
-### Experiments and Discussion[[experiments-and-discussion]]
+### Experiments and Discussion
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_9_vivit_performance.JPG" alt="ViViT model performance"></img>
@@ -125,7 +125,7 @@ After comparing Models 1, 2, 3, and 4, it is evident that Model 1 achieved the b
 
  The ViViT model fundamentally faces the issue of dataset sparsity. Like the Vision Transformer(ViT), ViViT requires an extremely large dataset to achieve good performance. However, such a scale of dataset is often unavailable for videos. Given that the learning task is more complex, the approach is to first pre-train on a large image dataset using ViT to initialize the model. 
 
-## TimeSFormer[[timesformer]]
+## TimeSFormer
 
 TimeSFormer is a concurrent work with ViViT, applying Transformer on video classification. The following sections are explanations of each type of attention.
 
@@ -140,14 +140,14 @@ TimeSFormer is a concurrent work with ViViT, applying Transformer on video class
 - **Sparse Local Global Attention**: selectively combines local and global information.
 - **Axial Attention**: processes spatial and temporal dimensions separately along their axes.
 
-### Performance Discussion[[performance-discussion]]
+### Performance Discussion
 
 The **Divided Space-Time Attention** mechanism shows the most effective performance, providing the best balance of parameter efficiency and accuracy on both K400 and SSv2 datasets.
 
-## Conclusion[[conclusion]]
+## Conclusion
 
 ViViT expanded upon the ViT model to handle video data more effectively by introducing various models such as the Factorized Encoder, Factorized Self-Attention, and Factorized Dot-Product Attention, all aimed at managing the space-time dimensions efficiently. Similarly, TimeSFormer evolved from the ViT architecture and utilized diverse attention mechanisms to handle space-time dimensions, much like ViViT. A key takeaway from this progression is the focus on reducing the significant computational costs associated with applying transformer architectures to video analysis. By leveraging different optimization techniques, these models improve efficiency and enable learning with fewer computational resources.
 
-## Additional Resources[[additional-resources]]
+## Additional Resources
 
 - [Video Transformers: A Survey](https://arxiv.org/abs/2201.05991)
