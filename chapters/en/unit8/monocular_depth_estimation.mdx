@@ -49,7 +49,7 @@ Typically, the architecture for this image-to-image task is an encoder-decoder m
 
 ![image/png](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Metric%20and%20Relative%20Monocular%20Depth%20Estimation%20An%20Overview.%20Fine-Tuning%20Depth%20Anything%20V2/different_scales.png)
 
-The problems don't end there
+There are even more details we have to pay attention to.
 
 >The model not only has to handle images taken with different cameras and camera settings but also has to learn to adjust for the large variations in the overall scale of the scenes.
 
@@ -64,6 +64,8 @@ Lastly, many datasets lack absolute depth maps altogether and only have relative
 ![image/png](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Metric%20and%20Relative%20Monocular%20Depth%20Estimation%20An%20Overview.%20Fine-Tuning%20Depth%20Anything%20V2/metrics1.png)
 
 >We identify three major challenges. 1) Inherently different representations of depth: direct vs. inverse depth representations. 2) Scale ambiguity: for some data sources, depth is only given up to an unknown scale. 3) Shift ambiguity: some datasets provide disparity only up to an unknown scale and global disparity shift that is a function of the unknown baseline and a horizontal shift of the principal points due to post-processing
+
+*Disparity refers to the difference in the apparent position of an object when viewed from two different viewpoints, commonly used in stereo vision to estimate depth.*
 
 In short, I hope I've convinced you that you can't just take scattered depth maps from the internet and train a model with them using some pixel-wise MSE.
 
@@ -80,7 +82,7 @@ $$\hat{d}_i = \frac{d_i - t(d)}{s(d)},$$
 where \\( t(d) \\) and \\( s(d) \\) are used to align the prediction and ground truth to have zero translation and unit scale:
 $$t(d) = \mathrm{median}(d), \quad s(d) = \frac{1}{HW} \sum_{i=1}^{HW} \left| d_i - t(d) \right|.$$
 
-In fact, there are many other methods and functions that help eliminate scale and shifts. There are also different additions to loss functions, such as gradient loss, which focuses not on the pixel values themselves but on how quickly they change (hence the name — gradient). You can read more about this in the MiDaS paper, i'll include a list of useful literature at the end. Let's briefly discuss metrics before moving on to the most exciting part — fine-tuning on absolute depth using a custom dataset.
+In fact, there are many other methods and functions that help eliminate scale and shifts. There are also different additions to loss functions, such as gradient loss, which focuses not on the pixel values themselves but on how quickly they change (hence the name — gradient). You can read more about this in the [MiDaS](https://arxiv.org/abs/1907.01341) paper, i'll include a list of useful literature at the end. Let's briefly discuss metrics before moving on to the most exciting part — fine-tuning on absolute depth using a custom dataset.
 
 ## Metrics
 
@@ -150,7 +152,7 @@ We'll go through everything in detail here. To start, let's download all the nec
 !git clone https://github.com/DepthAnything/Depth-Anything-V2
 !wget -O depth_anything_v2_vits.pth https://huggingface.co/depth-anything/Depth-Anything-V2-Small/resolve/main/depth_anything_v2_vits.pth?download=true
 ```
-If you don't work at Kaggle, you can download the dataset [here](http://datasets.lids.mit.edu/fastdepth/data/) 
+You can also download the dataset [here](http://datasets.lids.mit.edu/fastdepth/data/) 
 
 #### Step 2: Import Required Modules
 ```python
