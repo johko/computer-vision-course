@@ -90,7 +90,7 @@ The approach in Model 1 was somewhat inefficient, as it contextualized all patch
 </div>
 <small>Factorised encoder (Model 2). Taken from the <a href = "https://arxiv.org/abs/2103.15691">original paper</a>.</small>
 
-First, only spatial interactions are contextualized through Spatial Transformer Encoder(=ViT). Then, each frame is encoded to a single embedding, fed into the Temporal Transformer Encoder(=general transformer).
+First, only spatial interactions are contextualized through a Spatial Transformer Encoder(=ViT). Then, each frame is encoded to a single embedding and fed into the Temporal Transformer Encoder(=general transformer).
 
 **complexity : O(n_h^2 x n_w^2 + n_t^2)**
 
