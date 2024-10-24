@@ -99,7 +99,7 @@ First, only spatial interactions are contextualized through Spatial Transformer 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/transformer_based_video_model/unit7_7_vivit_model3.JPG" alt="ViViT model 3"></img>
 </div>
-<small>Factorised self-attention (Model 3). Taken from the <a href = "https://arxiv.org/abs/2103.15691">original paper</a>.</small>
+<small>Factorised Self-Attention (Model 3). Taken from the <a href = "https://arxiv.org/abs/2103.15691">original paper</a>.</small>
 
 In model 3, instead of computing multi-headed self-attention across all pairs of tokens, we first only compute self-attention spatially (among all tokens extracted from the same temporal index). Next, we compute self-attention temporally (among all tokens extracted from the same spatial index). Because of the ambiguities, no CLS (classification) token is used.
 
