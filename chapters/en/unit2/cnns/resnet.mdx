@@ -54,9 +54,6 @@ However, for the residual block, where y = F(x) + x, the gradient becomes:
 
 Notice that we now have an additional term 1 in the gradient calculation. This means that the gradient at each layer has a direct path back to earlier layers, improving gradient flow and reducing the chance of vanishing gradients. The gradients flow more easily through the network, allowing deeper networks to train without degradation.
 
-
-
-
 #### 3. Why Deeper Networks are Now Possible:
 
 ResNets made it feasible to train networks with hundreds or even thousands of layers. Here’s why deeper networks benefit from this:
