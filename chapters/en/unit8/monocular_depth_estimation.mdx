@@ -71,7 +71,7 @@ But how do we equalize all these variations? How can we abstract as much as poss
 
 ## Scale and Shift Invariant Loss 😎
 
-Simply put, we need to perform some sort of normalization on all the depth maps we want to train on and evaluate metrics with. We have an idea: we want to create a loss function that doesn't consider the scale of the environment or the various shifts. The remaining task is to translate this idea into mathematical terms.
+Simply put, we need to perform some sort of normalization on all the depth maps we want to train on and evaluate metrics with. Here is an idea: we want to create a loss function that doesn't consider the scale of the environment or the various shifts. The remaining task is to translate this idea into mathematical terms.
 
 >Concretely, the depth value is first transformed into the disparity space by \\( d = \frac{1}{t} \\) and then normalized to \\( 0 \sim 1 \\) on each depth map. To enable multi-dataset joint training, we adopt the affine-invariant loss to ignore the unknown scale and shift of each sample:
 $$\mathcal{L}_1 = \frac{1}{HW} \sum_{i=1}^{HW} \rho(d_i^*, d_i),$$
