@@ -43,7 +43,7 @@ Although ViT outperformed other state-of-the-art models, training the ViT model 
 
 As mentioned earlier, the important issue for ViViT, which extends the image processing of ViT to video classification task, was how to train the model more quickly and efficiently. Also, unlike images, video contains not only spatial information, but also temporal information, and how to handle this “temporal information” is a key consideration and exploration.
 
-The abstract from the [paper](https://arxiv.org/abs/2103.15691) is the as follows:
+The abstract from the [paper](https://arxiv.org/abs/2103.15691) is as follows:
 
 *We present pure-transformer based models for video classification, drawing upon the recent success of such models in image classification. Our model extracts spatiotemporal tokens from the input video, which are then encoded by a series of transformer layers. In order to handle the long sequences of tokens encountered in video, we propose several, efficient variants of our model which factorise the spatial- and temporal-dimensions of the input. Although transformer-based models are known to only be effective when large training datasets are available, we show how we can effectively regularise the model during training and leverage pretrained image models to be able to train on comparatively small datasets. We conduct thorough ablation studies, and achieve state-of-the-art results on multiple video classification benchmarks including Kinetics 400 and 600, Epic Kitchens, Something-Something v2 and Moments in Time, outperforming prior methods based on deep 3D convolutional networks. To facilitate further research, we release code at https://github.com/google-research/scenic.*
 
