@@ -144,6 +144,8 @@
     local: "unit8/terminologies/linear-algebra"
   - title: Representations for 3D Data
     local: "unit8/terminologies/representations"
+  - title: Metric and Relative Monocular Depth Estimation
+    local: "unit8/monocular_depth_estimation"
   - title: Novel View Synthesis
     local: "unit8/3d-vision/nvs"
   - title: Introduction to Stereo Vision
