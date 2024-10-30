@@ -1,12 +1,12 @@
-# CNN Based Video Model
+# CNN Based Video Models
 
 ### General Trend:
 
-The success of Deep Learning, particularly CNNs trained on massive datasets like ImageNet, revolutionized image recognition. This trend continues in video processing. However, video data introduces another dimension compared to static images: time. This simple change introduced a new set of challenges that CNN trained in static images were not built to deal with.
+The success of Deep Learning, particularly CNNs trained on massive datasets like ImageNet, revolutionized image recognition. This trend continues in video processing. However, video data introduces another dimension compared to static images: time. This simple change introduced a new set of challenges that CNNs trained in static images were not built to deal with.
 
 # Previous SOTA Models in Video Processing
 
-## Two-Stream Network(2014):
+## Two-Stream Network(2014)
 
 <div class="flex justify-center">
 <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Two-Stream architecture for video classification.png" alt="Two-Stream architecture for video classification">
@@ -20,13 +20,13 @@ The proposed architecture is called Two-Stream Network. It uses two separate pat
 - **Temporal Stream:** A 2D CNN, or another network, that processes several frame sequences (optical flow) to capture motion information.
 - **Fusion:** The outputs from both streams are then combined to leverage both appearance and motion cues for tasks like action recognition.
 
-## 3D ResNets(2017):
+## 3D ResNets(2017)
 
 <div class="flex justify-center">
 <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail..png" alt="Residual block. Shortcut connections bypass a signal from the top of the block to the tail. Signals are summed at the tail.">
 </div>
 
-Standard 3D CNNs extend the concept to simultaneously capture spatial and temporal information using 3D kernels (2D spatial information + temporal information). A drawback of this model is that the large number of parameters result the training being more computationally intensive and hence slower than the 2D version. Therefore, the 3D version of the ConvNets typically has fewer layers than the deeper architectures of 2D CNNs.
+Standard 3D CNNs extend the concept to simultaneously capture spatial and temporal information using 3D kernels (2D spatial information + temporal information). A drawback of this model is that the large number of parameters result in the training being more computationally intensive and hence slower than the 2D version. Therefore, the 3D version of the ConvNets typically has fewer layers than the deeper architectures of 2D CNNs.
 
 In this paper, the authors applied the ResNet architecture to the 3D CNNs. This approach introduces deeper models for 3D CNNs and achieves higher accuracy.
 
@@ -40,7 +40,7 @@ Experiments showed that the 3D ResNets (especially deeper ones like the ResNet-3
 | C3D w/ BN | 56.1 | 79.5 | 67.8 | - | - | - |
 | RGB-I3D w/o ImageNet | - | - | 68.4 | 88.0 | **78.2** |  |
 
-## (2+1)D ResNets(2017):
+## (2+1)D ResNets(2017)
 
 <div class="flex justify-center">
 <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/previous sota models/SOTA Models 3D vs (2+1)D convolution..png" alt="3D vs (2+1)D convolution.">
@@ -131,4 +131,4 @@ These cutting-edge models are playing a crucial role in advancing video processi
 
 # Conclusion
 
-The evolution of video analysis models has been fascinating to witness. These models were heavily influenced by other SOTA models. For example, Two-StreamNets was motivated by the  ConvNets and (2+1)D ResNets were inspired by the 3D ResNets. As the research progresses, one can expect even more advanced architectures and techniques to emerge in the future.
+The evolution of video analysis models has been fascinating to witness. These models were heavily influenced by other SOTA models. For example, Two-StreamNets was motivated by the ConvNets and (2+1)D ResNets were inspired by the 3D ResNets. As the research progresses, one can expect even more advanced architectures and techniques to emerge in the future.

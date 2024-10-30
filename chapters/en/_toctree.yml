@@ -124,7 +124,7 @@
     local: "unit7/video-processing/introduction-to-video"
   - title: Video Processing Basics
     local: "unit7/video-processing/video-processing-basics"
-  - title: Cnn Based Video Model
+  - title: CNN Based Video Model
     local: "unit7/video-processing/cnn-based-video-model"
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
   sections:
