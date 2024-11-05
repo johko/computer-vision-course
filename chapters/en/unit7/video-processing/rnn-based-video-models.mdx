@@ -1,11 +1,11 @@
 # Introduction
 
-## Videos as Sequence Data[[video-as-sequence-data]]
+## Videos as Sequence Data
 
 Videos are made up of a series of images called frames that are played one after another to create motion. Each frame captures spatial information — the objects and scenes in the image. When these frames are shown in sequence, they also provide temporal information — how things change and move over time. 
 Because of this combination of space and time, videos contain more complex information than single images. To analyze videos effectively, we need models that can understand both the spatial and temporal aspects.
 
-## The Role and Need for RNNs in Video Processing[[the-role-and-need-for-rnns-in-video-processing]]
+## The Role and Need for RNNs in Video Processing
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/rnn.png" alt="RNN architecture">
 </div>
@@ -13,14 +13,14 @@ Convolutional Neural Networks (CNNs) are excellent at analyzing spatial features
 However, they aren't designed to handle sequences where temporal relationships matter. This is where Recurrent Neural Networks (RNNs) come in. 
 RNNs are specialized for processing sequential data because they have a "memory" that captures information from previous steps. This makes them well-suited for understanding how video frames relate to each other over time.
 
-## Understanding Spatio-Temporal Modeling[[understanding-spatiotemporal-modeling]]
+## Understanding Spatio-Temporal Modeling
 
 In video analysis, it's important to consider both spatial (space) and temporal (time) features together—this is called spatio-temporal modeling. Spatial modeling looks at what's in each frame, like objects or people, while temporal modeling looks at how these things change from frame to frame. 
 By combining these two, we can understand the full context of a video. Techniques like combining CNNs and RNNs or using special types of convolutions that capture both space and time are ways researchers achieve this.
 
-# RNN-Based Video Modeling Architectures[[rnn-based-video-modeling-architectures]]
+# RNN-Based Video Modeling Architectures
 
-## Long-term Recurrent Convolutional Networks(LRCN)[[lrcn]]
+## Long-term Recurrent Convolutional Networks(LRCN)
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/lrcn.png" alt="LRCN model architecture">
@@ -38,7 +38,7 @@ The CNN processes each frame to extract spatial features, and the LSTM takes the
 **Why It Matters**
 LRCN was one of the first models to effectively handle both spatial and temporal aspects of video data. It paved the way for future research by showing that combining CNNs and RNNs can be powerful for video analysis.
 
-## Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting(ConvLSTM)[[convlstm]]
+## Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting(ConvLSTM)
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/convlstm.png" alt="ConvLSTM model architecture">
@@ -55,7 +55,7 @@ The Convolutional LSTM Network (ConvLSTM) was proposed by Shi et al. in 2015. It
 **Why It Matters**
 ConvLSTM introduced a new way to process spatio-temporal data by integrating convolution directly into the LSTM architecture. This has been influential in fields that need to predict future states based on spatial and temporal patterns.
 
-## Unsupervised Learning of Video Representations using LSTMs[[unsupervised-lstms]]
+## Unsupervised Learning of Video Representations using LSTMs
 
 **Overview**
 In 2015, Srivastava et al. introduced a method for learning video representations without labeled data, known as unsupervised learning. This paper utilizes a multi-layer LSTM model to learn video representations. The model consists of two main components: an Encoder LSTM and a Decoder LSTM. The Encoder maps video sequences of arbitrary length (in the time dimension) to a fixed-size representation. The Decoder then uses this representation to either reconstruct the input video sequence or predict the subsequent video sequence.
@@ -66,7 +66,7 @@ In 2015, Srivastava et al. introduced a method for learning video representation
 **Why It Matters**
 This approach showed that it's possible to learn useful video representations without the need for extensive labeling, which is time-consuming and expensive. It opened up new possibilities for video analysis and generation using unsupervised methods.
 
-## Describing Videos by Exploiting Temporal Structure[[temporal-structure]]
+## Describing Videos by Exploiting Temporal Structure
 
 <div class="flex justify-center">
     <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/rnn_video_models/attention_model.png">
@@ -83,7 +83,7 @@ In 2015, Yao et al. introduced attention mechanisms in video models, specificall
 Incorporating attention mechanisms into video models has transformed how temporal data is processed. This method enhances the model’s capacity to handle the complex interactions in video sequences, making it an essential component in modern neural network architectures for video analysis and generation.
 
 
-# Limitations of RNN-Based Models [[limitations]]
+# Limitations of RNN-Based Models
 - **Challenges with Long-Term Dependencies**
     
     RNNs, including LSTMs, can struggle to maintain information over long sequences. This means they might "forget" important details from earlier frames when processing long videos. This limitation can affect the model's ability to understand the full context of a video.
@@ -96,13 +96,13 @@ Incorporating attention mechanisms into video models has transformed how tempora
     
     Newer models like Transformers have been developed to address some of the limitations of RNNs. Transformers use attention mechanisms to handle sequences and can process data in parallel, making them faster and more effective at capturing long-term dependencies.
 
-# Conclusion[[conclusion]]
+# Conclusion
 
 RNN-based models have significantly advanced the field of video analysis by providing tools to handle temporal sequences effectively. Models like LRCN, ConvLSTM, and those incorporating attention mechanisms have demonstrated the potential of combining spatial and temporal processing. However, limitations such as difficulty with long sequences, computational inefficiency, and high data requirements highlight the need for continued innovation.
 
 Future research is likely to focus on overcoming these challenges, possibly by adopting newer architectures like Transformers, improving training efficiency, and enhancing model interpretability. These efforts aim to create models that are both powerful and practical for real-world video applications.
 
-### References[[references]]
+### References
 1. [Long-term Recurrent Convolutional Networks paper](https://arxiv.org/pdf/1411.4389)
 2. [Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting paper](https://proceedings.neurips.cc/paper_files/paper/2015/file/07563a3fe3bbe7e3ba84431ad9d055af-Paper.pdf)
 3. [Unsupervised Learning of Video Representations using LSTMs paper](https://arxiv.org/pdf/1502.04681)
