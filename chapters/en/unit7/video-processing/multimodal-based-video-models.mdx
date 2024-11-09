@@ -1,8 +1,8 @@
-# Multimodal Based Video Models[[mutilmodal-based-video-models]]
+# Multimodal Based Video Models
 
 As discussed in previous chapters, a video can be simply defined as a sequence of images. However, unlike simple images, videos contain various modalities such as sound, text, and movement. From this perspective, to properly understand a video, we must consider multiple modalities at the same time. In this chapter, we first briefly explain what modalities can exist in a video. Then, we introduce architectures that can learn by aligning videos with different modalities.
 
-## What Modalities Are Present in Video?[[what-modalities-in-video]]
+## What Modalities Are Present in Video?
 
 Videos encompass a variety of modalities beyond just sequences of images. Understanding these different modalities is crucial for comprehensive video analysis and processing. The primary modalities present in videos include:
 
@@ -13,16 +13,22 @@ Videos encompass a variety of modalities beyond just sequences of images. Unders
 5. Depth Modality: Represents the 3D spatial information of the video.
 6. Sensor Modality: In some applications, videos may include modalities like temperature or biometric data.
     
-/* Modality Overview Image */
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Multimodal_Based_Video_Models/Modality_example.jpg" alt="Modality examples. The image is from the original LanuageBind paper">
+</div>
+
 Beyond the modalities mentioned above, videos can incorporate even more diverse types of modalities. Be sure to consider which modalities are necessary for your specific work or project. In the next section, we will explore video architectures that can align and represent these modalities jointly.
 
-## Video and Text[[video-and-text]]
+## Video and Text
 
-### VideoBERT[[videobert]]
+### VideoBERT
 
 - **Overview**
 
-/* VideoBERT Overview Image */
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Multimodal_Based_Video_Models/Overview_VideoBERT.png" alt="VideoBERT model architecture.">
+</div>
+
 [VideoBERT](https://arxiv.org/abs/1904.01766) is an attempt to apply the BERT architecture directly to video data. Just like BERT in language models, the goal is to learn good visual-linguistic representation without any supervsion. For the text modality, VideoBERT uses ASR (Automatic Speech Recognition) to convert audio into text, and then obtains BERT token embeddings. For the video, it uses S3D to get token embeddings for each frame. 
 
 - **Key Features**
@@ -36,7 +42,7 @@ Beyond the modalities mentioned above, videos can incorporate even more diverse 
 VideoBERT was one of the first models to effectively integrate video-language understanding by learning joint representations.
 Unlike previous methods, VideoBERT does not use a detection model for image-text labeling. Instead, it uses *clustering algorithm* to enable Masked Frame modeling, allowing the model to predict masked frames without needing explicit labeled data.
 
-### MERLOT[[merlot]]
+### MERLOT
 
 - **Overview**
 
@@ -54,13 +60,16 @@ While the model architecture and training method are not entirely new, MERLOT ac
     
 <u>Note</u>: If you're looking the detailed training process of MERLOT, make sure to reference the MERLOT paper as well as earlier works like [HERO](https://aclanthology.org/2020.emnlp-main.161.pdf), [CBT](https://arxiv.org/pdf/1906.05743) and [HAMMER](https://aclanthology.org/2020.emnlp-main.161.pdf).
 
-## Video and Audio, Text[[video-and-audio-text]]
+## Video and Audio, Text
 
-### VATT(Visual-Audio-Text Transformer)[[vatt]]
+### VATT(Visual-Audio-Text Transformer)
 
 - **Overview**
 
-/* VATT Overview Image */ 
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Multimodal_Based_Video_Models/Overview_VATT.png" alt="VATT model architecture.">
+</div>
+
 [VATT](https://arxiv.org/abs/2104.11178) is a model designed for self-supervised learning from raw video, audio, and text. Different tokenization and positional encoding methods were applied to each modality, and VATT used the Transformer Encoder to effectively integrate the representations from the raw multimodal data. As a result, it achieved strong performance in various downstream tasks such as action recognition and text-to-video retrieval.
 
 - **Key Features**
@@ -73,7 +82,7 @@ While the model architecture and training method are not entirely new, MERLOT ac
     
 Previous models using transformers for video multimodal tasks tended to rely heavily on visual data and required extensive training time and computational complexity. In contrast, VATT utilizes **Droptoken** and **weight sharing** to learn powerful multimodal representations from raw visual, audio, and text data with relatively lower computational complexity.
 
-### Video-Llama[[video-llama]]
+### Video-Llama
 
 - **Overview**
 
@@ -94,13 +103,16 @@ In the case of the vision-language branch, there is an abundance of visual-text 
     
 Previous models struggled to handle both visual and auditory content together. Video-LLaMA addresses this by integrating these modalities in a single framework, capturing temporal changes in video and aligning audio-visual signals. It overcomes the limitations of earlier research by using cross-modal pre-training and instruction fine-tuning, achieving strong performance in multimodal tasks like video-based conversations without relying on separate models.
 
-## Video and Multiple Modalities [[video-and-multiple-modalities]]
+## Video and Multiple Modalities
 
-### ImageBind[[imagebind]]
+### ImageBind
 
 - **Overview**
 
-/* ImageBind Overview Image */
+<div class="flex justify-center">
+    <img src="https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Multimodal_Based_Video_Models/Overview_ImageBind.png" alt="ImageBind model architecture.">
+</div>
+
 ImageBind utilizes paired data between images and other modalities to integrate diverse modality representations, centering around image data.
 
 - **Key Features**
@@ -112,7 +124,7 @@ Additionally, the training process of ImageBind is relatively simpler compared t
 
 ImageBind's key contribution is its ability to integrate various modalities without the need for specific modality-paired datasets. Using images as a reference, it aligns and combines up to six different modalities—such as audio, text, depth, and more—into a unified representation space. The significance lies in its capacity to achieve this alignment across multiple modalities simultaneously, without requiring direct pairing for each combination, making it highly efficient for multimodal learning.
 
-## Conclusion[[conclusion]]
+## Conclusion
 
 We have briefly examined the different modalities present in videos and then explored models that integrate visual information with various other modalities. 
 As time goes on, there is a growing body of research focused on integrating a wide range of modalities all at once. 
