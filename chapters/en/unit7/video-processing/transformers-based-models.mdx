@@ -54,6 +54,23 @@ The abstract from the [paper](https://arxiv.org/abs/2103.15691) is as follows:
 
 ### Embedding Video Clips
 
+#### What is embedding?
+Before diving into specific techniques, it's important to understand what embeddings are. In machine learning, embeddings are dense vector representations that capture meaningful features of input data in a format that neural networks can process. For videos, we need to convert the raw pixel data into these mathematical representations while preserving both spatial information (what's in each frame) and temporal information (how things change over time).
+
+#### Why Video Embeddings Matter
+Processing videos is computationally intensive due to their size and complexity. Good embedding techniques help by:
+
+- Reducing dimensionality while preserving important features
+- Capturing temporal relationships between frames
+- Making it feasible for neural networks to process video data efficiently
+
+#### Why Focus on Uniform Frame Sampling and Tubelet Embeddings?
+These two techniques represent fundamental approaches in video processing that have become building blocks for more advanced methods:
+
+1. They balance computational efficiency with information preservation, offering a range of options for different video processing tasks.
+2. They serve as baseline methods, providing a comparison point against which newer techniques can demonstrate improvement.
+3. Learning these approaches establishes a strong foundation in spatio-temporal processing, which is crucial for grasping more advanced video embedding methods.
+
 #### Uniform Frame Sampling
 
 <div class="flex justify-center">
