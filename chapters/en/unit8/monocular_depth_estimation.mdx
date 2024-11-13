@@ -165,7 +165,8 @@ import random
 import h5py
 
 import sys
-sys.path.append('/kaggle/working/Depth-Anything-V2/metric_depth')
+
+sys.path.append("/kaggle/working/Depth-Anything-V2/metric_depth")
 
 from accelerate import Accelerator
 from accelerate.utils import set_seed
@@ -196,71 +197,76 @@ def get_all_files(directory):
     return all_files
 
 
-train_paths = get_all_files('/kaggle/input/nyu-depth-dataset-v2/nyudepthv2/train')
-val_paths = get_all_files('/kaggle/input/nyu-depth-dataset-v2/nyudepthv2/val')
+train_paths = get_all_files("/kaggle/input/nyu-depth-dataset-v2/nyudepthv2/train")
+val_paths = get_all_files("/kaggle/input/nyu-depth-dataset-v2/nyudepthv2/val")
 ```
 #### Step 4: Define the PyTorch Dataset
 ```python
-#NYU Depth V2 40k. Original NYU is 400k
+# NYU Depth V2 40k. Original NYU is 400k
 class NYU(torch.utils.data.Dataset):
     def __init__(self, paths, mode, size=(518, 518)):
-        
-        self.mode = mode #train or val
+
+        self.mode = mode  # train or val
         self.size = size
         self.paths = paths
-        
+
         net_w, net_h = size
-        #author's transforms
-        self.transform = Compose([
-            Resize(
-                width=net_w,
-                height=net_h,
-                resize_target=True if mode == 'train' else False,
-                keep_aspect_ratio=True,
-                ensure_multiple_of=14,
-                resize_method='lower_bound',
-                image_interpolation_method=cv2.INTER_CUBIC,
-            ),
-            NormalizeImage(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-            PrepareForNet(),
-        ] + ([Crop(size[0])] if self.mode == 'train' else []))
-        
+        # author's transforms
+        self.transform = Compose(
+            [
+                Resize(
+                    width=net_w,
+                    height=net_h,
+                    resize_target=True if mode == "train" else False,
+                    keep_aspect_ratio=True,
+                    ensure_multiple_of=14,
+                    resize_method="lower_bound",
+                    image_interpolation_method=cv2.INTER_CUBIC,
+                ),
+                NormalizeImage(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+                PrepareForNet(),
+            ]
+            + ([Crop(size[0])] if self.mode == "train" else [])
+        )
+
         # only horizontal flip in the paper
-        self.augs = A.Compose([
-            A.HorizontalFlip(),
-            A.ColorJitter(hue = 0.1, contrast=0.1, brightness=0.1, saturation=0.1),
-            A.GaussNoise(var_limit=25),
-        ])
-    
+        self.augs = A.Compose(
+            [
+                A.HorizontalFlip(),
+                A.ColorJitter(hue=0.1, contrast=0.1, brightness=0.1, saturation=0.1),
+                A.GaussNoise(var_limit=25),
+            ]
+        )
+
     def __getitem__(self, item):
         path = self.paths[item]
         image, depth = self.h5_loader(path)
-        
-        if self.mode == 'train':
-            augmented = self.augs(image=image, mask = depth)
+
+        if self.mode == "train":
+            augmented = self.augs(image=image, mask=depth)
             image = augmented["image"] / 255.0
-            depth = augmented['mask']
+            depth = augmented["mask"]
         else:
             image = image / 255.0
-          
-        sample = self.transform({'image': image, 'depth': depth})
 
-        sample['image'] = torch.from_numpy(sample['image'])
-        sample['depth'] = torch.from_numpy(sample['depth'])
-        
+        sample = self.transform({"image": image, "depth": depth})
+
+        sample["image"] = torch.from_numpy(sample["image"])
+        sample["depth"] = torch.from_numpy(sample["depth"])
+
         # sometimes there are masks for valid depths in datasets because of noise e.t.c
-#         sample['valid_mask'] = ... 
-     
+        #         sample['valid_mask'] = ...
+
         return sample
 
     def __len__(self):
         return len(self.paths)
-    
+
     def h5_loader(self, path):
         h5f = h5py.File(path, "r")
-        rgb = np.array(h5f['rgb'])
+        rgb = np.array(h5f["rgb"])
         rgb = np.transpose(rgb, (1, 2, 0))
-        depth = np.array(h5f['depth'])
+        depth = np.array(h5f["depth"])
         return rgb, depth
 ```
 Here are a few points to note:
@@ -278,27 +284,26 @@ num_images = 5
 
 fig, axes = plt.subplots(num_images, 2, figsize=(10, 5 * num_images))
 
-train_set = NYU(train_paths, mode='train') 
+train_set = NYU(train_paths, mode="train")
 
 for i in range(num_images):
-    sample = train_set[i*1000]
-    img, depth = sample['image'].numpy(), sample['depth'].numpy()
+    sample = train_set[i * 1000]
+    img, depth = sample["image"].numpy(), sample["depth"].numpy()
 
     mean = np.array([0.485, 0.456, 0.406]).reshape((3, 1, 1))
     std = np.array([0.229, 0.224, 0.225]).reshape((3, 1, 1))
-    img = img*std+mean
+    img = img * std + mean
 
-    axes[i, 0].imshow(np.transpose(img, (1,2,0)))
-    axes[i, 0].set_title('Image')
-    axes[i, 0].axis('off')
+    axes[i, 0].imshow(np.transpose(img, (1, 2, 0)))
+    axes[i, 0].set_title("Image")
+    axes[i, 0].axis("off")
 
-    im1 = axes[i, 1].imshow(depth, cmap='viridis', vmin=0)
-    axes[i, 1].set_title('True Depth')
-    axes[i, 1].axis('off')
+    im1 = axes[i, 1].imshow(depth, cmap="viridis", vmin=0)
+    axes[i, 1].set_title("True Depth")
+    axes[i, 1].axis("off")
     fig.colorbar(im1, ax=axes[i, 1])
-    
-plt.tight_layout()
 
+plt.tight_layout()
 ```
 ![image/png](https://huggingface.co/datasets/hf-vision/course-assets/resolve/main/Metric%20and%20Relative%20Monocular%20Depth%20Estimation%20An%20Overview.%20Fine-Tuning%20Depth%20Anything%20V2/dataset.png)
 
@@ -307,27 +312,23 @@ As you can see, the images are very blurry and noisy. Because of this, we won't 
 #### Step 6: Prepare Dataloaders
 ```python
 def get_dataloaders(batch_size):
-    
-    train_dataset = NYU(train_paths, mode='train')
-    val_dataset = NYU(val_paths, mode='val')
-    
-    
-    train_dataloader = torch.utils.data.DataLoader(train_dataset, 
-                                                  batch_size = batch_size,
-                                                  shuffle=True,
-                                                  num_workers=4,
-                                                  drop_last=True
-                                                  )
 
-    val_dataloader = torch.utils.data.DataLoader(val_dataset, 
-                                               batch_size = 1, #for dynamic resolution evaluations without padding
-                                               shuffle=False,
-                                               num_workers=4,
-                                               drop_last=True
-                                                )
-    
+    train_dataset = NYU(train_paths, mode="train")
+    val_dataset = NYU(val_paths, mode="val")
+
+    train_dataloader = torch.utils.data.DataLoader(
+        train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, drop_last=True
+    )
+
+    val_dataloader = torch.utils.data.DataLoader(
+        val_dataset,
+        batch_size=1,  # for dynamic resolution evaluations without padding
+        shuffle=False,
+        num_workers=4,
+        drop_last=True,
+    )
+
     return train_dataloader, val_dataloader
-
 ```
 #### Step 7: Metric Evaluation
 ```python
@@ -346,23 +347,34 @@ def eval_depth(pred, target):
     rmse = torch.sqrt(torch.mean(torch.pow(diff, 2)))
     mae = torch.mean(torch.abs(diff))
 
-    silog = torch.sqrt(torch.pow(diff_log, 2).mean() - 0.5 * torch.pow(diff_log.mean(), 2))
+    silog = torch.sqrt(
+        torch.pow(diff_log, 2).mean() - 0.5 * torch.pow(diff_log.mean(), 2)
+    )
 
-    return {'d1': d1.detach(), 'abs_rel': abs_rel.detach(),'rmse': rmse.detach(), 'mae': mae.detach(), 'silog':silog.detach()}
-
+    return {
+        "d1": d1.detach(),
+        "abs_rel": abs_rel.detach(),
+        "rmse": rmse.detach(),
+        "mae": mae.detach(),
+        "silog": silog.detach(),
+    }
 ```
 Our loss function is SiLog. It might seem that when training on absolute depth, we should forget about invariance to scale and other techniques used for relative depth training. However, it turns out this is not entirely true, and we often still want to use a kind of "scale regularization", but to a lesser extent. The parameter λ=0.5 helps balance between global consistency and local accuracy.
 
 #### Step 8: Define Hyperparameters
 ```python
-model_weights_path =  '/kaggle/working/depth_anything_v2_vits.pth' 
+model_weights_path = "/kaggle/working/depth_anything_v2_vits.pth"
 model_configs = {
-        'vits': {'encoder': 'vits', 'features': 64, 'out_channels': [48, 96, 192, 384]},
-        'vitb': {'encoder': 'vitb', 'features': 128, 'out_channels': [96, 192, 384, 768]},
-        'vitl': {'encoder': 'vitl', 'features': 256, 'out_channels': [256, 512, 1024, 1024]},
-        'vitg': {'encoder': 'vitg', 'features': 384, 'out_channels': [1536, 1536, 1536, 1536]}
-    }
-model_encoder = 'vits'
+    "vits": {"encoder": "vits", "features": 64, "out_channels": [48, 96, 192, 384]},
+    "vitb": {"encoder": "vitb", "features": 128, "out_channels": [96, 192, 384, 768]},
+    "vitl": {"encoder": "vitl", "features": 256, "out_channels": [256, 512, 1024, 1024]},
+    "vitg": {
+        "encoder": "vitg",
+        "features": 384,
+        "out_channels": [1536, 1536, 1536, 1536],
+    },
+}
+model_encoder = "vits"
 max_depth = 10
 batch_size = 11
 lr = 5e-6
@@ -373,9 +385,9 @@ scheduler_rate = 1
 load_state = False
 
 state_path = "/kaggle/working/cp"
-save_model_path = '/kaggle/working/model'
+save_model_path = "/kaggle/working/model"
 seed = 42
-mixed_precision = 'fp16'
+mixed_precision = "fp16"
 ```
 Pay attention to the parameter "**max_depth**". The last layer in our model is a sigmoid for each pixel, producing an output from 0 to 1. We simply multiply each pixel by "**max_depth**" to represent distances from 0 to "**max_depth**".
 
@@ -384,94 +396,126 @@ Pay attention to the parameter "**max_depth**". The last layer in our model is a
 def train_fn():
 
     set_seed(seed)
-    ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True) 
-    accelerator = Accelerator(mixed_precision=mixed_precision, 
-                              kwargs_handlers=[ddp_kwargs],
-                             )
-    
+    ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
+    accelerator = Accelerator(
+        mixed_precision=mixed_precision,
+        kwargs_handlers=[ddp_kwargs],
+    )
+
     # in the paper they initialize decoder randomly and use only encoder pretrained weights. Then full fine-tune
     # ViT-S encoder here
-    model = DepthAnythingV2(**{**model_configs[model_encoder], 'max_depth': max_depth})
-    model.load_state_dict({k: v for k, v in torch.load(model_weights_path).items() if 'pretrained' in k}, strict=False)
-    
-    optim = torch.optim.AdamW([{'params': [param for name, param in model.named_parameters() if 'pretrained' in name], 'lr': lr},
-                       {'params': [param for name, param in model.named_parameters() if 'pretrained' not in name], 'lr': lr*10}],
-                      lr=lr, weight_decay=weight_decay)
-    
-    criterion = SiLogLoss() # author's loss
-    
+    model = DepthAnythingV2(**{**model_configs[model_encoder], "max_depth": max_depth})
+    model.load_state_dict(
+        {k: v for k, v in torch.load(model_weights_path).items() if "pretrained" in k},
+        strict=False,
+    )
+
+    optim = torch.optim.AdamW(
+        [
+            {
+                "params": [
+                    param
+                    for name, param in model.named_parameters()
+                    if "pretrained" in name
+                ],
+                "lr": lr,
+            },
+            {
+                "params": [
+                    param
+                    for name, param in model.named_parameters()
+                    if "pretrained" not in name
+                ],
+                "lr": lr * 10,
+            },
+        ],
+        lr=lr,
+        weight_decay=weight_decay,
+    )
+
+    criterion = SiLogLoss()  # author's loss
+
     train_dataloader, val_dataloader = get_dataloaders(batch_size)
-    
-    scheduler = transformers.get_cosine_schedule_with_warmup(optim, len(train_dataloader)*warmup_epochs, num_epochs*scheduler_rate*len(train_dataloader))
-    
-    model, optim, train_dataloader, val_dataloader, scheduler = accelerator.prepare(model, optim, train_dataloader, val_dataloader, scheduler)
-    
+
+    scheduler = transformers.get_cosine_schedule_with_warmup(
+        optim,
+        len(train_dataloader) * warmup_epochs,
+        num_epochs * scheduler_rate * len(train_dataloader),
+    )
+
+    model, optim, train_dataloader, val_dataloader, scheduler = accelerator.prepare(
+        model, optim, train_dataloader, val_dataloader, scheduler
+    )
+
     if load_state:
         accelerator.wait_for_everyone()
         accelerator.load_state(state_path)
-        
+
     best_val_absrel = 1000
-    
-    
+
     for epoch in range(1, num_epochs):
-        
+
         model.train()
         train_loss = 0
-        for sample in tqdm(train_dataloader, disable = not accelerator.is_local_main_process):
+        for sample in tqdm(
+            train_dataloader, disable=not accelerator.is_local_main_process
+        ):
             optim.zero_grad()
-            
-            img, depth = sample['image'], sample['depth']
-            
-            pred = model(img) 
-                                                     # mask
+
+            img, depth = sample["image"], sample["depth"]
+
+            pred = model(img)
+            # mask
             loss = criterion(pred, depth, (depth <= max_depth) & (depth >= 0.001))
-            
+
             accelerator.backward(loss)
             optim.step()
             scheduler.step()
-            
+
             train_loss += loss.detach()
-            
-            
+
         train_loss /= len(train_dataloader)
-        train_loss = accelerator.reduce(train_loss, reduction='mean').item()
-        
-        
+        train_loss = accelerator.reduce(train_loss, reduction="mean").item()
+
         model.eval()
-        results = {'d1': 0, 'abs_rel': 0,'rmse': 0, 'mae': 0, 'silog': 0}
-        for sample in tqdm(val_dataloader, disable = not accelerator.is_local_main_process):
-            
-            img, depth = sample['image'].float(), sample['depth'][0]
-            
+        results = {"d1": 0, "abs_rel": 0, "rmse": 0, "mae": 0, "silog": 0}
+        for sample in tqdm(val_dataloader, disable=not accelerator.is_local_main_process):
+
+            img, depth = sample["image"].float(), sample["depth"][0]
+
             with torch.no_grad():
                 pred = model(img)
-                # evaluate on the original resolution 
-                pred = F.interpolate(pred[:, None], depth.shape[-2:], mode='bilinear', align_corners=True)[0, 0]
-            
+                # evaluate on the original resolution
+                pred = F.interpolate(
+                    pred[:, None], depth.shape[-2:], mode="bilinear", align_corners=True
+                )[0, 0]
+
             valid_mask = (depth <= max_depth) & (depth >= 0.001)
-            
+
             cur_results = eval_depth(pred[valid_mask], depth[valid_mask])
-            
+
             for k in results.keys():
                 results[k] += cur_results[k]
-            
 
         for k in results.keys():
             results[k] = results[k] / len(val_dataloader)
-            results[k] = round(accelerator.reduce(results[k], reduction='mean').item(),3)
-        
+            results[k] = round(accelerator.reduce(results[k], reduction="mean").item(), 3)
+
         accelerator.wait_for_everyone()
         accelerator.save_state(state_path, safe_serialization=False)
-        
-        if results['abs_rel'] < best_val_absrel:
-            best_val_absrel = results['abs_rel']
+
+        if results["abs_rel"] < best_val_absrel:
+            best_val_absrel = results["abs_rel"]
             unwrapped_model = accelerator.unwrap_model(model)
             if accelerator.is_local_main_process:
                 torch.save(unwrapped_model.state_dict(), save_model_path)
-        
-        accelerator.print(f"epoch_{epoch},  train_loss = {train_loss:.5f}, val_metrics = {results}")
-        
-#P.S. While testing one configuration, I encountered an error in which the loss turned into nan. 
+
+        accelerator.print(
+            f"epoch_{epoch},  train_loss = {train_loss:.5f}, val_metrics = {results}"
+        )
+
+
+# P.S. While testing one configuration, I encountered an error in which the loss turned into nan.
 # This is fixed by adding a small epsilon to the predictions to prevent division by 0
 ```
 In the paper, the authors randomly initialize the decoder and use only the encoder weights. They then fine-tune the entire model. Other notable points include:
@@ -483,7 +527,7 @@ In the paper, the authors randomly initialize the decoder and use only the encod
 
 #### Step 10: Launch the Training
 ```python
-#You can run this code with 1 gpu. Just set num_processes=1
+# You can run this code with 1 gpu. Just set num_processes=1
 notebook_launcher(train_fn, num_processes=2)
 ```
 
@@ -493,42 +537,46 @@ I believe we achieved our desired goal. The slight difference in performance can
 
 Let's show some results
 ```python
-model = DepthAnythingV2(**{**model_configs[model_encoder], 'max_depth': max_depth}).to('cuda')
+model = DepthAnythingV2(**{**model_configs[model_encoder], "max_depth": max_depth}).to(
+    "cuda"
+)
 model.load_state_dict(torch.load(save_model_path))
 
 num_images = 10
 
 fig, axes = plt.subplots(num_images, 3, figsize=(15, 5 * num_images))
 
-val_dataset = NYU(val_paths, mode='val') 
+val_dataset = NYU(val_paths, mode="val")
 model.eval()
 for i in range(num_images):
     sample = val_dataset[i]
-    img, depth = sample['image'], sample['depth']
-    
+    img, depth = sample["image"], sample["depth"]
+
     mean = torch.tensor([0.485, 0.456, 0.406]).view(3, 1, 1)
     std = torch.tensor([0.229, 0.224, 0.225]).view(3, 1, 1)
-   
+
     with torch.inference_mode():
-        pred = model(img.unsqueeze(0).to('cuda'))
-        pred = F.interpolate(pred[:, None], depth.shape[-2:], mode='bilinear', align_corners=True)[0, 0]
-            
-    img = img*std + mean
-     
-    axes[i, 0].imshow(img.permute(1,2,0))
-    axes[i, 0].set_title('Image')
-    axes[i, 0].axis('off')
+        pred = model(img.unsqueeze(0).to("cuda"))
+        pred = F.interpolate(
+            pred[:, None], depth.shape[-2:], mode="bilinear", align_corners=True
+        )[0, 0]
+
+    img = img * std + mean
+
+    axes[i, 0].imshow(img.permute(1, 2, 0))
+    axes[i, 0].set_title("Image")
+    axes[i, 0].axis("off")
 
     max_depth = max(depth.max(), pred.cpu().max())
-    
-    im1 = axes[i, 1].imshow(depth, cmap='viridis', vmin=0, vmax=max_depth)
-    axes[i, 1].set_title('True Depth')
-    axes[i, 1].axis('off')
+
+    im1 = axes[i, 1].imshow(depth, cmap="viridis", vmin=0, vmax=max_depth)
+    axes[i, 1].set_title("True Depth")
+    axes[i, 1].axis("off")
     fig.colorbar(im1, ax=axes[i, 1])
-    
-    im2 = axes[i, 2].imshow(pred.cpu(), cmap='viridis', vmin=0, vmax=max_depth)
-    axes[i, 2].set_title('Predicted Depth')
-    axes[i, 2].axis('off')
+
+    im2 = axes[i, 2].imshow(pred.cpu(), cmap="viridis", vmin=0, vmax=max_depth)
+    axes[i, 2].set_title("Predicted Depth")
+    axes[i, 2].axis("off")
     fig.colorbar(im2, ax=axes[i, 2])
 
 plt.tight_layout()
