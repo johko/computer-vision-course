@@ -93,11 +93,17 @@ An alternate method, extracting spatio-temporal "tubes" from the input volume an
 The previously introduced methods, such as Uniform Frame Sampling and Tubelet Embedding, are effective but relatively simple approaches. The upcoming methods to be introduced are more advanced.
 
 ### Transformer Models for Video in ViViT
+
+The original ViViT paper proposes multiple transformer-based architectures, which we will now explore sequentially.
+
 #### Model 1 : Spatio-Temporal Attention
 
-Simply forwards all spatio-temporal tokens extracted from the video, through the transformer encoder. Each frame is split n_w x n_h image patches, so total n_t x n_w x n_h patches contextualize from each other using transformer encoder. (n_h : # of rows, n_w : # of columns, n_t : # of frames)
+The first model naturally extends the idea of ViT to the video classification task. Each frame in the video is split into  n_w(number of columns) x n_h(number of rows) image patches, resulting in a total of n_t(number of frames) x n_w x n_h patches. Each of these patches is then embedded as a “spatio-temporal token”—essentially a small unit representing both spatial(image) and temporal(video sequence) information. The model forwards all spatio-temporal tokens extracted from the video through the transformer encoder. This means each patch, or token, is processed to understand not only its individual features but also its relationship with other patches across time and space. Through this process, called “contextualizing,” the encoder learns how each patch relates to others by capturing patterns in position, color, and movement, thus building a rich, comprehensive understanding of the video’s overall context. 
 
 **complexity : O(n_h^2 x n_w^2 x n_t^2)**
+
+However, using attention on all spatio-temporal tokens can lead to heavy computational costs. To make this process more efficient, methods like Uniform Frame Sampling and Tubelet Embedding, as explained earlier, are used to help reduce these costs.
+
 #### Model 2 : Factorised encoder
 
 The approach in Model 1 was somewhat inefficient, as it contextualized all patches simultaneously. To improve upon this, Model 2 separates the spatial and temporal encoders sequentially.
@@ -121,6 +127,7 @@ First, only spatial interactions are contextualized through a Spatial Transforme
 In model 3, instead of computing multi-headed self-attention across all pairs of tokens, we first only compute self-attention spatially (among all tokens extracted from the same temporal index). Next, we compute self-attention temporally (among all tokens extracted from the same spatial index). Because of the ambiguities, no CLS (classification) token is used.
 
 **complexity : same as model 2**
+
 #### Model 4 : Factorized dot-product attention
 
 <div class="flex justify-center">
@@ -131,6 +138,7 @@ In model 3, instead of computing multi-headed self-attention across all pairs of
 In model 4, half of the attention heads are designed to operate with keys and values from spatial indices, the other half operate with keys and values from same temporal indices.
 
 **complexity : same as model 2, 3**
+
 ### Experiments and Discussion
 
 <div class="flex justify-center">
