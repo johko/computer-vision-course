@@ -128,6 +128,8 @@
     local: "unit7/video-processing/video-processing-basics"
   - title: CNN Based Video Model
     local: "unit7/video-processing/cnn-based-video-model"
+  - title: RNN Based Video Model
+    local: "unit7/video-processing/rnn-based-video-models"
   - title: Transformers based models
     local: "unit7/video-processing/transformers-based-models"
 - title: Unit 8 - 3D Vision, Scene Rendering and Reconstruction
