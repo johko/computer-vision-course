@@ -4,15 +4,16 @@
 
 As the Transformers architecture scaled well in Natural Language Processing, the same architecture was applied to images by creating small patches of the image and treating them as tokens. The result was a Vision Transformer (ViT). Before we get started with transfer learning / fine-tuning concepts, let's compare Convolutional Neural Networks (CNNs) with Vision Transformers.
 
-## Vision Transformer a Summary
+## Vision Transformer (VT) a Summary
 
-To summarize, in Vision transformer, we rearrange every image as a 2D grid of patches. We train the model based on those patches! but not that simple! It requires to be trained on large amount of dataset. Remember the word "large"!
+To summarize, in Vision transformer, images are reorganized as 2D grids of patches. The models are trained on those patches!
 
 The main idea can be found at the picture below: 
 ![Vision Transformer](https://huggingface.co/datasets/hf-vision/course-assets/blob/main/Screenshot%20from%202024-12-27%2014-25-49.png)
 
+But there is a problem! There are some advantages of using Convolutional Neural Network (CNN)s is that they are designed with some assumptions. They are described in the following section.
 
-## What are the differences between CNNs and Vision Transformers?
+## What are the differences between CNNs and Vision Transformers? 
 
 ### Inductive Bias
 
@@ -23,7 +24,10 @@ Here's a couple of inductive biases we observe in CNNs:
 - Translational Equivariance: an object can appear anywhere in the image, and CNNs can detect its features.
 - Locality: pixels in an image interact mainly with its surrounding pixels to form features.
 
-CNN models are very good at these two biases. These are lacking in Vision Transformers. Then how do they perform so well? It's because they're highly scalable and they're trained on massive amounts of images. They overcome the need for these inductive biases!
+CNN models are very good at these two biases. VT do not have this assumption!! That is why for dataset size to a certain threshold actually CNN are better than VT ! But VT has another power!
+The transformer architecture being (mostly) different types of linear functions allows VT to become highly scalable. And that in turn allows VT to overcome the problem of not having the above two
+inductive biases with massive ammount of data!
+
 
 ### But how can everyone get access to massive datasets?
 
